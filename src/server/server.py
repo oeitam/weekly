@@ -1,77 +1,59 @@
 
 import socket
 import sys
+import time
+from subprocess import Popen, CREATE_NEW_CONSOLE
+
+
 
 
 class Server(object):
-    def __init__(self):
+    def __init__(self, proc):
         # init server
-        pass
+        server_child_stdout = open('server_child_stdout', 'w')
+        server_child_stderr = open('server_child_stderr', 'w')
+        ps = Popen([sys.executable,"server/server_script.py"],
+                             #stdout=server_child_stdout,
+                             #stderr=server_child_stderr,
+                             creationflags=CREATE_NEW_CONSOLE)
+        time.sleep(2)
+        ps.poll()
+        # print( p.returncode)
+        if ps.returncode == 63:
+            print('Server could not initialize properly', file=sys.stderr)
         # init client
+        print("Launching the clinet")
+        client_child_stdout = open('client_child_stdout', 'w')
+        client_child_stderr = open('client_child_stderr', 'w')
+        pc = Popen([sys.executable, 'server/client_script.py'],
+                   #stdout=client_child_stdout,
+                   #stderr=client_child_stderr,
+                   creationflags=CREATE_NEW_CONSOLE)
+
+        time.sleep(2)
+        if pc.returncode == 63:
+            print("Client could not initilize properly", file=sys.stderr)
+        print('class Server initialized', file=sys.stderr)
+
+        # setup variables
+        self.proc = proc
+        self.client_process = pc
+        self.server_process = pc
+
+        # pass the server boject to the proc
+        proc.take_server_object(self)
+
+    def return_to_client(self):
         pass
-        print('class Server initialized')
 
-    def weekly_server(self):
-        # Create a TCP/IP socket
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        # Bind the socket to the port
-        server_address = ('localhost', 10000)
-        print('starting up on %s port %s' % server_address, file=sys.stderr)
-        sock.bind(server_address)
+    def send_data_to_client(self, data):
+        print('sending data to the client')
+        pass
 
-        # Listen for incoming connections
-        sock.listen(1)
 
-        while True:
-            # Wait for a connection
-            print('waiting for a connection', file=sys.stderr)
-            connection, client_address = sock.accept()
-            try:
-                print('connection from', client_address, file=sys.stderr)
 
-                # Receive the data in small chunks and retransmit it
-                while True:
-                    data = connection.recv(1024)
-                    print('recieved "%s"' % data, file=sys.stderr)
-                    if data:
-                        print('sending data back to the client', file=sys.stderr)
-                        connection.sendall(data)
-                    else:
-                        print('no more data from ', client_address, file=sys.stderr)
-                        break
 
-            finally:
-                # Clean up the connection
-                print('Closing socket', file=sys.stderr)
-                connection.close()
 
-    def weekly_client(self):
-        # Create a TCP/IP socket
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
-        # Connect the socket to the port where the server is listening
-        server_address = ('localhost', 10000)
-        print('connecting to %s port %s' % server_address, file=sys.stderr)
-        sock.connect(server_address)
-        try:
-            while True:
-                message = input("say-->")
-                # Send data
-                print('sending "%s"' % message, file=sys.stderr)
-                sock.sendall(message)
-
-                # Look for the response
-                amount_received = 0
-                amount_expected = len(message)
-
-                while amount_received < amount_expected:
-                    data = sock.recv(1024)
-                    amount_received += len(data)
-                    print('recieved "%s"' %data, file=sys.stderr)
-
-        finally:
-            print('closing socket', file=sys.stderr)
-            sock.close()
 
 
 
