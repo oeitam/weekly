@@ -15,13 +15,14 @@ sock.connect(server_address)
 try:
     while True:
         message = input("say-->")
-        #time.sleep(3); print('--')
-        # Send data
+        if (message == "die"):
+            print('client: got a die command', file=sys.stderr)
+            sock.sendall(message.encode())
+            #time.sleep(1)
+            #raise
+            break
         print('sending "%s"' % message, file=sys.stderr)
-        #print(message) ; time.sleep(3) ; print('--')
         sock.sendall(message.encode())
-        #time.sleep(3); print('--')
-        # Look for the response
         amount_received = 0
         amount_expected = len(message)
         while amount_received < amount_expected:
@@ -30,5 +31,5 @@ try:
            print('recieved "%s"' % data.decode(), file=sys.stderr)
 
 finally:
-    print('closing socket', file=sys.stderr)
+    print('client: closing socket', file=sys.stderr)
     sock.close()
