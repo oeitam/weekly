@@ -1,3 +1,159 @@
 
+What do I need it for?
+======================
+
+1. store tasks in a style like Getting Things Done (GTD) that is
+ - tasks
+ - projects
+ - time of the task (like reminders, TAF-TAF)
+2. backlog of tasks
+3. log what I am doing and working on
+4. print out what I did in a time frame
+
+
+
+Features, Data Items, Data Structures
+=====================================
+
+* TASK
+- a to do thing
+- Has:
+ - ID
+ - State( Open, Closed, OnHold, Stopped)
+ - (0) Due Date
+ - PROJECT (one)
+ - MEGAPROJECT (like - big project at home or work that includes sub projects, or just Home
+            or Work. actually - comes with teh PROJECT)
+ - (o) location
+ - creation date
+ - (o) expiration date
+ - (o) context (like - a meeting it relates to)
+ - (0) reminders
+ - (0) ACTIVITY
+ - (o) sub TASK
+ - (o) patent TASK
+
+* ACTIVITY
+ - describes an activity that is being done
+ - can be an activity on a task
+ - of descriptive manner - with goal in mind - what did I work on
+ - Has:
+  - ID
+  - State (Started, Ended, Stopped) [note that the fact that an ACTIVITY does not
+            have an 'Ended' time does not mean it did not end]
+  - start time
+  - end time
+  - (o)related TASK(s)
+  - PROJECT
+  - MEGAPROJECT
+
+* PROJECT
+ - a central theme that has multiple TASKs and ACTIVITIES related to it
+ - a set of TASKS and ACTIVITYs
+ - Has
+  - ID
+  - (o) start, end, duedate
+
+
+* MEGAPROJECT
+ - a big thing project that includes several projects. perhaps just 'home' and 'work'
+ - Has:
+  - ID
+  - State
+
+* Procedures
+ - clean - checks the database for correctness and fixes (with permission)
+   example: due date things, projects w/o tasks, tasks w/o projects etc
+
+* Interface context
+ - after a command is executed, some of its context remain, so it is easier to
+    perform the next command in that context.
+    for example: after creating a task, the task remains in the context, and one can
+    set some of the attributes for that task in the following command.
+    only a subset of the commands looks at the context
+
+list of PROJECTS
+
+list of MEGAPROJECTS
+Home
+Work
+
+Consider:
+ - priority
+ -
+
+Language/Syntax
+================
+Terms:
+sw - single word (== characters w/o spaces)
+mw - multiple words (== including spaces)
+
+command:
+Create megaproject <name sw> #<description mw>
+return:
+megaproject ID
+
+command:
+Create project <name sw> @<megaproject sw> #<description mw>
+return:
+project ID
+
+command:
+task @<project sw> #<description mw>
+return:
+task ID
+
+command:
+Attach <something A> to <Something B> #<the value of what to attach, sw or mw>
+Somthing A      Something B     Meaning
+Task            Project
+Activity        Task
+Task            Activity
+Task            Task            create subtask
+return:
+completion report, what happened
+
+command:
+Set <attribute sw> @<ID of a the item> to #<the value to be set for, sw or mw>
+return:
+Completion report, including old value and new value
+
+command:
+Start @<ID of a Task or a project> #<description of the activity mw>
+return:
+ACTIVITY ID, Start time, info from related task
+
+command:
+Stop @<ACTIVITY ID>
+return:
+Completion status, start and stop time, info from related task
+
+command:
+Continue @<ACTIVITY ID>
+return:
+Completion status, Start time, info from related task
+
+command:
+Search @<field name or 'All' to get all fields> #<text to look for, sw or mw>
+return:
+List of items which satisfy the search criteria
+
+
+command:
+
+return:
+
+
+command:
+clean
+return:
+requests for permission per fix it needs to do
+completion message for each fix operation
+
+
+
+Operation
+=========
+
 
 
