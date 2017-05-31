@@ -8,24 +8,11 @@ from subprocess import Popen, CREATE_NEW_CONSOLE
 
 
 class Server(object):
-    def __init__(self, proc):
-        # init server
-        #server_child_stdout = open('server_child_stdout', 'w')
-        #server_child_stderr = open('server_child_stderr', 'w')
-        #ps = Popen([sys.executable,"server/server_script.py"],
-        #                     #stdout=server_child_stdout,
-        #                     #stderr=server_child_stderr,
-        #                     creationflags=CREATE_NEW_CONSOLE)
-        #time.sleep(2)
-        #ps.poll()
-        # print( p.returncode)
-        #if ps.returncode == 63:
-        #    print('Server could not initialize properly', file=sys.stderr)
-        # init client
+    def __init__(self, gtd):
         print('server init')
-        self.proc = proc
+        self.gtd = gtd
 
-    # this method starts the client
+    # start_the_client method starts the client seperate process
     def start_the_client(self):
         print("Launching the clinet")
         client_child_stdout = open('client_child_stdout', 'w')
@@ -42,20 +29,19 @@ class Server(object):
 
         # setup variables
         self.client_process = pc
-        #self.server_process = pc
 
-        # pass the server boject to the proc
-        #proc.take_server_object(self)
-
-    def return_to_client(self):
-        pass
-
-    # send data to the client to display
-    # this is for the proc to use
+    ###################### NOT USED ????  #############################
+    # send_data_to_client method sends data to the client to display
+    # this is for the gtd to use
     def send_data_to_client(self, data):
         print('sending data to the client')
         pass
+    ###################### NOT USED ????  #############################
 
+    # server_process method is the main method of the server
+    # crates a socket from the server for the client to use
+    # once requests are coming from the client, it sends it to
+    # the gtd for processing
     def server_process(self):
         print('Starting the communications server')
         # Create a TCP/IP socket
@@ -88,9 +74,10 @@ class Server(object):
                         break
                     if data:
                         print('sending data to the proc', file=sys.stderr)
-                        self.proc.take_data(data.decode())
-                        self.proc.process()
-                        return_message = self.proc.get_message_back_to_client()
+                        self.gtd.take_data(data.decode())
+                        self.gtd.process() # gtd to process the latest data it recieved
+                        # once the process method is done, it means data is ready for the
+                        return_message = self.gtd.get_message_back_to_client()
                         connection.sendall(return_message.encode())
                     else:
                         print('no more data from ', client_address, file=sys.stderr)

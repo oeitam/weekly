@@ -140,15 +140,30 @@ List of items which satisfy the search criteria
 
 
 command:
-
+List <Item (TASK, ACTIVITY, ...) | <criteria>
+    criteria = dates, IDs, start date, completed, etc.
+    syntax is TBD
 return:
-
+List of
 
 command:
 clean
+    check that all relations are legal
+    check that non legal fields for items are indeed not set
+
 return:
 requests for permission per fix it needs to do
 completion message for each fix operation
+
+command:
+die
+return:
+Nothing. Gracefully kill the program - client and server
+
+
+command:
+
+return:
 
 
 
@@ -156,4 +171,12 @@ Operation
 =========
 
 
+Comments for later
+===================
+
+1. consep[t of context for consecutive commands
+2. each message (client-server or server-client) need to have an ID and be logged,
+   since it will help debug later. perhaps more info (like time also)
+3. teh db is stored on disk after each operation. the older version is also stored
+    so after each transaction, we have current and previous versions on disk
 

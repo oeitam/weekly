@@ -7,8 +7,8 @@ from src.server import server
 
 
 db = database.Db()
-proc = gettingthingsdone.Gtd(db)
-server = server.Server(proc)
+gtd = gettingthingsdone.Gtd(db)
+server = server.Server(gtd)
 server.server_process()
 
 input("Press enter to finish the program")
