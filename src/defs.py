@@ -1,14 +1,13 @@
 # this file includes definitions, strings, help, etc for the weekly project
 
-header =
-'''
+header = """
 Weekly 
 Ohad Eitam (oeitam@gmail.com)
 Started May 2017
 -------------------
 this is the header
 -------------------
-'''
+"""
 
 # columns definitions for the data bases
 # megaprojects
@@ -65,6 +64,26 @@ ACTIVITY_states  = {'Started': 'The TASK is created and may be on execution',
 
 ###############
 
+# keywords
+keywords = {'create',
+            'project',
+            'task',
+            'activity',
+            'ACTIVITY',
+            'attach',
+            'set',
+            'continue',
+            'resume',
+            'list',
+            'clean',
+            'search',
+            'start',
+            'delete',
+            'context',
+            }
+die
+
+##########
 MEGAPROJ = {
     'home': 'projects that belong to private life, home',
     'work': 'projects that belong to work'

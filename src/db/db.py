@@ -1,9 +1,10 @@
 # oeitam
 
-import sys
-import os
+import os.path
 import pandas as pd
 import logging
+from src import defs
+
 logger = logging.getLogger(__name__)
 
 
@@ -47,26 +48,26 @@ class Db(object):
         if os.path.isfile('../data/dfm.csv'):
             dfm = pd.read_csv('../data/dfm.csv')
         else:
-            dfm = pd.DataFrame()
+            dfm = pd.DataFrame(columns=defs.dfm_columns)
             dfm.to_csv('../data/dfm.csv')
         # proj
         if os.path.isfile('../data/dfp.csv'):
-            dfm = pd.read_csv('../data/dfp.csv')
+            dfp = pd.read_csv('../data/dfp.csv')
         else:
-            dfm = pd.DataFrame()
-            dfm.to_csv('../data/dfp.csv')
+            dfp = pd.DataFrame(columns=defs.dfp_columns)
+            dfp.to_csv('../data/dfp.csv')
         # task
         if os.path.isfile('../data/dft.csv'):
-            dfm = pd.read_csv('../data/dft.csv')
+            dft = pd.read_csv('../data/dft.csv')
         else:
-            dfm = pd.DataFrame()
-            dfm.to_csv('../data/dft.csv')
+            dft = pd.DataFrame(columns=defs.dft_columns)
+            dft.to_csv('../data/dft.csv')
         # activity
         if os.path.isfile('../data/dfa.csv'):
-            dfm = pd.read_csv('../data/dfa.csv')
+            dfa = pd.read_csv('../data/dfa.csv')
         else:
-            dfm = pd.DataFrame()
-            dfm.to_csv('../data/dfa.csv')
+            dfa = pd.DataFrame(columns=defs.dfa_columns)
+            dfa.to_csv('../data/dfa.csv')
 
 
 
