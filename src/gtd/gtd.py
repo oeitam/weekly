@@ -1,3 +1,8 @@
+# oeitam
+
+import logging
+logger = logging.getLogger(__name__)
+
 
 
 class Gtd(object):
@@ -13,6 +18,7 @@ class Gtd(object):
     def take_data(self,data):
         print("the proc got this data: {}".format(data))
         self.current_data = data
+        logger.debug('stored new data:{}'.format(self.current_data))
 
     # process function does/start the heavy lifting of interpreting
     # the request from teh client and pusing the info to the database

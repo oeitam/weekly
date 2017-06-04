@@ -4,6 +4,8 @@ import sys
 import time
 from subprocess import Popen, CREATE_NEW_CONSOLE
 
+import logging
+logger = logging.getLogger(__name__)
 
 
 
