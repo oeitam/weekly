@@ -1,0 +1,5 @@
+INFO:root:Logging Started
+DEBUG:src.db.db:setting up databases
+DEBUG:src.db.db:Starting with ID 5
+DEBUG:src.db.db:ID is: 5
+INFO:root:Logging Finished
