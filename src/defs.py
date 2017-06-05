@@ -12,16 +12,19 @@ this is the header
 # columns definitions for the data bases
 # megaprojects
 dfm_columns = ['ID',
+               'Name',
                'State',
                'PROJECTs List',
                ]
 # projects
-dfp_columns = ['ID,'
+dfp_columns = ['ID',
+               'Name',
                'State',
                'MEGAPROJECT',
                ]
 # tasks
 dft_columns = ['ID',
+               'Name',
                'State',
                'Due Date',
                'Creation Date',
@@ -36,6 +39,7 @@ dft_columns = ['ID',
                ]
 # activities
 dfa_columns = ['ID',
+               'Name',
                'State',
                'Start Time',
                'End Time',
@@ -80,8 +84,9 @@ keywords = {'create',
             'start',
             'delete',
             'context',
+            'die',
             }
-die
+
 
 ##########
 MEGAPROJ = {

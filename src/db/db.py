@@ -49,6 +49,7 @@ class Db(object):
             dfm = pd.read_csv('../data/dfm.csv')
         else:
             dfm = pd.DataFrame(columns=defs.dfm_columns)
+            #dfm.set_index(keys='ID')
             dfm.to_csv('../data/dfm.csv')
         # proj
         if os.path.isfile('../data/dfp.csv'):
