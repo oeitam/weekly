@@ -58,7 +58,7 @@ def expression(rbp=0):
 
 def tokenize_weekly(command):
     import tokenize
-    from cStringIO import StringIO
+    from io import BytesIO
     type_map = {
         tokenize.NUMBER: "(literal)",
         tokenize.STRING: "(literal)",
@@ -66,8 +66,9 @@ def tokenize_weekly(command):
         tokenize.NAME: "(name)",
     }
     #for t in tokenize.generate_tokens(StringIO(command).next):
-    for t in next(tokenize.generate_tokens(StringIO(command))):
-        print(t)
+    logger.debug('I am in tokenize_weekly %s', command)
+    #for t in tokenize.generate_tokens(StringIO(command).readline):
+    for t in tokenize.tokenize(BytesIO(b"x+1").readline):
         try:
             yield type_map[t[0]], t[1]
         except KeyError:
@@ -78,8 +79,9 @@ def tokenize_weekly(command):
     yield "(end)", "(end)"
 
 def tokenize(command):
-    logger.debug('I am in tokenize')
+    logger.debug('I am in tokenize %s', command)
     for id, value in tokenize_weekly(command):
+        logger.debug('id, value: %s , $s',id, value)
         if id == "(literal)":
             symbol = symbol_table[id]
             s = symbol()
