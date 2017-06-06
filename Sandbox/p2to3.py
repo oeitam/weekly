@@ -1,134 +1,27 @@
-# oeitam
-
-import logging
-logger = logging.getLogger(__name__)
-
-
-
-class Gtd(object):
-    def __init__(self, db = None):
-        self.db = db
-        print('class Gtd initialized')
-
-    def take_server_object(self, server_obj):
-        self.server = server_obj
-
-    # take_data - used by the server to push the data it got from teh client
-    # to the proc/gtd for processing
-    def take_data(self,data):
-        print("the proc got this data: {}".format(data))
-        self.current_data = data
-        logger.debug('stored new data:{}'.format(self.current_data))
-
-    # process function does/start the heavy lifting of interpreting
-    # the request from teh client and pusing the info to the database
-    def process(self):
-        print('processing data from the client')
-        logger.debug('data from c: %s',self.current_data)
-        myparse("x = 1")
-        #print(k)
-
-    # get_message_back_to_client - method used by
-    def get_message_back_to_client(self):
-        return_message = 'proc2client: ' + self.current_data # (just echo for now)
-        print('this is the return_message: {}'.format(return_message))
-        return return_message
-
-##########################################################
-##########################################################
-
-# #import re
+import re
 
 # token_pat = re.compile("\s*(?:(\d+)|(.))")
-#token_pat = re.compile("\s*(?:(\d+)|(\*\*|.))")
-
-symbol_table = {}
-
+token_pat = re.compile("\s*(?:(\d+)|(\*\*|.))")
 
 def expression(rbp=0):
+    #print "rbp: %d" % rbp
     global token
+    #print "1 this is token %s" % token.value
     t = token
     token = next()
+    #print "->t    :" + str(t.value)
+    #print "->token:" + str(token.value)
     left = t.nud()
+    #print left
     while rbp < token.lbp:
         t = token
         token = next()
+        #print "->t    :" + str(t.value)
+        #print "->token:" + str(token.value)
+        #print "2 this is token %s" % token.value
         left = t.led(left)
+    #print "expression returning left: %s" % left
     return left
-
-def tokenize_weekly(command):
-    import tokenize
-    from io import BytesIO
-    from io import StringIO as StringIO
-    type_map = {
-        tokenize.NUMBER: "(literal)",
-        tokenize.STRING: "(literal)",
-        tokenize.OP: "(operator)",
-        tokenize.NAME: "(name)",
-    }
-    #for t in tokenize.generate_tokens(StringIO(command).next):
-    logger.debug('I am in tokenize_weekly %s', command)
-    for t in tokenize.generate_tokens(StringIO("x+1").readline):
-    #for t in tokenize.tokenize(BytesIO("x+1".encode('utf-8')).readline):
-        try:
-            yield type_map[t[0]], t[1]
-        except KeyError:
-            if t[0] == tokenize.ENDMARKER:
-                break
-            else:
-                raise SyntaxError("Syntax error")
-    yield "(end)", "(end)"
-
-def tokenize(command):
-    logger.debug('I am in tokenize %s', command)
-    for id, value in tokenize_weekly(command):
-        logger.debug('id, value: %s , $s',id, value)
-        if id == "(literal)":
-            symbol = symbol_table[id]
-            s = symbol()
-            s.value = value
-        else:
-            # name or operator
-            symbol = symbol_table.get(value)
-            if symbol:
-                s = symbol()
-            elif id == "(name)":
-                symbol = symbol_table[id]
-                s = symbol()
-                s.value = value
-            else:
-                raise SyntaxError("Unknown operator (%r)" % id)
-        yield s
-
-def symbol(id, bp=0):
-    global symbol_table
-    try:
-        s = symbol_table[id]
-    except KeyError:
-        class s(symbol_base):
-            pass
-        s.__name__ = "symbol-" + id # for debugging
-        s.id = id
-        s.lbp = bp
-        symbol_table[id] = s
-    else:
-        s.lbp = max(bp, s.lbp)
-    return s
-
-def myparse(command):
-    global token, next
-    logger.debug('I am in myparse %s',command)
-    next = next(tokenize(command))
-    token = next()
-    return expression()
-
-def advance(id=None):
-    global token
-    if id and self.token.id != id:
-        raise SyntaxError("Expected %r" % id)
-    token = next()
-
-
 
 class symbol_base(object):
 
@@ -153,9 +46,79 @@ class symbol_base(object):
         out = map(str, filter(None, out))
         return "(" + " ".join(out) + ")"
 
+#def tokenize(program):
+#    for number, operator in token_pat.findall(program):
+#        if number:
+#            symbol = symbol_table["(literal)"]
+#            s = symbol()
+#            s.value = number
+#            yield s
+#        else:
+#            symbol = symbol_table.get(operator)
+#            if not symbol:
+#                raise SyntaxError("Unknown operator")
+#            yield symbol()
+#    symbol = symbol_table["(end)"]
+#   yield symbol()
 
+def tokenize_python(program):
+    import tokenize
+    from io import StringIO
+    from io import BytesIO
 
-# language definitions
+    type_map = {
+        tokenize.NUMBER: "(literal)",
+        tokenize.STRING: "(literal)",
+        tokenize.OP: "(operator)",
+        tokenize.NAME: "(name)",
+        }
+
+    #for t in tokenize.generate_tokens(StringIO(program).readline):
+    for t in tokenize.generate_tokens(BytesIO(b"x+1").readline):
+        try:
+            yield type_map[t[0]], t[1]
+        except KeyError:
+            if t[0] == tokenize.ENDMARKER:
+                break
+            else:
+                raise SyntaxError("Syntax error")
+    yield "(end)", "(end)"
+
+def tokenize(program):
+    for id, value in tokenize_python(program):
+        if id == "(literal)":
+            symbol = symbol_table[id]
+            s = symbol()
+            s.value = value
+        else:
+            # name or operator
+            symbol = symbol_table.get(value)
+            if symbol:
+                s = symbol()
+            elif id == "(name)":
+                symbol = symbol_table[id]
+                s = symbol()
+                s.value = value
+            else:
+                raise SyntaxError("Unknown operator (%r)" % id)
+        yield s
+
+symbol_table = {}
+
+def symbol(id, bp=0):
+    try:
+        s = symbol_table[id]
+    except KeyError:
+        class s(symbol_base):
+            pass
+        s.__name__ = "symbol-" + id # for debugging
+        s.id = id
+        s.lbp = bp
+        symbol_table[id] = s
+    else:
+        s.lbp = max(bp, s.lbp)
+    return s
+
 
 symbol("(literal)")
 symbol("+", 10); symbol("-", 10)
@@ -195,6 +158,13 @@ infix_r("**", 30)
 
 symbol("(literal)").nud = lambda self: self
 
+def parse(program):
+    global token, next
+    next = next(tokenize(program))
+    token = next()
+    #print "->t    :" + str(token.value)
+    #print "->token:" + str(token.value)
+    return expression()
 
 symbol("lambda", 20)
 symbol("if", 20) # ternary form
@@ -232,7 +202,11 @@ def nud(self):
     return expr
 symbol("(").nud = nud
 
-
+def advance(id=None):
+    global token
+    if id and token.id != id:
+        raise SyntaxError("Expected %r" % id)
+    token = next()
 
 symbol(")")
 
@@ -394,7 +368,5 @@ def nud(self):
             advance(",")
     advance("}")
     return self
-
-
 
 

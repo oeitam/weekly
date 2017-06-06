@@ -1,9 +1,9 @@
 INFO:root:Logging Started
 DEBUG:src.db.db:setting up databases
-DEBUG:src.db.db:Starting with ID 58
-DEBUG:src.db.db:ID is: 58
-DEBUG:src.gtd.gtd:stored new data:fffffffffffffffffff
-DEBUG:src.gtd.gtd:data from c: fffffffffffffffffff
+DEBUG:src.db.db:Starting with ID 80
+DEBUG:src.db.db:ID is: 80
+DEBUG:src.gtd.gtd:stored new data:hey
+DEBUG:src.gtd.gtd:data from c: hey
 DEBUG:src.gtd.gtd:I am in myparse x = 1
 DEBUG:src.gtd.gtd:I am in tokenize x = 1
 DEBUG:src.gtd.gtd:I am in tokenize_weekly x = 1

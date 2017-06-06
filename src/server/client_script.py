@@ -26,9 +26,11 @@ try:
         amount_received = 0
         amount_expected = len(message)
         while amount_received < amount_expected:
-           data = sock.recv(1024)
-           amount_received += len(data)
-           print('c recieved "%s"' % data.decode(), file=sys.stderr)
+            print('amount rec: {}, amount exp {}'.format(amount_received, amount_expected))
+            data = sock.recv(1024)
+            amount_received += len(data)
+            time.sleep(1)
+            print('c recieved "%s"' % data.decode(), file=sys.stderr)
 
 finally:
     print('client: closing socket', file=sys.stderr)
