@@ -70,6 +70,17 @@ class Db(object):
             dfa = pd.DataFrame(columns=defs.dfa_columns)
             dfa.to_csv('../data/dfa.csv')
 
+    # set the project name for the next transaction
+    def set_project_name(self, project_name):
+        self.project_name = project_name
+
+    # set the project name for the next transaction
+    def set_megaproject_name(self, megaproject_name):
+        self.megaproject_name = megaproject_name
+
+    # set the description section of the next transaction
+    def set_trans_description(self, trans_description):
+        self.trans_description = trans_description
 
 
 

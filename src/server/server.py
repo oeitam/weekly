@@ -77,11 +77,14 @@ class Server(object):
                     if data:
                         print('sending data to the proc', file=sys.stderr)
                         self.gtd.take_data(data.decode())
-                        self.gtd.process() # gtd to process the latest data it recieved
+                        try:
+                            self.gtd.process() # gtd to process the latest data it recieved
+                        except:
+                            SyntaxError
                         # once the process method is done, it means data is ready for the
                         return_message = self.gtd.get_message_back_to_client()
                         logger.debug('return_message: %s', return_message)
-                        print(return_message)
+                        print("--"+return_message+"--")
                         connection.sendall(return_message.encode())
                     else:
                         print('no more data from ', client_address, file=sys.stderr)
