@@ -1,12 +1,4 @@
 INFO:root:Logging Started
 DEBUG:src.db.db:setting up databases
-DEBUG:src.db.db:Starting with ID 146
-DEBUG:src.db.db:ID is: 146
-DEBUG:src.gtd.gtd:stored new data:create project project_one @Work | this is the first project I created
-DEBUG:src.gtd.gtd:data from c: create project project_one @Work | this is the first project I created
-DEBUG:src.gtd.gtd:I am in parse create project project_one @Work | this is the first project I created
-DEBUG:src.gtd.gtd:I am in tokenize create project project_one @Work | this is the first project I created
-DEBUG:src.gtd.gtd:I am in tokenize_weekly create project project_one @Work | this is the first project I created
-DEBUG:src.gtd.gtd:create nud
-DEBUG:src.gtd.gtd:@ nud
-DEBUG:src.gtd.gtd:| nud
+DEBUG:src.db.db:Starting with ID 157
+DEBUG:src.db.db:ID is: 157

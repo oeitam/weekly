@@ -13,6 +13,9 @@ class Db(object):
         # set up or load the databases. Those will be in the form of pandas DataFrame
         self.set_up_dbs()
         self.get_new_ID(1) # the 1 means this is the a setup - that is - check the file is here etc
+        # create the operations_bucket
+        self.operation_bucket = { "create project" : self.create_project()
+                                  }
         print("class Db initialized")
 
     ###################################
@@ -46,29 +49,36 @@ class Db(object):
         # check if the file for the database exists
         #metaproj
         if os.path.isfile('../data/dfm.csv'):
-            dfm = pd.read_csv('../data/dfm.csv')
+            self.dfm = pd.read_csv('../data/dfm.csv')
         else:
-            dfm = pd.DataFrame(columns=defs.dfm_columns)
+            self.dfm = pd.DataFrame(columns=defs.dfm_columns)
             #dfm.set_index(keys='ID')
-            dfm.to_csv('../data/dfm.csv')
+            self.dfm.to_csv('../data/dfm.csv')
         # proj
         if os.path.isfile('../data/dfp.csv'):
-            dfp = pd.read_csv('../data/dfp.csv')
+            self.dfp = pd.read_csv('../data/dfp.csv')
         else:
-            dfp = pd.DataFrame(columns=defs.dfp_columns)
-            dfp.to_csv('../data/dfp.csv')
+            self.dfp = pd.DataFrame(columns=defs.dfp_columns)
+            self.dfp.to_csv('../data/dfp.csv')
         # task
         if os.path.isfile('../data/dft.csv'):
-            dft = pd.read_csv('../data/dft.csv')
+            self.dft = pd.read_csv('../data/dft.csv')
         else:
-            dft = pd.DataFrame(columns=defs.dft_columns)
-            dft.to_csv('../data/dft.csv')
+            self.dft = pd.DataFrame(columns=defs.dft_columns)
+            self.dft.to_csv('../data/dft.csv')
         # activity
         if os.path.isfile('../data/dfa.csv'):
-            dfa = pd.read_csv('../data/dfa.csv')
+            self.dfa = pd.read_csv('../data/dfa.csv')
         else:
-            dfa = pd.DataFrame(columns=defs.dfa_columns)
-            dfa.to_csv('../data/dfa.csv')
+            self.dfa = pd.DataFrame(columns=defs.dfa_columns)
+            self.dfa.to_csv('../data/dfa.csv')
+
+    # save the databases
+    def save_databases(self):
+        self.dfm.to_csv('../data/dfm.csv')
+        self.dfp.to_csv('../data/dfp.csv')
+        self.dft.to_csv('../data/dft.csv')
+        self.dfa.to_csv('../data/dfa.csv')
 
     # set the project name for the next transaction
     def set_project_name(self, project_name):
@@ -82,8 +92,40 @@ class Db(object):
     def set_trans_description(self, trans_description):
         self.trans_description = trans_description
 
+    # set the transaction (create project, create task etc)
+    def transaction_is(self,transaction_type):
+        self.transaction_type = transaction_type
+
+    # this function tells the db to perform the transaction it was programmed to do
+    # it returns the success + information about the transaction
+    def do_transaction(self):
+        res = self.transaction_bucket.get(self.transaction_type)()
+        return_string = "do not know yet"
+        # if successful, save the dataframes
+        # for now - always save
+        self.save_databases()
+        return return_string
 
 
+    # transactions functions
+    def create_project(self):
+        # check if project exists
+        if self.project_name in self.dfp['Name']:
+            logger.debug("Request to create an already existing project")
+            ret = "Request to create an already existing project {}".format(self.project_name)
+            return ret
+        # check if the mega project exsists
+        if self.megaproject_name not in self.dfm['Name']:
+            logger.debug("Request to create a project in a non existing megaproject")
+            ret = "Request to create a project in a non existing megaproject {}".format(self.megaproject_name)
+            return ret
 
+        pID = self.get_new_ID()
+        ldfp = pd.DataFrame(columns=defs.dfp_columns)
+        l = [pID, self.project_name, 'Started', self.megaproject_name]
+        for i in range(0,len(l)):
+            ldfp[defs.dfp_columns[i]] = l[i]
+        # add the new line
+        self.dfp = self.dfp.append(ldfp)
 
-
+        return "Good"

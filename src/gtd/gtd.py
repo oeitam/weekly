@@ -31,10 +31,10 @@ class Gtd(object):
         try:
             res = parse(self.current_data)
         except SyntaxError:
-            logger.debug("parse exception: {}".res)
+            logger.debug("parse exception: {}".format(res.__repr__()))
         # at this point, the
-
-        self.return_message = res
+        self.return_message = gdb.do_transaction()
+        #self.return_message = res.__repr__()
         #print(k)
 
     # get_message_back_to_client - method used by
@@ -208,6 +208,8 @@ def nud(self):
     if token.value == "project":
         self.id = "create project"
         self.first = next(mnext) # this is the project name
+        # tell the gdb that the opration is create process
+        gdb.transaction_is(self.id)
         gdb.set_project_name(self.first.value)
         advance() # need to advance to start process the megaproject name
         self.second = expression()
