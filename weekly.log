@@ -1,4 +1,23 @@
 INFO:root:Logging Started
 DEBUG:src.db.db:setting up databases
-DEBUG:src.db.db:Starting with ID 157
-DEBUG:src.db.db:ID is: 157
+DEBUG:src.db.db:Starting with ID 228
+DEBUG:src.db.db:ID is: 228
+DEBUG:src.db.db:class Db initialized
+DEBUG:src.gtd.gtd:stored new data:create megaproject Work | all projects that relate to Work at Intel go here
+DEBUG:src.gtd.gtd:data from c: create megaproject Work | all projects that relate to Work at Intel go here
+DEBUG:src.gtd.gtd:I am in parse create megaproject Work | all projects that relate to Work at Intel go here
+DEBUG:src.gtd.gtd:I am in tokenize create megaproject Work | all projects that relate to Work at Intel go here
+DEBUG:src.gtd.gtd:I am in tokenize_weekly create megaproject Work | all projects that relate to Work at Intel go here
+DEBUG:src.gtd.gtd:create nud
+DEBUG:src.gtd.gtd:| nud
+DEBUG:src.db.db:Request to create an already existing megaproject Work
+DEBUG:src.server.server:return_message: do not know yet
+DEBUG:src.gtd.gtd:stored new data:create project project_one @Work | this is the first project I created
+DEBUG:src.gtd.gtd:data from c: create project project_one @Work | this is the first project I created
+DEBUG:src.gtd.gtd:I am in parse create project project_one @Work | this is the first project I created
+DEBUG:src.gtd.gtd:I am in tokenize create project project_one @Work | this is the first project I created
+DEBUG:src.gtd.gtd:I am in tokenize_weekly create project project_one @Work | this is the first project I created
+DEBUG:src.gtd.gtd:create nud
+DEBUG:src.gtd.gtd:@ nud
+DEBUG:src.gtd.gtd:| nud
+DEBUG:src.server.server:return_message: do not know yet

@@ -236,4 +236,9 @@ Comments for later
    since it will help debug later. perhaps more info (like time also)
 3. teh db is stored on disk after each operation. the older version is also stored
     so after each transaction, we have current and previous versions on disk
+4. there seems to be a problem with the fact that i am using tokenize. it treats things
+    that look like operators even if are in the middle of free text ... this is
+    problematic in long descriptions, for example.
+    need to see what can be done.
+5.
 

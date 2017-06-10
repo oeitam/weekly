@@ -4,6 +4,7 @@
 import socket
 import sys
 import time
+from test import test_defs
 
 # Create a TCP/IP socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -13,10 +14,13 @@ server_address = ('localhost', 10000)
 print('connecting to %s port %s' % server_address, file=sys.stdout)
 sock.connect(server_address)
 try:
-    while True:
-        input('no need to say ...')
-        message = "create project project_one @Work | this is the first project I created" #input("say-->")
-        print(message)
+    #while True:
+    for m in test_defs.test_commands:
+        print('going to send:')
+        print(m)
+        input('hit any key to send this message')
+        message =  m
+        #print(message)
         if (message == "die"):
             print('client: got a die command', file=sys.stdout)
             sock.sendall(message.encode())

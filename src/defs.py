@@ -11,21 +11,21 @@ this is the header
 
 # columns definitions for the data bases
 # megaprojects
-dfm_columns = ['ID',
-               'Name',
+dfm_columns = ['Name',
                'State',
                'PROJECTs List',
+               'Description',
                ]
 # projects
-dfp_columns = ['ID',
-               'Name',
+dfp_columns = ['Name',
                'State',
                'MEGAPROJECT',
+               'Description',
                ]
 # tasks
-dft_columns = ['ID',
-               'Name',
+dft_columns = ['Name',
                'State',
+               'Description',
                'Due Date',
                'Creation Date',
                'Expiration Date'
@@ -38,13 +38,20 @@ dft_columns = ['ID',
                'Parent TASK',
                ]
 # activities
-dfa_columns = ['ID',
-               'Name',
+dfa_columns = ['Name',
                'State',
                'Start Time',
                'End Time',
                'TASK',
+               'Description',
                ]
+
+df_columns = { 'dfm': dfm_columns,
+               'dfp': dfp_columns,
+               'dft': dft_columns,
+               'dfa': dfa_columns,
+               }
+
 
 # states definitions (all transitions are legel)
 MEGAPROJ_states  = {'On' : 'The MEGAPROJECT is open',

@@ -205,6 +205,7 @@ def method(s):
 @method(symbol("create"))
 def nud(self):
     logger.debug("create nud")
+    # creating a project
     if token.value == "project":
         self.id = "create project"
         self.first = next(mnext) # this is the project name
@@ -212,6 +213,14 @@ def nud(self):
         gdb.transaction_is(self.id)
         gdb.set_project_name(self.first.value)
         advance() # need to advance to start process the megaproject name
+        self.second = expression()
+    # creating a megaproject
+    if token.value == "megaproject":
+        self.id = "create megaproject"
+        self.first = next(mnext) # this is the megaproject name
+        gdb.transaction_is(self.id)
+        gdb.set_megaproject_name(self.first.value)
+        advance() # need to advance to start the description
         self.second = expression()
     return self
 

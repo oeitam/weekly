@@ -1,6 +1,7 @@
 # oeitam
 
 import os.path
+import numpy as np
 import pandas as pd
 import logging
 from src import defs
@@ -11,12 +12,27 @@ logger = logging.getLogger(__name__)
 class Db(object):
     def __init__(self):
         # set up or load the databases. Those will be in the form of pandas DataFrame
-        self.set_up_dbs()
+        # databases table
+        self.dfm = 'None'
+        self.dfp = 'None'
+        self.dft = 'None'
+        self.dfa = 'None'
+
+        self.db_table = {'dfm': self.dfm,
+                         'dfp': self.dfp,
+                         'dft': self.dft,
+                         'dfa': self.dfa,
+                         }
+
+        self.load_dbs()
         self.get_new_ID(1) # the 1 means this is the a setup - that is - check the file is here etc
         # create the operations_bucket
-        self.operation_bucket = { "create project" : self.create_project()
+        self.operation_bucket = { "create project"     : self.create_project,
+                                  "create megaproject" : self.create_megaproject,
                                   }
-        print("class Db initialized")
+
+
+        logger.debug("class Db initialized")
 
     ###################################
     # returns to caller the ID it
@@ -44,41 +60,75 @@ class Db(object):
     # tasks       : dbt
     # activities  : dba
     ####################################
-    def set_up_dbs(self):
+    def load_dbs(self):
         logger.debug('setting up databases')
         # check if the file for the database exists
+        # load only if exists
+        # otherwise - set to 'None'
         #metaproj
         if os.path.isfile('../data/dfm.csv'):
             self.dfm = pd.read_csv('../data/dfm.csv')
+            self.dfm.set_index('ID', inplace=True)
+            self.db_table['dfm'] = self.dfm
         else:
-            self.dfm = pd.DataFrame(columns=defs.dfm_columns)
-            #dfm.set_index(keys='ID')
-            self.dfm.to_csv('../data/dfm.csv')
+            self.dfm = 'None'
         # proj
         if os.path.isfile('../data/dfp.csv'):
             self.dfp = pd.read_csv('../data/dfp.csv')
+            self.dfp.set_index('ID', inplace=True)
+            self.db_table['dfp'] = self.dfp
         else:
-            self.dfp = pd.DataFrame(columns=defs.dfp_columns)
-            self.dfp.to_csv('../data/dfp.csv')
+            self.dfp = 'None'
         # task
         if os.path.isfile('../data/dft.csv'):
             self.dft = pd.read_csv('../data/dft.csv')
+            self.dft.set_index('ID', inplace=True)
+            self.db_table['dft'] = self.dft
         else:
-            self.dft = pd.DataFrame(columns=defs.dft_columns)
-            self.dft.to_csv('../data/dft.csv')
+            self.dft = 'None'
         # activity
         if os.path.isfile('../data/dfa.csv'):
             self.dfa = pd.read_csv('../data/dfa.csv')
+            self.dfa.set_index('ID', inplace=True)
+            self.db_table['dfa'] = self.dfa
         else:
-            self.dfa = pd.DataFrame(columns=defs.dfa_columns)
-            self.dfa.to_csv('../data/dfa.csv')
+            self.dfa = 'None'
+
+    # add a dataframe to a db
+    # if the db does not exist yet, create it
+    def add_to_db(self, which_db, df_to_add):
+        db_to_add_to = self.db_table[which_db]
+        # here I assume that the df_to_add matches the db_to_add_to
+        # so I do not do any checking
+        if db_to_add_to == 'None':
+            # need to create the data base
+            db_to_add_to = pd.DataFrame(df_to_add)
+            db_to_add_to.index.name = 'ID'
+            if which_db == 'dfm':
+                self.dfm = db_to_add_to
+                self.db_table[which_db] = self.dfm
+            elif which_db == 'dfp':
+                self.dfp = db_to_add_to
+                self.db_table[which_db] = self.dfp
+            elif which_db == 'dft':
+                self.dft = db_to_add_to
+                self.db_table[which_db] = self.dft
+            else:
+                self.dfa = db_to_add_to
+                self.db_table[which_db] = self.dfa
+        else: # here we assume that the databaser alrad has an index 'ID'
+            db_to_add_to.append(df_to_add, inpalce=True)
 
     # save the databases
     def save_databases(self):
-        self.dfm.to_csv('../data/dfm.csv')
-        self.dfp.to_csv('../data/dfp.csv')
-        self.dft.to_csv('../data/dft.csv')
-        self.dfa.to_csv('../data/dfa.csv')
+        if type(self.dfm) != type('None'):
+            self.dfm.to_csv('../data/dfm.csv')
+        if self.dfp != 'None':
+            self.dfp.to_csv('../data/dfp.csv')
+        if self.dfp != 'None':
+            self.dft.to_csv('../data/dft.csv')
+        if self.dfp != 'None':
+            self.dfa.to_csv('../data/dfa.csv')
 
     # set the project name for the next transaction
     def set_project_name(self, project_name):
@@ -99,7 +149,7 @@ class Db(object):
     # this function tells the db to perform the transaction it was programmed to do
     # it returns the success + information about the transaction
     def do_transaction(self):
-        res = self.transaction_bucket.get(self.transaction_type)()
+        res = self.operation_bucket.get(self.transaction_type)()
         return_string = "do not know yet"
         # if successful, save the dataframes
         # for now - always save
@@ -110,22 +160,33 @@ class Db(object):
     # transactions functions
     def create_project(self):
         # check if project exists
-        if self.project_name in self.dfp['Name']:
+        if (self.project_name) in self.dfp['Name'].values:
             logger.debug("Request to create an already existing project")
             ret = "Request to create an already existing project {}".format(self.project_name)
             return ret
         # check if the mega project exsists
-        if self.megaproject_name not in self.dfm['Name']:
+        if self.megaproject_name not in self.dfm['Name'].values:
             logger.debug("Request to create a project in a non existing megaproject")
             ret = "Request to create a project in a non existing megaproject {}".format(self.megaproject_name)
             return ret
 
         pID = self.get_new_ID()
-        ldfp = pd.DataFrame(columns=defs.dfp_columns)
-        l = [pID, self.project_name, 'Started', self.megaproject_name]
-        for i in range(0,len(l)):
-            ldfp[defs.dfp_columns[i]] = l[i]
-        # add the new line
+        l = [pID, self.project_name, 'Started', self.megaproject_name, self.trans_description]
+        ldfp = pd.DataFrame(data=l, columns=defs.dfp_columns)
         self.dfp = self.dfp.append(ldfp)
-
         return "Good"
+
+    def create_megaproject(self):
+        # check if project exists
+        if type(self.dfm) != type('None'):
+            if (self.megaproject_name) in self.dfm['Name'].values:
+                ret = "Request to create an already existing megaproject {}".format(self.megaproject_name)
+                logger.debug(ret)
+                return ret
+
+        pID = self.get_new_ID()
+        l = [self.megaproject_name, 'On', "", self.trans_description]
+        ldf = pd.DataFrame(data=[l], index=[pID], columns=defs.dfm_columns)
+        logger.debug(ldf.to_string())
+        self.add_to_db(which_db='dfm',df_to_add=ldf)
+        return "good"
