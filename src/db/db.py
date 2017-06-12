@@ -5,7 +5,8 @@ import numpy as np
 import pandas as pd
 import logging
 from src import defs
-
+import datetime as dt
+import time
 logger = logging.getLogger(__name__)
 
 
@@ -29,6 +30,7 @@ class Db(object):
         # create the operations_bucket
         self.operation_bucket = { "create project"     : self.create_project,
                                   "create megaproject" : self.create_megaproject,
+                                  "create task"        : self.create_task,
                                   }
 
 
@@ -121,6 +123,8 @@ class Db(object):
                 self.dfm = self.dfm.append(df_to_add)
             if which_db == 'dfp':
                 self.dfp = self.dfp.append(df_to_add)
+            if which_db == 'dft':
+                self.dft = self.dft.append(df_to_add)
 
         # this return checks for nothing ... just returnning true
         return True
@@ -204,4 +208,21 @@ class Db(object):
         ldf = pd.DataFrame(data=[l], index=[pID], columns=defs.dfm_columns)
         logger.debug(ldf.to_string())
         self.add_to_db(which_db='dfm',df_to_add=ldf)
+        return "good"
+
+    # create a task
+    # for now - no support for optional
+    def create_task(self):
+        pID = self.get_new_ID()
+        # for optional fields, put in ''
+        #'State','Description','Creation_Date','PROJECT',
+        # optional from here
+        #'Due_Date','Expiration_Date''Location','Context','Reminders','ACTIVITYs',
+        #'Sub_TASKs','Parent_TASK',
+        l = ['Open', self.trans_description, time.ctime(), self.project_name,
+             '','','','','',
+             [],[],'']
+        ldf = pd.DataFrame(data=[l], index=[pID], columns=defs.dfm_columns)
+        logger.debug(ldf.to_string())
+        self.add_to_db(which_db='dft', df_to_add=ldf)
         return "good"

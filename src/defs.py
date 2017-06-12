@@ -23,18 +23,18 @@ dfp_columns = ['Name',
                'Description',
                ]
 # tasks
-dft_columns = ['Name',
-               'State',
+dft_columns = ['State',
                'Description',
-               'Due_Date',
                'Creation_Date',
-               'Expiration_Date'
                'PROJECT',
+               # optional from here
+               'Due_Date',
+               'Expiration_Date'
                'Location',
                'Context',
                'Reminders',
-               'ACTIVITY',
-               'Sub_TASK',
+               'ACTIVITYs',
+               'Sub_TASKs',
                'Parent_TASK',
                ]
 # activities

@@ -190,6 +190,7 @@ symbol("(literal)").nud = lambda self: self
 symbol("(name)").nud = lambda self: self
 
 prefix("create", 20)
+prefix("task", 20)
 infix_r("@",30)
 infix_r("|",30)
 
@@ -227,7 +228,10 @@ def nud(self):
 @method(symbol("@"))
 def nud(self):
     logger.debug("@ nud")
-    gdb.set_megaproject_name(token.value)
+    if gdb.transaction_is == "create project":
+        gdb.set_megaproject_name(token.value)
+    elif gdb.transaction_is == "create task":
+        gdb.set_project_name(token.value)
     advance() # to check what is beyond ..
     self.first = expression()
     return self
@@ -245,6 +249,29 @@ def nud(self):
         token = next(mnext)
         # left = t.nud()
     gdb.set_trans_description(rest_of_line)
+    return self
+
+# task creation
+@method(symbol("task"))
+def nud(self):
+    logger.debug("task nud")
+    # creating a task
+    #if token.value == "project":
+    self.id = "create task"
+    #self.first = next(mnext) # this is the project name
+    # tell the gdb that the opration is create process
+    gdb.transaction_is(self.id)
+    #gdb.set_project_name(self.first.value)
+    #advance() # need to advance to start process the megaproject name
+    self.second = expression()
+    # creating a megaproject
+    # if token.value == "megaproject":
+    #     self.id = "create megaproject"
+    #     self.first = next(mnext) # this is the megaproject name
+    #     gdb.transaction_is(self.id)
+    #     gdb.set_megaproject_name(self.first.value)
+    #     advance() # need to advance to start the description
+    #     self.second = expression()
     return self
 
 

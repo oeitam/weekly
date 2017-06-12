@@ -28,12 +28,17 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server_address = ('localhost', 10000)
 print('connecting to %s port %s' % server_address, file=sys.stdout)
 sock.connect(server_address)
+wait_for_user = 1
 try:
     #while True:
     for m in test_defs.test_commands:
         print('going to send:')
         print(m)
-        input('hit any key to send this message')
+        if wait_for_user != 0:
+            input('hit any key to send this message')
+        if m == "turn_on":
+            wait_for_user = 1
+            break
         message =  m
         #print(message)
         if (message == "die"):

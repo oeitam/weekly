@@ -1,7 +1,7 @@
 INFO:root:Logging Started
 DEBUG:src.db.db:setting up databases
-DEBUG:src.db.db:Starting with ID 343
-DEBUG:src.db.db:ID is: 343
+DEBUG:src.db.db:Starting with ID 361
+DEBUG:src.db.db:ID is: 361
 DEBUG:src.db.db:class Db initialized
 DEBUG:src.gtd.gtd:stored new data:create megaproject Work1 | 1all projects that relate to Work at Intel go here
 DEBUG:src.gtd.gtd:data from c: create megaproject Work1 | 1all projects that relate to Work at Intel go here
@@ -10,78 +10,4 @@ DEBUG:src.gtd.gtd:I am in tokenize create megaproject Work1 | 1all projects that
 DEBUG:src.gtd.gtd:I am in tokenize_weekly create megaproject Work1 | 1all projects that relate to Work at Intel go here
 DEBUG:src.gtd.gtd:create nud
 DEBUG:src.gtd.gtd:| nud
-DEBUG:src.db.db:ID is: 344
-DEBUG:src.db.db:      Name State PROJECTs_List                                        Description
-344  Work1    On     [default]  1 all projects that relate to Work at Intel go...
-DEBUG:src.server.server:return_message: do not know yet
-DEBUG:src.gtd.gtd:stored new data:create project project_one @Work1 | this is the first project I created
-DEBUG:src.gtd.gtd:data from c: create project project_one @Work1 | this is the first project I created
-DEBUG:src.gtd.gtd:I am in parse create project project_one @Work1 | this is the first project I created
-DEBUG:src.gtd.gtd:I am in tokenize create project project_one @Work1 | this is the first project I created
-DEBUG:src.gtd.gtd:I am in tokenize_weekly create project project_one @Work1 | this is the first project I created
-DEBUG:src.gtd.gtd:create nud
-DEBUG:src.gtd.gtd:@ nud
-DEBUG:src.gtd.gtd:| nud
-DEBUG:src.db.db:ID is: 345
-DEBUG:src.db.db:            Name    State MEGAPROJECT                           Description
-345  project_one  Started       Work1  this is the first project I created 
-DEBUG:src.server.server:return_message: do not know yet
-DEBUG:src.gtd.gtd:stored new data:create megaproject Work2 | 2all projects that relate to Work at Intel go here
-DEBUG:src.gtd.gtd:data from c: create megaproject Work2 | 2all projects that relate to Work at Intel go here
-DEBUG:src.gtd.gtd:I am in parse create megaproject Work2 | 2all projects that relate to Work at Intel go here
-DEBUG:src.gtd.gtd:I am in tokenize create megaproject Work2 | 2all projects that relate to Work at Intel go here
-DEBUG:src.gtd.gtd:I am in tokenize_weekly create megaproject Work2 | 2all projects that relate to Work at Intel go here
-DEBUG:src.gtd.gtd:create nud
-DEBUG:src.gtd.gtd:| nud
-DEBUG:src.db.db:ID is: 346
-DEBUG:src.db.db:      Name State PROJECTs_List                                        Description
-346  Work2    On     [default]  2 all projects that relate to Work at Intel go...
-DEBUG:src.server.server:return_message: do not know yet
-DEBUG:src.gtd.gtd:stored new data:create project project_two @Work2 | this is the first project I created
-DEBUG:src.gtd.gtd:data from c: create project project_two @Work2 | this is the first project I created
-DEBUG:src.gtd.gtd:I am in parse create project project_two @Work2 | this is the first project I created
-DEBUG:src.gtd.gtd:I am in tokenize create project project_two @Work2 | this is the first project I created
-DEBUG:src.gtd.gtd:I am in tokenize_weekly create project project_two @Work2 | this is the first project I created
-DEBUG:src.gtd.gtd:create nud
-DEBUG:src.gtd.gtd:@ nud
-DEBUG:src.gtd.gtd:| nud
-DEBUG:src.db.db:ID is: 347
-DEBUG:src.db.db:            Name    State MEGAPROJECT                           Description
-347  project_two  Started       Work2  this is the first project I created 
-DEBUG:src.server.server:return_message: do not know yet
-DEBUG:src.gtd.gtd:stored new data:create project project_three @Work1 | this is the first project I created
-DEBUG:src.gtd.gtd:data from c: create project project_three @Work1 | this is the first project I created
-DEBUG:src.gtd.gtd:I am in parse create project project_three @Work1 | this is the first project I created
-DEBUG:src.gtd.gtd:I am in tokenize create project project_three @Work1 | this is the first project I created
-DEBUG:src.gtd.gtd:I am in tokenize_weekly create project project_three @Work1 | this is the first project I created
-DEBUG:src.gtd.gtd:create nud
-DEBUG:src.gtd.gtd:@ nud
-DEBUG:src.gtd.gtd:| nud
-DEBUG:src.db.db:ID is: 348
-DEBUG:src.db.db:              Name    State MEGAPROJECT                           Description
-348  project_three  Started       Work1  this is the first project I created 
-DEBUG:src.server.server:return_message: do not know yet
-DEBUG:src.gtd.gtd:stored new data:create project project_four @Work2 | this is the first project I created
-DEBUG:src.gtd.gtd:data from c: create project project_four @Work2 | this is the first project I created
-DEBUG:src.gtd.gtd:I am in parse create project project_four @Work2 | this is the first project I created
-DEBUG:src.gtd.gtd:I am in tokenize create project project_four @Work2 | this is the first project I created
-DEBUG:src.gtd.gtd:I am in tokenize_weekly create project project_four @Work2 | this is the first project I created
-DEBUG:src.gtd.gtd:create nud
-DEBUG:src.gtd.gtd:@ nud
-DEBUG:src.gtd.gtd:| nud
-DEBUG:src.db.db:ID is: 349
-DEBUG:src.db.db:             Name    State MEGAPROJECT                           Description
-349  project_four  Started       Work2  this is the first project I created 
-DEBUG:src.server.server:return_message: do not know yet
-DEBUG:src.gtd.gtd:stored new data:create project project_five @Work1 | this is the first project I created
-DEBUG:src.gtd.gtd:data from c: create project project_five @Work1 | this is the first project I created
-DEBUG:src.gtd.gtd:I am in parse create project project_five @Work1 | this is the first project I created
-DEBUG:src.gtd.gtd:I am in tokenize create project project_five @Work1 | this is the first project I created
-DEBUG:src.gtd.gtd:I am in tokenize_weekly create project project_five @Work1 | this is the first project I created
-DEBUG:src.gtd.gtd:create nud
-DEBUG:src.gtd.gtd:@ nud
-DEBUG:src.gtd.gtd:| nud
-DEBUG:src.db.db:ID is: 350
-DEBUG:src.db.db:             Name    State MEGAPROJECT                           Description
-350  project_five  Started       Work1  this is the first project I created 
-DEBUG:src.server.server:return_message: do not know yet
+DEBUG:src.db.db:Request to create an already existing megaproject Work1

@@ -20,15 +20,15 @@ Features, Data Items, Data Structures
 - Has:
  - ID
  - State( Open, Closed, OnHold, Stopped)
- - (0) Due Date
  - PROJECT (one)
- - (o) location
  - creation date
+ - (0) Due Date
+ - (o) location
  - (o) expiration date
  - (o) context (like - a meeting it relates to)
  - (0) reminders
- - (0) ACTIVITY
- - (o) sub TASK
+ - (0) ACTIVITY(s)
+ - (o) subTASK(s)
  - (o) parent TASK
 
 * ACTIVITY
