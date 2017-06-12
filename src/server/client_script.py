@@ -5,6 +5,21 @@ import socket
 import sys
 import time
 from test import test_defs
+import os
+
+# temporary - removing file
+print(os.getcwd())
+if os.path.isfile('../data/dfm.csv'):
+    os.remove('../data/dfm.csv')
+if os.path.isfile('../data/dfp.csv'):
+    os.remove('../data/dfp.csv')
+if os.path.isfile('../data/dft.csv'):
+    os.remove('../data/dft.csv')
+if os.path.isfile('../data/dfa.csv'):
+    os.remove('../data/dfa.csv')
+
+
+##############################
 
 # Create a TCP/IP socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

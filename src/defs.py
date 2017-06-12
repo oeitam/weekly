@@ -13,7 +13,7 @@ this is the header
 # megaprojects
 dfm_columns = ['Name',
                'State',
-               'PROJECTs List',
+               'PROJECTs_List',
                'Description',
                ]
 # projects
@@ -26,22 +26,22 @@ dfp_columns = ['Name',
 dft_columns = ['Name',
                'State',
                'Description',
-               'Due Date',
-               'Creation Date',
-               'Expiration Date'
+               'Due_Date',
+               'Creation_Date',
+               'Expiration_Date'
                'PROJECT',
                'Location',
                'Context',
                'Reminders',
                'ACTIVITY',
-               'Sub TASK',
-               'Parent TASK',
+               'Sub_TASK',
+               'Parent_TASK',
                ]
 # activities
 dfa_columns = ['Name',
                'State',
-               'Start Time',
-               'End Time',
+               'Start_Time',
+               'End_Time',
                'TASK',
                'Description',
                ]
