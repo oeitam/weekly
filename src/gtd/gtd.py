@@ -28,6 +28,7 @@ class Gtd(object):
     def process(self):
         print('processing data from the client')
         logger.debug('data from c: %s',self.current_data)
+        self.sanitize()
         try:
             res = parse(self.current_data)
         except SyntaxError:
@@ -39,9 +40,14 @@ class Gtd(object):
 
     # get_message_back_to_client - method used by
     def get_message_back_to_client(self):
-        return_message = 'proc2client: ' + self.current_data # (just echo for now)
-        print('this is the return_message: {}'.format(return_message))
+        #return_message = 'proc2client: ' + self.current_data # (just echo for now)
+        logger.debug('this is the return_message: {}'.format(self.return_message))
         return self.return_message
+
+    # this function cleans the input to parsing from things that may be operatoprs
+    # like = -,=,!,@ etc
+    def sanitize(self):
+        print("SANITIZE!!")
 
 ##########################################################
 ##########################################################
@@ -228,9 +234,9 @@ def nud(self):
 @method(symbol("@"))
 def nud(self):
     logger.debug("@ nud")
-    if gdb.transaction_is == "create project":
+    if gdb.transaction_type == "create project":
         gdb.set_megaproject_name(token.value)
-    elif gdb.transaction_is == "create task":
+    elif gdb.transaction_type == "create task":
         gdb.set_project_name(token.value)
     advance() # to check what is beyond ..
     self.first = expression()

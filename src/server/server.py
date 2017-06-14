@@ -76,16 +76,21 @@ class Server(object):
                         break
                     if data:
                         print('sending data to the proc', file=sys.stderr)
-                        self.gtd.take_data(data.decode())
+                        # remove the length of data from the top of the string
+                        a,b,data = data.decode().partition(':')
+                        self.gtd.take_data(data)
                         try:
                             self.gtd.process() # gtd to process the latest data it recieved
                         except:
                             SyntaxError
                         # once the process method is done, it means data is ready for the
                         return_message = self.gtd.get_message_back_to_client()
-                        logger.debug('return_message: %s', return_message)
-                        print("--"+return_message+"--")
-                        connection.sendall(return_message.encode())
+                        l = str(len(return_message) + 5)
+                        sl = "{:0>4}:".format(l)
+                        slm = sl + return_message
+                        logger.debug('return_message: %s', slm)
+                        print("--"+slm+"--")
+                        connection.sendall(slm.encode())
                     else:
                         print('no more data from ', client_address, file=sys.stderr)
                         break

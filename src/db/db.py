@@ -7,6 +7,7 @@ import logging
 from src import defs
 import datetime as dt
 import time
+
 logger = logging.getLogger(__name__)
 
 
@@ -135,10 +136,11 @@ class Db(object):
             self.dfm.to_csv('../data/dfm.csv')
         if self.dfp is not None:
             self.dfp.to_csv('../data/dfp.csv')
-        if self.dfp is not None:
+        if self.dft is not None:
             self.dft.to_csv('../data/dft.csv')
-        if self.dfp is not None:
+        if self.dfa is not None:
             self.dfa.to_csv('../data/dfa.csv')
+        return True # blindly for now
 
     # set the project name for the next transaction
     def set_project_name(self, project_name):
@@ -159,22 +161,28 @@ class Db(object):
     # this function tells the db to perform the transaction it was programmed to do
     # it returns the success + information about the transaction
     def do_transaction(self):
-        res = self.operation_bucket.get(self.transaction_type)()
-        return_string = "do not know yet"
-        # if successful, save the dataframes
-        # for now - always save
-        self.save_databases()
+        res = self.operation_bucket.get(self.transaction_type, self.had_error)()
+        if res:
+            res2 = self.save_databases()
+            if res2:
+                return_string = "Success"
+            else:
+                return_string = "Had Error"
+        else:
+            return_string = "Had Error"
         return return_string
 
+    def had_error(self):
+        logger.debug("in had_error. Huston - we have a problem!")
+        return False
 
     # transactions functions
     def create_project(self):
         # check if project exists
         if self.dfp is not None:
             if (self.project_name) in self.dfp['Name'].values:
-                logger.debug("Request to create an already existing project")
-                ret = "Request to create an already existing project {}".format(self.project_name)
-                return ret
+                logger.debug("Request to create an already existing project {} {}".format(self.project_name, self.dfp['Name'].values))
+                return False
         # check if the mega project exsists
         if self.dfm is not None:
             if self.megaproject_name not in self.dfm['Name'].values:
@@ -201,14 +209,14 @@ class Db(object):
             if (self.megaproject_name) in self.dfm['Name'].values:
                 ret = "Request to create an already existing megaproject {}".format(self.megaproject_name)
                 logger.debug(ret)
-                return ret
+                return False
         # regardless if the this is the first megaproject or not ...
         pID = self.get_new_ID()
         l = [self.megaproject_name, 'On', ['default'], self.trans_description]
         ldf = pd.DataFrame(data=[l], index=[pID], columns=defs.dfm_columns)
         logger.debug(ldf.to_string())
         self.add_to_db(which_db='dfm',df_to_add=ldf)
-        return "good"
+        return "True"
 
     # create a task
     # for now - no support for optional
@@ -222,7 +230,7 @@ class Db(object):
         l = ['Open', self.trans_description, time.ctime(), self.project_name,
              '','','','','',
              [],[],'']
-        ldf = pd.DataFrame(data=[l], index=[pID], columns=defs.dfm_columns)
+        ldf = pd.DataFrame(data=[l], index=[pID], columns=defs.dft_columns)
         logger.debug(ldf.to_string())
         self.add_to_db(which_db='dft', df_to_add=ldf)
-        return "good"
+        return True

@@ -29,7 +29,7 @@ dft_columns = ['State',
                'PROJECT',
                # optional from here
                'Due_Date',
-               'Expiration_Date'
+               'Expiration_Date',
                'Location',
                'Context',
                'Reminders',
