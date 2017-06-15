@@ -24,7 +24,7 @@ class Server(object):
                    #stderr=client_child_stderr,
                    creationflags=CREATE_NEW_CONSOLE)
 
-        time.sleep(2)
+        time.sleep(1)
         if pc.returncode == 63:
             print("Client could not initilize properly", file=sys.stderr)
         print('class Server initialized', file=sys.stderr)

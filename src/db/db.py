@@ -32,6 +32,7 @@ class Db(object):
         self.operation_bucket = { "create project"     : self.create_project,
                                   "create megaproject" : self.create_megaproject,
                                   "create task"        : self.create_task,
+                                  'start activity'     : self.start_activity,
                                   }
 
 
@@ -234,3 +235,30 @@ class Db(object):
         logger.debug(ldf.to_string())
         self.add_to_db(which_db='dft', df_to_add=ldf)
         return True
+
+    # craete an ACTIVITY
+    def start_activity(self):
+        pID = self.get_new_ID()
+        # search for the related task or project
+        found_in = 'no where'
+        if self.use_this_ID in self.dfp.index.values:
+            found_in = 'projects'
+            couple = ['', self.use_this_ID]
+        elif self.use_this_ID in self.dft.index.values :
+            found_in = 'tasks'
+            couple = [self.use_this_ID, ""]
+        else: #found none
+            logger.debug('ID {} from {} was not found'.format(self.use_this_ID, found_in))
+            return False
+        l = ['Started', time.ctime(), self.trans_description,
+             ''] + couple
+        ldf = pd.DataFrame(data=[l], index=[pID], columns=defs.dfa_columns)
+        logger.debug(ldf.to_string())
+        self.add_to_db(which_db='dfa', df_to_add=ldf)
+        # FOR LATER
+        # add this activity to the projets or tasks list
+        # for cross reference
+        return "True"
+
+
+

@@ -38,12 +38,12 @@ dft_columns = ['State',
                'Parent_TASK',
                ]
 # activities
-dfa_columns = ['Name',
-               'State',
+dfa_columns = ['State',
                'Start_Time',
+               'Description',
                'End_Time',
                'TASK',
-               'Description',
+               'PROJECT'
                ]
 
 df_columns = { 'dfm': dfm_columns,

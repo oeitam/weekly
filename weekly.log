@@ -1,7 +1,7 @@
 INFO:root:Logging Started
 DEBUG:src.db.db:setting up databases
-DEBUG:src.db.db:Starting with ID 515
-DEBUG:src.db.db:ID is: 515
+DEBUG:src.db.db:Starting with ID 633
+DEBUG:src.db.db:ID is: 633
 DEBUG:src.db.db:class Db initialized
 DEBUG:src.gtd.gtd:stored new data:create megaproject Work1 | 1all projects that relate to Work at Intel go here
 DEBUG:src.gtd.gtd:data from c: create megaproject Work1 | 1all projects that relate to Work at Intel go here
@@ -10,9 +10,9 @@ DEBUG:src.gtd.gtd:I am in tokenize create megaproject Work1 | 1all projects that
 DEBUG:src.gtd.gtd:I am in tokenize_weekly create megaproject Work1 | 1all projects that relate to Work at Intel go here
 DEBUG:src.gtd.gtd:create nud
 DEBUG:src.gtd.gtd:| nud
-DEBUG:src.db.db:ID is: 516
+DEBUG:src.db.db:ID is: 634
 DEBUG:src.db.db:      Name State PROJECTs_List                                        Description
-516  Work1    On     [default]  1 all projects that relate to Work at Intel go...
+634  Work1    On     [default]  1 all projects that relate to Work at Intel go...
 DEBUG:src.gtd.gtd:this is the return_message: Success
 DEBUG:src.server.server:return_message: 0012:Success
 DEBUG:src.gtd.gtd:stored new data:create project project_one @Work1 | this is the first project I created
@@ -23,9 +23,9 @@ DEBUG:src.gtd.gtd:I am in tokenize_weekly create project project_one @Work1 | th
 DEBUG:src.gtd.gtd:create nud
 DEBUG:src.gtd.gtd:@ nud
 DEBUG:src.gtd.gtd:| nud
-DEBUG:src.db.db:ID is: 517
+DEBUG:src.db.db:ID is: 635
 DEBUG:src.db.db:            Name    State MEGAPROJECT                           Description
-517  project_one  Started       Work1  this is the first project I created 
+635  project_one  Started       Work1  this is the first project I created 
 DEBUG:src.gtd.gtd:this is the return_message: Success
 DEBUG:src.server.server:return_message: 0012:Success
 DEBUG:src.gtd.gtd:stored new data:create megaproject Work2 | 2all projects that relate to Work at Intel go here
@@ -35,9 +35,9 @@ DEBUG:src.gtd.gtd:I am in tokenize create megaproject Work2 | 2all projects that
 DEBUG:src.gtd.gtd:I am in tokenize_weekly create megaproject Work2 | 2all projects that relate to Work at Intel go here
 DEBUG:src.gtd.gtd:create nud
 DEBUG:src.gtd.gtd:| nud
-DEBUG:src.db.db:ID is: 518
+DEBUG:src.db.db:ID is: 636
 DEBUG:src.db.db:      Name State PROJECTs_List                                        Description
-518  Work2    On     [default]  2 all projects that relate to Work at Intel go...
+636  Work2    On     [default]  2 all projects that relate to Work at Intel go...
 DEBUG:src.gtd.gtd:this is the return_message: Success
 DEBUG:src.server.server:return_message: 0012:Success
 DEBUG:src.gtd.gtd:stored new data:create project project_two @Work2 | this is the first project I created
@@ -48,9 +48,48 @@ DEBUG:src.gtd.gtd:I am in tokenize_weekly create project project_two @Work2 | th
 DEBUG:src.gtd.gtd:create nud
 DEBUG:src.gtd.gtd:@ nud
 DEBUG:src.gtd.gtd:| nud
-DEBUG:src.db.db:ID is: 519
+DEBUG:src.db.db:ID is: 637
 DEBUG:src.db.db:            Name    State MEGAPROJECT                           Description
-519  project_two  Started       Work2  this is the first project I created 
+637  project_two  Started       Work2  this is the first project I created 
+DEBUG:src.gtd.gtd:this is the return_message: Success
+DEBUG:src.server.server:return_message: 0012:Success
+DEBUG:src.gtd.gtd:stored new data:create project project_three @Work1 | this is the first project I created
+DEBUG:src.gtd.gtd:data from c: create project project_three @Work1 | this is the first project I created
+DEBUG:src.gtd.gtd:I am in parse create project project_three @Work1 | this is the first project I created
+DEBUG:src.gtd.gtd:I am in tokenize create project project_three @Work1 | this is the first project I created
+DEBUG:src.gtd.gtd:I am in tokenize_weekly create project project_three @Work1 | this is the first project I created
+DEBUG:src.gtd.gtd:create nud
+DEBUG:src.gtd.gtd:@ nud
+DEBUG:src.gtd.gtd:| nud
+DEBUG:src.db.db:ID is: 638
+DEBUG:src.db.db:              Name    State MEGAPROJECT                           Description
+638  project_three  Started       Work1  this is the first project I created 
+DEBUG:src.gtd.gtd:this is the return_message: Success
+DEBUG:src.server.server:return_message: 0012:Success
+DEBUG:src.gtd.gtd:stored new data:create project project_four @Work2 | this is the first project I created
+DEBUG:src.gtd.gtd:data from c: create project project_four @Work2 | this is the first project I created
+DEBUG:src.gtd.gtd:I am in parse create project project_four @Work2 | this is the first project I created
+DEBUG:src.gtd.gtd:I am in tokenize create project project_four @Work2 | this is the first project I created
+DEBUG:src.gtd.gtd:I am in tokenize_weekly create project project_four @Work2 | this is the first project I created
+DEBUG:src.gtd.gtd:create nud
+DEBUG:src.gtd.gtd:@ nud
+DEBUG:src.gtd.gtd:| nud
+DEBUG:src.db.db:ID is: 639
+DEBUG:src.db.db:             Name    State MEGAPROJECT                           Description
+639  project_four  Started       Work2  this is the first project I created 
+DEBUG:src.gtd.gtd:this is the return_message: Success
+DEBUG:src.server.server:return_message: 0012:Success
+DEBUG:src.gtd.gtd:stored new data:create project project_five @Work1 | this is the first project I created
+DEBUG:src.gtd.gtd:data from c: create project project_five @Work1 | this is the first project I created
+DEBUG:src.gtd.gtd:I am in parse create project project_five @Work1 | this is the first project I created
+DEBUG:src.gtd.gtd:I am in tokenize create project project_five @Work1 | this is the first project I created
+DEBUG:src.gtd.gtd:I am in tokenize_weekly create project project_five @Work1 | this is the first project I created
+DEBUG:src.gtd.gtd:create nud
+DEBUG:src.gtd.gtd:@ nud
+DEBUG:src.gtd.gtd:| nud
+DEBUG:src.db.db:ID is: 640
+DEBUG:src.db.db:             Name    State MEGAPROJECT                           Description
+640  project_five  Started       Work1  this is the first project I created 
 DEBUG:src.gtd.gtd:this is the return_message: Success
 DEBUG:src.server.server:return_message: 0012:Success
 DEBUG:src.gtd.gtd:stored new data:task @project_one | this is what you need to do on project one
@@ -61,9 +100,9 @@ DEBUG:src.gtd.gtd:I am in tokenize_weekly task @project_one | this is what you n
 DEBUG:src.gtd.gtd:task nud
 DEBUG:src.gtd.gtd:@ nud
 DEBUG:src.gtd.gtd:| nud
-DEBUG:src.db.db:ID is: 520
+DEBUG:src.db.db:ID is: 641
 DEBUG:src.db.db:    State                                  Description             Creation_Date      PROJECT Due_Date Expiration_Date Location Context Reminders ACTIVITYs Sub_TASKs Parent_TASK
-520  Open  this is what you need to do on project one   Wed Jun 14 23:27:48 2017  project_one                                                            []        []            
+641  Open  this is what you need to do on project one   Thu Jun 15 22:36:31 2017  project_one                                                            []        []            
 DEBUG:src.gtd.gtd:this is the return_message: Success
 DEBUG:src.server.server:return_message: 0012:Success
 DEBUG:src.gtd.gtd:stored new data:task @project_one | another this is what you need to do on project one
@@ -74,9 +113,9 @@ DEBUG:src.gtd.gtd:I am in tokenize_weekly task @project_one | another this is wh
 DEBUG:src.gtd.gtd:task nud
 DEBUG:src.gtd.gtd:@ nud
 DEBUG:src.gtd.gtd:| nud
-DEBUG:src.db.db:ID is: 521
+DEBUG:src.db.db:ID is: 642
 DEBUG:src.db.db:    State                                        Description             Creation_Date      PROJECT Due_Date Expiration_Date Location Context Reminders ACTIVITYs Sub_TASKs Parent_TASK
-521  Open  another this is what you need to do on project...  Wed Jun 14 23:27:50 2017  project_one                                                            []        []            
+642  Open  another this is what you need to do on project...  Thu Jun 15 22:36:34 2017  project_one                                                            []        []            
 DEBUG:src.gtd.gtd:this is the return_message: Success
 DEBUG:src.server.server:return_message: 0012:Success
 DEBUG:src.gtd.gtd:stored new data:task @project_two | this is what you need to do on project two
@@ -87,9 +126,9 @@ DEBUG:src.gtd.gtd:I am in tokenize_weekly task @project_two | this is what you n
 DEBUG:src.gtd.gtd:task nud
 DEBUG:src.gtd.gtd:@ nud
 DEBUG:src.gtd.gtd:| nud
-DEBUG:src.db.db:ID is: 522
+DEBUG:src.db.db:ID is: 643
 DEBUG:src.db.db:    State                                  Description             Creation_Date      PROJECT Due_Date Expiration_Date Location Context Reminders ACTIVITYs Sub_TASKs Parent_TASK
-522  Open  this is what you need to do on project two   Wed Jun 14 23:27:52 2017  project_two                                                            []        []            
+643  Open  this is what you need to do on project two   Thu Jun 15 22:36:36 2017  project_two                                                            []        []            
 DEBUG:src.gtd.gtd:this is the return_message: Success
 DEBUG:src.server.server:return_message: 0012:Success
 DEBUG:src.gtd.gtd:stored new data:task @project_two | second this is what you need to do on project two
@@ -100,9 +139,9 @@ DEBUG:src.gtd.gtd:I am in tokenize_weekly task @project_two | second this is wha
 DEBUG:src.gtd.gtd:task nud
 DEBUG:src.gtd.gtd:@ nud
 DEBUG:src.gtd.gtd:| nud
-DEBUG:src.db.db:ID is: 523
+DEBUG:src.db.db:ID is: 644
 DEBUG:src.db.db:    State                                        Description             Creation_Date      PROJECT Due_Date Expiration_Date Location Context Reminders ACTIVITYs Sub_TASKs Parent_TASK
-523  Open  second this is what you need to do on project ...  Wed Jun 14 23:27:54 2017  project_two                                                            []        []            
+644  Open  second this is what you need to do on project ...  Thu Jun 15 22:36:38 2017  project_two                                                            []        []            
 DEBUG:src.gtd.gtd:this is the return_message: Success
 DEBUG:src.server.server:return_message: 0012:Success
 DEBUG:src.gtd.gtd:stored new data:task @project_two | second this is what you need to do on project two
@@ -113,8 +152,39 @@ DEBUG:src.gtd.gtd:I am in tokenize_weekly task @project_two | second this is wha
 DEBUG:src.gtd.gtd:task nud
 DEBUG:src.gtd.gtd:@ nud
 DEBUG:src.gtd.gtd:| nud
-DEBUG:src.db.db:ID is: 524
+DEBUG:src.db.db:ID is: 645
 DEBUG:src.db.db:    State                                        Description             Creation_Date      PROJECT Due_Date Expiration_Date Location Context Reminders ACTIVITYs Sub_TASKs Parent_TASK
-524  Open  second this is what you need to do on project ...  Wed Jun 14 23:27:56 2017  project_two                                                            []        []            
+645  Open  second this is what you need to do on project ...  Thu Jun 15 22:36:40 2017  project_two                                                            []        []            
 DEBUG:src.gtd.gtd:this is the return_message: Success
 DEBUG:src.server.server:return_message: 0012:Success
+DEBUG:src.gtd.gtd:stored new data:start @0000 | one this is some activity related to a task
+DEBUG:src.gtd.gtd:data from c: start @0000 | one this is some activity related to a task
+DEBUG:src.gtd.gtd:I am in parse start @0000 | one this is some activity related to a task
+DEBUG:src.gtd.gtd:I am in tokenize start @0000 | one this is some activity related to a task
+DEBUG:src.gtd.gtd:I am in tokenize_weekly start @0000 | one this is some activity related to a task
+DEBUG:src.gtd.gtd:start nud
+DEBUG:src.gtd.gtd:@ nud
+DEBUG:src.gtd.gtd:| nud
+DEBUG:src.gtd.gtd:this is the return_message: Success
+DEBUG:src.server.server:return_message: 0012:Success
+DEBUG:src.gtd.gtd:stored new data:start @0000 | two this is some activity related to a task
+DEBUG:src.gtd.gtd:data from c: start @0000 | two this is some activity related to a task
+DEBUG:src.gtd.gtd:I am in parse start @0000 | two this is some activity related to a task
+DEBUG:src.gtd.gtd:I am in tokenize start @0000 | two this is some activity related to a task
+DEBUG:src.gtd.gtd:I am in tokenize_weekly start @0000 | two this is some activity related to a task
+DEBUG:src.gtd.gtd:start nud
+DEBUG:src.gtd.gtd:@ nud
+DEBUG:src.gtd.gtd:| nud
+DEBUG:src.gtd.gtd:this is the return_message: Success
+DEBUG:src.server.server:return_message: 0012:Success
+DEBUG:src.gtd.gtd:stored new data:start @0000 | three this is some activity related to a task
+DEBUG:src.gtd.gtd:data from c: start @0000 | three this is some activity related to a task
+DEBUG:src.gtd.gtd:I am in parse start @0000 | three this is some activity related to a task
+DEBUG:src.gtd.gtd:I am in tokenize start @0000 | three this is some activity related to a task
+DEBUG:src.gtd.gtd:I am in tokenize_weekly start @0000 | three this is some activity related to a task
+DEBUG:src.gtd.gtd:start nud
+DEBUG:src.gtd.gtd:@ nud
+DEBUG:src.gtd.gtd:| nud
+DEBUG:src.gtd.gtd:this is the return_message: Success
+DEBUG:src.server.server:return_message: 0012:Success
+DEBUG:src.gtd.gtd:stored new data:start @0000 | four this is some activity related to a task

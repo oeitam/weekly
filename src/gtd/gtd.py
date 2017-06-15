@@ -1,6 +1,7 @@
 # oeitam
 
 import logging
+from random import randint
 logger = logging.getLogger(__name__)
 
 symbol_table = {}
@@ -22,6 +23,16 @@ class Gtd(object):
         print("the proc got this data: {}".format(data))
         self.current_data = data
         logger.debug('stored new data:{}'.format(self.current_data))
+        ############## just for the sake of testing
+        if r"start @" in data:
+            # get a list of task and project ids
+            l1 = list(gdb.dfm.index.values)
+            l2 = list(gdb.dft.index.values)
+            l3 = l1+l2
+            r = randint(0,len(l3))
+            gdb.use_this_ID = l3[r]
+        ############## just for the sake of testing
+        return True
 
     # process function does/start the heavy lifting of interpreting
     # the request from teh client and pusing the info to the database
@@ -199,6 +210,7 @@ prefix("create", 20)
 prefix("task", 20)
 infix_r("@",30)
 infix_r("|",30)
+prefix("start", 20)
 
 
 def method(s):
@@ -238,6 +250,9 @@ def nud(self):
         gdb.set_megaproject_name(token.value)
     elif gdb.transaction_type == "create task":
         gdb.set_project_name(token.value)
+    elif gdb.transaction_type == 'start activity':
+        #gdb.use_this_ID = token.value #get the id to relate the task creation to
+        pass
     advance() # to check what is beyond ..
     self.first = expression()
     return self
@@ -262,22 +277,17 @@ def nud(self):
 def nud(self):
     logger.debug("task nud")
     # creating a task
-    #if token.value == "project":
     self.id = "create task"
-    #self.first = next(mnext) # this is the project name
-    # tell the gdb that the opration is create process
     gdb.transaction_is(self.id)
-    #gdb.set_project_name(self.first.value)
-    #advance() # need to advance to start process the megaproject name
     self.second = expression()
-    # creating a megaproject
-    # if token.value == "megaproject":
-    #     self.id = "create megaproject"
-    #     self.first = next(mnext) # this is the megaproject name
-    #     gdb.transaction_is(self.id)
-    #     gdb.set_megaproject_name(self.first.value)
-    #     advance() # need to advance to start the description
-    #     self.second = expression()
+    return self
+
+# activity creation
+@method(symbol("start"))
+def nud(self):
+    logger.debug('start nud')
+    gdb.transaction_is('start activity')
+    self.second = expression()
     return self
 
 
