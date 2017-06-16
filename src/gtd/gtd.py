@@ -1,4 +1,3 @@
-# oeitam
 
 import logging
 from random import randint

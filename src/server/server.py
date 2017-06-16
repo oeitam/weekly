@@ -17,8 +17,6 @@ class Server(object):
     # start_the_client method starts the client seperate process
     def start_the_client(self):
         print("Launching the clinet")
-        client_child_stdout = open('client_child_stdout', 'w')
-        client_child_stderr = open('client_child_stderr', 'w')
         pc = Popen([sys.executable, 'server/client_script.py'],
                    #stdout=client_child_stdout,
                    #stderr=client_child_stderr,

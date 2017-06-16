@@ -7,6 +7,7 @@ import logging
 from src import defs
 import datetime as dt
 import time
+from ast import literal_eval
 
 logger = logging.getLogger(__name__)
 
@@ -19,6 +20,8 @@ class Db(object):
         self.dfp = None
         self.dft = None
         self.dfa = None
+
+        self.use_this_ID = 0
 
         self.db_table = {'dfm': self.dfm,
                          'dfp': self.dfp,
@@ -71,7 +74,7 @@ class Db(object):
         # otherwise - set to None
         #metaproj
         if os.path.isfile('../data/dfm.csv'):
-            self.dfm = pd.read_csv('../data/dfm.csv')
+            self.dfm = pd.read_csv('../data/dfm.csv',converters={'PROJECTs_List': literal_eval})
             self.dfm.set_index('ID', inplace=True)
             self.db_table['dfm'] = self.dfm
         else:
@@ -85,7 +88,7 @@ class Db(object):
             self.dfp = None
         # task
         if os.path.isfile('../data/dft.csv'):
-            self.dft = pd.read_csv('../data/dft.csv')
+            self.dft = pd.read_csv('../data/dft.csv',converters={'ACTIVITYs': literal_eval,'Sub_TASKs': literal_eval})
             self.dft.set_index('ID', inplace=True)
             self.db_table['dft'] = self.dft
         else:
@@ -170,8 +173,10 @@ class Db(object):
             if res2:
                 return_string = "Success"
             else:
+                self.had_error()
                 return_string = "Had Error"
         else:
+            self.had_error()
             return_string = "Had Error"
         return return_string
 
@@ -185,7 +190,7 @@ class Db(object):
         if self.dfp is not None:
             if (self.project_name) in self.dfp['Name'].values:
                 logger.debug("Request to create an already existing project {} {}".format(self.project_name, self.dfp['Name'].values))
-                return False
+                #temp return False
         # check if the mega project exsists
         if self.dfm is not None:
             if self.megaproject_name not in self.dfm['Name'].values:
@@ -212,7 +217,7 @@ class Db(object):
             if (self.megaproject_name) in self.dfm['Name'].values:
                 ret = "Request to create an already existing megaproject {}".format(self.megaproject_name)
                 logger.debug(ret)
-                return False
+                #temp return False
         # regardless if the this is the first megaproject or not ...
         pID = self.get_new_ID()
         l = [self.megaproject_name, 'On', ['default'], self.trans_description]
