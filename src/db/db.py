@@ -127,6 +127,8 @@ class Db(object):
                 self.dfp = self.dfp.append(df_to_add)
             if which_db == 'dft':
                 self.dft = self.dft.append(df_to_add)
+            if which_db == 'dfa':
+                self.dfa = self.dfa.append(df_to_add)
 
         # this return checks for nothing ... just returnning true
         return True

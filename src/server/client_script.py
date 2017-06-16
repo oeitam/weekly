@@ -47,7 +47,7 @@ try:
             amount_expected = 4096 # arbitrary
             got_first_part = 0
             while amount_received < amount_expected:
-                print('amount rec: {}, amount exp {}'.format(amount_received, amount_expected))
+                #print('amount rec: {}, amount exp {}'.format(amount_received, amount_expected))
                 data = sock.recv(1024)
                 if len(data) == 0:
                     continue

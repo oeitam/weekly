@@ -26,7 +26,7 @@ class Gtd(object):
         ############## just for the sake of testing
         if r"start @" in data:
             # get a list of task and project ids
-            l1 = list(gdb.dfm.index.values)
+            l1 = list(gdb.dfp.index.values)
             l2 = list(gdb.dft.index.values)
             l3 = l1+l2
             r = randint(0,len(l3))
@@ -58,7 +58,10 @@ class Gtd(object):
     # this function cleans the input to parsing from things that may be operatoprs
     # like = -,=,!,@ etc
     def sanitize(self):
-        print("SANITIZE!!")
+        if '|' in self.current_data:
+            (t1,t2, t3) = self.current_data.partition('|')
+            gdb.set_trans_description(t3)
+
 
 ##########################################################
 ##########################################################
@@ -90,6 +93,7 @@ def tokenize_weekly(command):
     g = tokenize.tokenize(BytesIO(command.encode('utf-8')).readline)
     for t in g:
     #for t in tokenize.tokenize(BytesIO("x+1".encode('utf-8')).readline):
+        logger.debug("tokenize_weekly, {}".format(t))
         if t[0] == 59: # this is the 'first' thing tokenize returns, which is the encoding
             continue
         try:
@@ -262,15 +266,10 @@ def nud(self):
 def nud(self):
     global token
     logger.debug("| nud")
-    # get everything to the end of the line
-    rest_of_line = ''
-    while  (token.id != "(end)"):
-        rest_of_line += token.value + " "
-        t = token
-        token = next(mnext)
-        # left = t.nud()
-    gdb.set_trans_description(rest_of_line)
+    # this actually means there is nothing to do more
+    # so ending the recursion here
     return self
+
 
 # task creation
 @method(symbol("task"))
