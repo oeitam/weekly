@@ -55,6 +55,9 @@ test_commands = [ "create megaproject Work1 | 1all projects that relate to Work 
                   "cont @0000",
                   "cont @0000",
                   "cont @0000",
+                  "halt @0000",
+                  "halt @0000",
+                  "halt @0000",
                   #
                   'die',
                   ]

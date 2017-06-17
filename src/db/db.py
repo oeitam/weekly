@@ -190,10 +190,19 @@ class Db(object):
         return False
 
     def create_return_message(self, success):
-        if success:
-            m = "Transaction {} COMPLETED. New ID is: {}".format(self.transaction_type, self.pID)
+        if ('stop act' in self.transaction_type
+            or 'cont act' in self.transaction_type
+            or 'stop act' in self.transaction_type) :
+            if success:
+                m = "Transaction: {} COMPLETED. Referenced ID is: {}".format(self.transaction_type, self.use_this_ID_for_ref)
+            else:
+                m = "Transaction: {} FAILED with ERROR: {}".format(self.transaction_type, self.error_details)
         else:
-            m = "Transaction {} FAILED with ERROR: {}".format(self.transaction_type, self.error_details)
+            if success:
+                m = "Transaction: {} COMPLETED. New ID is: {}".format(self.transaction_type, self.pID)
+            else:
+                m = "Transaction: {} FAILED with ERROR: {}".format(self.transaction_type, self.error_details)
+
         self.return_message = m
 
     # transactions functions
