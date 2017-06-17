@@ -20,8 +20,6 @@ class Gtd(object):
     # to the proc/gtd for processing
     def take_data(self,data):
         print("the proc got this data: {}".format(data))
-        self.current_data = data
-        logger.debug('stored new data:{}'.format(self.current_data))
         ############## just for the sake of testing
         if r"start @" in data:
             # get a list of task and project ids
@@ -29,8 +27,33 @@ class Gtd(object):
             l2 = list(gdb.dft.index.values)
             l3 = l1+l2
             r = randint(0,len(l3))
-            gdb.use_this_ID = l3[r]
+            #gdb.use_this_ID_for_ref = l3[r]
+            data = data.replace('0000',str(l3[r]).zfill(4))
+        elif r'stop @' in data:
+            #list(g[g.State == 'Closed']['ID'])
+            l1 = list(gdb.dfa[gdb.dfa.State == 'Started'].index)
+            l2 = list(gdb.dfa[gdb.dfa.State == 'OnHold'].index)
+            l3 = l1 + l2
+            r = randint(0,len(l3))
+            data = data.replace('0000', str(l3[r]).zfill(4))
+        elif r'cont @' in data:
+            #list(g[g.State == 'Closed']['ID'])
+            l1 = list(gdb.dfa[gdb.dfa.State == 'Ended'].index)
+            l2 = list(gdb.dfa[gdb.dfa.State == 'OnHold'].index)
+            l3 = l1 + l2
+            r = randint(0,len(l3))
+            data = data.replace('0000', str(l3[r]).zfill(4))
+        elif r'halt @' in data:
+            #list(g[g.State == 'Closed']['ID'])
+            l1 = list(gdb.dfa[gdb.dfa.State == 'Started'].index)
+            l2 = []
+            l3 = l1 + l2
+            r = randint(0,len(l3))
+            data = data.replace('0000', str(l3[r]).zfill(4))
+
         ############## just for the sake of testing
+        self.current_data = data
+        logger.debug('stored new data:{}'.format(self.current_data))
         return True
 
     # process function does/start the heavy lifting of interpreting
@@ -214,6 +237,9 @@ prefix("task", 20)
 infix_r("@",30)
 infix_r("|",30)
 prefix("start", 20)
+prefix("cont", 20)
+prefix("stop", 20)
+prefix("halt", 20)
 
 
 def method(s):
@@ -251,12 +277,20 @@ def nud(self):
     logger.debug("@ nud")
     if gdb.transaction_type == "create project":
         gdb.set_megaproject_name(token.value)
+        advance()  # to check what is beyond ..
     elif gdb.transaction_type == "create task":
         gdb.set_project_name(token.value)
+        advance()  # to check what is beyond ..
     elif gdb.transaction_type == 'start activity':
-        #gdb.use_this_ID = token.value #get the id to relate the task creation to
-        pass
-    advance() # to check what is beyond ..
+        gdb.use_this_ID_for_ref = int(token.value) #get the id to relate the task creation to
+        advance()  # to check what is beyond ..
+    elif gdb.transaction_type == "stop activity":
+        gdb.use_this_ID_for_ref = int(token.value) #get the id to relate the task creation to
+    elif gdb.transaction_type == "cont activity":
+        gdb.use_this_ID_for_ref = int(token.value) #get the id to relate the task creation to
+    elif gdb.transaction_type == "halt activity":
+        gdb.use_this_ID_for_ref = int(token.value)  # get the id to relate the task creation to
+
     self.first = expression()
     return self
 
@@ -288,7 +322,26 @@ def nud(self):
     self.second = expression()
     return self
 
+@method(symbol("stop"))
+def nud(self):
+    logger.debug('stop nud')
+    gdb.transaction_is('stop activity')
+    self.second = expression()
+    return self
 
+@method(symbol("cont"))
+def nud(self):
+    logger.debug('cont nud')
+    gdb.transaction_is('cont activity')
+    self.second = expression()
+    return self
+
+@method(symbol("halt"))
+def nud(self):
+    logger.debug('halt nud')
+    gdb.transaction_is('halt activity')
+    self.second = expression()
+    return self
 #
 # symbol("+", 10); symbol("-", 10)
 # symbol("*", 20); symbol("/", 20)

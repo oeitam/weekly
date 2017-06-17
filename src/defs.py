@@ -59,17 +59,17 @@ MEGAPROJ_states  = {'On' : 'The MEGAPROJECT is open',
                     }
 
 PROJECT_states   = {'Started' : 'The PROJECT started rolling',
-                    'On Hold' : 'The PROJECT is not active - so nothin in it can change.',
+                    'OnHold' : 'The PROJECT is not active - so nothin in it can change.',
                     'Ended'   : 'The project is concluded, done, finished.',
                     }
 
 TASK_states      = {'Open'   : 'The TASK is created and may be on execution',
-                    'On Hold': 'Execution on this TASK is stopped',
+                    'OnHold': 'Execution on this TASK is stopped',
                     'Closed' : 'The TASK is completed',
                     }
 
 ACTIVITY_states  = {'Started': 'The TASK is created and may be on execution',
-                    'On Hold': 'Execution on this TASK is stopped',
+                    'OnHold': 'Execution on this TASK is stopped',
                     'Ended'  : 'The TASK is completed',
                     }
 

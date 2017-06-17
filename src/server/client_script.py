@@ -5,7 +5,8 @@ import socket
 import sys
 import time
 from test import test_defs
-
+import logging
+logger = logging.getLogger(__name__)
 
 ##############################
 
@@ -21,7 +22,7 @@ try:
     #while True:
     for m in test_defs.test_commands:
         time.sleep(1)
-        print('going to send:')
+        #print('going to send:')
         print(m)
         if (m == "die"):
             print('client: got a die command', file=sys.stdout)
@@ -40,7 +41,7 @@ try:
                 input('hit any key to send this message')
             message =  slm
             #print(message)
-            print('sending "%s"' % message, file=sys.stdout)
+            logger.debug('client script sending {}'.format(message))
             sock.sendall(message.encode())
             amount_received = 0
             #amount_expected = len(message)
@@ -59,10 +60,14 @@ try:
                     amount_received += len(data)+len(l)+len(d)
                 else:
                     amount_received += len(data)
-                time.sleep(1)
-                print('c recieved "%s"' % data, file=sys.stdout)
+            time.sleep(1)
+            print("\nServer Said:")
+            print(data+"\n")
+            logger.debug("ServerSaid: {}".format(data))
+
 
 finally:
     print('client: closing socket', file=sys.stdout)
+    logger.debug("Client closing socket")
     input("OK?")
     sock.close()

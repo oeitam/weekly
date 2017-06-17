@@ -1,4 +1,3 @@
-# oeitam
 
 import os.path
 import numpy as np
@@ -21,7 +20,9 @@ class Db(object):
         self.dft = None
         self.dfa = None
 
-        self.use_this_ID = 0
+        self.use_this_ID_for_ref = 0
+        self.return_message = ''
+        self.error_details = ''
 
         self.db_table = {'dfm': self.dfm,
                          'dfp': self.dfp,
@@ -36,6 +37,9 @@ class Db(object):
                                   "create megaproject" : self.create_megaproject,
                                   "create task"        : self.create_task,
                                   'start activity'     : self.start_activity,
+                                  'stop activity'      : self.stop_activity,
+                                  'cont activity'      : self.cont_activity,
+                                  'halt activity'      : self.halt_activity,
                                   }
 
 
@@ -58,6 +62,7 @@ class Db(object):
         if mode == 1:
             return -1
         else:
+            self.pID = cID
             return cID
 
     ####################################
@@ -171,20 +176,28 @@ class Db(object):
         if res:
             res2 = self.save_databases()
             if res2:
-                return_string = "Success"
+                self.create_return_message(True)
             else:
                 self.had_error()
-                return_string = "Had Error"
+                self.create_return_message(False)
         else:
             self.had_error()
-            return_string = "Had Error"
-        return return_string
+            self.create_return_message(False)
+        return self.return_message
 
     def had_error(self):
         logger.debug("in had_error. Huston - we have a problem!")
         return False
 
+    def create_return_message(self, success):
+        if success:
+            m = "Transaction {} COMPLETED. New ID is: {}".format(self.transaction_type, self.pID)
+        else:
+            m = "Transaction {} FAILED with ERROR: {}".format(self.transaction_type, self.error_details)
+        self.return_message = m
+
     # transactions functions
+    ########################
     def create_project(self):
         # check if project exists
         if self.dfp is not None:
@@ -194,7 +207,8 @@ class Db(object):
         # check if the mega project exsists
         if self.dfm is not None:
             if self.megaproject_name not in self.dfm['Name'].values:
-                logger.debug("Request to create a project in a non existing megaproject {}".format(self.megaproject_name))
+                self.error_details = "Request to create a project in a non existing megaproject {}".format(self.megaproject_name)
+                logger.debug(self.error_details)
                 return False
 
         pID = self.get_new_ID()
@@ -209,6 +223,8 @@ class Db(object):
         if res:
             return True
         else:
+            self.error_details = "Failed to add a new project {} to the database([])".format(self.project_name, self.pID)
+            logger.debug(self.error_details)
             return False
 
     def create_megaproject(self):
@@ -217,10 +233,11 @@ class Db(object):
             if (self.megaproject_name) in self.dfm['Name'].values:
                 ret = "Request to create an already existing megaproject {}".format(self.megaproject_name)
                 logger.debug(ret)
+                #self.error_details = ret
                 #temp return False
         # regardless if the this is the first megaproject or not ...
         pID = self.get_new_ID()
-        l = [self.megaproject_name, 'On', ['default'], self.trans_description]
+        l = [self.megaproject_name, 'On', [], self.trans_description]
         ldf = pd.DataFrame(data=[l], index=[pID], columns=defs.dfm_columns)
         logger.debug(ldf.to_string())
         self.add_to_db(which_db='dfm',df_to_add=ldf)
@@ -248,14 +265,15 @@ class Db(object):
         pID = self.get_new_ID()
         # search for the related task or project
         found_in = 'no where'
-        if self.use_this_ID in self.dfp.index.values:
+        if self.use_this_ID_for_ref in self.dfp.index.values:
             found_in = 'projects'
-            couple = ['', self.use_this_ID]
-        elif self.use_this_ID in self.dft.index.values :
+            couple = ['', self.use_this_ID_for_ref]
+        elif self.use_this_ID_for_ref in self.dft.index.values :
             found_in = 'tasks'
-            couple = [self.use_this_ID, ""]
+            couple = [self.use_this_ID_for_ref, ""]
         else: #found none
-            logger.debug('ID {} from {} was not found'.format(self.use_this_ID, found_in))
+            self.error_details = 'ID {} from {} was not found'.format(self.use_this_ID_for_ref, found_in)
+            logger.debug(self.error_details)
             return False
         l = ['Started', time.ctime(), self.trans_description,
              ''] + couple
@@ -267,5 +285,48 @@ class Db(object):
         # for cross reference
         return "True"
 
+    def stop_activity(self):
+        # check for error conditions
+        if self.dfa is None :
+            self.error_details = 'Requested to stop ACTIVITY {} but no ACTIVITY database exists (dfa)'.format(self.use_this_ID_for_ref)
+            logger.debug(self.error_details)
+            return False
+        if self.use_this_ID_for_ref not in self.dfa.index.values:
+            self.error_details = 'Requested to stop ACTIVITY {} but no such ACTIVITY in database at proper state'.format(self.use_this_ID_for_ref)
+            logger.debug(self.error_details)
+            return False
+        # process
+        self.dfa.loc[self.use_this_ID_for_ref, 'State'] = 'Ended'
+        self.dfa.loc[self.use_this_ID_for_ref, 'End_Time'] = time.ctime()
+        return True
 
+    def cont_activity(self):
+        # check for error conditions
+        if self.dfa is None:
+            self.error_details = 'Requested to continue ACTIVITY {} but no ACTIVITY database exists (dfa)'.format(
+                self.use_this_ID_for_ref)
+            logger.debug(self.error_details)
+            return False
+        if self.use_this_ID_for_ref not in self.dfa.index.values:
+            self.error_details = 'Requested to continue ACTIVITY {} but no such ACTIVITY in database at proper state'.format(self.use_this_ID_for_ref)
+            logger.debug(self.error_details)
+            return False
+        # process
+        self.dfa.loc[self.use_this_ID_for_ref, 'State'] = 'Started'
+        self.dfa.loc[self.use_this_ID_for_ref, 'End_Time'] = ''
+        return True
 
+    def halt_activity(self):
+        # check for error conditions
+        if self.dfa is None:
+            self.error_details = 'Requested to halt ACTIVITY {} but no ACTIVITY database exists (dfa)'.format(
+                self.use_this_ID_for_ref)
+            logger.debug(self.error_details)
+            return False
+        if self.use_this_ID_for_ref not in self.dfa.index.values:
+            self.error_details = 'Requested to halt ACTIVITY {} but no such ACTIVITY in database at proper state'.format(self.use_this_ID_for_ref)
+            logger.debug(self.error_details)
+            return False
+        # process
+        self.dfa.loc[self.use_this_ID_for_ref, 'State'] = 'OnHold'
+        return True
