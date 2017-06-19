@@ -8,6 +8,9 @@ from test import test_defs
 import logging
 logger = logging.getLogger(__name__)
 
+logging.basicConfig(filename='../client.log', filemode='w', level=logging.DEBUG)
+logging.info('Logging Started')
+
 ##############################
 
 # Create a TCP/IP socket
@@ -18,19 +21,21 @@ server_address = ('localhost', 10000)
 print('connecting to %s port %s' % server_address, file=sys.stdout)
 sock.connect(server_address)
 wait_for_user = 0
+cnt = 1
 try:
     #while True:
     for m in test_defs.test_commands:
         time.sleep(1)
-        #print('going to send:')
+        m = m + " #" + str(cnt).zfill(4)
+        cnt += 1
         print(m)
-        if (m == "die"):
+        if ("die" in m[0:5]):
             print('client: got a die command', file=sys.stdout)
             sock.sendall(m.encode())
             time.sleep(1)
             # raise
             break
-        if m == "turn_on":
+        if "turn_on" in m[0:9]:
             wait_for_user = 1
         else:
             # adding length
@@ -47,19 +52,29 @@ try:
             #amount_expected = len(message)
             amount_expected = 4096 # arbitrary
             got_first_part = 0
-            while amount_received < amount_expected:
-                #print('amount rec: {}, amount exp {}'.format(amount_received, amount_expected))
-                data = sock.recv(1024)
-                if len(data) == 0:
-                    continue
-                data=data.decode()
-                if got_first_part == 0:
-                    got_first_part = 1
-                    l,d,data = data.partition(':')
-                    amount_expected = int(l)
-                    amount_received += len(data)+len(l)+len(d)
-                else:
-                    amount_received += len(data)
+            save_counter = 0
+            try:
+                while amount_received < amount_expected:
+                    #print('amount rec: {}, amount exp {}'.format(amount_received, amount_expected))
+                    save_counter += 1
+                    if save_counter > 1000 :
+                        print('save_counter over 1000. breaking!')
+                        raise AssertionError
+                    data = sock.recv(1024)
+                    if len(data) == 0:
+                        continue
+                    data=data.decode()
+                    if got_first_part == 0:
+                        got_first_part = 1
+                        l,d,data = data.partition(':')
+                        amount_expected = int(l)
+                        amount_received += len(data)+len(l)+len(d)
+                    else:
+                        amount_received += len(data)
+            except AssertionError:
+                logger.debug("Client recieve loop excceeded 1000 iterations on message {}".format(message))
+                break
+
             time.sleep(1)
             print("\nServer Said:")
             print(data+"\n")

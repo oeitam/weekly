@@ -34,22 +34,31 @@ class Gtd(object):
             l1 = list(gdb.dfa[gdb.dfa.State == 'Started'].index)
             l2 = list(gdb.dfa[gdb.dfa.State == 'OnHold'].index)
             l3 = l1 + l2
-            r = randint(0,len(l3))
+            r = randint(0,len(l3)-1)
             data = data.replace('0000', str(l3[r]).zfill(4))
         elif r'cont @' in data:
             #list(g[g.State == 'Closed']['ID'])
             l1 = list(gdb.dfa[gdb.dfa.State == 'Ended'].index)
             l2 = list(gdb.dfa[gdb.dfa.State == 'OnHold'].index)
             l3 = l1 + l2
-            r = randint(0,len(l3))
+            r = randint(0,len(l3)-1)
             data = data.replace('0000', str(l3[r]).zfill(4))
         elif r'halt @' in data:
             #list(g[g.State == 'Closed']['ID'])
             l1 = list(gdb.dfa[gdb.dfa.State == 'Started'].index)
             l2 = []
             l3 = l1 + l2
-            r = randint(0,len(l3))
+            r = randint(0,len(l3)-1)
             data = data.replace('0000', str(l3[r]).zfill(4))
+        elif r'list @' in data:
+            #list(g[g.State == 'Closed']['ID'])
+            l1 = list(gdb.dfm.index.values)
+            l2 = list(gdb.dfp.index.values)
+            l3 = list(gdb.dft.index.values)
+            l4 = list(gdb.dfa.index.values)
+            l5 = l1 + l2 + l3 + l4
+            r = randint(0,len(l5)-1)
+            data = data.replace('0000', str(l5[r]).zfill(4))
 
         ############## just for the sake of testing
         self.current_data = data
@@ -240,7 +249,7 @@ prefix("start", 20)
 prefix("cont", 20)
 prefix("stop", 20)
 prefix("halt", 20)
-
+prefix("list", 20)
 
 def method(s):
     # decorator
@@ -290,6 +299,8 @@ def nud(self):
         gdb.use_this_ID_for_ref = int(token.value) #get the id to relate the task creation to
     elif gdb.transaction_type == "halt activity":
         gdb.use_this_ID_for_ref = int(token.value)  # get the id to relate the task creation to
+    elif gdb.transaction_type == "list id":
+        gdb.use_this_ID_for_ref = int(token.value)  # get the id to relate the task creation to
 
     self.first = expression()
     return self
@@ -336,12 +347,14 @@ def nud(self):
     self.second = expression()
     return self
 
-@method(symbol("halt"))
+@method(symbol("list"))
 def nud(self):
-    logger.debug('halt nud')
-    gdb.transaction_is('halt activity')
+    logger.debug('list nud')
+    if token.id == '@':
+        gdb.transaction_is('list id')
     self.second = expression()
     return self
+
 #
 # symbol("+", 10); symbol("-", 10)
 # symbol("*", 20); symbol("/", 20)

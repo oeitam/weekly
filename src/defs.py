@@ -101,3 +101,15 @@ MEGAPROJ = {
     'work': 'projects that belong to work'
 }
 
+# ====================================================
+
+mlt = '''recieved 0082:create project project_one @Work1 | this is the first project I created #0002
+sending data to the proc
+the proc got this data: create project project_one @Work1 | this is the first project I created #0002
+processing data from the client
+--0059:Transaction: create project COMPLETED. New ID is: 1678--
+server: Closing socket
+server off
+Press enter to finish the program'''
+
+

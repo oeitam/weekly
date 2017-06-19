@@ -40,6 +40,7 @@ class Db(object):
                                   'stop activity'      : self.stop_activity,
                                   'cont activity'      : self.cont_activity,
                                   'halt activity'      : self.halt_activity,
+                                  'list id'            : self.list_id
                                   }
 
 
@@ -192,7 +193,7 @@ class Db(object):
     def create_return_message(self, success):
         if ('stop act' in self.transaction_type
             or 'cont act' in self.transaction_type
-            or 'stop act' in self.transaction_type) :
+            or 'halt act' in self.transaction_type) :
             if success:
                 m = "Transaction: {} COMPLETED. Referenced ID is: {}".format(self.transaction_type, self.use_this_ID_for_ref)
             else:
@@ -338,4 +339,20 @@ class Db(object):
             return False
         # process
         self.dfa.loc[self.use_this_ID_for_ref, 'State'] = 'OnHold'
+        return True
+
+    def list_id(self):
+        # find the ID
+        if self.use_this_ID_for_ref in self.dfm.index.values:
+            self.list_response = self.dfm.loc[self.use_this_ID_for_ref]
+        elif self.use_this_ID_for_ref in self.dfp.index.values:
+            self.list_response = self.dfp.loc[self.use_this_ID_for_ref]
+        elif self.use_this_ID_for_ref in self.dft.index.values:
+            self.list_response = self.dft.loc[self.use_this_ID_for_ref]
+        elif self.use_this_ID_for_ref in self.dfa.index.values:
+            self.list_response = self.dfa.loc[self.use_this_ID_for_ref]
+        else: # did not find it
+            self.error_details = 'Requested ID {} to list was not found'.format(self.use_this_ID_for_ref)
+            logger.debug(self.error_details)
+            return False
         return True

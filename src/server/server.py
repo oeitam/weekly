@@ -3,6 +3,7 @@ import socket
 import sys
 import time
 from subprocess import Popen, CREATE_NEW_CONSOLE
+from src import defs
 
 import logging
 logger = logging.getLogger(__name__)
@@ -18,8 +19,6 @@ class Server(object):
     def start_the_client(self):
         print("Launching the clinet")
         pc = Popen([sys.executable, 'server/client_script.py'],
-                   #stdout=client_child_stdout,
-                   #stderr=client_child_stderr,
                    creationflags=CREATE_NEW_CONSOLE)
 
         time.sleep(1)
@@ -83,6 +82,7 @@ class Server(object):
                             SyntaxError
                         # once the process method is done, it means data is ready for the
                         return_message = self.gtd.get_message_back_to_client()
+                        # return_message = defs.mlt
                         l = str(len(return_message) + 5)
                         sl = "{:0>4}:".format(l)
                         slm = sl + return_message
