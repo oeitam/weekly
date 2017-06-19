@@ -26,9 +26,9 @@ try:
     #while True:
     for m in test_defs.test_commands:
         time.sleep(1)
-        m = m + " #" + str(cnt).zfill(4)
+        #m = m + " #" + str(cnt).zfill(4)
+        print(str(cnt).zfill(4) + ":" + m)
         cnt += 1
-        print(m)
         if ("die" in m[0:5]):
             print('client: got a die command', file=sys.stdout)
             sock.sendall(m.encode())

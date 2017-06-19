@@ -7,6 +7,8 @@ from src import defs
 import datetime as dt
 import time
 from ast import literal_eval
+import math
+
 
 logger = logging.getLogger(__name__)
 
@@ -184,14 +186,19 @@ class Db(object):
         else:
             self.had_error()
             self.create_return_message(False)
-        return self.return_message
+        return True
 
     def had_error(self):
         logger.debug("in had_error. Huston - we have a problem!")
         return False
 
     def create_return_message(self, success):
-        if ('stop act' in self.transaction_type
+        if self.transaction_type == 'list id':
+            if success:
+                m = self.list_response
+            else:
+                m = "Transaction: {} FAILED with ERROR: {}".format(self.transaction_type, self.error_details)
+        elif ( 'stop act' in self.transaction_type
             or 'cont act' in self.transaction_type
             or 'halt act' in self.transaction_type) :
             if success:
@@ -293,7 +300,7 @@ class Db(object):
         # FOR LATER
         # add this activity to the projets or tasks list
         # for cross reference
-        return "True"
+        return True
 
     def stop_activity(self):
         # check for error conditions
@@ -342,15 +349,20 @@ class Db(object):
         return True
 
     def list_id(self):
+        conv = lambda x: str(int(x)) if not math.isnan(x) else 'N/A'
         # find the ID
         if self.use_this_ID_for_ref in self.dfm.index.values:
-            self.list_response = self.dfm.loc[self.use_this_ID_for_ref]
+            temp = pd.DataFrame([self.dfm.loc[self.use_this_ID_for_ref]])
+            self.list_response = temp.to_string(na_rep='N/A', float_format=conv, index_names=True, justify='left')
         elif self.use_this_ID_for_ref in self.dfp.index.values:
-            self.list_response = self.dfp.loc[self.use_this_ID_for_ref]
+            temp = pd.DataFrame([self.dfp.loc[self.use_this_ID_for_ref]])
+            self.list_response = temp.to_string(na_rep='N/A', float_format=conv, index_names=True, justify='left')
         elif self.use_this_ID_for_ref in self.dft.index.values:
-            self.list_response = self.dft.loc[self.use_this_ID_for_ref]
+            temp = pd.DataFrame([self.dft.loc[self.use_this_ID_for_ref]])
+            self.list_response = temp.to_string(na_rep='N/A', float_format=conv, index_names=True, justify='left')
         elif self.use_this_ID_for_ref in self.dfa.index.values:
-            self.list_response = self.dfa.loc[self.use_this_ID_for_ref]
+            temp = pd.DataFrame([self.dfa.loc[self.use_this_ID_for_ref]])
+            self.list_response = temp.to_string(na_rep='N/A', float_format=conv, index_names=True, justify='left')
         else: # did not find it
             self.error_details = 'Requested ID {} to list was not found'.format(self.use_this_ID_for_ref)
             logger.debug(self.error_details)

@@ -76,15 +76,15 @@ class Gtd(object):
         except SyntaxError:
             logger.debug("parse exception: {}".format(res.__repr__()))
         # at this point, the
-        self.return_message = gdb.do_transaction()
+        res1 = gdb.do_transaction()
         #self.return_message = res.__repr__()
         #print(k)
 
     # get_message_back_to_client - method used by
     def get_message_back_to_client(self):
         #return_message = 'proc2client: ' + self.current_data # (just echo for now)
-        logger.debug('this is the return_message: {}'.format(self.return_message))
-        return self.return_message
+        logger.debug('this is the return_message: {}'.format(self.db.return_message))
+        return self.db.return_message
 
     # this function cleans the input to parsing from things that may be operatoprs
     # like = -,=,!,@ etc
