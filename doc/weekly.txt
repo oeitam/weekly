@@ -140,21 +140,19 @@ List <Item (TASK, ACTIVITY, ...) | <criteria>
     criteria = dates, IDs, start date, completed, etc.
     syntax is TBD
     list @XXXX   (ID)
-    list megaproject
-    list project
-    list task
-    list activity
-    list m/p/t/a field is yyyy
-    list m/p/t/a field in range low high
-    list m/p/t/a for project/megaproject/task nnnn
+    list m/p/t/a (meanining - all of them)
+    list m/p/t/a field yyyy
+    list m/p/t/a field yyyy range low high
+    list m/p/t/a for m/p/t/a nnnn
     list m/p/t/a columns
-    list m/p/t/a columns
+    list m/p/t/a states
+
     constructs, can be combined:
     field in yyyy
     field in range low high
     for p/m/t nnnn
     --
-    field: match the one in the dataframe, but can be in lower
+    field: match the one in the dataframe, but can be in lower case
 return:
 List of
 

@@ -53,6 +53,7 @@ try:
             amount_expected = 4096 # arbitrary
             got_first_part = 0
             save_counter = 0
+            recieved_data = ''
             try:
                 while amount_received < amount_expected:
                     #print('amount rec: {}, amount exp {}'.format(amount_received, amount_expected))
@@ -71,14 +72,15 @@ try:
                         amount_received += len(data)+len(l)+len(d)
                     else:
                         amount_received += len(data)
+                    recieved_data += data
             except AssertionError:
                 logger.debug("Client recieve loop excceeded 1000 iterations on message {}".format(message))
                 break
 
             time.sleep(1)
             print("\nServer Said:")
-            print(data+"\n")
-            logger.debug("ServerSaid: {}".format(data))
+            print(recieved_data+"\n")
+            logger.debug("ServerSaid: {}".format(recieved_data))
 
 
 finally:

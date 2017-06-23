@@ -45,6 +45,42 @@ dfa_columns = ['State',
                'TASK',
                'PROJECT'
                ]
+# columns to print
+dfm_columns_to_print = ['Name',
+                        'State',
+                        #'PROJECTs_List',
+                        'Description',
+                        ]
+# projects
+dfp_columns_to_print = ['Name',
+                        'State',
+                        'MEGAPROJECT',
+                        'Description',
+                        ]
+# tasks
+dft_columns_to_print = ['State',
+                        'Description',
+                        'Creation_Date',
+                        'PROJECT',
+                        # optional from here
+                        'Due_Date',
+                        'Expiration_Date',
+                        #'Location',
+                        #'Context',
+                        #'Reminders',
+                        #'ACTIVITYs',
+                        #'Sub_TASKs',
+                        #'Parent_TASK',
+               ]
+# activities
+dfa_columns_to_print = ['State',
+                        'Start_Time',
+                        'Description',
+                        'End_Time',
+                        #'TASK',
+                        #'PROJECT'
+                        ]
+
 
 df_columns = { 'dfm': dfm_columns,
                'dfp': dfp_columns,
@@ -72,6 +108,7 @@ ACTIVITY_states  = {'Started': 'The TASK is created and may be on execution',
                     'OnHold': 'Execution on this TASK is stopped',
                     'Ended'  : 'The TASK is completed',
                     }
+
 
 ###############
 
@@ -103,13 +140,5 @@ MEGAPROJ = {
 
 # ====================================================
 
-mlt = '''recieved 0082:create project project_one @Work1 | this is the first project I created #0002
-sending data to the proc
-the proc got this data: create project project_one @Work1 | this is the first project I created #0002
-processing data from the client
---0059:Transaction: create project COMPLETED. New ID is: 1678--
-server: Closing socket
-server off
-Press enter to finish the program'''
 
 

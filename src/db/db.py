@@ -9,9 +9,13 @@ import time
 from ast import literal_eval
 import math
 
+pd.options.display.max_colwidth = 100 # 50 by defaul
+#pd.set_option('colheader_justify', 'left')
+
 
 logger = logging.getLogger(__name__)
 
+conv = lambda x: str(int(x)) if not math.isnan(x) else 'N/A'
 
 class Db(object):
     def __init__(self):
@@ -42,7 +46,8 @@ class Db(object):
                                   'stop activity'      : self.stop_activity,
                                   'cont activity'      : self.cont_activity,
                                   'halt activity'      : self.halt_activity,
-                                  'list id'            : self.list_id
+                                  'list id'            : self.list_id,
+                                  'list megaproject'   : self.list_megaproject,
                                   }
 
 
@@ -193,7 +198,7 @@ class Db(object):
         return False
 
     def create_return_message(self, success):
-        if self.transaction_type == 'list id':
+        if 'list ' in self.transaction_type[0:8]:
             if success:
                 m = self.list_response
             else:
@@ -349,7 +354,6 @@ class Db(object):
         return True
 
     def list_id(self):
-        conv = lambda x: str(int(x)) if not math.isnan(x) else 'N/A'
         # find the ID
         if self.use_this_ID_for_ref in self.dfm.index.values:
             temp = pd.DataFrame([self.dfm.loc[self.use_this_ID_for_ref]])
@@ -365,6 +369,17 @@ class Db(object):
             self.list_response = temp.to_string(na_rep='N/A', float_format=conv, index_names=True, justify='left')
         else: # did not find it
             self.error_details = 'Requested ID {} to list was not found'.format(self.use_this_ID_for_ref)
+            logger.debug(self.error_details)
+            return False
+        return True
+
+    def list_megaproject(self):
+        if self.dfm is not None:
+            self.list_response = self.dfm.to_string(#na_rep='N/A', float_format=conv, index_names=True, justify='left')
+                columns=defs.dfm_columns_to_print,
+                na_rep='N/A', float_format=conv, index_names=True, justify='left')
+        else:  # did not find it
+            self.error_details = 'No megaprojects to list'
             logger.debug(self.error_details)
             return False
         return True

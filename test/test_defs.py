@@ -1,13 +1,14 @@
 # oeitam
 
 test_commands = [ "create megaproject Work1 | 1all projects that relate to Work at Intel go here",
+                  "stop @0000",
                   "cont @0000",
                   "list @0000",
-                  #"die",
+                  "list megaproject",
+                  "die",
                   "create project project_one @Work1 | this is the first project I created",
                   "task @project_one | this is what you need to do on project one",
                   "start @0000 | one this is some activity related to a taask",
-                  "stop @0000",
                   "cont @0000",
                   "halt @0000",
                   "create megaproject Work2 | 2all projects that relate to Work at Intel go here",

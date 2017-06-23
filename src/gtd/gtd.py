@@ -250,6 +250,9 @@ prefix("cont", 20)
 prefix("stop", 20)
 prefix("halt", 20)
 prefix("list", 20)
+prefix("field", 20)
+prefix("range", 20)
+prefix("for", 20)
 
 def method(s):
     # decorator
@@ -292,7 +295,6 @@ def nud(self):
         advance()  # to check what is beyond ..
     elif gdb.transaction_type == 'start activity':
         gdb.use_this_ID_for_ref = int(token.value) #get the id to relate the task creation to
-        advance()  # to check what is beyond ..
     elif gdb.transaction_type == "stop activity":
         gdb.use_this_ID_for_ref = int(token.value) #get the id to relate the task creation to
     elif gdb.transaction_type == "cont activity":
@@ -352,6 +354,18 @@ def nud(self):
     logger.debug('list nud')
     if token.id == '@':
         gdb.transaction_is('list id')
+    elif token.value == 'megaproject':
+        gdb.transaction_is('list megaproject')
+        #advance()
+    elif token.value == 'project':
+        gdb.transaction_is('list project')
+        #advance()
+    elif token.value == 'task':
+        gdb.transaction_is('list task')
+        #advance()
+    elif token.value == 'activity':
+        gdb.transaction_is('list activity')
+        #advance()
     self.second = expression()
     return self
 
