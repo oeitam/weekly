@@ -1,0 +1,16 @@
+
+
+self.pID
+self.use_this_ID_for_ref
+self.project_name
+self.megaproject_name
+self.megaproject_name
+self.transaction_type
+self.list_response
+self.error_details
+self.trans_description
+self.return_message
+
+
+
+

@@ -26,9 +26,8 @@ class Db(object):
         self.dft = None
         self.dfa = None
 
-        self.use_this_ID_for_ref = 0
-        self.return_message = ''
-        self.error_details = ''
+        # start fresh
+        self.clean_context()
 
         self.db_table = {'dfm': self.dfm,
                          'dfp': self.dfp,
@@ -48,6 +47,9 @@ class Db(object):
                                   'halt activity'      : self.halt_activity,
                                   'list id'            : self.list_id,
                                   'list megaproject'   : self.list_megaproject,
+                                  'list project'       : self.list_project,
+                                  'list task'          : self.list_task,
+                                  'list activity'      : self.list_activity,
                                   }
 
 
@@ -113,6 +115,27 @@ class Db(object):
             self.db_table['dfa'] = self.dfa
         else:
             self.dfa = None
+
+    # the purpose of this function is to clean all the
+    # relevant 'self' variables to avoid information
+    # form one transaction affecting the other transaction
+    def clean_context(self):
+        self.pID                    = -1
+        self.use_this_ID_for_ref    = -1
+        self.project_name           = 'clean'
+        self.megaproject_name       = 'clean'
+        self.megaproject_name       = 'clean'
+        self.transaction_type       = 'clean'
+        self.list_resp              = 'clean'
+        self.error_details          = 'clean'
+        self.trans_description      = 'clean'
+        self.return_message         = 'clean'
+        self.list_resp_row_limit    = 10
+        self.list_resp_rows_printed = -1
+        self.list_resp_rows         = -1
+        self.list_resp_has_limit    = False
+
+
 
     # add a dataframe to a db
     # if the db does not exist yet, create it
@@ -200,7 +223,7 @@ class Db(object):
     def create_return_message(self, success):
         if 'list ' in self.transaction_type[0:8]:
             if success:
-                m = self.list_response
+                m = self.list_resp
             else:
                 m = "Transaction: {} FAILED with ERROR: {}".format(self.transaction_type, self.error_details)
         elif ( 'stop act' in self.transaction_type
@@ -357,16 +380,16 @@ class Db(object):
         # find the ID
         if self.use_this_ID_for_ref in self.dfm.index.values:
             temp = pd.DataFrame([self.dfm.loc[self.use_this_ID_for_ref]])
-            self.list_response = temp.to_string(na_rep='N/A', float_format=conv, index_names=True, justify='left')
+            self.list_resp = temp.to_string(na_rep='N/A', float_format=conv, index_names=True, justify='left')
         elif self.use_this_ID_for_ref in self.dfp.index.values:
             temp = pd.DataFrame([self.dfp.loc[self.use_this_ID_for_ref]])
-            self.list_response = temp.to_string(na_rep='N/A', float_format=conv, index_names=True, justify='left')
+            self.list_resp = temp.to_string(na_rep='N/A', float_format=conv, index_names=True, justify='left')
         elif self.use_this_ID_for_ref in self.dft.index.values:
             temp = pd.DataFrame([self.dft.loc[self.use_this_ID_for_ref]])
-            self.list_response = temp.to_string(na_rep='N/A', float_format=conv, index_names=True, justify='left')
+            self.list_resp = temp.to_string(na_rep='N/A', float_format=conv, index_names=True, justify='left')
         elif self.use_this_ID_for_ref in self.dfa.index.values:
             temp = pd.DataFrame([self.dfa.loc[self.use_this_ID_for_ref]])
-            self.list_response = temp.to_string(na_rep='N/A', float_format=conv, index_names=True, justify='left')
+            self.list_resp = temp.to_string(na_rep='N/A', float_format=conv, index_names=True, justify='left')
         else: # did not find it
             self.error_details = 'Requested ID {} to list was not found'.format(self.use_this_ID_for_ref)
             logger.debug(self.error_details)
@@ -375,11 +398,46 @@ class Db(object):
 
     def list_megaproject(self):
         if self.dfm is not None:
-            self.list_response = self.dfm.to_string(#na_rep='N/A', float_format=conv, index_names=True, justify='left')
+            self.list_resp = self.dfm.to_string(#na_rep='N/A', float_format=conv, index_names=True, justify='left')
                 columns=defs.dfm_columns_to_print,
                 na_rep='N/A', float_format=conv, index_names=True, justify='left')
         else:  # did not find it
             self.error_details = 'No megaprojects to list'
+            logger.debug(self.error_details)
+            return False
+        return True
+
+    def list_project(self):
+        if self.dfp is not None:
+            self.list_resp = self.dfp.to_string(#na_rep='N/A', float_format=conv, index_names=True, justify='left')
+                columns=defs.dfp_columns_to_print,
+                na_rep='N/A', float_format=conv, index_names=True, justify='left')
+        else:  # did not find it
+            self.error_details = 'No projects to list'
+            logger.debug(self.error_details)
+            return False
+        return True
+
+    def list_task(self):
+        if self.dft is not None:
+            self.list_resp = self.dft.to_string(
+                # na_rep='N/A', float_format=conv, index_names=True, justify='left')
+                columns=defs.dft_columns_to_print,
+                na_rep='N/A', float_format=conv, index_names=True, justify='left')
+        else:  # did not find it
+            self.error_details = 'No tasks to list'
+            logger.debug(self.error_details)
+            return False
+        return True
+
+    def list_activity(self):
+        if self.dfa is not None:
+            self.list_resp = self.dfa.to_string(
+                # na_rep='N/A', float_format=conv, index_names=True, justify='left')
+                columns=defs.dfa_columns_to_print,
+                na_rep='N/A', float_format=conv, index_names=True, justify='left')
+        else:  # did not find it
+            self.error_details = 'No activities to list'
             logger.debug(self.error_details)
             return False
         return True

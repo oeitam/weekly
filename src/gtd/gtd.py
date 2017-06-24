@@ -253,6 +253,7 @@ prefix("list", 20)
 prefix("field", 20)
 prefix("range", 20)
 prefix("for", 20)
+prefix("limit", 20)
 
 def method(s):
     # decorator
@@ -356,20 +357,35 @@ def nud(self):
         gdb.transaction_is('list id')
     elif token.value == 'megaproject':
         gdb.transaction_is('list megaproject')
-        #advance()
+        advance()
     elif token.value == 'project':
         gdb.transaction_is('list project')
-        #advance()
+        advance()
     elif token.value == 'task':
         gdb.transaction_is('list task')
-        #advance()
+        advance()
     elif token.value == 'activity':
         gdb.transaction_is('list activity')
-        #advance()
-    self.second = expression()
+        advance()
+    if token.id != "(end)":
+        self.second = expression() # continue process
+    else:
+        pass # start folding back teh recursion
     return self
 
-#
+@method(symbol("limit"))
+def nud(self):
+    logger.debug("limit nud")
+    gdb.list_resp_has_limit = True
+    if (token.value != '(end)'):
+        gdb.list_resp_row_limit = int(token.value)
+    #advance()
+    self.second = expression()
+    # this is the end of processing for limit thread
+    return self
+
+
+
 # symbol("+", 10); symbol("-", 10)
 # symbol("*", 20); symbol("/", 20)
 # symbol("**", 30)

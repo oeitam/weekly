@@ -35,7 +35,7 @@ try:
             time.sleep(1)
             # raise
             break
-        if "turn_on" in m[0:9]:
+        if "turn on" in m[0:9]:
             wait_for_user = 1
         else:
             # adding length
