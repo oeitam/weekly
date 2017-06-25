@@ -141,13 +141,18 @@ List <Item (TASK, ACTIVITY, ...) | <criteria>
     syntax is TBD
     *list @XXXX   (ID)
     *list m/p/t/a (meanining - all of them)
-    list m/p/t/a limit [xx = 10 by default]
-    list next [after limit]
-    list m/p/t/a col[umn] yyyy
-    list m/p/t/a col[umn] yyyy range low high
+    *list m/p/t/a limit [xx = 10 by default]
+    *list next [after limit, but not necessarily]
+    list m/p/t/a col[umn] col_name is/inc/not yyyy
+    list m/p/t/a col[umn] col_name yyyy range low high
+      low high => ID, time
+      bottom - the lowers possible low
+      top    - the highest possible high
     list m/p/t/a for m/p/t/a nnnn
     list m/p/t/a columns
     list m/p/t/a states
+    list m/p/t/a head [xx]
+    list m/p/t/a tail [xx]
 
     constructs, can be combined:
     field in yyyy

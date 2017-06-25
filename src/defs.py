@@ -71,8 +71,8 @@ dft_columns_to_print = ['State',
                         #'ACTIVITYs',
                         #'Sub_TASKs',
                         #'Parent_TASK',
-               ]
-# activities
+                         ]
+
 dfa_columns_to_print = ['State',
                         'Start_Time',
                         'Description',
@@ -80,6 +80,14 @@ dfa_columns_to_print = ['State',
                         #'TASK',
                         #'PROJECT'
                         ]
+
+columns_to_print_table = { 'dfm' : dfm_columns_to_print ,
+                           'dfp' : dfp_columns_to_print,
+                           'dft' : dft_columns_to_print,
+                           'dfa' : dfa_columns_to_print,
+                           }
+# activities
+
 
 
 df_columns = { 'dfm': dfm_columns,

@@ -89,9 +89,15 @@ class Gtd(object):
     # this function cleans the input to parsing from things that may be operatoprs
     # like = -,=,!,@ etc
     def sanitize(self):
+        # since teh tokenizer is not dealing well with the '|'
+        # use this piece of code to handle that part
         if '|' in self.current_data:
             (t1,t2, t3) = self.current_data.partition('|')
             gdb.set_trans_description(t3)
+        # check if context need to be kept, and if not - clan it up
+        if self.current_data.replace(' ','') != 'list':
+            gdb.clean_context()
+
 
 
 ##########################################################
@@ -254,6 +260,15 @@ prefix("field", 20)
 prefix("range", 20)
 prefix("for", 20)
 prefix("limit", 20)
+prefix("col", 20)
+prefix("is", 20)
+prefix("inc", 20)
+prefix("not", 20)
+prefix("columns", 20)
+prefix("states", 20)
+prefix("head", 20)
+prefix("tail", 20)
+
 
 def method(s):
     # decorator
@@ -367,6 +382,10 @@ def nud(self):
     elif token.value == 'activity':
         gdb.transaction_is('list activity')
         advance()
+    elif token.value == '(end)':
+        gdb.keep_context = True
+        gdb.transaction_is('only list')
+        #no need to advance()
     if token.id != "(end)":
         self.second = expression() # continue process
     else:
@@ -384,6 +403,23 @@ def nud(self):
     # this is the end of processing for limit thread
     return self
 
+@method(symbol("col"))
+def nud(self):
+    logger.debug("col nud")
+    gdb.list_col_name = token.value
+    advance() # over the column name
+    gdb.list_col_value = token.value # this will be overriden if we have is/inc/not
+    self.secon = expression()
+    return self
+
+@method(symbol("is"))
+def nud(self):
+    logger.debug("is nud")
+    gdb.list_col_value = token.value
+    gdb.list_col_rel = 'is'
+    #advance() # over the column name
+    self.secon = expression()
+    return self
 
 
 # symbol("+", 10); symbol("-", 10)

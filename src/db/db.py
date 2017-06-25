@@ -46,10 +46,14 @@ class Db(object):
                                   'cont activity'      : self.cont_activity,
                                   'halt activity'      : self.halt_activity,
                                   'list id'            : self.list_id,
-                                  'list megaproject'   : self.list_megaproject,
-                                  'list project'       : self.list_project,
-                                  'list task'          : self.list_task,
-                                  'list activity'      : self.list_activity,
+                                  'list megaproject'   : self.list_glob,
+                                  'list project'       : self.list_glob,
+                                  'list task'          : self.list_glob,
+                                  'list activity'      : self.list_glob,
+                                  #'list megaproject'   : self.list_megaproject,
+                                  #'list project'       : self.list_project,
+                                  #'list task'          : self.list_task,
+                                  #'list activity'      : self.list_activity,
                                   }
 
 
@@ -119,23 +123,29 @@ class Db(object):
     # the purpose of this function is to clean all the
     # relevant 'self' variables to avoid information
     # form one transaction affecting the other transaction
-    def clean_context(self):
-        self.pID                    = -1
-        self.use_this_ID_for_ref    = -1
-        self.project_name           = 'clean'
-        self.megaproject_name       = 'clean'
-        self.megaproject_name       = 'clean'
-        self.transaction_type       = 'clean'
-        self.list_resp              = 'clean'
-        self.error_details          = 'clean'
-        self.trans_description      = 'clean'
-        self.return_message         = 'clean'
-        self.list_resp_row_limit    = 10
-        self.list_resp_rows_printed = -1
-        self.list_resp_rows         = -1
-        self.list_resp_has_limit    = False
+    def clean_context(self, sec1=True, sec2=True):
+        if sec1:
+            self.pID                    = -1
+            self.use_this_ID_for_ref    = -1
+            self.project_name           = 'clean'
+            self.megaproject_name       = 'clean'
+            self.megaproject_name       = 'clean'
+            self.transaction_type       = 'clean'
+            self.list_resp              = 'clean'
+            self.error_details          = 'clean'
+            self.trans_description      = 'clean'
+            self.return_message         = 'clean'
+            self.keep_context           = False
+            self.list_col_name          = 'clean'
+            self.list_col_value         = 'clean'
+            self.list_col_rel           = 'clean'
+        if sec2:
+            self.list_resp_row_limit    = 10
+            self.list_resp_rows         = -1
 
-
+    def store_context(self):
+        self.last_list_resp_row_limit = 10
+        self.last_list_resp_rows = -1
 
     # add a dataframe to a db
     # if the db does not exist yet, create it
@@ -376,6 +386,7 @@ class Db(object):
         self.dfa.loc[self.use_this_ID_for_ref, 'State'] = 'OnHold'
         return True
 
+
     def list_id(self):
         # find the ID
         if self.use_this_ID_for_ref in self.dfm.index.values:
@@ -396,48 +407,91 @@ class Db(object):
             return False
         return True
 
-    def list_megaproject(self):
-        if self.dfm is not None:
-            self.list_resp = self.dfm.to_string(#na_rep='N/A', float_format=conv, index_names=True, justify='left')
-                columns=defs.dfm_columns_to_print,
+    def list_glob(self):
+        # set the right database
+        if self.transaction_type == 'list megaproject':
+            which_db = 'dfm'
+        elif self.transaction_type == 'list project':
+            which_db = 'dfp'
+        elif self.transaction_type == 'list task':
+            which_db = 'dft'
+        elif self.transaction_type == 'list activity':
+            which_db = 'dfa'
+        df = self.db_table[which_db]
+        if df is not None:
+            if self.list_resp_rows == -1 : # means this is the first time we handle the specific lsit
+                self.list_resp_rows = len(df)
+            if self.list_resp_rows == 0 : # meaning-  we finished showing all
+                self.list_resp = "No more data to show"
+                return True
+            t1 = self.list_resp_rows
+            t2 = max(self.list_resp_rows - self.list_resp_row_limit ,0)
+            self.list_resp = df[t2:t1].to_string(#na_rep='N/A', float_format=conv, index_names=True, justify='left')
+                columns=defs.columns_to_print_table[which_db],
                 na_rep='N/A', float_format=conv, index_names=True, justify='left')
+            self.list_resp = "Showing items {} to {}:\n".format(t2,t1-1) + self.list_resp
+            self.list_resp_rows = t2
         else:  # did not find it
             self.error_details = 'No megaprojects to list'
             logger.debug(self.error_details)
             return False
         return True
 
-    def list_project(self):
-        if self.dfp is not None:
-            self.list_resp = self.dfp.to_string(#na_rep='N/A', float_format=conv, index_names=True, justify='left')
-                columns=defs.dfp_columns_to_print,
-                na_rep='N/A', float_format=conv, index_names=True, justify='left')
-        else:  # did not find it
-            self.error_details = 'No projects to list'
-            logger.debug(self.error_details)
-            return False
-        return True
 
-    def list_task(self):
-        if self.dft is not None:
-            self.list_resp = self.dft.to_string(
-                # na_rep='N/A', float_format=conv, index_names=True, justify='left')
-                columns=defs.dft_columns_to_print,
-                na_rep='N/A', float_format=conv, index_names=True, justify='left')
-        else:  # did not find it
-            self.error_details = 'No tasks to list'
-            logger.debug(self.error_details)
-            return False
-        return True
 
-    def list_activity(self):
-        if self.dfa is not None:
-            self.list_resp = self.dfa.to_string(
-                # na_rep='N/A', float_format=conv, index_names=True, justify='left')
-                columns=defs.dfa_columns_to_print,
-                na_rep='N/A', float_format=conv, index_names=True, justify='left')
-        else:  # did not find it
-            self.error_details = 'No activities to list'
-            logger.debug(self.error_details)
-            return False
-        return True
+
+    #########################################################################################
+    # def list_megaproject(self):
+    #     if self.dfm is not None:
+    #         if self.list_resp_rows == -1 : # means this is the first time we handle the specific lsit
+    #             self.list_resp_rows = len(self.dfm)
+    #         if self.list_resp_rows == 0 : # meaning-  we finished showing all
+    #             self.list_resp = "No more data to show"
+    #             return True
+    #         t1 = self.list_resp_rows
+    #         t2 = max(self.list_resp_rows - self.list_resp_row_limit ,0)
+    #         self.list_resp = self.dfm[t2:t1].to_string(#na_rep='N/A', float_format=conv, index_names=True, justify='left')
+    #             columns=defs.dfm_columns_to_print,
+    #             na_rep='N/A', float_format=conv, index_names=True, justify='left')
+    #         self.list_resp = "Showing items {} to {}:".format(t2,t1) + self.list_resp
+    #         self.list_resp_rows = t2
+    #     else:  # did not find it
+    #         self.error_details = 'No megaprojects to list'
+    #         logger.debug(self.error_details)
+    #         return False
+    #     return True
+    #
+    # def list_project(self):
+    #     if self.dfp is not None:
+    #         self.list_resp = self.dfp.to_string(#na_rep='N/A', float_format=conv, index_names=True, justify='left')
+    #             columns=defs.dfp_columns_to_print,
+    #             na_rep='N/A', float_format=conv, index_names=True, justify='left')
+    #     else:  # did not find it
+    #         self.error_details = 'No projects to list'
+    #         logger.debug(self.error_details)
+    #         return False
+    #     return True
+    #
+    # def list_task(self):
+    #     if self.dft is not None:
+    #         self.list_resp = self.dft.to_string(
+    #             # na_rep='N/A', float_format=conv, index_names=True, justify='left')
+    #             columns=defs.dft_columns_to_print,
+    #             na_rep='N/A', float_format=conv, index_names=True, justify='left')
+    #     else:  # did not find it
+    #         self.error_details = 'No tasks to list'
+    #         logger.debug(self.error_details)
+    #         return False
+    #     return True
+    #
+    # def list_activity(self):
+    #     if self.dfa is not None:
+    #         self.list_resp = self.dfa.to_string(
+    #             # na_rep='N/A', float_format=conv, index_names=True, justify='left')
+    #             columns=defs.dfa_columns_to_print,
+    #             na_rep='N/A', float_format=conv, index_names=True, justify='left')
+    #     else:  # did not find it
+    #         self.error_details = 'No activities to list'
+    #         logger.debug(self.error_details)
+    #         return False
+    #     return True
