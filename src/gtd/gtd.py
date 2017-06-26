@@ -70,7 +70,8 @@ class Gtd(object):
     def process(self):
         print('processing data from the client')
         logger.debug('data from c: %s',self.current_data)
-        self.sanitize()
+        if not self.sanitize():
+            raise UserWarning
         try:
             res = parse(self.current_data)
         except SyntaxError:
@@ -84,19 +85,27 @@ class Gtd(object):
     def get_message_back_to_client(self):
         #return_message = 'proc2client: ' + self.current_data # (just echo for now)
         logger.debug('this is the return_message: {}'.format(self.db.return_message))
-        return self.db.return_message
+        return gdb.return_message
 
     # this function cleans the input to parsing from things that may be operatoprs
     # like = -,=,!,@ etc
     def sanitize(self):
+        # some syntax checks
+        ################################
+        # check that "list" follows a "list" command
+        if ((self.current_data.replace(' ', '') == 'list') and ('list' not in gdb.transaction_type)):
+            return False
+
+        ##############################################
+        # check if context need to be kept, and if not - clean it up
+        if self.current_data.replace(' ', '') != 'list':
+            gdb.clean_context()
         # since teh tokenizer is not dealing well with the '|'
         # use this piece of code to handle that part
         if '|' in self.current_data:
             (t1,t2, t3) = self.current_data.partition('|')
             gdb.set_trans_description(t3)
-        # check if context need to be kept, and if not - clan it up
-        if self.current_data.replace(' ','') != 'list':
-            gdb.clean_context()
+        return True
 
 
 
@@ -408,7 +417,7 @@ def nud(self):
     logger.debug("col nud")
     gdb.list_col_name = token.value
     advance() # over the column name
-    gdb.list_col_value = token.value # this will be overriden if we have is/inc/not
+    #gdb.list_col_value = token.value # this will be overriden if we have is/inc/not
     self.secon = expression()
     return self
 

@@ -172,12 +172,16 @@ class Db(object):
         else: # here we assume that the databaser alrad has an index 'ID'
             if which_db == 'dfm':
                 self.dfm = self.dfm.append(df_to_add)
+                self.db_table[which_db] = self.dfm
             if which_db == 'dfp':
                 self.dfp = self.dfp.append(df_to_add)
+                self.db_table[which_db] = self.dfp
             if which_db == 'dft':
                 self.dft = self.dft.append(df_to_add)
+                self.db_table[which_db] = self.dft
             if which_db == 'dfa':
                 self.dfa = self.dfa.append(df_to_add)
+                self.db_table[which_db] = self.dfa
 
         # this return checks for nothing ... just returnning true
         return True
@@ -418,7 +422,12 @@ class Db(object):
         elif self.transaction_type == 'list activity':
             which_db = 'dfa'
         df = self.db_table[which_db]
+
         if df is not None:
+            if self.list_col_name != 'clean':
+                if self.list_col_rel == 'is':
+                    df = df[df[self.list_col_name] == self.list_col_value]
+
             if self.list_resp_rows == -1 : # means this is the first time we handle the specific lsit
                 self.list_resp_rows = len(df)
             if self.list_resp_rows == 0 : # meaning-  we finished showing all
@@ -426,10 +435,17 @@ class Db(object):
                 return True
             t1 = self.list_resp_rows
             t2 = max(self.list_resp_rows - self.list_resp_row_limit ,0)
+            #if self.list_col_name != 'clean':
+            #    if self.list_col_rel == 'is':
+            #        self.list_resp = df[df[self.list_col_name] == self.list_col_value][t2:t1].to_string(
+            #            # na_rep='N/A', float_format=conv, index_names=True, justify='left')
+            #            columns=defs.columns_to_print_table[which_db],
+            #            na_rep='N/A', float_format=conv, index_names=True, justify='left')
+            #else:
             self.list_resp = df[t2:t1].to_string(#na_rep='N/A', float_format=conv, index_names=True, justify='left')
                 columns=defs.columns_to_print_table[which_db],
                 na_rep='N/A', float_format=conv, index_names=True, justify='left')
-            self.list_resp = "Showing items {} to {}:\n".format(t2,t1-1) + self.list_resp
+            self.list_resp = "Showing items {} to {}:\n".format(t2,t1) + self.list_resp
             self.list_resp_rows = t2
         else:  # did not find it
             self.error_details = 'No megaprojects to list'

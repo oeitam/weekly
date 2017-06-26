@@ -143,7 +143,7 @@ List <Item (TASK, ACTIVITY, ...) | <criteria>
     *list m/p/t/a (meanining - all of them)
     *list m/p/t/a limit [xx = 10 by default]
     *list next [after limit, but not necessarily]
-    list m/p/t/a col[umn] col_name is/inc/not yyyy
+    *--list m/p/t/a col[umn] col_name is/inc/not yyyy
     list m/p/t/a col[umn] col_name yyyy range low high
       low high => ID, time
       bottom - the lowers possible low
@@ -153,6 +153,7 @@ List <Item (TASK, ACTIVITY, ...) | <criteria>
     list m/p/t/a states
     list m/p/t/a head [xx]
     list m/p/t/a tail [xx]
+    list m/p s ==> list all uniqe megaprojects and projects
 
     constructs, can be combined:
     field in yyyy
