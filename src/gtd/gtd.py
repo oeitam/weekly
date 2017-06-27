@@ -29,6 +29,7 @@ class Gtd(object):
             r = randint(0,len(l3))
             #gdb.use_this_ID_for_ref = l3[r]
             data = data.replace('0000',str(l3[r]).zfill(4))
+            logger.debug('command after replacement: {}'.format(data))
         elif r'stop @' in data:
             #list(g[g.State == 'Closed']['ID'])
             l1 = list(gdb.dfa[gdb.dfa.State == 'Started'].index)
@@ -36,6 +37,7 @@ class Gtd(object):
             l3 = l1 + l2
             r = randint(0,len(l3)-1)
             data = data.replace('0000', str(l3[r]).zfill(4))
+            logger.debug('command after replacement: {}'.format(data))
         elif r'cont @' in data:
             #list(g[g.State == 'Closed']['ID'])
             l1 = list(gdb.dfa[gdb.dfa.State == 'Ended'].index)
@@ -43,6 +45,7 @@ class Gtd(object):
             l3 = l1 + l2
             r = randint(0,len(l3)-1)
             data = data.replace('0000', str(l3[r]).zfill(4))
+            logger.debug('command after replacement: {}'.format(data))
         elif r'halt @' in data:
             #list(g[g.State == 'Closed']['ID'])
             l1 = list(gdb.dfa[gdb.dfa.State == 'Started'].index)
@@ -50,6 +53,7 @@ class Gtd(object):
             l3 = l1 + l2
             r = randint(0,len(l3)-1)
             data = data.replace('0000', str(l3[r]).zfill(4))
+            logger.debug('command after replacement: {}'.format(data))
         elif r'list @' in data:
             #list(g[g.State == 'Closed']['ID'])
             l1 = list(gdb.dfm.index.values)
@@ -59,6 +63,7 @@ class Gtd(object):
             l5 = l1 + l2 + l3 + l4
             r = randint(0,len(l5)-1)
             data = data.replace('0000', str(l5[r]).zfill(4))
+            logger.debug('command after replacement: {}'.format(data))
 
         ############## just for the sake of testing
         self.current_data = data
@@ -272,6 +277,7 @@ prefix("limit", 20)
 prefix("col", 20)
 prefix("is", 20)
 prefix("inc", 20)
+prefix("ninc", 20)
 prefix("not", 20)
 prefix("columns", 20)
 prefix("states", 20)
@@ -385,15 +391,16 @@ def nud(self):
     elif token.value == 'project':
         gdb.transaction_is('list project')
         advance()
-    elif token.value == 'task':
+    elif token.id == 'task':
         gdb.transaction_is('list task')
         advance()
     elif token.value == 'activity':
         gdb.transaction_is('list activity')
         advance()
-    elif token.value == '(end)':
+    elif token.id == '(end)':
         gdb.keep_context = True
-        gdb.transaction_is('only list')
+        # do not set the transaction type, keep it as before
+        #gdb.transaction_is('only list')
         #no need to advance()
     if token.id != "(end)":
         self.second = expression() # continue process
@@ -430,6 +437,32 @@ def nud(self):
     self.secon = expression()
     return self
 
+@method(symbol("inc"))
+def nud(self):
+    logger.debug("inc nud")
+    gdb.list_col_value = token.value
+    gdb.list_col_rel = 'inc'
+    #advance() # over the column name
+    self.secon = expression()
+    return self
+
+@method(symbol("not"))
+def nud(self):
+    logger.debug("not nud")
+    gdb.list_col_value = token.value
+    gdb.list_col_rel = 'not'
+    #advance() # over the column name
+    self.secon = expression()
+    return self
+
+@method(symbol("ninc"))
+def nud(self):
+    logger.debug("ninc nud")
+    gdb.list_col_value = token.value
+    gdb.list_col_rel = 'ninc'
+    #advance() # over the column name
+    self.secon = expression()
+    return self
 
 # symbol("+", 10); symbol("-", 10)
 # symbol("*", 20); symbol("/", 20)

@@ -12,6 +12,10 @@ import math
 pd.options.display.max_colwidth = 100 # 50 by defaul
 #pd.set_option('colheader_justify', 'left')
 
+def myconv(x):
+    if x is not '':
+        return str(int(float(x)))
+
 
 logger = logging.getLogger(__name__)
 
@@ -114,7 +118,7 @@ class Db(object):
             self.dft = None
         # activity
         if os.path.isfile('../data/dfa.csv'):
-            self.dfa = pd.read_csv('../data/dfa.csv')
+            self.dfa = pd.read_csv('../data/dfa.csv',converters={'TASK': myconv,'PROJECT': myconv})
             self.dfa.set_index('ID', inplace=True)
             self.db_table['dfa'] = self.dfa
         else:
@@ -326,10 +330,10 @@ class Db(object):
         found_in = 'no where'
         if self.use_this_ID_for_ref in self.dfp.index.values:
             found_in = 'projects'
-            couple = ['', self.use_this_ID_for_ref]
+            couple = ['', str(int(self.use_this_ID_for_ref))]
         elif self.use_this_ID_for_ref in self.dft.index.values :
             found_in = 'tasks'
-            couple = [self.use_this_ID_for_ref, ""]
+            couple = [str(int(self.use_this_ID_for_ref)), ""]
         else: #found none
             self.error_details = 'ID {} from {} was not found'.format(self.use_this_ID_for_ref, found_in)
             logger.debug(self.error_details)
@@ -427,6 +431,12 @@ class Db(object):
             if self.list_col_name != 'clean':
                 if self.list_col_rel == 'is':
                     df = df[df[self.list_col_name] == self.list_col_value]
+                elif self.list_col_rel == 'inc':
+                    df = df[df[self.list_col_name].str.contains(self.list_col_value)]
+                if self.list_col_rel == 'not':
+                        df = df[df[self.list_col_name] != self.list_col_value]
+                elif self.list_col_rel == 'ninc':
+                    df = df[df[self.list_col_name].str.contains(self.list_col_value)==False]
 
             if self.list_resp_rows == -1 : # means this is the first time we handle the specific lsit
                 self.list_resp_rows = len(df)
