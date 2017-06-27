@@ -1,0 +1,110 @@
+ID,State,Start_Time,Description,End_Time,TASK,PROJECT
+1091,Ended,Sat Jun 17 20:07:26 2017, one this is some activity related to a taask,Sat Jun 17 22:34:56 2017,1053.0,
+1092,Started,Sat Jun 17 20:07:28 2017, two this is some activity related to a taask,,1087.0,
+1093,Started,Sat Jun 17 20:07:30 2017, three this is some activity related to a taask,,1073.0,
+1094,Started,Sat Jun 17 20:07:32 2017, four this is some activity related to a taask,,1088.0,
+1095,Started,Sat Jun 17 20:07:34 2017, five this is some activity related to a taask,,,1082.0
+1096,OnHold,Sat Jun 17 20:07:36 2017, six this is some activity related to a taask,,,1049.0
+1097,Started,Sat Jun 17 20:07:38 2017, seven this is some activity related to a taask,,,1052.0
+1110,Started,Sat Jun 17 20:08:05 2017, one1 this is some activity related to a taask,,1034.0,
+1111,Ended,Sat Jun 17 20:08:07 2017, two1 this is some activity related to a taask,Sat Jun 17 22:48:18 2017,,1050.0
+1112,Started,Sat Jun 17 20:08:09 2017, three1 this is some activity related to a taask,,,1072.0
+1113,Started,Sat Jun 17 20:08:11 2017, four1 this is some activity related to a taask,,1057.0,
+1114,Ended,Sat Jun 17 20:08:13 2017, five1 this is some activity related to a taask,Sun Jun 18 17:21:07 2017,,1102.0
+1115,Started,Sat Jun 17 20:08:15 2017, six1 this is some activity related to a taask,,,1082.0
+1116,Started,Sat Jun 17 20:08:17 2017, seven1 this is some activity related to a taask,,,1033.0
+1144,Started,Sat Jun 17 20:50:55 2017, one this is some activity related to a taask,,,1103.0
+1145,OnHold,Sat Jun 17 20:51:00 2017, two this is some activity related to a taask,,1035.0,
+1146,Started,Sat Jun 17 20:51:02 2017, three this is some activity related to a taask,,,1136.0
+1147,Started,Sat Jun 17 20:51:04 2017, four this is some activity related to a taask,,1127.0,
+1148,Started,Sat Jun 17 20:51:06 2017, five this is some activity related to a taask,,1126.0,
+1149,Started,Sat Jun 17 20:51:09 2017, six this is some activity related to a taask,,,1028.0
+1150,Started,Sat Jun 17 20:51:11 2017, seven this is some activity related to a taask,,,1123.0
+1163,Started,Sat Jun 17 20:51:38 2017, one1 this is some activity related to a taask,,1162.0,
+1164,Started,Sat Jun 17 20:51:40 2017, two1 this is some activity related to a taask,,1086.0,
+1165,Started,Sat Jun 17 20:51:42 2017, three1 this is some activity related to a taask,,,1084.0
+1166,Started,Sat Jun 17 20:51:44 2017, four1 this is some activity related to a taask,,1106.0,
+1167,OnHold,Sat Jun 17 20:51:46 2017, five1 this is some activity related to a taask,,1090.0,
+1168,Started,Sat Jun 17 20:51:48 2017, six1 this is some activity related to a taask,,,1071.0
+1169,OnHold,Sat Jun 17 20:51:50 2017, seven1 this is some activity related to a taask,,,1133.0
+1183,Ended,Sat Jun 17 21:19:11 2017, one this is some activity related to a taask,Sat Jun 17 22:33:30 2017,1180.0,
+1197,Ended,Sat Jun 17 21:21:04 2017, one this is some activity related to a taask,Sat Jun 17 22:46:43 2017,1142.0,
+1211,Started,Sat Jun 17 21:23:15 2017, one this is some activity related to a taask,,,1186.0
+1225,Started,Sat Jun 17 21:30:43 2017, one this is some activity related to a taask,,1220.0,
+1239,Started,Sat Jun 17 21:38:13 2017, one this is some activity related to a taask,,1057.0,
+1253,Started,Sat Jun 17 21:41:33 2017, one this is some activity related to a taask,,1075.0,
+1267,Started,Sat Jun 17 21:42:45 2017, one this is some activity related to a taask,,1161.0,
+1270,Started,Sat Jun 17 21:44:44 2017, one this is some activity related to a taask,,,1152.0
+1273,OnHold,Sat Jun 17 21:48:49 2017, one this is some activity related to a taask,,,1218.0
+1279,Ended,Sat Jun 17 21:52:46 2017, one this is some activity related to a taask,Sat Jun 17 22:48:20 2017,,1047.0
+1282,Ended,Sat Jun 17 21:58:27 2017, one this is some activity related to a taask,Sun Jun 18 17:21:11 2017,1195.0,
+1285,Started,Sat Jun 17 22:01:01 2017, one this is some activity related to a taask,,,1032.0
+1288,Started,Sat Jun 17 22:08:52 2017, one this is some activity related to a taask,,1127.0,
+1291,Ended,Sat Jun 17 22:11:16 2017, one this is some activity related to a taask,Sun Jun 18 17:24:12 2017,1252.0,
+1303,Started,Sat Jun 17 22:13:34 2017, one this is some activity related to a taask,,,1205.0
+1304,Started,Sat Jun 17 22:13:40 2017, two this is some activity related to a taask,,1128.0,
+1305,Started,Sat Jun 17 22:13:42 2017, three this is some activity related to a taask,,1221.0,
+1306,Started,Sat Jun 17 22:13:44 2017, four this is some activity related to a taask,,,1259.0
+1307,Started,Sat Jun 17 22:13:46 2017, five this is some activity related to a taask,,1181.0,
+1308,Ended,Sat Jun 17 22:13:48 2017, six this is some activity related to a taask,Sat Jun 17 22:48:22 2017,,1028.0
+1309,Started,Sat Jun 17 22:13:50 2017, seven this is some activity related to a taask,,1210.0,
+1322,Started,Sat Jun 17 22:14:18 2017, one1 this is some activity related to a taask,,1159.0,
+1323,Started,Sat Jun 17 22:14:20 2017, two1 this is some activity related to a taask,,,1103.0
+1324,Started,Sat Jun 17 22:14:22 2017, three1 this is some activity related to a taask,,,1122.0
+1325,Ended,Sat Jun 17 22:14:24 2017, four1 this is some activity related to a taask,Sat Jun 17 22:35:05 2017,1236.0,
+1326,Ended,Sat Jun 17 22:14:26 2017, five1 this is some activity related to a taask,Sun Jun 18 17:10:38 2017,,1247.0
+1327,Ended,Sat Jun 17 22:14:28 2017, six1 this is some activity related to a taask,Sat Jun 17 22:48:16 2017,,1200.0
+1328,Started,Sat Jun 17 22:14:30 2017, seven1 this is some activity related to a taask,,1109.0,
+1332,Started,Sat Jun 17 22:22:48 2017, one this is some activity related to a taask,,,1297.0
+1335,Started,Sat Jun 17 22:24:15 2017, one this is some activity related to a taask,,1248.0,
+1347,Started,Sat Jun 17 22:28:42 2017, one this is some activity related to a taask,,,1084.0
+1350,Started,Sat Jun 17 22:33:28 2017, one this is some activity related to a taask,,,1246.0
+1362,Started,Sat Jun 17 22:33:59 2017, one this is some activity related to a taask,,1235.0,
+1363,Ended,Sat Jun 17 22:34:05 2017, two this is some activity related to a taask,Sat Jun 17 22:47:14 2017,,1103.0
+1364,Started,Sat Jun 17 22:34:07 2017, three this is some activity related to a taask,,1108.0,
+1365,Started,Sat Jun 17 22:34:09 2017, four this is some activity related to a taask,,,1083.0
+1366,Started,Sat Jun 17 22:34:11 2017, five this is some activity related to a taask,,1300.0,
+1367,Started,Sat Jun 17 22:34:13 2017, six this is some activity related to a taask,,,1246.0
+1368,Started,Sat Jun 17 22:34:15 2017, seven this is some activity related to a taask,,,1353.0
+1381,Started,Sat Jun 17 22:34:42 2017, one1 this is some activity related to a taask,,1379.0,
+1382,Started,Sat Jun 17 22:34:44 2017, two1 this is some activity related to a taask,,1090.0,
+1383,Started,Sat Jun 17 22:34:46 2017, three1 this is some activity related to a taask,,,1030.0
+1384,OnHold,Sat Jun 17 22:34:48 2017, four1 this is some activity related to a taask,,,1135.0
+1385,Ended,Sat Jun 17 22:34:50 2017, five1 this is some activity related to a taask,Sat Jun 17 22:43:37 2017,,1230.0
+1386,Started,Sat Jun 17 22:34:52 2017, six1 this is some activity related to a taask,,,1245.0
+1387,Started,Sat Jun 17 22:34:54 2017, seven1 this is some activity related to a taask,,1181.0,
+1390,Started,Sat Jun 17 22:43:35 2017, one this is some activity related to a taask,,1036.0,
+1394,Ended,Sat Jun 17 22:46:41 2017, one this is some activity related to a taask,Sun Jun 18 17:13:46 2017,1055.0,
+1406,Started,Sat Jun 17 22:47:12 2017, one this is some activity related to a taask,,,1050.0
+1407,Started,Sat Jun 17 22:47:18 2017, two this is some activity related to a taask,,1109.0,
+1408,Started,Sat Jun 17 22:47:20 2017, three this is some activity related to a taask,,1361.0,
+1409,Ended,Sat Jun 17 22:47:23 2017, four this is some activity related to a taask,Sun Jun 18 17:21:30 2017,1056.0,
+1410,Started,Sat Jun 17 22:47:25 2017, five this is some activity related to a taask,,,1391.0
+1411,Started,Sat Jun 17 22:47:27 2017, six this is some activity related to a taask,,1402.0,
+1412,Started,Sat Jun 17 22:47:29 2017, seven this is some activity related to a taask,,1108.0,
+1425,Started,Sat Jun 17 22:47:57 2017, one1 this is some activity related to a taask,,,1374.0
+1426,Started,Sat Jun 17 22:47:59 2017, two1 this is some activity related to a taask,,1299.0,
+1427,Ended,Sat Jun 17 22:48:01 2017, three1 this is some activity related to a taask,Sun Jun 18 17:21:15 2017,,1214.0
+1428,Started,Sat Jun 17 22:48:03 2017, four1 this is some activity related to a taask,,1206.0,
+1429,Started,Sat Jun 17 22:48:05 2017, five1 this is some activity related to a taask,,1105.0,
+1430,Started,Sat Jun 17 22:48:07 2017, six1 this is some activity related to a taask,,,1067.0
+1431,Started,Sat Jun 17 22:48:09 2017, seven1 this is some activity related to a taask,,1262.0,
+1434,Ended,Sun Jun 18 17:10:35 2017, one this is some activity related to a taask,Sun Jun 18 17:21:27 2017,,1399.0
+1437,Started,Sun Jun 18 17:12:09 2017, one this is some activity related to a taask,,,1217.0
+1440,Started,Sun Jun 18 17:12:42 2017, one this is some activity related to a taask,,1139.0,
+1452,Started,Sun Jun 18 17:13:42 2017, one this is some activity related to a taask,,,1049.0
+1453,Started,Sun Jun 18 17:13:51 2017, two this is some activity related to a taask,,,1354.0
+1454,Started,Sun Jun 18 17:13:55 2017, three this is some activity related to a taask,,1141.0,
+1455,Started,Sun Jun 18 17:13:57 2017, four this is some activity related to a taask,,,1172.0
+1456,Started,Sun Jun 18 17:14:12 2017, five this is some activity related to a taask,,,1188.0
+1457,Started,Sun Jun 18 17:14:14 2017, six this is some activity related to a taask,,,1186.0
+1458,Started,Sun Jun 18 17:14:18 2017, seven this is some activity related to a taask,,,1202.0
+1471,Started,Sun Jun 18 17:15:03 2017, one1 this is some activity related to a taask,,,1246.0
+1472,Started,Sun Jun 18 17:15:07 2017, two1 this is some activity related to a taask,,,1230.0
+1473,OnHold,Sun Jun 18 17:15:09 2017, three1 this is some activity related to a taask,,1108.0,
+1474,Started,Sun Jun 18 17:20:52 2017, four1 this is some activity related to a taask,,,1082.0
+1475,OnHold,Sun Jun 18 17:20:56 2017, five1 this is some activity related to a taask,,1182.0,
+1476,Started,Sun Jun 18 17:20:58 2017, six1 this is some activity related to a taask,,1343.0,
+1477,Ended,Sun Jun 18 17:21:02 2017, seven1 this is some activity related to a taask,Sun Jun 18 17:21:20 2017,,1080.0
+1480,Started,Sun Jun 18 17:24:10 2017, one this is some activity related to a taask,,1238.0,
+1492,Started,Sun Jun 18 17:24:41 2017, one this is some activity related to a taask,,,1398

@@ -380,6 +380,13 @@ def nud(self):
     self.second = expression()
     return self
 
+@method(symbol("halt"))
+def nud(self):
+    logger.debug('halt nud')
+    gdb.transaction_is('halt activity')
+    self.second = expression()
+    return self
+
 @method(symbol("list"))
 def nud(self):
     logger.debug('list nud')

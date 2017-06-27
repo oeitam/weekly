@@ -1,0 +1,62 @@
+ID,Name,State,PROJECTs_List,Description
+1027,Work1,On,"['project_one', 'project_three', 'project_five', 'project_one', 'project_three', 'project_five', 'project_one', 'project_three', 'project_five', 'project_one', 'project_three', 'project_five', 'project_one', 'project_three', 'project_five', 'project_one', 'project_three', 'project_five', 'project_one', 'project_three', 'project_five', 'project_one', 'project_three', 'project_five', 'project_one', 'project_three', 'project_five', 'project_one', 'project_three', 'project_five', 'project_one', 'project_three', 'project_five', 'project_one', 'project_three', 'project_five', 'project_one', 'project_three', 'project_five', 'project_one', 'project_three', 'project_five', 'project_one', 'project_three', 'project_five', 'project_one', 'project_one', 'project_three', 'project_five', 'project_one', 'project_three', 'project_five', 'project_one', 'project_three', 'project_five']", 1all projects that relate to Work at Intel go here
+1029,Work2,On,"['project_two', 'project_four', 'project_two', 'project_four', 'project_two', 'project_four', 'project_two', 'project_four', 'project_two', 'project_four', 'project_two', 'project_four', 'project_two', 'project_four', 'project_two', 'project_four', 'project_two', 'project_four', 'project_two', 'project_four', 'project_two', 'project_four', 'project_two', 'project_four', 'project_two', 'project_four', 'project_two', 'project_four', 'project_two', 'project_four', 'project_two', 'project_four', 'project_two', 'project_four', 'project_two', 'project_four']", 2all projects that relate to Work at Intel go here
+1046,Work11,On,"['project_one1', 'project_three1', 'project_five1', 'project_one1', 'project_three1', 'project_five1', 'project_one1', 'project_three1', 'project_five1', 'project_one1', 'project_three1', 'project_five1', 'project_one1', 'project_three1', 'project_five1', 'project_one1', 'project_three1', 'project_five1', 'project_one1', 'project_three1', 'project_five1']", 11all projects that relate to Work at Intel go here
+1048,Work21,On,"['project_two1', 'project_four1', 'project_two1', 'project_four1', 'project_two1', 'project_four1', 'project_two1', 'project_four1', 'project_two1', 'project_four1', 'project_two1', 'project_four1', 'project_two1', 'project_four1']", 21all projects that relate to Work at Intel go here
+1066,Work1,On,[], 1all projects that relate to Work at Intel go here
+1068,Work2,On,[], 2all projects that relate to Work at Intel go here
+1079,Work1,On,[], 1all projects that relate to Work at Intel go here
+1081,Work2,On,[], 2all projects that relate to Work at Intel go here
+1098,Work11,On,[], 11all projects that relate to Work at Intel go here
+1100,Work21,On,[], 21all projects that relate to Work at Intel go here
+1118,Work1,On,[], 1all projects that relate to Work at Intel go here
+1120,Work2,On,[], 2all projects that relate to Work at Intel go here
+1132,Work1,On,[], 1all projects that relate to Work at Intel go here
+1134,Work2,On,[], 2all projects that relate to Work at Intel go here
+1151,Work11,On,[], 11all projects that relate to Work at Intel go here
+1153,Work21,On,[], 21all projects that relate to Work at Intel go here
+1171,Work1,On,[], 1all projects that relate to Work at Intel go here
+1173,Work2,On,[], 2all projects that relate to Work at Intel go here
+1185,Work1,On,[], 1all projects that relate to Work at Intel go here
+1187,Work2,On,[], 2all projects that relate to Work at Intel go here
+1199,Work1,On,[], 1all projects that relate to Work at Intel go here
+1201,Work2,On,[], 2all projects that relate to Work at Intel go here
+1213,Work1,On,[], 1all projects that relate to Work at Intel go here
+1215,Work2,On,[], 2all projects that relate to Work at Intel go here
+1227,Work1,On,[], 1all projects that relate to Work at Intel go here
+1229,Work2,On,[], 2all projects that relate to Work at Intel go here
+1241,Work1,On,[], 1all projects that relate to Work at Intel go here
+1243,Work2,On,[], 2all projects that relate to Work at Intel go here
+1255,Work1,On,[], 1all projects that relate to Work at Intel go here
+1257,Work2,On,[], 2all projects that relate to Work at Intel go here
+1269,Work1,On,[], 1all projects that relate to Work at Intel go here
+1272,Work1,On,[], 1all projects that relate to Work at Intel go here
+1276,Work1,On,[], 1all projects that relate to Work at Intel go here
+1278,Work1,On,[], 1all projects that relate to Work at Intel go here
+1281,Work1,On,[], 1all projects that relate to Work at Intel go here
+1284,Work1,On,[], 1all projects that relate to Work at Intel go here
+1287,Work1,On,[], 1all projects that relate to Work at Intel go here
+1290,Work1,On,[], 1all projects that relate to Work at Intel go here
+1293,Work2,On,[], 2all projects that relate to Work at Intel go here
+1310,Work11,On,[], 11all projects that relate to Work at Intel go here
+1312,Work21,On,[], 21all projects that relate to Work at Intel go here
+1331,Work1,On,[], 1all projects that relate to Work at Intel go here
+1334,Work1,On,[], 1all projects that relate to Work at Intel go here
+1337,Work2,On,[], 2all projects that relate to Work at Intel go here
+1349,Work1,On,[], 1all projects that relate to Work at Intel go here
+1352,Work2,On,[], 2all projects that relate to Work at Intel go here
+1369,Work11,On,[], 11all projects that relate to Work at Intel go here
+1371,Work21,On,[], 21all projects that relate to Work at Intel go here
+1389,Work1,On,[], 1all projects that relate to Work at Intel go here
+1393,Work1,On,[], 1all projects that relate to Work at Intel go here
+1396,Work2,On,[], 2all projects that relate to Work at Intel go here
+1413,Work11,On,[], 11all projects that relate to Work at Intel go here
+1415,Work21,On,[], 21all projects that relate to Work at Intel go here
+1433,Work1,On,[], 1all projects that relate to Work at Intel go here
+1436,Work1,On,[], 1all projects that relate to Work at Intel go here
+1439,Work1,On,[], 1all projects that relate to Work at Intel go here
+1442,Work2,On,[], 2all projects that relate to Work at Intel go here
+1459,Work11,On,[], 11all projects that relate to Work at Intel go here
+1461,Work21,On,[], 21all projects that relate to Work at Intel go here
+1479,Work1,On,[], 1all projects that relate to Work at Intel go here
+1482,Work2,On,[], 2all projects that relate to Work at Intel go here
