@@ -144,10 +144,10 @@ List <Item (TASK, ACTIVITY, ...) | <criteria>
     *list m/p/t/a limit [xx = 10 by default]
     *list next [after limit, but not necessarily]
     ****list m/p/t/a col[umn] col_name is/inc/not/ninc yyyy
-    list m/p/t/a col[umn] col_name yyyy range low high
+    list m/p/t/a col[umn] col_name range low high
       low high => ID, time
-      bottom - the lowers possible low
-      top    - the highest possible high
+      bot[tom] - the lowers possible low
+      top      - the highest possible high
     list m/p/t/a for m/p/t/a nnnn
     list m/p/t/a columns
     list m/p/t/a states

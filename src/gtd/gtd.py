@@ -471,6 +471,18 @@ def nud(self):
     self.secon = expression()
     return self
 
+@method(symbol("range"))
+def nud(self):
+    logger.debug('range nud')
+    gdb.list_col_rel = 'range'
+    gdb.list_col_bot = token.value
+    advance()
+    gdb.list_col_top = token.value
+    # this is the end of processing for this type of command
+    return self
+
+
+
 # symbol("+", 10); symbol("-", 10)
 # symbol("*", 20); symbol("/", 20)
 # symbol("**", 30)

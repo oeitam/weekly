@@ -4,6 +4,7 @@ import sys
 import time
 from subprocess import Popen, CREATE_NEW_CONSOLE
 from src import defs
+from src.server import client_direct
 
 import logging
 logger = logging.getLogger(__name__)
@@ -14,9 +15,13 @@ class Server(object):
     def __init__(self, gtd):
         print('server init')
         self.gtd = gtd
+        if defs.mode == 'direct':
+            self.client = client_direct.client(self)
 
     # start_the_client method starts the client seperate process
     def start_the_client(self):
+        if defs.mode == 'direct':
+            return
         print("Launching the clinet")
         pc = Popen([sys.executable, 'server/client_script.py'],
                    creationflags=CREATE_NEW_CONSOLE)
@@ -29,19 +34,30 @@ class Server(object):
         # setup variables
         self.client_process = pc
 
-    ###################### NOT USED ????  #############################
-    # send_data_to_client method sends data to the client to display
-    # this is for the gtd to use
-    def send_data_to_client(self, data):
-        print('sending data to the client')
-        pass
-    ###################### NOT USED ????  #############################
+
+    def command(self, data):
+        a, b, data = data.partition(':')
+        self.gtd.take_data(data)
+        self.gtd.process()  # gtd to process the latest data it recieved
+        return_message = self.gtd.get_message_back_to_client()
+        # return_message = defs.mlt
+        l = str(len(return_message) + 5)
+        sl = "{:0>4}:".format(l)
+        slm = sl + return_message
+        logger.debug('return_message: %s', slm)
+        print("--" + slm + "--")
+        return slm
+
+
 
     # server_process method is the main method of the server
     # crates a socket from the server for the client to use
     # once requests are coming from the client, it sends it to
     # the gtd for processing
     def server_process(self):
+        if defs.mode == 'direct':
+            self.client.operate()
+            return
         print('Starting the communications server')
         # Create a TCP/IP socket
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

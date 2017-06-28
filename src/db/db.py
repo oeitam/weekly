@@ -9,6 +9,7 @@ import time
 from ast import literal_eval
 import math
 
+
 pd.options.display.max_colwidth = 100 # 50 by defaul
 #pd.set_option('colheader_justify', 'left')
 
@@ -143,6 +144,8 @@ class Db(object):
             self.list_col_name          = 'clean'
             self.list_col_value         = 'clean'
             self.list_col_rel           = 'clean'
+            self.list_col_bot           = 'clean'
+            self.list_col_top           = 'clean'
         if sec2:
             self.list_resp_row_limit    = 10
             self.list_resp_rows         = -1

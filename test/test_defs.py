@@ -1,6 +1,8 @@
 # oeitam
 
 test_commands = [ "create megaproject Work1 | 1all projects that relate to Work at Intel go here",
+                  "list megaproject col Name range bottom toppom",
+                  "die",
                   "halt @0000",
                   "stop @0000",
                   "cont @0000",
