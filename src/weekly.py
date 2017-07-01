@@ -9,11 +9,12 @@ from src import defs
 import os
 
 logger = logging.getLogger()
+logging.basicConfig(filename='../weekly.log', filemode='w', level=logging.DEBUG)
+logging.info('Logging Started')
+
 
 def main():
 
-    logging.basicConfig(filename='../weekly.log', filemode='w', level=logging.DEBUG)
-    logging.info('Logging Started')
 
     db = database.Db()
     gtd = gettingthingsdone.Gtd(db)

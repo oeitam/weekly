@@ -1,159 +1,138 @@
-ID,State,Start_Time,Description,End_Time,TASK,PROJECT
-1504,Started,Sun Jun 18 17:56:59 2017, one this is some activity related to a taask,,,1498
-1513,Started,Sun Jun 18 18:41:25 2017, one this is some activity related to a taask,,,1502
-1518,Started,Sun Jun 18 19:02:53 2017, one this is some activity related to a taask,,,1502
-1528,Started,Sun Jun 18 19:03:20 2017, one this is some activity related to a taask,,,1522
-1533,Started,Sun Jun 18 19:04:27 2017, one this is some activity related to a taask #004,,,1511
-1543,Started,Sun Jun 18 19:04:55 2017, one this is some activity related to a taask,,1508,
-1548,OnHold,Sun Jun 18 19:08:42 2017, one this is some activity related to a taask #004,,,1537
-1558,Started,Sun Jun 18 19:09:09 2017, one this is some activity related to a taask,,,1516
-1559,Ended,Sun Jun 18 19:09:15 2017, two this is some activity related to a taask,Wed Jun 28 21:00:58 2017,,1498
-1560,Started,Sun Jun 18 19:09:17 2017, three this is some activity related to a taask,,,1551
-1561,OnHold,Sun Jun 18 19:09:19 2017, four this is some activity related to a taask,,1547,
-1562,Ended,Sun Jun 18 19:09:21 2017, five this is some activity related to a taask,Wed Jun 28 20:41:57 2017,1539,
-1563,Ended,Sun Jun 18 19:09:23 2017, six this is some activity related to a taask,Tue Jun 27 22:44:10 2017,,1535
-1564,Started,Sun Jun 18 19:09:25 2017, seven this is some activity related to a taask,,,1498
-1577,Ended,Sun Jun 18 19:09:54 2017, one1 this is some activity related to a taask,Tue Jun 27 22:24:34 2017,,1551
-1578,OnHold,Sun Jun 18 19:09:56 2017, two1 this is some activity related to a taask,,,1521
-1579,Started,Sun Jun 18 19:09:58 2017, three1 this is some activity related to a taask,,,1507
-1580,Started,Sun Jun 18 19:10:00 2017, four1 this is some activity related to a taask,,1556,
-1581,Started,Sun Jun 18 19:10:02 2017, five1 this is some activity related to a taask,,,1498
-1582,Ended,Sun Jun 18 19:10:04 2017, six1 this is some activity related to a taask,Wed Jun 28 20:19:55 2017,,1511
-1583,OnHold,Sun Jun 18 19:10:06 2017, seven1 this is some activity related to a taask,,1540,
-1588,Started,Sun Jun 18 19:11:05 2017, one this is some activity related to a taask ,,1574,
-1598,Started,Sun Jun 18 19:11:33 2017, one this is some activity related to a taask ,,,1535
-1599,Started,Sun Jun 18 19:11:39 2017, two this is some activity related to a taask ,,,1537
-1600,Started,Sun Jun 18 19:11:41 2017, three this is some activity related to a taask ,,,1569
-1601,Started,Sun Jun 18 19:11:43 2017, four this is some activity related to a taask ,,1508,
-1602,Started,Sun Jun 18 19:11:45 2017, five this is some activity related to a taask ,,1541,
-1603,Started,Sun Jun 18 19:11:47 2017, six this is some activity related to a taask ,,1517,
-1604,Ended,Sun Jun 18 19:11:49 2017, seven this is some activity related to a taask ,Wed Jun 28 21:01:03 2017,,1522
-1617,OnHold,Sun Jun 18 19:12:16 2017, one1 this is some activity related to a taask ,,1587,
-1618,Started,Sun Jun 18 19:12:18 2017, two1 this is some activity related to a taask ,,,1593
-1619,Ended,Sun Jun 18 19:12:20 2017, three1 this is some activity related to a taask ,Wed Jun 28 20:58:20 2017,1540,
-1620,Started,Sun Jun 18 19:12:22 2017, four1 this is some activity related to a taask ,,,1523
-1621,OnHold,Sun Jun 18 19:12:24 2017, five1 this is some activity related to a taask ,,,1566
-1622,Started,Sun Jun 18 19:12:27 2017, six1 this is some activity related to a taask ,,,1608
-1623,Ended,Sun Jun 18 19:12:29 2017, seven1 this is some activity related to a taask ,Wed Jun 28 20:42:42 2017,,1550
-1628,Ended,Sun Jun 18 19:14:08 2017, one this is some activity related to a taask #0004,Tue Jun 27 22:14:51 2017,1499,
-1638,Started,Sun Jun 18 19:14:35 2017, one this is some activity related to a taask #0017,,,1516
-1639,Started,Sun Jun 18 19:14:41 2017, two this is some activity related to a taask #0020,,,1507
-1640,Ended,Sun Jun 18 19:14:43 2017, three this is some activity related to a taask #0021,Wed Jun 28 20:58:23 2017,,1586
-1641,Started,Sun Jun 18 19:14:45 2017, four this is some activity related to a taask #0022,,1540,
-1642,Started,Sun Jun 18 19:14:47 2017, five this is some activity related to a taask #0023,,1503,
-1643,Started,Sun Jun 18 19:14:49 2017, six this is some activity related to a taask #0024,,1627,
-1644,Started,Sun Jun 18 19:14:51 2017, seven this is some activity related to a taask #0025,,1503,
-1657,OnHold,Sun Jun 18 19:15:19 2017, one1 this is some activity related to a taask #0038,,1595,
-1658,Started,Sun Jun 18 19:15:22 2017, two1 this is some activity related to a taask #0039,,1635,
-1659,Started,Sun Jun 18 19:15:24 2017, three1 this is some activity related to a taask #0040,,1524,
-1660,Started,Sun Jun 18 19:15:26 2017, four1 this is some activity related to a taask #0041,,,1571
-1661,Started,Sun Jun 18 19:15:28 2017, five1 this is some activity related to a taask #0042,,1526,
-1662,OnHold,Sun Jun 18 19:15:30 2017, six1 this is some activity related to a taask #0043,,,1633
-1663,Ended,Sun Jun 18 19:15:32 2017, seven1 this is some activity related to a taask #0044,Wed Jun 28 20:19:53 2017,,1631
-1732,Started,Mon Jun 19 21:10:44 2017, one this is some activity related to a taask,,1541,
-1742,OnHold,Mon Jun 19 21:11:10 2017, one this is some activity related to a taask,,,1730
-1743,Ended,Mon Jun 19 21:11:22 2017, two this is some activity related to a taask,Wed Jun 28 20:58:17 2017,1595,
-1744,Started,Mon Jun 19 21:11:25 2017, three this is some activity related to a taask,,1587,
-1745,Started,Mon Jun 19 21:11:27 2017, four this is some activity related to a taask,,,1678
-1746,Ended,Mon Jun 19 21:11:29 2017, five this is some activity related to a taask,Wed Jun 28 20:18:35 2017,1612,
-1747,Started,Mon Jun 19 21:11:31 2017, six this is some activity related to a taask,,,1734
-1748,Started,Mon Jun 19 21:11:33 2017, seven this is some activity related to a taask,,,1632
-1761,Started,Mon Jun 19 21:12:05 2017, one1 this is some activity related to a taask,,,1553
-1762,Ended,Mon Jun 19 21:12:07 2017, two1 this is some activity related to a taask,Tue Jun 27 22:55:14 2017,1740,
-1763,Started,Mon Jun 19 21:12:09 2017, three1 this is some activity related to a taask,,1656,
-1764,Started,Mon Jun 19 21:12:13 2017, four1 this is some activity related to a taask,,1556,
-1765,OnHold,Mon Jun 19 21:12:15 2017, five1 this is some activity related to a taask,,,1750
-1766,OnHold,Mon Jun 19 21:12:17 2017, six1 this is some activity related to a taask,,,1735
-1767,Started,Mon Jun 19 21:12:20 2017, seven1 this is some activity related to a taask,,,1538
-1776,Ended,Mon Jun 19 22:03:58 2017, one this is some activity related to a taask,Wed Jun 28 20:58:23 2017,1616,
-1786,Started,Mon Jun 19 22:04:25 2017, one this is some activity related to a taask,,1499,
-1787,OnHold,Mon Jun 19 22:04:37 2017, two this is some activity related to a taask,,,1649
-1788,Ended,Mon Jun 19 22:04:39 2017, three this is some activity related to a taask,Wed Jun 28 20:58:23 2017,,1608
-1789,Started,Mon Jun 19 22:04:41 2017, four this is some activity related to a taask,,,1516
-1790,Ended,Mon Jun 19 22:04:43 2017, five this is some activity related to a taask,Wed Jun 28 21:01:03 2017,,1568
-1791,Started,Mon Jun 19 22:04:45 2017, six this is some activity related to a taask,,1542,
-1792,Ended,Mon Jun 19 22:04:47 2017, seven this is some activity related to a taask,Wed Jun 28 20:19:58 2017,1597,
-1805,Started,Mon Jun 19 22:05:20 2017, one1 this is some activity related to a taask,,1532,
-1806,Ended,Mon Jun 19 22:05:22 2017, two1 this is some activity related to a taask,Wed Jun 28 20:17:57 2017,,1796
-1807,Ended,Mon Jun 19 22:05:24 2017, three1 this is some activity related to a taask,Tue Jun 27 22:28:03 2017,1740,
-1808,Ended,Mon Jun 19 22:05:28 2017, four1 this is some activity related to a taask,Tue Jun 27 22:26:50 2017,1759,
-1809,Ended,Mon Jun 19 22:05:30 2017, five1 this is some activity related to a taask,Wed Jun 28 20:58:21 2017,1637,
-1810,Ended,Mon Jun 19 22:05:33 2017, six1 this is some activity related to a taask,Wed Jun 28 21:01:03 2017,,1650
-1811,Started,Mon Jun 19 22:05:35 2017, seven1 this is some activity related to a taask,,,1632
-1959,Started,Mon Jun 26 20:09:22 2017,clean,,,1794
-2065,Started,Tue Jun 27 22:01:34 2017, one this is some activity related to a taask,,1540,
-2070,Started,Tue Jun 27 22:12:56 2017, one this is some activity related to a taask,,,1797
-2080,Started,Tue Jun 27 22:13:35 2017, one this is some activity related to a taask,,,1522
-2081,Ended,Tue Jun 27 22:13:47 2017, two this is some activity related to a taask,Tue Jun 27 22:28:05 2017,1784,
-2082,Ended,Tue Jun 27 22:13:49 2017, three this is some activity related to a taask,Wed Jun 28 20:58:23 2017,,1734
-2083,Ended,Tue Jun 27 22:13:51 2017, four this is some activity related to a taask,Wed Jun 28 20:19:49 2017,,1649
-2084,Ended,Tue Jun 27 22:13:53 2017, five this is some activity related to a taask,Tue Jun 27 22:26:17 2017,,1796
-2085,Started,Tue Jun 27 22:13:55 2017, six this is some activity related to a taask,,1542,
-2086,Started,Tue Jun 27 22:13:58 2017, seven this is some activity related to a taask,,1572,
-2099,Ended,Tue Jun 27 22:14:31 2017, one1 this is some activity related to a taask,Wed Jun 28 20:58:20 2017,1532,
-2100,OnHold,Tue Jun 27 22:14:33 2017, two1 this is some activity related to a taask,,1671,
-2101,Started,Tue Jun 27 22:14:35 2017, three1 this is some activity related to a taask,,1803,
-2102,OnHold,Tue Jun 27 22:14:39 2017, four1 this is some activity related to a taask,,,1610
-2103,OnHold,Tue Jun 27 22:14:41 2017, five1 this is some activity related to a taask,,1627,
-2104,Started,Tue Jun 27 22:14:43 2017, six1 this is some activity related to a taask,,,1778
-2105,Started,Tue Jun 27 22:14:45 2017, seven1 this is some activity related to a taask,,1539,
-2110,Ended,Tue Jun 27 22:26:09 2017, one this is some activity related to a taask,Wed Jun 28 20:58:20 2017,,1516
-2120,Ended,Tue Jun 27 22:26:48 2017, one this is some activity related to a taask,Wed Jun 28 21:00:58 2017,,1590
-2121,Started,Tue Jun 27 22:27:00 2017, two this is some activity related to a taask,,,2108
-2122,Started,Tue Jun 27 22:27:02 2017, three this is some activity related to a taask,,1508,
-2123,Started,Tue Jun 27 22:27:05 2017, four this is some activity related to a taask,,,1569
-2124,OnHold,Tue Jun 27 22:27:07 2017, five this is some activity related to a taask,,1594,
-2125,OnHold,Tue Jun 27 22:27:09 2017, six this is some activity related to a taask,,,2115
-2126,Started,Tue Jun 27 22:27:11 2017, seven this is some activity related to a taask,,,1626
-2139,Started,Tue Jun 27 22:27:44 2017, one1 this is some activity related to a taask,,1654,
-2140,Started,Tue Jun 27 22:27:46 2017, two1 this is some activity related to a taask,,1542,
-2141,Started,Tue Jun 27 22:27:48 2017, three1 this is some activity related to a taask,,,1798
-2142,Ended,Tue Jun 27 22:27:52 2017, four1 this is some activity related to a taask,Wed Jun 28 21:00:58 2017,,1779
-2143,Started,Tue Jun 27 22:27:54 2017, five1 this is some activity related to a taask,,,2091
-2144,Ended,Tue Jun 27 22:27:57 2017, six1 this is some activity related to a taask,Wed Jun 28 20:19:45 2017,1756,
-2145,Started,Tue Jun 27 22:27:59 2017, seven1 this is some activity related to a taask,,2004,
-2156,Started,Wed Jun 28 20:17:53 2017, one this is some activity related to a taask,,1635,
-2166,Started,Wed Jun 28 20:18:33 2017, one this is some activity related to a taask,,,1502
-2167,Started,Wed Jun 28 20:18:45 2017, two this is some activity related to a taask,,,1646
-2168,Started,Wed Jun 28 20:18:47 2017, three this is some activity related to a taask,,,1734
-2169,Started,Wed Jun 28 20:18:49 2017, four this is some activity related to a taask,,1655,
-2170,Started,Wed Jun 28 20:18:51 2017, five this is some activity related to a taask,,,1779
-2171,Started,Wed Jun 28 20:18:54 2017, six this is some activity related to a taask,,,1571
-2172,Started,Wed Jun 28 20:18:56 2017, seven this is some activity related to a taask,,2137,
-2185,Started,Wed Jun 28 20:19:29 2017, one1 this is some activity related to a taask,,,1507
-2186,Ended,Wed Jun 28 20:19:31 2017, two1 this is some activity related to a taask,Wed Jun 28 21:01:00 2017,1597,
-2187,Started,Wed Jun 28 20:19:33 2017, three1 this is some activity related to a taask,,1576,
-2188,Started,Wed Jun 28 20:19:37 2017, four1 this is some activity related to a taask,,,2160
-2189,Started,Wed Jun 28 20:19:39 2017, five1 this is some activity related to a taask,,,1798
-2190,Ended,Wed Jun 28 20:19:41 2017, six1 this is some activity related to a taask,Wed Jun 28 21:01:03 2017,,2161
-2191,Started,Wed Jun 28 20:19:43 2017, seven1 this is some activity related to a taask,,,1755
-2201,Ended,Wed Jun 28 20:58:20 2017, one this is some activity related to a taask,Wed Jun 28 21:00:58 2017,,1552
-2211,Started,Wed Jun 28 20:58:21 2017, one this is some activity related to a taask,,,2063
-2212,Started,Wed Jun 28 20:58:21 2017, two this is some activity related to a taask,,,1670
-2213,Started,Wed Jun 28 20:58:21 2017, three this is some activity related to a taask,,,1649
-2214,OnHold,Wed Jun 28 20:58:21 2017, four this is some activity related to a taask,,1539,
-2215,Started,Wed Jun 28 20:58:21 2017, five this is some activity related to a taask,,1499,
-2216,Started,Wed Jun 28 20:58:21 2017, six this is some activity related to a taask,,1758,
-2217,Ended,Wed Jun 28 20:58:21 2017, seven this is some activity related to a taask,Wed Jun 28 20:58:23 2017,1803,
-2230,Started,Wed Jun 28 20:58:22 2017, one1 this is some activity related to a taask,,,1957
-2231,Started,Wed Jun 28 20:58:22 2017, two1 this is some activity related to a taask,,1656,
-2232,Started,Wed Jun 28 20:58:22 2017, three1 this is some activity related to a taask,,1612,
-2233,Started,Wed Jun 28 20:58:23 2017, four1 this is some activity related to a taask,,2095,
-2234,Started,Wed Jun 28 20:58:23 2017, five1 this is some activity related to a taask,,,1778
-2235,Started,Wed Jun 28 20:58:23 2017, six1 this is some activity related to a taask,,1652,
-2236,Started,Wed Jun 28 20:58:23 2017, seven1 this is some activity related to a taask,,,2174
-2241,Started,Wed Jun 28 21:00:58 2017, one this is some activity related to a taask,,2135,
-2251,Started,Wed Jun 28 21:00:59 2017, one this is some activity related to a taask,,,1754
-2252,Started,Wed Jun 28 21:01:00 2017, two this is some activity related to a taask,,2117,
-2253,Started,Wed Jun 28 21:01:00 2017, three this is some activity related to a taask,,,1546
-2254,Started,Wed Jun 28 21:01:00 2017, four this is some activity related to a taask,,,1570
-2255,Started,Wed Jun 28 21:01:00 2017, five this is some activity related to a taask,,,2092
-2256,Started,Wed Jun 28 21:01:01 2017, six this is some activity related to a taask,,,1755
-2257,Started,Wed Jun 28 21:01:01 2017, seven this is some activity related to a taask,,2116,
-2270,Started,Wed Jun 28 21:01:02 2017, one1 this is some activity related to a taask,,,2108
-2271,Ended,Wed Jun 28 21:01:02 2017, two1 this is some activity related to a taask,Wed Jun 28 21:01:03 2017,,1610
-2272,Started,Wed Jun 28 21:01:02 2017, three1 this is some activity related to a taask,,,2246
-2273,Started,Wed Jun 28 21:01:02 2017, four1 this is some activity related to a taask,,,2072
-2274,Started,Wed Jun 28 21:01:02 2017, five1 this is some activity related to a taask,,,1796
-2275,Started,Wed Jun 28 21:01:02 2017, six1 this is some activity related to a taask,,,1551
-2276,Started,Wed Jun 28 21:01:02 2017, seven1 this is some activity related to a taask,,1539,
+ID,Description,End_Date,End_Time,PROJECT,Start_Date,State,TASK
+2295, one this is some activity related to a taask,17ww26.Sat,,2293,17ww26.Sat,Started,
+2305, one this is some activity related to a taask,17ww26.Sat,,,17ww26.Sat,Ended,2302
+2306, two this is some activity related to a taask,,,2300,17ww26.Sat,Started,
+2307, three this is some activity related to a taask,,,2297,17ww26.Sat,Started,
+2308, four this is some activity related to a taask,,,,17ww26.Sat,Started,2302
+2309, five this is some activity related to a taask,,,,17ww26.Sat,OnHold,2304
+2310, six this is some activity related to a taask,,,,17ww26.Sat,Started,2294
+2311, seven this is some activity related to a taask,17ww26.Sat,,,17ww26.Sat,Started,2303
+2324, one1 this is some activity related to a taask,17ww26.Sat,,,17ww26.Sat,Ended,2302
+2325, two1 this is some activity related to a taask,,,2300,17ww26.Sat,Started,
+2326, three1 this is some activity related to a taask,,,,17ww26.Sat,OnHold,2319
+2327, four1 this is some activity related to a taask,,,2300,17ww26.Sat,Started,
+2328, five1 this is some activity related to a taask,,,,17ww26.Sat,Started,2294
+2329, six1 this is some activity related to a taask,,,,17ww26.Sat,Started,2294
+2330, seven1 this is some activity related to a taask,,,2298,17ww26.Sat,Started,
+2335, one this is some activity related to a taask,,,,17ww26.Sat,Started,2304
+2345, one this is some activity related to a taask,,,2340,17ww26.Sat,Started,
+2350, one this is some activity related to a taask,,,,17ww26.Sat,Started,2341
+2360, one this is some activity related to a taask,,,2293,17ww26.Sat,Started,
+2361, two this is some activity related to a taask,,,,17ww26.Sat,OnHold,2323
+2362, three this is some activity related to a taask,17ww26.Sat,,2299,17ww26.Sat,Ended,
+2363, four this is some activity related to a taask,,,2354,17ww26.Sat,Started,
+2364, five this is some activity related to a taask,,,,17ww26.Sat,Started,2358
+2365, six this is some activity related to a taask,,,2316,17ww26.Sat,Started,
+2366, seven this is some activity related to a taask,,,,17ww26.Sat,Started,2343
+2379, one1 this is some activity related to a taask,,,,17ww26.Sat,Started,2359
+2380, two1 this is some activity related to a taask,,,2300,17ww26.Sat,Started,
+2381, three1 this is some activity related to a taask,17ww26.Sat,,2318,17ww26.Sat,Ended,
+2382, four1 this is some activity related to a taask,,,,17ww26.Sat,Started,2374
+2383, five1 this is some activity related to a taask,,,2370,17ww26.Sat,Started,
+2384, six1 this is some activity related to a taask,,,,17ww26.Sat,OnHold,2343
+2385, seven1 this is some activity related to a taask,17ww26.Sat,,2371,17ww26.Sat,Ended,
+2390, one this is some activity related to a taask,,,,17ww26.Sat,Started,2341
+2400, one this is some activity related to a taask,,,2395,17ww26.Sat,Started,
+2401, two this is some activity related to a taask,17ww26.Sat,,2348,17ww26.Sat,Ended,
+2402, three this is some activity related to a taask,17ww26.Sat,,,17ww26.Sat,Started,2322
+2403, four this is some activity related to a taask,17ww26.Sat,,,17ww26.Sat,Ended,2396
+2404, five this is some activity related to a taask,,,2392,17ww26.Sat,Started,
+2405, six this is some activity related to a taask,,,,17ww26.Sat,Started,2397
+2406, seven this is some activity related to a taask,,,2333,17ww26.Sat,Started,
+2419, one1 this is some activity related to a taask,17ww26.Sat,,,17ww26.Sat,Started,2378
+2420, two1 this is some activity related to a taask,,,,17ww26.Sat,Started,2323
+2421, three1 this is some activity related to a taask,,,2410,17ww26.Sat,OnHold,
+2422, four1 this is some activity related to a taask,,,2337,17ww26.Sat,Started,
+2423, five1 this is some activity related to a taask,,,2368,17ww26.Sat,Started,
+2424, six1 this is some activity related to a taask,17ww26.Sat,,,17ww26.Sat,Ended,2301
+2425, seven1 this is some activity related to a taask,,,,17ww26.Sat,Started,2334
+2430, one this is some activity related to a taask,,,,17ww26.Sat,Started,2334
+2440, one this is some activity related to a taask,,,,17ww26.Sat,OnHold,2377
+2441, two this is some activity related to a taask,,,2412,17ww26.Sat,OnHold,
+2442, three this is some activity related to a taask,,,2373,17ww26.Sat,Started,
+2443, four this is some activity related to a taask,17ww26.Sat,,,17ww26.Sat,Ended,2436
+2444, five this is some activity related to a taask,,,,17ww26.Sat,Started,2343
+2445, six this is some activity related to a taask,,,,17ww26.Sat,Started,2377
+2446, seven this is some activity related to a taask,,,,17ww26.Sat,Started,2438
+2459, one1 this is some activity related to a taask,17ww26.Sat,,2333,17ww26.Sat,Ended,
+2460, two1 this is some activity related to a taask,17ww26.Sat,,,17ww26.Sat,Ended,2377
+2461, three1 this is some activity related to a taask,,,2354,17ww26.Sat,Started,
+2462, four1 this is some activity related to a taask,,,,17ww26.Sat,Started,2436
+2463, five1 this is some activity related to a taask,17ww26.Sat,,,17ww26.Sat,Ended,2343
+2464, six1 this is some activity related to a taask,,,,17ww26.Sat,Started,2320
+2465, seven1 this is some activity related to a taask,,,2451,17ww26.Sat,Started,
+2470, one this is some activity related to a taask,,,2450,17ww26.Sat,Started,
+2480, one this is some activity related to a taask,17ww26.Sat,,,17ww26.Sat,Started,2439
+2481, two this is some activity related to a taask,17ww26.Sat,,,17ww26.Sat,Ended,2389
+2482, three this is some activity related to a taask,,,2293,17ww26.Sat,Started,
+2483, four this is some activity related to a taask,,,,17ww26.Sat,Started,2374
+2484, five this is some activity related to a taask,,,2371,17ww26.Sat,Started,
+2485, six this is some activity related to a taask,,,2348,17ww26.Sat,Started,
+2486, seven this is some activity related to a taask,,,,17ww26.Sat,Started,2476
+2499, one1 this is some activity related to a taask,,,2299,17ww26.Sat,Started,
+2500, two1 this is some activity related to a taask,,,,17ww26.Sat,Started,2476
+2501, three1 this is some activity related to a taask,,,2313,17ww26.Sat,OnHold,
+2502, four1 this is some activity related to a taask,,,2313,17ww26.Sat,Started,
+2503, five1 this is some activity related to a taask,17ww26.Sat,,,17ww26.Sat,Ended,2323
+2504, six1 this is some activity related to a taask,,,2451,17ww26.Sat,Started,
+2505, seven1 this is some activity related to a taask,17ww26.Sat,,,17ww26.Sat,Ended,2375
+2510, one this is some activity related to a taask,,,2451,17ww26.Sat,Started,
+2520, one this is some activity related to a taask,,,,17ww26.Sat,Started,2399
+2521, two this is some activity related to a taask,,,2428,17ww26.Sat,Started,
+2522, three this is some activity related to a taask,,,2412,17ww26.Sat,Started,
+2523, four this is some activity related to a taask,,,2474,17ww26.Sat,Started,
+2524, five this is some activity related to a taask,,,,17ww26.Sat,OnHold,2495
+2525, six this is some activity related to a taask,17ww26.Sat,,,17ww26.Sat,Started,2516
+2526, seven this is some activity related to a taask,,,2352,17ww26.Sat,Started,
+2539, one1 this is some activity related to a taask,,,2450,17ww26.Sat,Started,
+2540, two1 this is some activity related to a taask,,,,17ww26.Sat,Started,2319
+2541, three1 this is some activity related to a taask,,,,17ww26.Sat,Started,2357
+2542, four1 this is some activity related to a taask,,,2337,17ww26.Sat,Started,
+2543, five1 this is some activity related to a taask,,,2435,17ww26.Sat,Started,
+2544, six1 this is some activity related to a taask,,,2333,17ww26.Sat,Started,
+2545, seven1 this is some activity related to a taask,,,,17ww26.Sat,Started,2356
+2550, one this is some activity related to a taask,,,,17ww26.Sat,Started,2358
+2560, one this is some activity related to a taask,,,,17ww26.Sat,OnHold,2359
+2561, two this is some activity related to a taask,,,2473,17ww26.Sat,Started,
+2562, three this is some activity related to a taask,,,,17ww26.Sat,OnHold,2294
+2563, four this is some activity related to a taask,,,,17ww26.Sat,Started,2478
+2564, five this is some activity related to a taask,,,2352,17ww26.Sat,Started,
+2565, six this is some activity related to a taask,,,,17ww26.Sat,Started,2437
+2566, seven this is some activity related to a taask,17ww26.Sat,,,17ww26.Sat,Started,2342
+2579, one1 this is some activity related to a taask,,,2533,17ww26.Sat,OnHold,
+2580, two1 this is some activity related to a taask,,,,17ww26.Sat,Started,2319
+2581, three1 this is some activity related to a taask,,,,17ww26.Sat,Started,2458
+2582, four1 this is some activity related to a taask,,,2433,17ww26.Sat,Started,
+2583, five1 this is some activity related to a taask,17ww26.Sat,,2428,17ww26.Sat,Started,
+2584, six1 this is some activity related to a taask,,,2432,17ww26.Sat,OnHold,
+2585, seven1 this is some activity related to a taask,,,2355,17ww26.Sat,Started,
+2594, one this is some activity related to a taask,,,2508,17ww26.Sat,Started,
+2604, one this is some activity related to a taask,,,2592,17ww26.Sat,Started,
+2605, two this is some activity related to a taask,,,,17ww26.Sat,Started,2603
+2606, three this is some activity related to a taask,,,2596,17ww26.Sat,Started,
+2607, four this is some activity related to a taask,,,,17ww26.Sat,Started,2418
+2608, five this is some activity related to a taask,17ww26.Sat,,,17ww26.Sat,Started,2556
+2609, six this is some activity related to a taask,,,,17ww26.Sat,Started,2397
+2610, seven this is some activity related to a taask,,,2299,17ww26.Sat,Started,
+2623, one1 this is some activity related to a taask,,,,17ww26.Sat,Started,2457
+2624, two1 this is some activity related to a taask,,,,17ww26.Sat,Started,2436
+2625, three1 this is some activity related to a taask,,,2528,17ww26.Sat,Started,
+2626, four1 this is some activity related to a taask,,,,17ww26.Sat,Started,2302
+2627, five1 this is some activity related to a taask,,,2412,17ww26.Sat,Started,
+2628, six1 this is some activity related to a taask,,,,17ww26.Sat,Started,2374
+2629, seven1 this is some activity related to a taask,,,,17ww26.Sat,Started,2519
+2634, one this is some activity related to a taask,,,,17ww26.Sat,Started,2319
+2644, one this is some activity related to a taask,,,,17ww26.Sat,Started,2557
+2645, two this is some activity related to a taask,,,,17ww26.Sat,Started,2343
+2646, three this is some activity related to a taask,,,,17ww26.Sat,Started,2343
+2647, four this is some activity related to a taask,,,2298,17ww26.Sat,Started,
+2648, five this is some activity related to a taask,,,2555,17ww26.Sat,Started,
+2649, six this is some activity related to a taask,,,2475,17ww26.Sat,Started,
+2650, seven this is some activity related to a taask,,,2368,17ww26.Sat,Started,
+2663, one1 this is some activity related to a taask,,,,17ww26.Sat,Started,2415
+2664, two1 this is some activity related to a taask,,,,17ww26.Sat,Started,2334
+2665, three1 this is some activity related to a taask,,,,17ww26.Sat,Started,2643
+2666, four1 this is some activity related to a taask,,,2372,17ww26.Sat,Started,
+2667, five1 this is some activity related to a taask,,,2572,17ww26.Sat,Started,
+2668, six1 this is some activity related to a taask,,,,17ww26.Sat,Started,2658
+2669, seven1 this is some activity related to a taask,,,2300,17ww26.Sat,Started,

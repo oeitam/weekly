@@ -4,8 +4,7 @@ import numpy as np
 import pandas as pd
 import logging
 from src import defs
-import datetime as dt
-import time
+from datetime import datetime, date, time
 from ast import literal_eval
 import math
 
@@ -83,6 +82,24 @@ class Db(object):
         else:
             self.pID = cID
             return cID
+
+    def get_time_str(self):
+        d = date.today()
+        tt = d.timetuple()
+        y = str(tt[0])[2:4]
+        if tt[6] == 6:  # if a sunday, need to advance ww by one
+            ww = str(d.isocalendar()[1] + 1).zfill(2)
+        else:
+            ww = str(d.isocalendar()[1]).zfill(2)
+        wd = d.strftime('%a')
+        a = y + "ww" + ww + "." + wd
+        return a
+
+
+
+
+
+
 
     ####################################
     # setting up 4 databases
@@ -318,7 +335,7 @@ class Db(object):
         # optional from here
         #'Due_Date','Expiration_Date''Location','Context','Reminders','ACTIVITYs',
         #'Sub_TASKs','Parent_TASK',
-        l = ['Open', self.trans_description, time.ctime(), self.project_name,
+        l = ['Open', self.trans_description, self.get_time_str(), self.project_name,
              '','','','','',
              [],[],'']
         ldf = pd.DataFrame(data=[l], index=[pID], columns=defs.dft_columns)
@@ -341,7 +358,7 @@ class Db(object):
             self.error_details = 'ID {} from {} was not found'.format(self.use_this_ID_for_ref, found_in)
             logger.debug(self.error_details)
             return False
-        l = ['Started', time.ctime(), self.trans_description,
+        l = ['Started', self.get_time_str(), self.trans_description,
              ''] + couple
         ldf = pd.DataFrame(data=[l], index=[pID], columns=defs.dfa_columns)
         logger.debug(ldf.to_string())
@@ -363,7 +380,7 @@ class Db(object):
             return False
         # process
         self.dfa.loc[self.use_this_ID_for_ref, 'State'] = 'Ended'
-        self.dfa.loc[self.use_this_ID_for_ref, 'End_Time'] = time.ctime()
+        self.dfa.loc[self.use_this_ID_for_ref, 'End_Date'] = self.get_time_str()
         return True
 
     def cont_activity(self):
@@ -440,6 +457,27 @@ class Db(object):
                         df = df[df[self.list_col_name] != self.list_col_value]
                 elif self.list_col_rel == 'ninc':
                     df = df[df[self.list_col_name].str.contains(self.list_col_value)==False]
+                elif self.list_col_rel == 'range':
+                    if self.list_col_name == 'ID': # handling ID values
+                        if self.list_col_bot.isdigit() and self.list_col_top.isdigit():    #val -> val
+                            df = df.loc[int(self.list_col_bot):int(self.list_col_top)]
+                        elif self.list_col_bot.isdigit() and self.list_col_top == 'top':   #val -> top
+                            df = df.loc[int(self.list_col_bot):]
+                        elif self.list_col_bot == 'bot' and self.list_col_top.isdigit():   #bot -> val
+                            df = df.loc[:int(self.list_col_top)]
+                        elif self.list_col_bot == 'bot' and self.list_col_top == 'top':   #bot -> top
+                            pass
+                    else: #handling of range of dates
+
+
+                                #if (self.list_col_top.isdigit() or self.list_col_bot.isdigit() or
+                    #   self.list_col_top == 'top' or self.list_col_bot == 'bot'): # meaning range of IDs (hopefully)
+                    #val -> val
+                    #val -> top
+                    #bot -> val
+                    #bot -> top
+
+
 
             if self.list_resp_rows == -1 : # means this is the first time we handle the specific lsit
                 self.list_resp_rows = len(df)

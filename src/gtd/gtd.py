@@ -26,6 +26,8 @@ class Gtd(object):
             l1 = list(gdb.dfp.index.values)
             l2 = list(gdb.dft.index.values)
             l3 = l1+l2
+            if len(l3) == 0:
+                raise ValueError('for some reason, got an empty list in @0000 replacement')
             r = randint(0,len(l3))
             #gdb.use_this_ID_for_ref = l3[r]
             data = data.replace('0000',str(l3[r]).zfill(4))
@@ -35,6 +37,8 @@ class Gtd(object):
             l1 = list(gdb.dfa[gdb.dfa.State == 'Started'].index)
             l2 = list(gdb.dfa[gdb.dfa.State == 'OnHold'].index)
             l3 = l1 + l2
+            if len(l3) == 0:
+                raise ValueError('for some reason, got an empty list in @0000 replacement')
             r = randint(0,len(l3)-1)
             data = data.replace('0000', str(l3[r]).zfill(4))
             logger.debug('command after replacement: {}'.format(data))
@@ -43,6 +47,8 @@ class Gtd(object):
             l1 = list(gdb.dfa[gdb.dfa.State == 'Ended'].index)
             l2 = list(gdb.dfa[gdb.dfa.State == 'OnHold'].index)
             l3 = l1 + l2
+            if len(l3) == 0:
+                raise ValueError('for some reason, got an empty list in @0000 replacement')
             r = randint(0,len(l3)-1)
             data = data.replace('0000', str(l3[r]).zfill(4))
             logger.debug('command after replacement: {}'.format(data))
@@ -51,6 +57,8 @@ class Gtd(object):
             l1 = list(gdb.dfa[gdb.dfa.State == 'Started'].index)
             l2 = []
             l3 = l1 + l2
+            if len(l3) == 0:
+                raise ValueError('for some reason, got an empty list in @0000 replacement')
             r = randint(0,len(l3)-1)
             data = data.replace('0000', str(l3[r]).zfill(4))
             logger.debug('command after replacement: {}'.format(data))
@@ -61,6 +69,8 @@ class Gtd(object):
             l3 = list(gdb.dft.index.values)
             l4 = list(gdb.dfa.index.values)
             l5 = l1 + l2 + l3 + l4
+            if len(l5) == 0:
+                raise ValueError('for some reason, got an empty list in @0000 replacement')
             r = randint(0,len(l5)-1)
             data = data.replace('0000', str(l5[r]).zfill(4))
             logger.debug('command after replacement: {}'.format(data))

@@ -42,9 +42,9 @@ dft_columns = ['State',
                ]
 # activities
 dfa_columns = ['State',
-               'Start_Time',
+               'Start_Date',
                'Description',
-               'End_Time',
+               'End_Date',
                'TASK',
                'PROJECT'
                ]
@@ -77,9 +77,9 @@ dft_columns_to_print = ['State',
                          ]
 
 dfa_columns_to_print = ['State',
-                        'Start_Time',
+                        'Start_Date',
                         'Description',
-                        'End_Time',
+                        'End_Date',
                         #'TASK',
                         #'PROJECT'
                         ]
