@@ -281,7 +281,8 @@ prefix("stop", 20)
 prefix("halt", 20)
 prefix("list", 20)
 prefix("field", 20)
-prefix("range", 20)
+prefix("irange", 20)
+prefix("drange", 20)
 prefix("for", 20)
 prefix("limit", 20)
 prefix("col", 20)
@@ -481,16 +482,29 @@ def nud(self):
     self.secon = expression()
     return self
 
-@method(symbol("range"))
+@method(symbol("irange"))
 def nud(self):
-    logger.debug('range nud')
-    gdb.list_col_rel = 'range'
+    logger.debug('irange nud')
+    gdb.list_col_rel = 'irange'
     gdb.list_col_bot = token.value
     advance()
     gdb.list_col_top = token.value
     # this is the end of processing for this type of command
     return self
 
+@method(symbol("drange"))
+def nud(self):
+    logger.debug('drange nud')
+    gdb.list_col_rel = 'drange'
+    gdb.list_col_bot = token.value
+    advance()
+    gdb.list_col_bot += token.value
+    advance()
+    gdb.list_col_top = token.value
+    advance()
+    gdb.list_col_top += token.value
+    # this is the end of processing for this type of command
+    return self
 
 
 # symbol("+", 10); symbol("-", 10)

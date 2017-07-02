@@ -1,11 +1,12 @@
 # oeitam
 
 test_commands = [ "create megaproject Work1 | 1all projects that relate to Work at Intel go here",
-                  "list megaproject col ID range 2569 2631",
-                  "list megaproject col ID range 2569 top",
-                  "list megaproject col ID range bot 2631",
-                  "list megaproject col ID range bot top",
+                  "list activity col Start_Date drange 17ww20.Sun 17ww27.Sun",
                   "die",
+                  "list megaproject col ID irange 2569 2631",
+                  "list megaproject col ID irange 2569 top",
+                  "list megaproject col ID irange bot 2631",
+                  "list megaproject col ID irange bot top",
                   "halt @0000",
                   "stop @0000",
                   "cont @0000",

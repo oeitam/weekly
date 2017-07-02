@@ -4,10 +4,11 @@ import numpy as np
 import pandas as pd
 import logging
 from src import defs
-from datetime import datetime, date, time
+from datetime import datetime, date, time, timedelta
 from ast import literal_eval
 import math
 
+one_week = timedelta(days=7)
 
 pd.options.display.max_colwidth = 100 # 50 by defaul
 #pd.set_option('colheader_justify', 'left')
@@ -16,6 +17,13 @@ def myconv(x):
     if x is not '':
         return str(int(float(x)))
 
+def date_conv(ds):
+    ds1,ds2,ds3 = ds.partition('.')
+    st1 = defs.days_of_week[ds3]
+    r = datetime.strptime(ds1 + st1, "%yww%W-%w")
+    if ds3 == 'Sun':
+        r = r - one_week
+    return(r)
 
 logger = logging.getLogger(__name__)
 
@@ -83,8 +91,9 @@ class Db(object):
             self.pID = cID
             return cID
 
-    def get_time_str(self):
-        d = date.today()
+    # expecting date (like date.today())
+    def get_time_str(self, d = None):
+        #d = date.today()
         tt = d.timetuple()
         y = str(tt[0])[2:4]
         if tt[6] == 6:  # if a sunday, need to advance ww by one
@@ -335,7 +344,7 @@ class Db(object):
         # optional from here
         #'Due_Date','Expiration_Date''Location','Context','Reminders','ACTIVITYs',
         #'Sub_TASKs','Parent_TASK',
-        l = ['Open', self.trans_description, self.get_time_str(), self.project_name,
+        l = ['Open', self.trans_description, self.get_time_str(date.today()), self.project_name,
              '','','','','',
              [],[],'']
         ldf = pd.DataFrame(data=[l], index=[pID], columns=defs.dft_columns)
@@ -358,7 +367,7 @@ class Db(object):
             self.error_details = 'ID {} from {} was not found'.format(self.use_this_ID_for_ref, found_in)
             logger.debug(self.error_details)
             return False
-        l = ['Started', self.get_time_str(), self.trans_description,
+        l = ['Started', self.get_time_str(date.today()), self.trans_description,
              ''] + couple
         ldf = pd.DataFrame(data=[l], index=[pID], columns=defs.dfa_columns)
         logger.debug(ldf.to_string())
@@ -380,7 +389,7 @@ class Db(object):
             return False
         # process
         self.dfa.loc[self.use_this_ID_for_ref, 'State'] = 'Ended'
-        self.dfa.loc[self.use_this_ID_for_ref, 'End_Date'] = self.get_time_str()
+        self.dfa.loc[self.use_this_ID_for_ref, 'End_Date'] = self.get_time_str(date.today())
         return True
 
     def cont_activity(self):
@@ -457,7 +466,7 @@ class Db(object):
                         df = df[df[self.list_col_name] != self.list_col_value]
                 elif self.list_col_rel == 'ninc':
                     df = df[df[self.list_col_name].str.contains(self.list_col_value)==False]
-                elif self.list_col_rel == 'range':
+                elif self.list_col_rel == 'irange':
                     if self.list_col_name == 'ID': # handling ID values
                         if self.list_col_bot.isdigit() and self.list_col_top.isdigit():    #val -> val
                             df = df.loc[int(self.list_col_bot):int(self.list_col_top)]
@@ -466,11 +475,18 @@ class Db(object):
                         elif self.list_col_bot == 'bot' and self.list_col_top.isdigit():   #bot -> val
                             df = df.loc[:int(self.list_col_top)]
                         elif self.list_col_bot == 'bot' and self.list_col_top == 'top':   #bot -> top
-                            pass
-                    else: #handling of range of dates
+                            pass # actually - it is simply all
+                elif self.list_col_rel == 'drange': #handling of range of dates
+                    if self.list_col_bot != 'bot' and self.list_col_top != 'top':  # val -> val
+                        df1 = df[df[self.list_col_name].apply(date_conv) > date_conv(self.list_col_bot)].copy()
+                        print('here')
+                else:
+                    # had error
+                    pass
 
 
-                                #if (self.list_col_top.isdigit() or self.list_col_bot.isdigit() or
+
+                            #if (self.list_col_top.isdigit() or self.list_col_bot.isdigit() or
                     #   self.list_col_top == 'top' or self.list_col_bot == 'bot'): # meaning range of IDs (hopefully)
                     #val -> val
                     #val -> top
