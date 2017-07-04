@@ -1,7 +1,19 @@
 # oeitam
 
+from datetime import timedelta
+
+debug_delta = timedelta(days=0)
+
 test_commands = [ "create megaproject Work1 | 1all projects that relate to Work at Intel go here",
-                  "list activity col Start_Date drange 17ww20.Sun 17ww27.Sun",
+                  "list activity col Start_Date drange 17ww17.Sun 17ww20.Mon",
+                  "list activity col Start_Date drange 17ww17 17ww20.Mon",
+                  "list activity col Start_Date drange 17ww17.Sun 17ww20",
+                  "list activity col Start_Date drange 17ww17 17ww20",
+                  "list activity col Start_Date drange bot 17ww20.Mon",
+                  "list activity col Start_Date drange bot 17ww20",
+                  "list activity col Start_Date drange 17ww17.Sun top",
+                  "list activity col Start_Date drange 17ww17 top",
+                  "list activity col Start_Date drange bot top",
                   "die",
                   "list megaproject col ID irange 2569 2631",
                   "list megaproject col ID irange 2569 top",

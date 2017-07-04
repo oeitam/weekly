@@ -183,6 +183,10 @@ def tokenize(command):
                 symbol = symbol_table[id]
                 s = symbol()
                 s.value = value
+            elif id == "(operator)":
+                symbol = symbol_table[id]
+                s = symbol()
+                s.value = value
             else:
                 raise SyntaxError("Unknown operator (%r)" % id)
         yield s
@@ -270,6 +274,7 @@ symbol("(end)")
 
 symbol("(literal)").nud = lambda self: self
 symbol("(name)").nud = lambda self: self
+symbol("(operator)").nud = lambda self:self
 
 prefix("create", 20)
 prefix("task", 20)
@@ -294,6 +299,8 @@ prefix("columns", 20)
 prefix("states", 20)
 prefix("head", 20)
 prefix("tail", 20)
+
+symbol(".", 120)
 
 
 def method(s):
@@ -443,7 +450,7 @@ def nud(self):
     gdb.list_col_name = token.value
     advance() # over the column name
     #gdb.list_col_value = token.value # this will be overriden if we have is/inc/not
-    self.secon = expression()
+    self.second = expression()
     return self
 
 @method(symbol("is"))
@@ -452,7 +459,7 @@ def nud(self):
     gdb.list_col_value = token.value
     gdb.list_col_rel = 'is'
     #advance() # over the column name
-    self.secon = expression()
+    self.second = expression()
     return self
 
 @method(symbol("inc"))
@@ -461,7 +468,7 @@ def nud(self):
     gdb.list_col_value = token.value
     gdb.list_col_rel = 'inc'
     #advance() # over the column name
-    self.secon = expression()
+    self.second = expression()
     return self
 
 @method(symbol("not"))
@@ -470,7 +477,7 @@ def nud(self):
     gdb.list_col_value = token.value
     gdb.list_col_rel = 'not'
     #advance() # over the column name
-    self.secon = expression()
+    self.second = expression()
     return self
 
 @method(symbol("ninc"))
@@ -479,7 +486,7 @@ def nud(self):
     gdb.list_col_value = token.value
     gdb.list_col_rel = 'ninc'
     #advance() # over the column name
-    self.secon = expression()
+    self.second = expression()
     return self
 
 @method(symbol("irange"))
@@ -497,14 +504,67 @@ def nud(self):
     logger.debug('drange nud')
     gdb.list_col_rel = 'drange'
     gdb.list_col_bot = token.value
-    advance()
-    gdb.list_col_bot += token.value
+    if token.value != 'bot': # meaning we need to do some processing for the bottom
+        advance()
+        gdb.list_col_bot += token.value
+        advance()
+        if token.id == '.': # need to process a day
+            gdb.list_col_bot += '.'
+            advance()
+            gdb.list_col_bot += token.value
+        else:
+            gdb.list_col_bot += '.Sun' # this is the default
+    # now handle the top
     advance()
     gdb.list_col_top = token.value
-    advance()
-    gdb.list_col_top += token.value
+    if token.value != 'top':  # meaning we need to do some processing for the bottom
+        advance()
+        gdb.list_col_top += token.value
+        advance()
+        if token.id == '.':  # need to process a day
+            gdb.list_col_top += '.'
+            advance()
+            gdb.list_col_top += token.value
+        else:
+            gdb.list_col_top += '.Sun'  # this is the default
+            # now handle the top
+
+    #advance()
+    #gdb.list_col_bot += token.value
+    #advance()
+    #gdb.list_col_top = token.value
+    #advance()
+    #gdb.list_col_top += token.value
+    #self.second = expression()
     # this is the end of processing for this type of command
     return self
+
+@method(symbol("."))
+def led(self, left):
+    logger.debug('led .')
+    return self
+    # if gdb.list_col_rel == 'drange':
+    #     if token.id != "(name)":
+    #         SyntaxError("Expected an attribute name.")
+    #     # find out if this is 'bot' or 'top
+    #     if gdb.list_col_top == 'clean': # meaning - we are dealing with bot here
+    #         gdb.list_col_bot += "." + token.value
+    #     # vname = left.first
+    #     #vname = left.value
+    #     # field = left.second
+    #     #field = token.value
+    #     # print "DOT LOOKUP %s.%s" % (vname, field)
+    #     #record = lookup_variable_value(vname, field)
+    #     # print "Got ", record
+    #     #if record:
+    #     #    self.first = vname
+    #     #    self.second = record
+    #     self.second = expression()
+    #     return self
+    # else:
+    #     # some error
+    #     pass
+
 
 
 # symbol("+", 10); symbol("-", 10)

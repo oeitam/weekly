@@ -4,6 +4,8 @@ import numpy as np
 import pandas as pd
 import logging
 from src import defs
+from test import test_defs
+
 from datetime import datetime, date, time, timedelta
 from ast import literal_eval
 import math
@@ -81,8 +83,7 @@ class Db(object):
         cID = int(fh.read())
         fh.seek(0)
         fh.write(str(cID+1)) # increase by 1 for next time
-        if mode == 1:
-            logger.debug('Starting with ID {}'.format(cID))
+        if mode == 1:logger.debug('Starting with ID {}'.format(cID))
         logger.debug('ID is: {}'.format(cID))
         fh.close()
         if mode == 1:
@@ -94,6 +95,9 @@ class Db(object):
     # expecting date (like date.today())
     def get_time_str(self, d = None):
         #d = date.today()
+        if d is None:
+            d = date.today()
+        d = d - test_defs.debug_delta
         tt = d.timetuple()
         y = str(tt[0])[2:4]
         if tt[6] == 6:  # if a sunday, need to advance ww by one
@@ -478,8 +482,15 @@ class Db(object):
                             pass # actually - it is simply all
                 elif self.list_col_rel == 'drange': #handling of range of dates
                     if self.list_col_bot != 'bot' and self.list_col_top != 'top':  # val -> val
-                        df1 = df[df[self.list_col_name].apply(date_conv) > date_conv(self.list_col_bot)].copy()
-                        print('here')
+                        df1 = df[df[self.list_col_name].apply(date_conv) >= date_conv(self.list_col_bot)].copy()
+                        df2 = df[df[self.list_col_name].apply(date_conv) <= date_conv(self.list_col_top)].copy()
+                        df = pd.merge(df1,df2)
+                    elif self.list_col_bot != 'bot' and self.list_col_top == 'top':  # val -> top
+                        df = df[df[self.list_col_name].apply(date_conv) >= date_conv(self.list_col_bot)]
+                    elif self.list_col_bot == 'bot' and self.list_col_top != 'top':  # bot -> val
+                        df = df[df[self.list_col_name].apply(date_conv) <= date_conv(self.list_col_bot)]
+                    elif self.list_col_bot != 'bot' and self.list_col_top == 'top':  # bot -> top
+                        pass
                 else:
                     # had error
                     pass
