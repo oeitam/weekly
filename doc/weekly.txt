@@ -144,17 +144,24 @@ List <Item (TASK, ACTIVITY, ...) | <criteria>
     *list m/p/t/a limit [xx = 10 by default]
     *list next [after limit, but not necessarily]
     ****list m/p/t/a col[umn] col_name is/inc/not/ninc yyyy
-    list m/p/t/a col[umn] col_name range low high
+    *list m/p/t/a col[umn] col_name range low high
       low high => ID, time
       bot[tom] - the lowers possible low
       top      - the highest possible high
-    list m/p/t/a for m/p/t/a nnnn
-    list m/p/t/a columns
-    list m/p/t/a states
-    list m/p/t/a head [xx]
-    list m/p/t/a tail [xx]
-    list m/p s ==> list all uniqe megaprojects and projects
-    list a/t wwxx => lists activities for work week for the last 12 months
+    *list m/p/t/a for m/p/t/a nnnn
+    *list m for p nnnn
+    *list p for m nnnn
+    *list t for p nnnn
+    *list a for p nnnn
+    *list a for t nnnn
+    *list m/p/t/a columns
+    *list m/p/t/a states
+    <><>list m/p/t/a head [xx]
+    <><>list m/p/t/a tail [xx]
+    <><>list m/p s ==> list all uniqe megaprojects and projects
+    *list a/t wwxx => lists activities for work week for the last 12 months
+    list search | <mw> [regular expression search all over]
+    --
     constructs, can be combined:
     field in yyyy
     field in range low high

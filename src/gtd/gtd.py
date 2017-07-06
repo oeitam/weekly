@@ -299,6 +299,8 @@ prefix("columns", 20)
 prefix("states", 20)
 prefix("head", 20)
 prefix("tail", 20)
+prefix("columns", 20)
+prefix("states", 20)
 
 symbol(".", 120)
 
@@ -422,15 +424,21 @@ def nud(self):
     elif token.value == 'activity':
         gdb.transaction_is('list activity')
         advance()
+    elif token.value == 'search':
+        gdb.transaction_is('list search')
+        # wrap it up
+        return self
     elif token.id == '(end)':
         gdb.keep_context = True
-        # do not set the transaction type, keep it as before
-        #gdb.transaction_is('only list')
-        #no need to advance()
+
     if token.id != "(end)":
-        self.second = expression() # continue process
+        # if this is listing for ww - need to continue processing
+        if 'ww' in token.value:
+            gdb.list_ww = token.value
+        else:
+            self.second = expression() # continue process
     else:
-        pass # start folding back teh recursion
+        pass # do nothing - that is ==> start folding back teh recursion
     return self
 
 @method(symbol("limit"))
@@ -512,10 +520,14 @@ def nud(self):
             gdb.list_col_bot += '.'
             advance()
             gdb.list_col_bot += token.value
+            advance()
         else:
             gdb.list_col_bot += '.Sun' # this is the default
+    else:
+        advance()
+
     # now handle the top
-    advance()
+    #advance()
     gdb.list_col_top = token.value
     if token.value != 'top':  # meaning we need to do some processing for the bottom
         advance()
@@ -528,282 +540,41 @@ def nud(self):
         else:
             gdb.list_col_top += '.Sun'  # this is the default
             # now handle the top
-
-    #advance()
-    #gdb.list_col_bot += token.value
-    #advance()
-    #gdb.list_col_top = token.value
-    #advance()
-    #gdb.list_col_top += token.value
-    #self.second = expression()
-    # this is the end of processing for this type of command
     return self
 
 @method(symbol("."))
 def led(self, left):
     logger.debug('led .')
     return self
-    # if gdb.list_col_rel == 'drange':
-    #     if token.id != "(name)":
-    #         SyntaxError("Expected an attribute name.")
-    #     # find out if this is 'bot' or 'top
-    #     if gdb.list_col_top == 'clean': # meaning - we are dealing with bot here
-    #         gdb.list_col_bot += "." + token.value
-    #     # vname = left.first
-    #     #vname = left.value
-    #     # field = left.second
-    #     #field = token.value
-    #     # print "DOT LOOKUP %s.%s" % (vname, field)
-    #     #record = lookup_variable_value(vname, field)
-    #     # print "Got ", record
-    #     #if record:
-    #     #    self.first = vname
-    #     #    self.second = record
-    #     self.second = expression()
-    #     return self
-    # else:
-    #     # some error
-    #     pass
 
 
+@method(symbol("for"))
+def nud(self):
+    logger.debug('nud for')
+    # replace transaction
+    st1,st2,st3 = gdb.transaction_type.partition(' ') #st3 holds the what to list (megaproject, project, etc)
+    gdb.transaction_is('list for')
+    gdb.list_what_for = st3
+    if token.value:
+        gdb.list_for_what = token.value
+    else:
+        gdb.list_for_what = token.id # this is special handling for the case of 'task' that is not processed like others
+    advance()
+    if gdb.list_for_what == 'task':
+        advance()
+    gdb.list_for_val = token.value
+    return self
 
-# symbol("+", 10); symbol("-", 10)
-# symbol("*", 20); symbol("/", 20)
-# symbol("**", 30)
+@method(symbol("columns"))
+def nud(self):
+    logger.debug("nud columns")
+    gdb.list_attr = 'columns'
+    # that's it. done
+    return self
 
-#
-# #print symbol_table
-#
-# def infix(id, bp):
-#     def led(self, left):
-#         self.first = left
-#         self.second = expression(bp)
-#         return self
-#     symbol(id, bp).led = led
-#
-# infix("+", 10); infix("-", 10)
-# infix("*", 20); infix("/", 20)
-#
-# def prefix(id, bp):
-#     def nud(self):
-#         self.first = expression(bp)
-#         self.second = None
-#         return self
-#     symbol(id).nud = nud
-#
-# prefix("+", 100); prefix("-", 100)
-#
-# def infix_r(id, bp):
-#     def led(self, left):
-#         self.first = left
-#         self.second = expression(bp-1)
-#         return self
-#     symbol(id, bp).led = led
-#
-# infix_r("**", 30)
-#
-# symbol("(literal)").nud = lambda self: self
-#
-#
-# symbol("lambda", 20)
-# symbol("if", 20) # ternary form
-#
-# infix_r("or", 30); infix_r("and", 40); prefix("not", 50)
-#
-# infix("in", 60); infix("not", 60) # in, not in
-# infix("is", 60) # is, is not
-# infix("<", 60); infix("<=", 60)
-# infix(">", 60); infix(">=", 60)
-# infix("<>", 60); infix("!=", 60); infix("==", 60)
-#
-# infix("|", 70); infix("^", 80); infix("&", 90)
-#
-# infix("<<", 100); infix(">>", 100)
-#
-# infix("+", 110); infix("-", 110)
-#
-# infix("*", 120); infix("/", 120); infix("//", 120)
-# infix("%", 120)
-#
-# prefix("-", 130); prefix("+", 130); prefix("~", 130)
-#
-# infix_r("**", 140)
-#
-# symbol(".", 150); symbol("[", 150); symbol("(", 150)
-#
-# symbol("(literal)").nud = lambda self: self
-# symbol("(name)").nud = lambda self: self
-# symbol("(end)")
-#
-# def nud(self):
-#     expr = expression()
-#     advance(")")
-#     return expr
-# symbol("(").nud = nud
-#
-#
-#
-# symbol(")")
-#
-# def led(self, left):
-#     self.first = left
-#     self.second = expression()
-#     try:
-#         advance("else")
-#     except:
-#         SyntaxError
-#     else:
-#         self.third = expression()
-#     return self
-# symbol("if").led = led
-#
-# symbol("else")
-#
-# def led(self, left):
-#     if token.id != "(name)":
-#         SyntaxError("Expected an attribute name.")
-#     self.first = left
-#     self.second = token
-#     advance()
-#     return self
-# symbol(".").led = led
-#
-# symbol("]")
-#
-# def led(self, left):
-#     self.first = left
-#     self.second = expression()
-#     advance("]")
-#     return self
-# symbol("[").led = led
-#
-# def method(s):
-#     assert issubclass(s, symbol_base)
-#     def bind(fn):
-#         setattr(s, fn.__name__, fn)
-#     return bind
-#
-# #symbol(")");
-# symbol(",")
-#
-# @method(symbol("("))
-# def led(self, left):
-#     self.first = left
-#     self.second = []
-#     if token.id != ")":
-#         while 1:
-#             self.second.append(expression())
-#             if token.id != ",":
-#                 break
-#             advance(",")
-#     advance(")")
-#     return self
-#
-# symbol(":")
-#
-# @method(symbol("lambda"))
-# def nud(self):
-#     self.first = []
-#     if token.id != ":":
-#         argument_list(self.first)
-#     advance(":")
-#     self.second = expression()
-#     return self
-#
-# def argument_list(list):
-#     while 1:
-#         if token.id != "(name)":
-#             SyntaxError("Expected an argument name.")
-#         list.append(token)
-#         advance()
-#         if token.id != ",":
-#             break
-#         advance(",")
-#
-#
-# def constant(id):
-#     @method(symbol(id))
-#     def nud(self):
-#         self.id = "(literal)"
-#         self.value = id
-#         return self
-#
-# constant("None")
-# constant("True")
-# constant("False")
-#
-# @method(symbol("not"))
-# def led(self, left):
-#     if token.id != "in":
-#         raise SyntaxError("Invalid syntax")
-#     advance()
-#     self.id = "not in"
-#     self.first = left
-#     self.second = expression(60)
-#     return self
-#
-# @method(symbol("is"))
-# def led(self, left):
-#     if token.id == "not":
-#         advance()
-#         self.id = "is not"
-#     self.first = left
-#     self.second = expression(60)
-#     return self
-#
-# @method(symbol("("))
-# def nud(self):
-#     self.first = []
-#     comma = False
-#     if token.id != ")":
-#         while 1:
-#             if token.id == ")":
-#                 break
-#             self.first.append(expression())
-#             if token.id != ",":
-#                 break
-#             comma = True
-#             advance(",")
-#     advance(")")
-#     if not self.first or comma:
-#         return self # tuple
-#     else:
-#         return self.first[0]
-#
-# symbol("]")
-#
-# @method(symbol("["))
-# def nud(self):
-#     self.first = []
-#     if token.id != "]":
-#         while 1:
-#             if token.id == "]":
-#                 break
-#             self.first.append(expression())
-#             if token.id != ",":
-#                 break
-#             advance(",")
-#     advance("]")
-#     return self
-#
-# symbol("}"); symbol(":")
-#
-# @method(symbol("{"))
-# def nud(self):
-#     self.first = []
-#     if token.id != "}":
-#         while 1:
-#             if token.id == "}":
-#                 break
-#             self.first.append(expression())
-#             advance(":")
-#             self.first.append(expression())
-#             if token.id != ",":
-#                 break
-#             advance(",")
-#     advance("}")
-#     return self
-
-
-
-
+@method(symbol("states"))
+def nud(self):
+    logger.debug("nud states")
+    gdb.list_attr = 'states'
+    # that's it. done
+    return self

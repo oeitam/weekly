@@ -21,11 +21,19 @@ def myconv(x):
 
 def date_conv(ds):
     ds1,ds2,ds3 = ds.partition('.')
-    st1 = defs.days_of_week[ds3]
+    st1 = defs.days_of_week.get(ds3, None)
+    if not st1: # meaning - None
+        raise ValueError
     r = datetime.strptime(ds1 + st1, "%yww%W-%w")
     if ds3 == 'Sun':
         r = r - one_week
     return(r)
+
+def mycnv2(x,other_df,str_to_cmp):
+    if type(x) == str:
+        return other_df.loc[int(x)]['Name'] == str_to_cmp
+    else:
+        return False
 
 logger = logging.getLogger(__name__)
 
@@ -64,7 +72,8 @@ class Db(object):
                                   'list project'       : self.list_glob,
                                   'list task'          : self.list_glob,
                                   'list activity'      : self.list_glob,
-                                  #'list megaproject'   : self.list_megaproject,
+                                  'list for'           : self.list_glob,
+                                  'list search'        : self.list_search
                                   #'list project'       : self.list_project,
                                   #'list task'          : self.list_task,
                                   #'list activity'      : self.list_activity,
@@ -176,6 +185,11 @@ class Db(object):
             self.list_col_rel           = 'clean'
             self.list_col_bot           = 'clean'
             self.list_col_top           = 'clean'
+            self.list_what_for          = 'clean'
+            self.list_for_what          = 'clean'
+            self.list_for_val           = 'clean'
+            self.list_attr              = 'clean'
+            self.list_ww                = 'clean'
         if sec2:
             self.list_resp_row_limit    = 10
             self.list_resp_rows         = -1
@@ -449,6 +463,10 @@ class Db(object):
         return True
 
     def list_glob(self):
+        # check if listing attributes
+        if self.list_attr != 'clean':
+            self.list_attributes()
+            return True
         # set the right database
         if self.transaction_type == 'list megaproject':
             which_db = 'dfm'
@@ -458,6 +476,19 @@ class Db(object):
             which_db = 'dft'
         elif self.transaction_type == 'list activity':
             which_db = 'dfa'
+        elif self.transaction_type == 'list for' :
+            if self.list_what_for == 'megaproject':
+                which_db = 'dfm'
+            elif self.list_what_for == 'project':
+                which_db = 'dfp'
+            elif self.list_what_for == 'task':
+                which_db = 'dft'
+            elif self.list_what_for == 'activity':
+                which_db = 'dfa'
+            else:
+                which_db = 'dfm'  # stam
+        else:
+            which_db = 'dfm' # stam
         df = self.db_table[which_db]
 
         if df is not None:
@@ -488,23 +519,15 @@ class Db(object):
                     elif self.list_col_bot != 'bot' and self.list_col_top == 'top':  # val -> top
                         df = df[df[self.list_col_name].apply(date_conv) >= date_conv(self.list_col_bot)]
                     elif self.list_col_bot == 'bot' and self.list_col_top != 'top':  # bot -> val
-                        df = df[df[self.list_col_name].apply(date_conv) <= date_conv(self.list_col_bot)]
+                        df = df[df[self.list_col_name].apply(date_conv) <= date_conv(self.list_col_top)]
                     elif self.list_col_bot != 'bot' and self.list_col_top == 'top':  # bot -> top
                         pass
                 else:
-                    # had error
-                    pass
-
-
-
-                            #if (self.list_col_top.isdigit() or self.list_col_bot.isdigit() or
-                    #   self.list_col_top == 'top' or self.list_col_bot == 'bot'): # meaning range of IDs (hopefully)
-                    #val -> val
-                    #val -> top
-                    #bot -> val
-                    #bot -> top
-
-
+                    self.had_error()
+            elif self.transaction_type == 'list for':
+                df = self.list_for()
+            elif self.list_ww != 'clean':
+                df = df[df['Start_Date'].str.contains(self.list_ww)]
 
             if self.list_resp_rows == -1 : # means this is the first time we handle the specific lsit
                 self.list_resp_rows = len(df)
@@ -513,17 +536,10 @@ class Db(object):
                 return True
             t1 = self.list_resp_rows
             t2 = max(self.list_resp_rows - self.list_resp_row_limit ,0)
-            #if self.list_col_name != 'clean':
-            #    if self.list_col_rel == 'is':
-            #        self.list_resp = df[df[self.list_col_name] == self.list_col_value][t2:t1].to_string(
-            #            # na_rep='N/A', float_format=conv, index_names=True, justify='left')
-            #            columns=defs.columns_to_print_table[which_db],
-            #            na_rep='N/A', float_format=conv, index_names=True, justify='left')
-            #else:
-            self.list_resp = df[t2:t1].to_string(#na_rep='N/A', float_format=conv, index_names=True, justify='left')
+            self.list_resp = df[t2:t1].to_string(
                 columns=defs.columns_to_print_table[which_db],
                 na_rep='N/A', float_format=conv, index_names=True, justify='left')
-            self.list_resp = "Showing items {} to {}:\n".format(t2,t1) + self.list_resp
+            self.list_resp = "Showing items {} to {}:\n".format(t2,max(t1-1,0)) + self.list_resp
             self.list_resp_rows = t2
         else:  # did not find it
             self.error_details = 'No megaprojects to list'
@@ -531,61 +547,51 @@ class Db(object):
             return False
         return True
 
+    # process for the list for command, and return a df that corresponds to the search
+    def list_for(self):
+        if self.list_what_for == 'megaproject' and self.list_for_what == 'project':
+            df = self.dfm[self.dfm['PROJECTs_List'].apply(lambda x: self.list_for_val in x)]
+        elif self.list_what_for == 'project' and self.list_for_what == 'megaproject':
+            df = self.dfp[self.dfp['MEGAPROJECT'] == self.list_for_val]
+        elif self.list_what_for == 'task' and self.list_for_what == 'project':
+            df = self.dft[self.dft['PROJECT'] == self.list_for_val]
+        elif self.list_what_for == 'activity' and self.list_for_what == 'project':
+            df = self.dfa[self.dfa['PROJECT'].apply(mycnv2,args=(self.dfp,self.list_for_val))]
+        elif self.list_what_for == 'activity' and self.list_for_what == 'task':
+            if not self.list_for_val.isdigit():
+                self.had_error()
+            df = self.dfa[self.dfa['TASK'] == self.list_for_val]
+        return df
+
+    # print attributes
+    def list_attributes(self):
+        if self.list_attr == 'columns':
+            s1,s2,wtp = self.transaction_type.partition(' ')
+            ltp = defs.all_col[wtp]
+            self.list_resp = "Showing columns for {}s:\n".format(wtp)
+            for i in ltp:
+                self.list_resp += i + '\n'
+            #
+        elif self.list_attr == 'states':
+            s1, s2, wtp = self.transaction_type.partition(' ')
+            dtp = defs.all_stat[wtp]
+            self.list_resp = "Showing states for {}s:\n".format(wtp)
+            for i in dtp.keys():
+                self.list_resp += (i + " : " + dtp[i] + '\n')
+
+
+    # global search
+    # the search for value is in self.transaction_description
+    def list_search(self):
+        self.list_resp = 'Searching for {}:\n'.format(self.trans_description)
+        for db_name in ['dfm', 'dfp', 'dft', 'dfa']:
+            self.list_resp += "Results from {}\n".format(dm_names[df_name])
+            df = self.db_table[db_name]
 
 
 
-    #########################################################################################
-    # def list_megaproject(self):
-    #     if self.dfm is not None:
-    #         if self.list_resp_rows == -1 : # means this is the first time we handle the specific lsit
-    #             self.list_resp_rows = len(self.dfm)
-    #         if self.list_resp_rows == 0 : # meaning-  we finished showing all
-    #             self.list_resp = "No more data to show"
-    #             return True
-    #         t1 = self.list_resp_rows
-    #         t2 = max(self.list_resp_rows - self.list_resp_row_limit ,0)
-    #         self.list_resp = self.dfm[t2:t1].to_string(#na_rep='N/A', float_format=conv, index_names=True, justify='left')
-    #             columns=defs.dfm_columns_to_print,
-    #             na_rep='N/A', float_format=conv, index_names=True, justify='left')
-    #         self.list_resp = "Showing items {} to {}:".format(t2,t1) + self.list_resp
-    #         self.list_resp_rows = t2
-    #     else:  # did not find it
-    #         self.error_details = 'No megaprojects to list'
-    #         logger.debug(self.error_details)
-    #         return False
-    #     return True
-    #
-    # def list_project(self):
-    #     if self.dfp is not None:
-    #         self.list_resp = self.dfp.to_string(#na_rep='N/A', float_format=conv, index_names=True, justify='left')
-    #             columns=defs.dfp_columns_to_print,
-    #             na_rep='N/A', float_format=conv, index_names=True, justify='left')
-    #     else:  # did not find it
-    #         self.error_details = 'No projects to list'
-    #         logger.debug(self.error_details)
-    #         return False
-    #     return True
-    #
-    # def list_task(self):
-    #     if self.dft is not None:
-    #         self.list_resp = self.dft.to_string(
-    #             # na_rep='N/A', float_format=conv, index_names=True, justify='left')
-    #             columns=defs.dft_columns_to_print,
-    #             na_rep='N/A', float_format=conv, index_names=True, justify='left')
-    #     else:  # did not find it
-    #         self.error_details = 'No tasks to list'
-    #         logger.debug(self.error_details)
-    #         return False
-    #     return True
-    #
-    # def list_activity(self):
-    #     if self.dfa is not None:
-    #         self.list_resp = self.dfa.to_string(
-    #             # na_rep='N/A', float_format=conv, index_names=True, justify='left')
-    #             columns=defs.dfa_columns_to_print,
-    #             na_rep='N/A', float_format=conv, index_names=True, justify='left')
-    #     else:  # did not find it
-    #         self.error_details = 'No activities to list'
-    #         logger.debug(self.error_details)
-    #         return False
-    #     return True
+
+
+
+
+

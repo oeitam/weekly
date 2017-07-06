@@ -3,6 +3,7 @@
 import sys
 import logging
 from src.db import db as database
+
 from src.gtd import gtd as gettingthingsdone
 from src.server import server as serverinst
 from src import defs

@@ -45,7 +45,7 @@ class Server(object):
         sl = "{:0>4}:".format(l)
         slm = sl + return_message
         logger.debug('return_message: %s', slm)
-        print("--" + slm + "--")
+        #print("--" + slm + "--")
         return slm
 
 

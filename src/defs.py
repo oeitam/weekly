@@ -36,7 +36,7 @@ dfp_columns = ['Name',
 # tasks
 dft_columns = ['State',
                'Description',
-               'Creation_Date',
+               'Start_Date',
                'PROJECT',
                # optional from here
                'Due_Date',
@@ -56,6 +56,13 @@ dfa_columns = ['State',
                'TASK',
                'PROJECT'
                ]
+
+all_col = { 'megaproject' : dfm_columns ,
+            'project'     : dfp_columns ,
+            'task'        : dft_columns ,
+            'activity'    : dfa_columns ,
+            }
+
 # columns to print
 dfm_columns_to_print = ['Name',
                         'State',
@@ -71,7 +78,7 @@ dfp_columns_to_print = ['Name',
 # tasks
 dft_columns_to_print = ['State',
                         'Description',
-                        'Creation_Date',
+                        'Start_Date',
                         'PROJECT',
                         # optional from here
                         'Due_Date',
@@ -109,25 +116,30 @@ df_columns = { 'dfm': dfm_columns,
 
 
 # states definitions (all transitions are legel)
-MEGAPROJ_states  = {'On' : 'The MEGAPROJECT is open',
-                    'Off': 'The MEGAPROJECT is closed',
-                    }
+megaproject_states  = {'On' : 'The MEGAPROJECT is open',
+                       'Off': 'The MEGAPROJECT is closed',
+                       }
 
-PROJECT_states   = {'Started' : 'The PROJECT started rolling',
+project_states   = {'Started' : 'The PROJECT started rolling',
                     'OnHold' : 'The PROJECT is not active - so nothin in it can change.',
                     'Ended'   : 'The project is concluded, done, finished.',
                     }
 
-TASK_states      = {'Open'   : 'The TASK is created and may be on execution',
+task_states      = {'Open'   : 'The TASK is created and may be on execution',
                     'OnHold': 'Execution on this TASK is stopped',
                     'Closed' : 'The TASK is completed',
                     }
 
-ACTIVITY_states  = {'Started': 'The TASK is created and may be on execution',
+activity_states  = {'Started': 'The TASK is created and may be on execution',
                     'OnHold': 'Execution on this TASK is stopped',
                     'Ended'  : 'The TASK is completed',
                     }
 
+all_stat = { 'megaproject' : megaproject_states,
+             'project'     : project_states,
+             'task'        : task_states,
+             'activity'    : activity_states,
+            }
 
 ###############
 
@@ -157,6 +169,12 @@ MEGAPROJ = {
     'work': 'projects that belong to work'
 }
 
+# databases name
+db_names = {'dfm' : 'Megaprojects DataFrame',
+            'dfp' : 'Projects DataFrame',
+            'dft' : 'Tasks DataFrame',
+            'dfa' : 'Activities DataFrame',
+            }
 # ====================================================
 
 
