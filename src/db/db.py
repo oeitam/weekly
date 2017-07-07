@@ -35,6 +35,14 @@ def mycnv2(x,other_df,str_to_cmp):
     else:
         return False
 
+
+def search_in_df(x,list_to_fill,pat):
+    for i in x.str.contains(pat):
+        if i is True:
+            list_to_fill.append(int(x.name))
+            return True
+    return False
+
 logger = logging.getLogger(__name__)
 
 conv = lambda x: str(int(x)) if not math.isnan(x) else 'N/A'
@@ -381,6 +389,9 @@ class Db(object):
         elif self.use_this_ID_for_ref in self.dft.index.values :
             found_in = 'tasks'
             couple = [str(int(self.use_this_ID_for_ref)), ""]
+        elif self.use_this_ID_for_ref == 0: # indicating - ci or co (or non related activity)
+            found_in = 'orphan activity'
+            couple = ['','']
         else: #found none
             self.error_details = 'ID {} from {} was not found'.format(self.use_this_ID_for_ref, found_in)
             logger.debug(self.error_details)
@@ -536,9 +547,7 @@ class Db(object):
                 return True
             t1 = self.list_resp_rows
             t2 = max(self.list_resp_rows - self.list_resp_row_limit ,0)
-            self.list_resp = df[t2:t1].to_string(
-                columns=defs.columns_to_print_table[which_db],
-                na_rep='N/A', float_format=conv, index_names=True, justify='left')
+            self.list_resp = self.df_to_list_resp(df[t2:t1], which_db)
             self.list_resp = "Showing items {} to {}:\n".format(t2,max(t1-1,0)) + self.list_resp
             self.list_resp_rows = t2
         else:  # did not find it
@@ -546,6 +555,13 @@ class Db(object):
             logger.debug(self.error_details)
             return False
         return True
+
+    def df_to_list_resp(self, df, which_db):
+        s = df.to_string(
+                columns=defs.columns_to_print_table[which_db],
+                na_rep='N/A', float_format=conv, index_names=True, justify='left')
+        s = s + '\n'
+        return s
 
     # process for the list for command, and return a df that corresponds to the search
     def list_for(self):
@@ -584,9 +600,17 @@ class Db(object):
     # the search for value is in self.transaction_description
     def list_search(self):
         self.list_resp = 'Searching for {}:\n'.format(self.trans_description)
-        for db_name in ['dfm', 'dfp', 'dft', 'dfa']:
-            self.list_resp += "Results from {}\n".format(dm_names[df_name])
-            df = self.db_table[db_name]
+        for df_name in ['dfm', 'dfp', 'dft', 'dfa']:
+            self.list_resp += "\nResults from {}\n".format(defs.db_names[df_name])
+            df = self.db_table[df_name]
+            l = []
+            df.apply(search_in_df, axis=1, args = (l,self.trans_description.lstrip()))
+            if len(l) == 0: # nothing found
+                self.list_resp += 'well ... nothing found here\n'
+            else:
+                df = df.loc[l]
+                self.list_resp += self.df_to_list_resp(df, df_name)
+        return True
 
 
 

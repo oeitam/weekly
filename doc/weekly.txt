@@ -115,7 +115,7 @@ return:
 Completion report, including old value and new value
 
 command:
-Start @<ID of a Task or a project> #<description of the activity mw>
+Start @<ID of a Task or a project or 0 (for non affiliated activity)> #<description of the activity mw>
 return:
 ACTIVITY ID, Start time, info from related task
 
@@ -160,7 +160,7 @@ List <Item (TASK, ACTIVITY, ...) | <criteria>
     <><>list m/p/t/a tail [xx]
     <><>list m/p s ==> list all uniqe megaprojects and projects
     *list a/t wwxx => lists activities for work week for the last 12 months
-    list search | <mw> [regular expression search all over]
+    *list search | <mw> [regular expression search all over]
     --
     constructs, can be combined:
     field in yyyy

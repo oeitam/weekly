@@ -256,3 +256,5 @@ ID,Description,End_Date,End_Time,PROJECT,Start_Date,State,TASK
 3075, five1 this is some activity related to a taask,,,2315,17ww17.Tue,Started,
 3076, six1 this is some activity related to a taask,,,,17ww17.Tue,Started,2359
 3077, seven1 this is some activity related to a taask,,,,17ww17.Tue,Started,2848
+3164," some activity, not project or task",,,,17ww27.Fri,Started,
+3166," some activity, not project or task",,,,17ww27.Fri,Started,

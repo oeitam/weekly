@@ -5,8 +5,9 @@ from datetime import timedelta
 debug_delta = timedelta(days=0)
 
 test_commands = [
-    "list search | ww17",
+    "start @0 | some activity, not project or task",
     "die",
+    "list search | ww26",
     "list activity ww17",
     "list activity ww18",
     "list activity ww19",
