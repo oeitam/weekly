@@ -30,7 +30,7 @@ def date_conv(ds):
     return(r)
 
 def mycnv2(x,other_df,str_to_cmp):
-    if type(x) == str:
+    if type(x) == str and x != '':
         return other_df.loc[int(x)]['Name'] == str_to_cmp
     else:
         return False

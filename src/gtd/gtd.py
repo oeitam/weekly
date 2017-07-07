@@ -433,7 +433,7 @@ def nud(self):
 
     if token.id != "(end)":
         # if this is listing for ww - need to continue processing
-        if 'ww' in token.value:
+        if token.value and 'ww' in token.value:
             gdb.list_ww = token.value
         else:
             self.second = expression() # continue process
