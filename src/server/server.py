@@ -20,7 +20,7 @@ class Server(object):
 
     # start_the_client method starts the client seperate process
     def start_the_client(self):
-        if defs.mode == 'direct':
+        if defs.mode == 'direct' or defs.mode == 'prod':
             return
         print("Launching the clinet")
         pc = Popen([sys.executable, 'server/client_script.py'],
@@ -83,7 +83,7 @@ class Server(object):
                 while True:
                     data = connection.recv(1024)
                     print('recieved "%s"' % data.decode(), file=sys.stderr)
-                    if (data.decode() == 'die'):
+                    if ('die' in data.decode()):
                         print('server: Dieing!!!')
                         #raise
                         break

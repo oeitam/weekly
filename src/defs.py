@@ -7,9 +7,9 @@
 #        'two': 'mode two',
 #        }
 
-#mode = 'socket'
-mode = 'direct'
-#mode = 'prod'
+sel = 2
+#         -0-        -1-      -2-
+mode = ['socket', 'direct', 'prod' ][sel]
 
 days_of_week = {'Sun': '-0',
                 'Mon': '-1',
