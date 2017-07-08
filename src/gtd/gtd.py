@@ -30,7 +30,7 @@ class Gtd(object):
                 raise ValueError('for some reason, got an empty list in @0000 replacement')
             r = randint(0,len(l3))
             #gdb.use_this_ID_for_ref = l3[r]
-            data = data.replace('0000',str(l3[r]).zfill(4))
+            data = data.replace('00000000',str(l3[r]).zfill(8))
             logger.debug('command after replacement: {}'.format(data))
         elif r'stop @' in data:
             #list(g[g.State == 'Closed']['ID'])
@@ -40,7 +40,7 @@ class Gtd(object):
             if len(l3) == 0:
                 raise ValueError('for some reason, got an empty list in @0000 replacement')
             r = randint(0,len(l3)-1)
-            data = data.replace('0000', str(l3[r]).zfill(4))
+            data = data.replace('00000000', str(l3[r]).zfill(8))
             logger.debug('command after replacement: {}'.format(data))
         elif r'cont @' in data:
             #list(g[g.State == 'Closed']['ID'])
@@ -50,7 +50,7 @@ class Gtd(object):
             if len(l3) == 0:
                 raise ValueError('for some reason, got an empty list in @0000 replacement')
             r = randint(0,len(l3)-1)
-            data = data.replace('0000', str(l3[r]).zfill(4))
+            data = data.replace('00000000', str(l3[r]).zfill(8))
             logger.debug('command after replacement: {}'.format(data))
         elif r'halt @' in data:
             #list(g[g.State == 'Closed']['ID'])
@@ -60,7 +60,7 @@ class Gtd(object):
             if len(l3) == 0:
                 raise ValueError('for some reason, got an empty list in @0000 replacement')
             r = randint(0,len(l3)-1)
-            data = data.replace('0000', str(l3[r]).zfill(4))
+            data = data.replace('00000000', str(l3[r]).zfill(8))
             logger.debug('command after replacement: {}'.format(data))
         elif r'list @' in data:
             #list(g[g.State == 'Closed']['ID'])
@@ -72,7 +72,7 @@ class Gtd(object):
             if len(l5) == 0:
                 raise ValueError('for some reason, got an empty list in @0000 replacement')
             r = randint(0,len(l5)-1)
-            data = data.replace('0000', str(l5[r]).zfill(4))
+            data = data.replace('00000000', str(l5[r]).zfill(8))
             logger.debug('command after replacement: {}'.format(data))
 
         ############## just for the sake of testing
@@ -85,7 +85,7 @@ class Gtd(object):
     def process(self):
         print('processing data from the client')
         logger.debug('data from c: %s',self.current_data)
-        if not self.sanitize():
+        if not self.sanitize_input():
             raise UserWarning
         try:
             res = parse(self.current_data)
@@ -104,12 +104,20 @@ class Gtd(object):
 
     # this function cleans the input to parsing from things that may be operatoprs
     # like = -,=,!,@ etc
-    def sanitize(self):
-        # some syntax checks
+    def sanitize_input(self):
+        # some syntax checks and expantions
         ################################
         # check that "list" follows a "list" command
         if ((self.current_data.replace(' ', '') == 'list') and ('list' not in gdb.transaction_type)):
             return False
+
+
+        #############################################
+        # ci and co messages
+        if self.current_data == 'ci':
+            self.current_data = 'start @0 | checking in - start work'
+        if self.current_data == 'co':
+            self.current_data = 'start @0 | checking out - home'
 
         ##############################################
         # check if context need to be kept, and if not - clean it up

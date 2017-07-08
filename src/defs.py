@@ -9,6 +9,7 @@
 
 #mode = 'socket'
 mode = 'direct'
+#mode = 'prod'
 
 days_of_week = {'Sun': '-0',
                 'Mon': '-1',

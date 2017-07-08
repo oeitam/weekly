@@ -27,7 +27,7 @@ try:
     for m in test_defs.test_commands:
         time.sleep(1)
         #m = m + " #" + str(cnt).zfill(4)
-        print(str(cnt).zfill(4) + ":" + m)
+        print(str(cnt).zfill(8) + ":" + m)
         cnt += 1
         if ("die" in m[0:5]):
             print('client: got a die command', file=sys.stdout)
