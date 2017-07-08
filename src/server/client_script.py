@@ -35,7 +35,7 @@ try:
 
         #else:
         if defs.mode == 'prod':
-            m = input("Client say:")
+            m = input("Client say:\n")
         # adding length
         l = str(len(m)+5)
         sl = "{:0>4}:".format(l)
@@ -84,7 +84,7 @@ try:
             break
 
         time.sleep(1)
-        print("\nServer Said:")
+        print("\nServer Said:\n")
         print(recieved_data+"\n")
         logger.debug("ServerSaid: {}".format(recieved_data))
 
