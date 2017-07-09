@@ -96,7 +96,7 @@ class Db(object):
     # the next ID (+1)
     ###################################
     def get_new_ID(self, mode = 0):
-        fh = open('../ID', 'r+')
+        fh = open('ID', 'r+')
         cID = int(fh.read())
         fh.seek(0)
         fh.write(str(cID+1)) # increase by 1 for next time
@@ -144,29 +144,29 @@ class Db(object):
         # load only if exists
         # otherwise - set to None
         #metaproj
-        if os.path.isfile('../data/dfm.csv'):
-            self.dfm = pd.read_csv('../data/dfm.csv',converters={'PROJECTs_List': literal_eval})
+        if os.path.isfile('data/dfm.csv'):
+            self.dfm = pd.read_csv('data/dfm.csv',converters={'PROJECTs_List': literal_eval})
             self.dfm.set_index('ID', inplace=True)
             self.db_table['dfm'] = self.dfm
         else:
             self.dfm = None
         # proj
-        if os.path.isfile('../data/dfp.csv'):
-            self.dfp = pd.read_csv('../data/dfp.csv')
+        if os.path.isfile('data/dfp.csv'):
+            self.dfp = pd.read_csv('data/dfp.csv')
             self.dfp.set_index('ID', inplace=True)
             self.db_table['dfp'] = self.dfp
         else:
             self.dfp = None
         # task
-        if os.path.isfile('../data/dft.csv'):
-            self.dft = pd.read_csv('../data/dft.csv',converters={'ACTIVITYs': literal_eval,'Sub_TASKs': literal_eval})
+        if os.path.isfile('data/dft.csv'):
+            self.dft = pd.read_csv('data/dft.csv',converters={'ACTIVITYs': literal_eval,'Sub_TASKs': literal_eval})
             self.dft.set_index('ID', inplace=True)
             self.db_table['dft'] = self.dft
         else:
             self.dft = None
         # activity
-        if os.path.isfile('../data/dfa.csv'):
-            self.dfa = pd.read_csv('../data/dfa.csv',converters={'TASK': myconv,'PROJECT': myconv})
+        if os.path.isfile('data/dfa.csv'):
+            self.dfa = pd.read_csv('data/dfa.csv',converters={'TASK': myconv,'PROJECT': myconv})
             self.dfa.set_index('ID', inplace=True)
             self.db_table['dfa'] = self.dfa
         else:
@@ -248,13 +248,13 @@ class Db(object):
     # save the databases
     def save_databases(self):
         if self.dfm is not None:
-            self.dfm.to_csv('../data/dfm.csv')
+            self.dfm.to_csv('data/dfm.csv')
         if self.dfp is not None:
-            self.dfp.to_csv('../data/dfp.csv')
+            self.dfp.to_csv('data/dfp.csv')
         if self.dft is not None:
-            self.dft.to_csv('../data/dft.csv')
+            self.dft.to_csv('data/dft.csv')
         if self.dfa is not None:
-            self.dfa.to_csv('../data/dfa.csv')
+            self.dfa.to_csv('data/dfa.csv')
         return True # blindly for now
 
     # set the project name for the next transaction

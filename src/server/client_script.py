@@ -3,7 +3,7 @@
 
 import socket
 import sys
-sys.path.append(r'C:\Users\Eitam\PycharmProjects\weekly')
+#sys.path.append(r'C:\Users\Eitam\PycharmProjects\weekly')
 import os
 print(os.getcwd())
 import time
@@ -14,7 +14,7 @@ from test import test_defs
 import logging
 logger = logging.getLogger(__name__)
 
-logging.basicConfig(filename='../client.log', filemode='w', level=logging.DEBUG)
+logging.basicConfig(filename='client.log', filemode='w', level=logging.DEBUG)
 logging.info('Logging Started')
 
 ##############################

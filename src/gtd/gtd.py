@@ -30,7 +30,7 @@ class Gtd(object):
                 raise ValueError('for some reason, got an empty list in @0000 replacement')
             r = randint(0,len(l3))
             #gdb.use_this_ID_for_ref = l3[r]
-            data = data.replace('00000000',str(l3[r]).zfill(8))
+            data = data.replace('00000000',str(l3[r]))#.zfill(8))
             logger.debug('command after replacement: {}'.format(data))
         elif r'stop @' in data:
             #list(g[g.State == 'Closed']['ID'])
@@ -40,7 +40,7 @@ class Gtd(object):
             if len(l3) == 0:
                 raise ValueError('for some reason, got an empty list in @0000 replacement')
             r = randint(0,len(l3)-1)
-            data = data.replace('00000000', str(l3[r]).zfill(8))
+            data = data.replace('00000000', str(l3[r]))#.zfill(8))
             logger.debug('command after replacement: {}'.format(data))
         elif r'cont @' in data:
             #list(g[g.State == 'Closed']['ID'])
@@ -50,7 +50,7 @@ class Gtd(object):
             if len(l3) == 0:
                 raise ValueError('for some reason, got an empty list in @0000 replacement')
             r = randint(0,len(l3)-1)
-            data = data.replace('00000000', str(l3[r]).zfill(8))
+            data = data.replace('00000000', str(l3[r]))#.zfill(8))
             logger.debug('command after replacement: {}'.format(data))
         elif r'halt @' in data:
             #list(g[g.State == 'Closed']['ID'])
@@ -60,7 +60,7 @@ class Gtd(object):
             if len(l3) == 0:
                 raise ValueError('for some reason, got an empty list in @0000 replacement')
             r = randint(0,len(l3)-1)
-            data = data.replace('00000000', str(l3[r]).zfill(8))
+            data = data.replace('00000000', str(l3[r]))#.zfill(8))
             logger.debug('command after replacement: {}'.format(data))
         elif r'list @' in data:
             #list(g[g.State == 'Closed']['ID'])
@@ -72,7 +72,7 @@ class Gtd(object):
             if len(l5) == 0:
                 raise ValueError('for some reason, got an empty list in @0000 replacement')
             r = randint(0,len(l5)-1)
-            data = data.replace('00000000', str(l5[r]).zfill(8))
+            data = data.replace('00000000', str(l5[r]))#.zfill(8))
             logger.debug('command after replacement: {}'.format(data))
 
         ############## just for the sake of testing
@@ -353,6 +353,7 @@ def nud(self):
         gdb.set_project_name(token.value)
         advance()  # to check what is beyond ..
     elif gdb.transaction_type == 'start activity':
+        # deal with the spacial case where token.value can be 'n'
         gdb.use_this_ID_for_ref = int(token.value) #get the id to relate the task creation to
     elif gdb.transaction_type == "stop activity":
         gdb.use_this_ID_for_ref = int(token.value) #get the id to relate the task creation to
