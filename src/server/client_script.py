@@ -3,9 +3,14 @@
 
 import socket
 import sys
+sys.path.append(r'C:\Users\Eitam\PycharmProjects\weekly')
+import os
+print(os.getcwd())
 import time
-from test import test_defs
 from src import defs
+
+from test import test_defs
+
 import logging
 logger = logging.getLogger(__name__)
 

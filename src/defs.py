@@ -1,12 +1,6 @@
 # this file includes definitions, strings, help, etc for the weekly project
 
 
-
-
-#mode = {'one': 'mode one',
-#        'two': 'mode two',
-#        }
-
 sel = 2
 #         -0-        -1-      -2-
 mode = ['socket', 'direct', 'prod' ][sel]

@@ -1,5 +1,7 @@
 # oeitam
 
+print('test_defs.py')
+
 from datetime import timedelta
 
 debug_delta = timedelta(days=0)
