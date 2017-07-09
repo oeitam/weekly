@@ -6,6 +6,7 @@ from subprocess import Popen, CREATE_NEW_CONSOLE
 #from src import defs
 #from src.server import client_direct
 import os
+from local import local_defs
 
 import logging
 logger = logging.getLogger(__name__)
@@ -18,7 +19,7 @@ logger = logging.getLogger(__name__)
 #else:
 print(os.getcwd())
 print("Launching the clinet")
-pc = Popen([sys.executable, 'C:\Users\Eitam\Anaconda3\python.exe C:\Users\Eitam\PycharmProjects\weekly\src\server\client_script.py'],
+pc = Popen([sys.executable, local_defs.local_client_sa],#r'C:\Users\Eitam\PycharmProjects\weekly\src\server\client_script.py'],
            creationflags=CREATE_NEW_CONSOLE)
 print(pc)
 time.sleep(1)

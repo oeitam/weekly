@@ -1,6 +1,7 @@
 
 import socket
 import sys
+import os
 import time
 from subprocess import Popen, CREATE_NEW_CONSOLE
 from src import defs
@@ -23,7 +24,8 @@ class Server(object):
         if defs.mode == 'direct' or defs.mode == 'prod':
             return
         print("Launching the clinet")
-        pc = Popen([sys.executable, 'server/client_script.py'],
+        print(os.getcwd())
+        pc = Popen([sys.executable, 'src/server/client_script.py'],
                    creationflags=CREATE_NEW_CONSOLE)
 
         time.sleep(1)
