@@ -333,6 +333,7 @@ class Db(object):
         pID = self.get_new_ID()
         l = [self.project_name, 'Started', self.megaproject_name, self.trans_description]
         ldf = pd.DataFrame(data=[l], index=[pID], columns=defs.dfp_columns)
+        ldf.index.name = 'ID'
         logger.debug(ldf.to_string())
         res = self.add_to_db(which_db='dfp', df_to_add=ldf)
         # add the new project name to the list of projects in the mega project
@@ -358,6 +359,7 @@ class Db(object):
         pID = self.get_new_ID()
         l = [self.megaproject_name, 'On', [], self.trans_description]
         ldf = pd.DataFrame(data=[l], index=[pID], columns=defs.dfm_columns)
+        ldf.index.name = 'ID'
         logger.debug(ldf.to_string())
         self.add_to_db(which_db='dfm',df_to_add=ldf)
         return "True"
@@ -375,6 +377,7 @@ class Db(object):
              '','','','','',
              [],[],'']
         ldf = pd.DataFrame(data=[l], index=[pID], columns=defs.dft_columns)
+        ldf.index.name = 'ID'
         logger.debug(ldf.to_string())
         self.add_to_db(which_db='dft', df_to_add=ldf)
         return True
@@ -400,6 +403,7 @@ class Db(object):
         l = ['Started', self.get_time_str(date.today()), self.trans_description,
              ''] + couple
         ldf = pd.DataFrame(data=[l], index=[pID], columns=defs.dfa_columns)
+        ldf.index.name = 'ID'
         logger.debug(ldf.to_string())
         self.add_to_db(which_db='dfa', df_to_add=ldf)
         # FOR LATER

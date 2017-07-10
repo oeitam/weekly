@@ -20,6 +20,7 @@ test_commands = [
     "task @project_two | 1this is what you need to do on project two",
     "task @project_two1 | 1second this is what you need to do on project two",
     "task @project_two | 1third this is what you need to do on project two",
+    #"die",
     "start @00000000 | two this is some activity related to a taask",
     "start @00000000 | three this is some activity related to a taask",
     "start @00000000 | four this is some activity related to a taask",
