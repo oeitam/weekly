@@ -1,6 +1,6 @@
 # oeitam
 
-print('test_defs.py !!')
+#print('test_defs.py !!')
 
 from datetime import timedelta
 
