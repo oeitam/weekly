@@ -7,9 +7,9 @@ from datetime import timedelta
 debug_delta = timedelta(days=0)
 
 test_commands = [
-    "ci",
-    "co",
-    "start @00000000 | two this is some activity related to a taask",
+    #"ci",
+    #"co",
+    #"start @00000000 | two this is some activity related to a taask",
     "create megaproject Work2 | 2all projects that relate to Work at Intel go here",
     "create project project_two @Work2 | this is the first project I created",
     "create project project_three @Work1 | this is the first project I created",
@@ -20,6 +20,7 @@ test_commands = [
     "task @project_two | 1this is what you need to do on project two",
     "task @project_two1 | 1second this is what you need to do on project two",
     "task @project_two | 1third this is what you need to do on project two",
+    #"die",
     "start @00000000 | two this is some activity related to a taask",
     "start @00000000 | three this is some activity related to a taask",
     "start @00000000 | four this is some activity related to a taask",
