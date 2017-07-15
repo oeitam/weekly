@@ -387,10 +387,10 @@ class Db(object):
         pID = self.get_new_ID()
         # search for the related task or project
         found_in = 'no where'
-        if self.use_this_ID_for_ref in self.dfp.index.values:
+        if self.dfp is not None and self.use_this_ID_for_ref in self.dfp.index.values:
             found_in = 'projects'
             couple = ['', str(int(self.use_this_ID_for_ref))]
-        elif self.use_this_ID_for_ref in self.dft.index.values :
+        elif self.dft is not None and self.use_this_ID_for_ref in self.dft.index.values :
             found_in = 'tasks'
             couple = [str(int(self.use_this_ID_for_ref)), ""]
         elif self.use_this_ID_for_ref == 0: # indicating - ci or co (or non related activity)
