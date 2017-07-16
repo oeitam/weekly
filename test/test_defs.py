@@ -14,7 +14,7 @@ test_commands = [
     "create project project_two @Work2 | this is the first project I created",
     "ci",
     "co",
-    "die",
+    #"die",
     "create project project_three @Work1 | this is the first project I created",
     "create project project_four @Work2 | this is the first project I created",
     "create project project_five @Work1 | this is the first project I created",
