@@ -6,6 +6,7 @@ import pandas as pd
 import logging
 from src import defs
 from test import test_defs
+import shutil
 
 from datetime import datetime, date, time, timedelta
 from ast import literal_eval
@@ -15,6 +16,8 @@ one_week = timedelta(days=7)
 
 pd.options.display.max_colwidth = 100 # 50 by defaul
 #pd.set_option('colheader_justify', 'left')
+
+# this is an addition from home on local
 
 def myconv(x):
     if x is not '':
@@ -145,29 +148,29 @@ class Db(object):
         # load only if exists
         # otherwise - set to None
         #metaproj
-        if os.path.isfile('data/dfm.csv'):
-            self.dfm = pd.read_csv('data/dfm.csv',converters={'PROJECTs_List': literal_eval})
+        if os.path.isfile(defs.data_loc + '/dfm.csv'):
+            self.dfm = pd.read_csv(defs.data_loc + '/dfm.csv',converters={'PROJECTs_List': literal_eval})
             self.dfm.set_index('ID', inplace=True)
             self.db_table['dfm'] = self.dfm
         else:
             self.dfm = None
         # proj
-        if os.path.isfile('data/dfp.csv'):
-            self.dfp = pd.read_csv('data/dfp.csv')
+        if os.path.isfile(defs.data_loc + '/dfp.csv'):
+            self.dfp = pd.read_csv(defs.data_loc + '/dfp.csv')
             self.dfp.set_index('ID', inplace=True)
             self.db_table['dfp'] = self.dfp
         else:
             self.dfp = None
         # task
-        if os.path.isfile('data/dft.csv'):
-            self.dft = pd.read_csv('data/dft.csv',converters={'ACTIVITYs': literal_eval,'Sub_TASKs': literal_eval})
+        if os.path.isfile(defs.data_loc + '/dft.csv'):
+            self.dft = pd.read_csv(defs.data_loc + '/dft.csv',converters={'ACTIVITYs': literal_eval,'Sub_TASKs': literal_eval})
             self.dft.set_index('ID', inplace=True)
             self.db_table['dft'] = self.dft
         else:
             self.dft = None
         # activity
-        if os.path.isfile('data/dfa.csv'):
-            self.dfa = pd.read_csv('data/dfa.csv',converters={'TASK': myconv,'PROJECT': myconv})
+        if os.path.isfile(defs.data_loc + '/dfa.csv'):
+            self.dfa = pd.read_csv(defs.data_loc + '/dfa.csv',converters={'TASK': myconv,'PROJECT': myconv})
             self.dfa.set_index('ID', inplace=True)
             self.db_table['dfa'] = self.dfa
         else:
@@ -249,13 +252,19 @@ class Db(object):
     # save the databases
     def save_databases(self):
         if self.dfm is not None:
-            self.dfm.to_csv('data/dfm.csv')
+            self.dfm.to_csv(defs.data_loc + '\dfm.csv')
         if self.dfp is not None:
-            self.dfp.to_csv('data/dfp.csv')
+            self.dfp.to_csv(defs.data_loc + '\dfp.csv')
         if self.dft is not None:
-            self.dft.to_csv('data/dft.csv')
+            self.dft.to_csv(defs.data_loc + '\dft.csv')
         if self.dfa is not None:
-            self.dfa.to_csv('data/dfa.csv')
+            self.dfa.to_csv(defs.data_loc + '\dfa.csv')
+
+        # copy the files over to dropbox area
+        if os.path.isfile(defs.data_loc + '/dfm.csv'):
+            if os.path.isfile(defs.data_loc_dropbox + '/dfm.csv'):
+                os.remove(defs.data_loc_dropbox + '/dfm.csv')
+            shutil.copy2(defs.data_loc + '/dfm.csv', defs.data_loc_dropbox)
         return True # blindly for now
 
     # set the project name for the next transaction

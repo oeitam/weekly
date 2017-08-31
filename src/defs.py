@@ -1,9 +1,26 @@
 # this file includes definitions, strings, help, etc for the weekly project
 
+from ast import literal_eval
 
-sel = 2
+# read local definition file and evaluate it
+f = open('C:\weekly.local\weekly.local.txt', 'r')
+l = []
+for line in f:
+    line = line.rstrip()
+    if (line[0] == '#'):
+        continue
+    l.append(literal_eval(line))
+
+f.close()
+
+location            = l[0]
+data_loc            = l[1]
+mode_sel            = l[2]
+local_client_script = l[3]
+data_loc_dropbox    = l[4]
+
 #         -0-        -1-      -2-
-mode = ['socket', 'direct', 'prod' ][sel]
+mode = ['socket', 'direct', 'prod' ][mode_sel]
 
 days_of_week = {'Sun': '-0',
                 'Mon': '-1',

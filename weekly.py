@@ -9,12 +9,14 @@ from src.server import server as serverinst
 from src import defs
 import os
 
+
 logger = logging.getLogger()
 logging.basicConfig(filename='weekly.log', filemode='w', level=logging.DEBUG)
 logging.info('Logging Started')
 
 
 def main():
+
 
 
     db = database.Db()
