@@ -277,5 +277,6 @@ Comments for later
     that look like operators even if are in the middle of free text ... this is
     problematic in long descriptions, for example.
     need to see what can be done.
-5.
+5. today | something I want to do today [create a task for today in a project named today(?)
+    
 
