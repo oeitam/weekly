@@ -17,7 +17,7 @@ one_week = timedelta(days=7)
 pd.options.display.max_colwidth = 100 # 50 by defaul
 #pd.set_option('colheader_justify', 'left')
 
-
+# this is an addition from home on local
 
 def myconv(x):
     if x is not '':
