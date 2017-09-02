@@ -262,10 +262,11 @@ class Db(object):
             self.dfa.to_csv(defs.data_loc + '\dfa.csv')
 
         # copy the files over to dropbox area
-        if os.path.isfile(defs.data_loc + '/dfm.csv'):
-            if os.path.isfile(defs.data_loc_dropbox + '/dfm.csv'):
-                os.remove(defs.data_loc_dropbox + '/dfm.csv')
-            shutil.copy2(defs.data_loc + '/dfm.csv', defs.data_loc_dropbox)
+        #if os.path.isfile(defs.data_loc + '/dfm.csv'):
+        #    if os.path.isfile(defs.data_loc_dropbox + '/dfm.csv'):
+        #        os.remove(defs.data_loc_dropbox + '/dfm.csv')
+        #    shutil.copy2(defs.data_loc + '/dfm.csv', defs.data_loc_dropbox)
+
         return True # blindly for now
 
     # set the project name for the next transaction

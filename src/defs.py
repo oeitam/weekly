@@ -18,6 +18,9 @@ data_loc            = l[1]
 mode_sel            = l[2]
 local_client_script = l[3]
 data_loc_dropbox    = l[4]
+dev_or_prod         = l[5]
+
+data_loc = data_loc + '\\' + dev_or_prod
 
 #         -0-        -1-      -2-
 mode = ['socket', 'direct', 'prod' ][mode_sel]
