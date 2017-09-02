@@ -18,6 +18,7 @@ pd.options.display.max_colwidth = 100 # 50 by defaul
 #pd.set_option('colheader_justify', 'left')
 
 # this is an addition from home on local
+# and this is from work local
 
 def myconv(x):
     if x is not '':
