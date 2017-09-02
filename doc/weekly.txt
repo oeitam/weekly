@@ -278,5 +278,5 @@ Comments for later
     problematic in long descriptions, for example.
     need to see what can be done.
 5. today | something I want to do today [create a task for today in a project named today(?)
-    
+
 
