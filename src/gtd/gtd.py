@@ -123,13 +123,23 @@ class Gtd(object):
         # check if context need to be kept, and if not - clean it up
         if self.current_data.replace(' ', '') != 'list':
             gdb.clean_context()
+
+        ##############################################
         # since teh tokenizer is not dealing well with the '|'
         # use this piece of code to handle that part
         if '|' in self.current_data:
             (t1,t2, t3) = self.current_data.partition('|')
             gdb.set_trans_description(t3)
-        return True
 
+        ##############################################
+        # prepare a today | .... assuming
+        # that there is a project called 'today' which is number
+        # 48 (the number is what is important)
+        temp1 = self.current_data.partition('|')
+        if temp1[0].replace(' ', '') == 'today':
+            self.current_data = 'start @48 |' + temp1[2]
+        ##############################################
+        return True
 
 
 ##########################################################
@@ -309,7 +319,7 @@ prefix("head", 20)
 prefix("tail", 20)
 prefix("columns", 20)
 prefix("states", 20)
-
+prefix("help", 20)
 symbol(".", 120)
 
 
@@ -586,4 +596,10 @@ def nud(self):
     logger.debug("nud states")
     gdb.list_attr = 'states'
     # that's it. done
+    return self
+
+@method(symbol("help"))
+def nud(self):
+    logger.debug('help nud')
+    gdb.transaction_is('help')
     return self

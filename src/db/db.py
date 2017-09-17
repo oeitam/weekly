@@ -86,7 +86,8 @@ class Db(object):
                                   'list task'          : self.list_glob,
                                   'list activity'      : self.list_glob,
                                   'list for'           : self.list_glob,
-                                  'list search'        : self.list_search
+                                  'list search'        : self.list_search,
+                                  'help'               : self.help_message,
                                   #'list project'       : self.list_project,
                                   #'list task'          : self.list_task,
                                   #'list activity'      : self.list_activity,
@@ -318,6 +319,8 @@ class Db(object):
                 m = "Transaction: {} COMPLETED. Referenced ID is: {}".format(self.transaction_type, self.use_this_ID_for_ref)
             else:
                 m = "Transaction: {} FAILED with ERROR: {}".format(self.transaction_type, self.error_details)
+        elif (self.transaction_type == 'help'):
+            m = defs.help_message
         else:
             if success:
                 m = "Transaction: {} COMPLETED. New ID is: {}".format(self.transaction_type, self.pID)
@@ -628,6 +631,11 @@ class Db(object):
                 self.list_resp += self.df_to_list_resp(df, df_name)
         return True
 
+
+
+    def help_message(self):
+        pass
+        return True
 
 
 

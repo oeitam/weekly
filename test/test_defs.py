@@ -9,6 +9,8 @@ debug_delta = timedelta(days=0)
 test_commands = [
     #"ci",
     #"co",
+    "help",
+    "die",
     #"start @00000000 | two this is some activity related to a taask",
     "create megaproject Work2 | 2all projects that relate to Work at Intel go here",
     "create project project_two @Work2 | this is the first project I created",
