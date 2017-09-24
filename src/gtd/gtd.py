@@ -320,6 +320,7 @@ prefix("tail", 20)
 prefix("columns", 20)
 prefix("states", 20)
 prefix("help", 20)
+prefix("delete", 20)
 symbol(".", 120)
 
 
@@ -372,6 +373,8 @@ def nud(self):
     elif gdb.transaction_type == "halt activity":
         gdb.use_this_ID_for_ref = int(token.value)  # get the id to relate the task creation to
     elif gdb.transaction_type == "list id":
+        gdb.use_this_ID_for_ref = int(token.value)  # get the id to relate the task creation to
+    elif gdb.transaction_type == "delete id":
         gdb.use_this_ID_for_ref = int(token.value)  # get the id to relate the task creation to
 
     self.first = expression()
@@ -603,3 +606,16 @@ def nud(self):
     logger.debug('help nud')
     gdb.transaction_is('help')
     return self
+
+@method(symbol("delete"))
+def nud(self):
+    logger.debug('deleate nud')
+    if token.id == '@':
+        gdb.transaction_is('delete id')
+    else:
+        raise SyntaxError(
+            "Unknown token (%r)." % token.id
+        )
+    self.second = expression()
+    return self
+

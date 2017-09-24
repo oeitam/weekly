@@ -10,6 +10,7 @@ test_commands = [
     #"ci",
     #"co",
     "help",
+    "delete @1220",
     "die",
     #"start @00000000 | two this is some activity related to a taask",
     "create megaproject Work2 | 2all projects that relate to Work at Intel go here",

@@ -88,6 +88,7 @@ class Db(object):
                                   'list for'           : self.list_glob,
                                   'list search'        : self.list_search,
                                   'help'               : self.help_message,
+                                  'delete id'          : self.delete_id,
                                   #'list project'       : self.list_project,
                                   #'list task'          : self.list_task,
                                   #'list activity'      : self.list_activity,
@@ -631,7 +632,14 @@ class Db(object):
                 self.list_resp += self.df_to_list_resp(df, df_name)
         return True
 
-
+    def delete_id(self):
+        for df_name in ['dft', 'dfa']:
+            df = self.db_table[df_name]
+            if self.use_this_ID_for_ref in df.index :
+                logger.debug("found the ID in index of {}".format(df_name))
+                df.drop(self.use_this_ID_for_ref, inplace = True)
+                return True
+        return False
 
     def help_message(self):
         pass
