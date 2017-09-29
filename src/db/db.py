@@ -89,6 +89,7 @@ class Db(object):
                                   'list search'        : self.list_search,
                                   'help'               : self.help_message,
                                   'delete id'          : self.delete_id,
+                                  'online'             : self.online_check,
                                   #'list project'       : self.list_project,
                                   #'list task'          : self.list_task,
                                   #'list activity'      : self.list_activity,
@@ -194,6 +195,7 @@ class Db(object):
             self.error_details          = 'clean'
             self.trans_description      = 'clean'
             self.return_message         = 'clean'
+            self.return_message_ext1    = 'clean'
             self.keep_context           = False
             self.list_col_name          = 'clean'
             self.list_col_value         = 'clean'
@@ -206,7 +208,7 @@ class Db(object):
             self.list_attr              = 'clean'
             self.list_ww                = 'clean'
         if sec2:
-            self.list_resp_row_limit    = 10
+            self.list_resp_row_limit    = 15
             self.list_resp_rows         = -1
 
     def store_context(self):
@@ -325,6 +327,8 @@ class Db(object):
         else:
             if success:
                 m = "Transaction: {} COMPLETED. New ID is: {}".format(self.transaction_type, self.pID)
+                if self.return_message_ext1 != 'clean':
+                    m += self.return_message_ext1
             else:
                 m = "Transaction: {} FAILED with ERROR: {}".format(self.transaction_type, self.error_details)
 
@@ -568,7 +572,7 @@ class Db(object):
             t1 = self.list_resp_rows
             t2 = max(self.list_resp_rows - self.list_resp_row_limit ,0)
             self.list_resp = self.df_to_list_resp(df[t2:t1], which_db)
-            self.list_resp = "Showing items {} to {}:\n".format(t2,max(t1-1,0)) + self.list_resp
+            self.list_resp = "Showing items {} to {}:\n".format(t2+1,max(t1-1,0)) + self.list_resp
             self.list_resp_rows = t2
         else:  # did not find it
             self.error_details = 'No megaprojects to list'
@@ -646,7 +650,26 @@ class Db(object):
         return True
 
 
+    def online_check(self):
+        self.return_message_ext1 = '\nOnline Status:\n'
+        if self.dfm is not None:
+            self.return_message_ext1 += 'Megaproject db in online\n'
+        else:
+            self.return_message_ext1 += 'Megaproject db in None\n'
+        if self.dfp is not None:
+            self.return_message_ext1 += 'Project db in online\n'
+        else:
+            self.return_message_ext1 += 'Project db in None\n'
+        if self.dft is not None:
+            self.return_message_ext1 += 'Task db in online\n'
+        else:
+            self.return_message_ext1 += 'Task db in None\n'
+        if self.dfa is not None:
+            self.return_message_ext1 += 'Activity db in online\n'
+        else:
+            self.return_message_ext1 += 'Activity db in None\n'
 
+        return True
 
 
 

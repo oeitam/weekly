@@ -86,15 +86,15 @@ class Gtd(object):
         print('processing data from the client')
         logger.debug('data from c: %s',self.current_data)
         if not self.sanitize_input():
-            raise UserWarning
+            #raise UserWarning
+            return False
         try:
             res = parse(self.current_data)
         except SyntaxError:
             logger.debug("parse exception: {}".format(res.__repr__()))
         # at this point, the
         res1 = gdb.do_transaction()
-        #self.return_message = res.__repr__()
-        #print(k)
+        return True
 
     # get_message_back_to_client - method used by
     def get_message_back_to_client(self):
@@ -321,6 +321,7 @@ prefix("columns", 20)
 prefix("states", 20)
 prefix("help", 20)
 prefix("delete", 20)
+prefix("online", 20)
 symbol(".", 120)
 
 
@@ -617,5 +618,11 @@ def nud(self):
             "Unknown token (%r)." % token.id
         )
     self.second = expression()
+    return self
+
+@method(symbol("online"))
+def nud(self):
+    logger.debug('online nud')
+    gdb.transaction_is('online')
     return self
 

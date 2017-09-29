@@ -40,8 +40,10 @@ class Server(object):
     def command(self, data):
         a, b, data = data.partition(':')
         self.gtd.take_data(data)
-        self.gtd.process()  # gtd to process the latest data it recieved
-        return_message = self.gtd.get_message_back_to_client()
+        if self.gtd.process():  # gtd to process the latest data it recieved
+            return_message = self.gtd.get_message_back_to_client()
+        else:
+            return_message = "Illegal command was not processed"
         # return_message = defs.mlt
         l = str(len(return_message) + 5)
         sl = "{:0>4}:".format(l)

@@ -236,6 +236,7 @@ help_message = '''
 41 stop @00000000
 42 cont @00000000
 43 today | doing this something today
+44 delete @1234
 ==================================
 '''
 
