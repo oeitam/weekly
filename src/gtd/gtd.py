@@ -332,6 +332,7 @@ prefix("states", 20)
 prefix("help", 20)
 prefix("delete", 20)
 prefix("online", 20)
+prefix("plus", 20)
 symbol(".", 120)
 
 
@@ -596,6 +597,8 @@ def nud(self):
     if gdb.list_for_what == 'task':
         advance()
     gdb.list_for_val = token.value
+    advance()
+    #self.second = expression()
     return self
 
 @method(symbol("columns"))
@@ -636,3 +639,7 @@ def nud(self):
     gdb.transaction_is('online')
     return self
 
+@method(symbol("plus"))
+def nud(self):
+    logger.debug("plus nud")
+    return self

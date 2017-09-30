@@ -212,7 +212,7 @@ class Db(object):
             self.list_resp_rows         = -1
 
     def store_context(self):
-        self.last_list_resp_row_limit = 10
+        self.last_list_resp_row_limit = 15
         self.last_list_resp_rows = -1
 
     # add a dataframe to a db
