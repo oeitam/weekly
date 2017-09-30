@@ -34,8 +34,12 @@ class Gtd(object):
             logger.debug('command after replacement: {}'.format(data))
         elif r'stop @' in data:
             #list(g[g.State == 'Closed']['ID'])
-            l1 = list(gdb.dfa[gdb.dfa.State == 'Started'].index)
-            l2 = list(gdb.dfa[gdb.dfa.State == 'OnHold'].index)
+            l1 =  list(gdb.dfa[gdb.dfa.State == 'Started'].index)
+            l1 += list(gdb.dft[gdb.dft.State == 'Open'].index)
+            l1 += list(gdb.dfp[gdb.dfp.State == 'Started'].index)
+            l2 =  list(gdb.dfa[gdb.dfa.State == 'OnHold'].index)
+            l2 += list(gdb.dft[gdb.dft.State == 'OnHold'].index)
+            l2 += list(gdb.dfp[gdb.dfp.State == 'OnHold'].index)
             l3 = l1 + l2
             if len(l3) == 0:
                 raise ValueError('for some reason, got an empty list in @0000 replacement')
@@ -44,8 +48,12 @@ class Gtd(object):
             logger.debug('command after replacement: {}'.format(data))
         elif r'cont @' in data:
             #list(g[g.State == 'Closed']['ID'])
-            l1 = list(gdb.dfa[gdb.dfa.State == 'Ended'].index)
-            l2 = list(gdb.dfa[gdb.dfa.State == 'OnHold'].index)
+            l1 =  list(gdb.dfa[gdb.dfa.State == 'Ended'].index)
+            l1 += list(gdb.dft[gdb.dft.State == 'Closed'].index)
+            l1 += list(gdb.dfp[gdb.dfp.State == 'Ended'].index)
+            l2 =  list(gdb.dfa[gdb.dfa.State == 'OnHold'].index)
+            l2 += list(gdb.dft[gdb.dft.State == 'OnHold'].index)
+            l2 += list(gdb.dfp[gdb.dfp.State == 'OnHold'].index)
             l3 = l1 + l2
             if len(l3) == 0:
                 raise ValueError('for some reason, got an empty list in @0000 replacement')
@@ -54,7 +62,9 @@ class Gtd(object):
             logger.debug('command after replacement: {}'.format(data))
         elif r'halt @' in data:
             #list(g[g.State == 'Closed']['ID'])
-            l1 = list(gdb.dfa[gdb.dfa.State == 'Started'].index)
+            l1 =  list(gdb.dfa[gdb.dfa.State == 'Started'].index)
+            l1 += list(gdb.dft[gdb.dft.State == 'Open'].index)
+            l1 += list(gdb.dfp[gdb.dfp.State == 'Started'].index)
             l2 = []
             l3 = l1 + l2
             if len(l3) == 0:
@@ -364,14 +374,14 @@ def nud(self):
     elif gdb.transaction_type == "create task":
         gdb.set_project_name(token.value)
         advance()  # to check what is beyond ..
-    elif gdb.transaction_type == 'start activity':
+    elif gdb.transaction_type == 'start something':
         # deal with the spacial case where token.value can be 'n'
         gdb.use_this_ID_for_ref = int(token.value) #get the id to relate the task creation to
-    elif gdb.transaction_type == "stop activity":
+    elif gdb.transaction_type == "stop something":
         gdb.use_this_ID_for_ref = int(token.value) #get the id to relate the task creation to
-    elif gdb.transaction_type == "cont activity":
+    elif gdb.transaction_type == "cont something":
         gdb.use_this_ID_for_ref = int(token.value) #get the id to relate the task creation to
-    elif gdb.transaction_type == "halt activity":
+    elif gdb.transaction_type == "halt something":
         gdb.use_this_ID_for_ref = int(token.value)  # get the id to relate the task creation to
     elif gdb.transaction_type == "list id":
         gdb.use_this_ID_for_ref = int(token.value)  # get the id to relate the task creation to
@@ -412,21 +422,21 @@ def nud(self):
 @method(symbol("stop"))
 def nud(self):
     logger.debug('stop nud')
-    gdb.transaction_is('stop activity')
+    gdb.transaction_is('stop something')
     self.second = expression()
     return self
 
 @method(symbol("cont"))
 def nud(self):
     logger.debug('cont nud')
-    gdb.transaction_is('cont activity')
+    gdb.transaction_is('cont something')
     self.second = expression()
     return self
 
 @method(symbol("halt"))
 def nud(self):
     logger.debug('halt nud')
-    gdb.transaction_is('halt activity')
+    gdb.transaction_is('halt something')
     self.second = expression()
     return self
 

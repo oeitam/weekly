@@ -77,9 +77,9 @@ class Db(object):
                                   "create megaproject" : self.create_megaproject,
                                   "create task"        : self.create_task,
                                   'start activity'     : self.start_activity,
-                                  'stop activity'      : self.stop_activity,
-                                  'cont activity'      : self.cont_activity,
-                                  'halt activity'      : self.halt_activity,
+                                  'stop something'     : self.stop_something,
+                                  'cont something'     : self.cont_something,
+                                  'halt something'     : self.halt_something,
                                   'list id'            : self.list_id,
                                   'list megaproject'   : self.list_glob,
                                   'list project'       : self.list_glob,
@@ -315,9 +315,9 @@ class Db(object):
                 m = self.list_resp
             else:
                 m = "Transaction: {} FAILED with ERROR: {}".format(self.transaction_type, self.error_details)
-        elif ( 'stop act' in self.transaction_type
-            or 'cont act' in self.transaction_type
-            or 'halt act' in self.transaction_type) :
+        elif ( 'stop some' in self.transaction_type
+            or 'cont some' in self.transaction_type
+            or 'halt some' in self.transaction_type) :
             if success:
                 m = "Transaction: {} COMPLETED. Referenced ID is: {}".format(self.transaction_type, self.use_this_ID_for_ref)
             else:
@@ -430,50 +430,109 @@ class Db(object):
         # for cross reference
         return True
 
-    def stop_activity(self):
-        # check for error conditions
-        if self.dfa is None :
-            self.error_details = 'Requested to stop ACTIVITY {} but no ACTIVITY database exists (dfa)'.format(self.use_this_ID_for_ref)
+    def cont_something(self):
+        # handle activity, and then task and then project
+        state = 'idle' # helps understand status
+        # activity
+        if self.dfa is not None:
+            state = 'found db'
+            if self.use_this_ID_for_ref in self.dfa.index.values:
+                state = 'id in db'
+                # process
+                self.dfa.loc[self.use_this_ID_for_ref, 'State'] = 'Started'
+                self.dfa.loc[self.use_this_ID_for_ref, 'End_Time'] = ''
+        # task
+        if (self.dft is not None) and (state != 'id in db'):
+            state = 'found db'
+            if self.use_this_ID_for_ref in self.dft.index.values:
+                state = 'id in db'
+                # process
+                self.dft.loc[self.use_this_ID_for_ref, 'State'] = 'Open'
+                #self.dft.loc[self.use_this_ID_for_ref, 'End_Time'] = ''
+        # project
+        if (self.dfp is not None) and (state != 'id in db'):
+            state = 'found db'
+            if self.use_this_ID_for_ref in self.dfp.index.values:
+                state = 'id in db'
+                # process
+                self.dfp.loc[self.use_this_ID_for_ref, 'State'] = 'Started'
+                #self.dft.loc[self.use_this_ID_for_ref, 'End_Time'] = ''
+
+        if state != 'id in db':
+            self.error_details = 'Requested to continue ACTIVITY or TASK or PROJECT {} failed (probably incorrect ID)'\
+                .format(self.use_this_ID_for_ref)
             logger.debug(self.error_details)
             return False
-        if self.use_this_ID_for_ref not in self.dfa.index.values:
-            self.error_details = 'Requested to stop ACTIVITY {} but no such ACTIVITY in database at proper state'.format(self.use_this_ID_for_ref)
-            logger.debug(self.error_details)
-            return False
-        # process
-        self.dfa.loc[self.use_this_ID_for_ref, 'State'] = 'Ended'
-        self.dfa.loc[self.use_this_ID_for_ref, 'End_Date'] = self.get_time_str(date.today())
         return True
 
-    def cont_activity(self):
-        # check for error conditions
-        if self.dfa is None:
-            self.error_details = 'Requested to continue ACTIVITY {} but no ACTIVITY database exists (dfa)'.format(
-                self.use_this_ID_for_ref)
+    def halt_something(self):
+        # handle activity, and then task and then project
+        state = 'idle' # helps understand status
+        # activity
+        if self.dfa is not None:
+            state = 'found db'
+            if self.use_this_ID_for_ref in self.dfa.index.values:
+                state = 'id in db'
+                # process
+                self.dfa.loc[self.use_this_ID_for_ref, 'State'] = 'OnHold'
+                #self.dfa.loc[self.use_this_ID_for_ref, 'End_Time'] = ''
+        # task
+        if (self.dft is not None) and (state != 'id in db'):
+            state = 'found db'
+            if self.use_this_ID_for_ref in self.dft.index.values:
+                state = 'id in db'
+                # process
+                self.dft.loc[self.use_this_ID_for_ref, 'State'] = 'OnHold'
+                #self.dft.loc[self.use_this_ID_for_ref, 'End_Time'] = ''
+        # project
+        if (self.dfp is not None) and (state != 'id in db'):
+            state = 'found db'
+            if self.use_this_ID_for_ref in self.dfp.index.values:
+                state = 'id in db'
+                # process
+                self.dfp.loc[self.use_this_ID_for_ref, 'State'] = 'OnHold'
+                #self.dft.loc[self.use_this_ID_for_ref, 'End_Time'] = ''
+
+        if state != 'id in db':
+            self.error_details = 'Requested to halt ACTIVITY or TASK or PROJECT {} failed (probably incorrect ID)'\
+                .format(self.use_this_ID_for_ref)
             logger.debug(self.error_details)
             return False
-        if self.use_this_ID_for_ref not in self.dfa.index.values:
-            self.error_details = 'Requested to continue ACTIVITY {} but no such ACTIVITY in database at proper state'.format(self.use_this_ID_for_ref)
-            logger.debug(self.error_details)
-            return False
-        # process
-        self.dfa.loc[self.use_this_ID_for_ref, 'State'] = 'Started'
-        self.dfa.loc[self.use_this_ID_for_ref, 'End_Time'] = ''
         return True
 
-    def halt_activity(self):
-        # check for error conditions
-        if self.dfa is None:
-            self.error_details = 'Requested to halt ACTIVITY {} but no ACTIVITY database exists (dfa)'.format(
-                self.use_this_ID_for_ref)
+    def stop_something(self):
+        # handle activity, and then task and then project
+        state = 'idle' # helps understand status
+        # activity
+        if self.dfa is not None:
+            state = 'found db'
+            if self.use_this_ID_for_ref in self.dfa.index.values:
+                state = 'id in db'
+                # process
+                self.dfa.loc[self.use_this_ID_for_ref, 'State'] = 'Ended'
+                #self.dfa.loc[self.use_this_ID_for_ref, 'End_Time'] = ''
+        # task
+        if (self.dft is not None) and (state != 'id in db'):
+            state = 'found db'
+            if self.use_this_ID_for_ref in self.dft.index.values:
+                state = 'id in db'
+                # process
+                self.dft.loc[self.use_this_ID_for_ref, 'State'] = 'Closed'
+                #self.dft.loc[self.use_this_ID_for_ref, 'End_Time'] = ''
+        # project
+        if (self.dfp is not None) and (state != 'id in db'):
+            state = 'found db'
+            if self.use_this_ID_for_ref in self.dfp.index.values:
+                state = 'id in db'
+                # process
+                self.dfp.loc[self.use_this_ID_for_ref, 'State'] = 'Ended'
+                #self.dft.loc[self.use_this_ID_for_ref, 'End_Time'] = ''
+
+        if state != 'id in db':
+            self.error_details = 'Requested to stop ACTIVITY or TASK or PROJECT {} failed (probably incorrect ID)'\
+                .format(self.use_this_ID_for_ref)
             logger.debug(self.error_details)
             return False
-        if self.use_this_ID_for_ref not in self.dfa.index.values:
-            self.error_details = 'Requested to halt ACTIVITY {} but no such ACTIVITY in database at proper state'.format(self.use_this_ID_for_ref)
-            logger.debug(self.error_details)
-            return False
-        # process
-        self.dfa.loc[self.use_this_ID_for_ref, 'State'] = 'OnHold'
         return True
 
 
@@ -617,7 +676,7 @@ class Db(object):
             dtp = defs.all_stat[wtp]
             self.list_resp = "Showing states for {}s:\n".format(wtp)
             for i in dtp.keys():
-                self.list_resp += (i + " : " + dtp[i] + '\n')
+                self.list_resp += ("{:9}".format(i) + " : " + dtp[i] + '\n')
 
 
     # global search
