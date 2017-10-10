@@ -1,0 +1,35 @@
+INFO:root:Logging (into clienr.log) Started
+DEBUG:__main__:client script sending 0011:online
+DEBUG:__main__:ServerSaid: Transaction: online COMPLETED. New ID is: -1
+Online Status:
+Megaproject db is online
+Project db is online
+Task db is online
+Activity db is online
+
+DEBUG:__main__:client script sending 0058:task @weekly | check if start @<some id> works or not
+DEBUG:__main__:ServerSaid: Transaction: create task COMPLETED. New ID is: 1724
+DEBUG:__main__:client script sending 0125:task @weekly | see how to make the ID different per prod/dev/demo and also if no ID file exists - create one from 100 on
+DEBUG:__main__:ServerSaid: Transaction: create task COMPLETED. New ID is: 1725
+DEBUG:__main__:client script sending 0014:list task
+DEBUG:__main__:ServerSaid: Showing items 19 to 32:
+     State   Description                                                                                          Start_Date  PROJECT Due_Date Expiration_Date
+ID                                                                                                                                                            
+1311  OnHold   create a command like 'gen weekly' or 'gen byweekly' with all the open tasks (?) and activities...  17ww39.Sun  weekly  N/A      N/A           
+1312  OnHold   create a variable that will filter only OPEN items. (could be done in another way ... at search...  17ww39.Sun  weekly  N/A      N/A           
+1313    Open   consider adding to a task or activity being closed, (adding a) text related to teh closure (lik...  17ww39.Sun  weekly  N/A      N/A           
+1396  Closed                         add a way to just print all activities of one week (or tasks and activities)  17ww39.Wed  weekly  N/A      N/A           
+1502  Closed                                    make the cont and halt and stop work for task and project as well  17ww39.Sat  weekly  N/A      N/A           
+1618  Closed                                                               add ability to delete task or activity  17ww40.Mon  weekly  N/A      N/A           
+1619  Closed                         seems that list for task for project may miss printing the latest one opened  17ww40.Mon  weekly  N/A      N/A           
+1621  Closed                           list search (pipe) weekly does not return the project weekly record itself  17ww40.Mon  weekly  N/A      N/A           
+1625    Open   check why if I do "task @27" it craetes a task with teh project name 27 and not looking for the...  17ww40.Mon  weekly  N/A      N/A           
+1626    Open                                add multiple criteria for list - like state is open and week is wwXX   17ww40.Mon  weekly  N/A      N/A           
+1704    Open                                 for online command - no need to print 'transaction completed' etc...  17ww40.Wed  weekly  N/A      N/A           
+1705    Open                     create one script that will launch the produciton mode w/o going through PyCharm  17ww40.Wed  weekly  N/A      N/A           
+1706    Open   create commonly used shortcuts (perhaps using a predefined dict in defs for the conversions (in...  17ww40.Wed  weekly  N/A      N/A           
+1724    Open                                                               check if start @<some id> works or not  17ww41.Tue  weekly                         
+1725    Open   see how to make the ID different per prod/dev/demo and also if no ID file exists - create one f...  17ww41.Tue  weekly                         
+
+DEBUG:__main__:client script sending 0064:today | work on patch issue - analyze differences lin files
+DEBUG:__main__:ServerSaid: Transaction: start activity COMPLETED. New ID is: 1726

@@ -42,8 +42,8 @@ def mycnv2(x,other_df,str_to_cmp):
 
 
 def search_in_df(x,list_to_fill,pat):
-    for i in x.str.contains(pat):
-        if i is True:
+    for i in x:
+        if pat in str(i):
             list_to_fill.append(int(x.name))
             return True
     return False
@@ -712,21 +712,21 @@ class Db(object):
     def online_check(self):
         self.return_message_ext1 = '\nOnline Status:\n'
         if self.dfm is not None:
-            self.return_message_ext1 += 'Megaproject db in online\n'
+            self.return_message_ext1 += 'Megaproject db is online\n'
         else:
-            self.return_message_ext1 += 'Megaproject db in None\n'
+            self.return_message_ext1 += 'Megaproject db is None\n'
         if self.dfp is not None:
-            self.return_message_ext1 += 'Project db in online\n'
+            self.return_message_ext1 += 'Project db is online\n'
         else:
-            self.return_message_ext1 += 'Project db in None\n'
+            self.return_message_ext1 += 'Project db is None\n'
         if self.dft is not None:
-            self.return_message_ext1 += 'Task db in online\n'
+            self.return_message_ext1 += 'Task db is online\n'
         else:
-            self.return_message_ext1 += 'Task db in None\n'
+            self.return_message_ext1 += 'Task db is None\n'
         if self.dfa is not None:
-            self.return_message_ext1 += 'Activity db in online\n'
+            self.return_message_ext1 += 'Activity db is online\n'
         else:
-            self.return_message_ext1 += 'Activity db in None\n'
+            self.return_message_ext1 += 'Activity db is None\n'
 
         return True
 

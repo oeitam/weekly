@@ -125,9 +125,9 @@ class Gtd(object):
         #############################################
         # ci and co messages
         if self.current_data == 'ci':
-            self.current_data = 'start @0 | checking in - start work'
+            self.current_data = 'start @48 | checking in - start work'
         if self.current_data == 'co':
-            self.current_data = 'start @0 | checking out - home'
+            self.current_data = 'start @48 | checking out - home'
 
         ##############################################
         # check if context need to be kept, and if not - clean it up
@@ -375,7 +375,7 @@ def nud(self):
     elif gdb.transaction_type == "create task":
         gdb.set_project_name(token.value)
         advance()  # to check what is beyond ..
-    elif gdb.transaction_type == 'start something':
+    elif gdb.transaction_type == 'start activity':
         # deal with the spacial case where token.value can be 'n'
         gdb.use_this_ID_for_ref = int(token.value) #get the id to relate the task creation to
     elif gdb.transaction_type == "stop something":
@@ -597,7 +597,7 @@ def nud(self):
     if gdb.list_for_what == 'task':
         advance()
     gdb.list_for_val = token.value
-    advance()
+    #advance()
     #self.second = expression()
     return self
 
