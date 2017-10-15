@@ -117,6 +117,18 @@ class Db(object):
             self.pID = cID
             return cID
 
+        ###################################
+        # returns to caller the ID it
+        # reads from the file,
+        # does not advance the ID !!
+        ###################################
+    def get_current_ID(self):
+        fh = open('ID', 'r')
+        cID = int(fh.read())
+        logger.debug('current ID is: {}'.format(cID))
+        fh.close()
+        return cID
+
     # expecting date (like date.today())
     def get_time_str(self, d = None):
         #d = date.today()
@@ -727,7 +739,9 @@ class Db(object):
             self.return_message_ext1 += 'Activity db is online\n'
         else:
             self.return_message_ext1 += 'Activity db is None\n'
-
+        cid = self.get_current_ID()
+        lstr = "The ID in file is: {}".format(cid)
+        self.return_message_ext1     += lstr
         return True
 
 

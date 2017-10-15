@@ -1,8 +1,8 @@
 INFO:root:Logging (into weekly.log)Started
 INFO:root:Logging (client direct) Started
 DEBUG:src.db.db:setting up databases
-DEBUG:src.db.db:Starting with ID 1723
-DEBUG:src.db.db:ID is: 1723
+DEBUG:src.db.db:Starting with ID 1739
+DEBUG:src.db.db:ID is: 1739
 DEBUG:src.db.db:class Db initialized
 DEBUG:src.gtd.gtd:stored new data:online
 DEBUG:src.gtd.gtd:data from c: online
@@ -13,126 +13,87 @@ DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8',
 DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='online', start=(1, 0), end=(1, 6), line='online')
 DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
 DEBUG:src.gtd.gtd:online nud
+DEBUG:src.db.db:current ID is: 1740
 DEBUG:src.gtd.gtd:this is the return_message: Transaction: online COMPLETED. New ID is: -1
 Online Status:
 Megaproject db is online
 Project db is online
 Task db is online
 Activity db is online
-
-DEBUG:src.server.server:return_message: 0151:Transaction: online COMPLETED. New ID is: -1
+The ID in file is: 1740
+DEBUG:src.server.server:return_message: 0174:Transaction: online COMPLETED. New ID is: -1
 Online Status:
 Megaproject db is online
 Project db is online
 Task db is online
 Activity db is online
-
-DEBUG:src.gtd.gtd:command after replacement: task @weekly | check if start @<some id> works or not
-DEBUG:src.gtd.gtd:stored new data:task @weekly | check if start @<some id> works or not
-DEBUG:src.gtd.gtd:data from c: task @weekly | check if start @<some id> works or not
-DEBUG:src.gtd.gtd:I am in parse task @weekly | check if start @<some id> works or not
-DEBUG:src.gtd.gtd:I am in tokenize task @weekly | check if start @<some id> works or not
-DEBUG:src.gtd.gtd:I am in tokenize_weekly task @weekly | check if start @<some id> works or not
+The ID in file is: 1740
+DEBUG:src.gtd.gtd:stored new data:list activity
+DEBUG:src.gtd.gtd:data from c: list activity
+DEBUG:src.gtd.gtd:I am in parse list activity
+DEBUG:src.gtd.gtd:I am in tokenize list activity
+DEBUG:src.gtd.gtd:I am in tokenize_weekly list activity
 DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='task', start=(1, 0), end=(1, 4), line='task @weekly | check if start @<some id> works or not')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='@', start=(1, 5), end=(1, 6), line='task @weekly | check if start @<some id> works or not')
-DEBUG:src.gtd.gtd:task nud
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='weekly', start=(1, 6), end=(1, 12), line='task @weekly | check if start @<some id> works or not')
-DEBUG:src.gtd.gtd:@ nud
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='|', start=(1, 13), end=(1, 14), line='task @weekly | check if start @<some id> works or not')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='check', start=(1, 15), end=(1, 20), line='task @weekly | check if start @<some id> works or not')
-DEBUG:src.gtd.gtd:| nud
-DEBUG:src.db.db:ID is: 1724
-DEBUG:src.db.db:     State                              Description  Start_Date PROJECT Due_Date Expiration_Date Location Context Reminders ACTIVITYs Sub_TASKs Parent_TASK
-ID                                                                                                                                                         
-1724  Open   check if start @<some id> works or not  17ww41.Tue  weekly                                                            []        []            
-DEBUG:src.gtd.gtd:this is the return_message: Transaction: create task COMPLETED. New ID is: 1724
-DEBUG:src.server.server:return_message: 0056:Transaction: create task COMPLETED. New ID is: 1724
-DEBUG:src.gtd.gtd:stored new data:task @weekly | see how to make the ID different per prod/dev/demo and also if no ID file exists - create one from 100 on
-DEBUG:src.gtd.gtd:data from c: task @weekly | see how to make the ID different per prod/dev/demo and also if no ID file exists - create one from 100 on
-DEBUG:src.gtd.gtd:I am in parse task @weekly | see how to make the ID different per prod/dev/demo and also if no ID file exists - create one from 100 on
-DEBUG:src.gtd.gtd:I am in tokenize task @weekly | see how to make the ID different per prod/dev/demo and also if no ID file exists - create one from 100 on
-DEBUG:src.gtd.gtd:I am in tokenize_weekly task @weekly | see how to make the ID different per prod/dev/demo and also if no ID file exists - create one from 100 on
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='task', start=(1, 0), end=(1, 4), line='task @weekly | see how to make the ID different per prod/dev/demo and also if no ID file exists - create one from 100 on')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='@', start=(1, 5), end=(1, 6), line='task @weekly | see how to make the ID different per prod/dev/demo and also if no ID file exists - create one from 100 on')
-DEBUG:src.gtd.gtd:task nud
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='weekly', start=(1, 6), end=(1, 12), line='task @weekly | see how to make the ID different per prod/dev/demo and also if no ID file exists - create one from 100 on')
-DEBUG:src.gtd.gtd:@ nud
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='|', start=(1, 13), end=(1, 14), line='task @weekly | see how to make the ID different per prod/dev/demo and also if no ID file exists - create one from 100 on')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='see', start=(1, 15), end=(1, 18), line='task @weekly | see how to make the ID different per prod/dev/demo and also if no ID file exists - create one from 100 on')
-DEBUG:src.gtd.gtd:| nud
-DEBUG:src.db.db:ID is: 1725
-DEBUG:src.db.db:     State                                                                                          Description  Start_Date PROJECT Due_Date Expiration_Date Location Context Reminders ACTIVITYs Sub_TASKs Parent_TASK
-ID                                                                                                                                                                                                                     
-1725  Open   see how to make the ID different per prod/dev/demo and also if no ID file exists - create one f...  17ww41.Tue  weekly                                                            []        []            
-DEBUG:src.gtd.gtd:this is the return_message: Transaction: create task COMPLETED. New ID is: 1725
-DEBUG:src.server.server:return_message: 0056:Transaction: create task COMPLETED. New ID is: 1725
-DEBUG:src.gtd.gtd:stored new data:list task
-DEBUG:src.gtd.gtd:data from c: list task
-DEBUG:src.gtd.gtd:I am in parse list task
-DEBUG:src.gtd.gtd:I am in tokenize list task
-DEBUG:src.gtd.gtd:I am in tokenize_weekly list task
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='list', start=(1, 0), end=(1, 4), line='list task')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='task', start=(1, 5), end=(1, 9), line='list task')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='list', start=(1, 0), end=(1, 4), line='list activity')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='activity', start=(1, 5), end=(1, 13), line='list activity')
 DEBUG:src.gtd.gtd:list nud
 DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
-DEBUG:src.gtd.gtd:this is the return_message: Showing items 19 to 32:
-     State   Description                                                                                          Start_Date  PROJECT Due_Date Expiration_Date
-ID                                                                                                                                                            
-1311  OnHold   create a command like 'gen weekly' or 'gen byweekly' with all the open tasks (?) and activities...  17ww39.Sun  weekly  N/A      N/A           
-1312  OnHold   create a variable that will filter only OPEN items. (could be done in another way ... at search...  17ww39.Sun  weekly  N/A      N/A           
-1313    Open   consider adding to a task or activity being closed, (adding a) text related to teh closure (lik...  17ww39.Sun  weekly  N/A      N/A           
-1396  Closed                         add a way to just print all activities of one week (or tasks and activities)  17ww39.Wed  weekly  N/A      N/A           
-1502  Closed                                    make the cont and halt and stop work for task and project as well  17ww39.Sat  weekly  N/A      N/A           
-1618  Closed                                                               add ability to delete task or activity  17ww40.Mon  weekly  N/A      N/A           
-1619  Closed                         seems that list for task for project may miss printing the latest one opened  17ww40.Mon  weekly  N/A      N/A           
-1621  Closed                           list search (pipe) weekly does not return the project weekly record itself  17ww40.Mon  weekly  N/A      N/A           
-1625    Open   check why if I do "task @27" it craetes a task with teh project name 27 and not looking for the...  17ww40.Mon  weekly  N/A      N/A           
-1626    Open                                add multiple criteria for list - like state is open and week is wwXX   17ww40.Mon  weekly  N/A      N/A           
-1704    Open                                 for online command - no need to print 'transaction completed' etc...  17ww40.Wed  weekly  N/A      N/A           
-1705    Open                     create one script that will launch the produciton mode w/o going through PyCharm  17ww40.Wed  weekly  N/A      N/A           
-1706    Open   create commonly used shortcuts (perhaps using a predefined dict in defs for the conversions (in...  17ww40.Wed  weekly  N/A      N/A           
-1724    Open                                                               check if start @<some id> works or not  17ww41.Tue  weekly                         
-1725    Open   see how to make the ID different per prod/dev/demo and also if no ID file exists - create one f...  17ww41.Tue  weekly                         
+DEBUG:src.gtd.gtd:this is the return_message: Showing items 100 to 113:
+     State    Start_Date  Description                                               End_Date
+ID                                                                                          
+1695  Started  17ww40.Wed                                  checking in - start work  N/A    
+1702  Started  17ww40.Wed                                            cleaning email  N/A    
+1703  Started  17ww40.Wed                                     more learninig on DCI  N/A    
+1708  Started  17ww41.Mon                                                        ci  N/A    
+1709  Started  17ww41.Mon                                                email, TnT  N/A    
+1711  Started  17ww41.Mon             learn DCI - email and proposition from Prasad  N/A    
+1715  Started  17ww41.Mon                                              ICL sysdebug  N/A    
+1716  Started  17ww41.Mon           work on the presentation for Rally for the team  N/A    
+1717  Started  17ww41.Tue                                  checking in - start work  N/A    
+1726  Started  17ww41.Tue       work on patch issue - analyze differences lin files  N/A    
+1727  Started  17ww41.Wed                                  checking in - start work  N/A    
+1728  Started  17ww41.Wed   work on scrum, sprint roll over, presentation preparing  N/A    
+1736  Started  17ww42.Sun                                  checking in - start work  N/A    
+1737  Started  17ww42.Sun                                                       TnT  N/A    
+1738  Started  17ww42.Sun           work on the presentation for the RAlly training  N/A    
 
-DEBUG:src.server.server:return_message: 2732:Showing items 19 to 32:
-     State   Description                                                                                          Start_Date  PROJECT Due_Date Expiration_Date
-ID                                                                                                                                                            
-1311  OnHold   create a command like 'gen weekly' or 'gen byweekly' with all the open tasks (?) and activities...  17ww39.Sun  weekly  N/A      N/A           
-1312  OnHold   create a variable that will filter only OPEN items. (could be done in another way ... at search...  17ww39.Sun  weekly  N/A      N/A           
-1313    Open   consider adding to a task or activity being closed, (adding a) text related to teh closure (lik...  17ww39.Sun  weekly  N/A      N/A           
-1396  Closed                         add a way to just print all activities of one week (or tasks and activities)  17ww39.Wed  weekly  N/A      N/A           
-1502  Closed                                    make the cont and halt and stop work for task and project as well  17ww39.Sat  weekly  N/A      N/A           
-1618  Closed                                                               add ability to delete task or activity  17ww40.Mon  weekly  N/A      N/A           
-1619  Closed                         seems that list for task for project may miss printing the latest one opened  17ww40.Mon  weekly  N/A      N/A           
-1621  Closed                           list search (pipe) weekly does not return the project weekly record itself  17ww40.Mon  weekly  N/A      N/A           
-1625    Open   check why if I do "task @27" it craetes a task with teh project name 27 and not looking for the...  17ww40.Mon  weekly  N/A      N/A           
-1626    Open                                add multiple criteria for list - like state is open and week is wwXX   17ww40.Mon  weekly  N/A      N/A           
-1704    Open                                 for online command - no need to print 'transaction completed' etc...  17ww40.Wed  weekly  N/A      N/A           
-1705    Open                     create one script that will launch the produciton mode w/o going through PyCharm  17ww40.Wed  weekly  N/A      N/A           
-1706    Open   create commonly used shortcuts (perhaps using a predefined dict in defs for the conversions (in...  17ww40.Wed  weekly  N/A      N/A           
-1724    Open                                                               check if start @<some id> works or not  17ww41.Tue  weekly                         
-1725    Open   see how to make the ID different per prod/dev/demo and also if no ID file exists - create one f...  17ww41.Tue  weekly                         
+DEBUG:src.server.server:return_message: 1612:Showing items 100 to 113:
+     State    Start_Date  Description                                               End_Date
+ID                                                                                          
+1695  Started  17ww40.Wed                                  checking in - start work  N/A    
+1702  Started  17ww40.Wed                                            cleaning email  N/A    
+1703  Started  17ww40.Wed                                     more learninig on DCI  N/A    
+1708  Started  17ww41.Mon                                                        ci  N/A    
+1709  Started  17ww41.Mon                                                email, TnT  N/A    
+1711  Started  17ww41.Mon             learn DCI - email and proposition from Prasad  N/A    
+1715  Started  17ww41.Mon                                              ICL sysdebug  N/A    
+1716  Started  17ww41.Mon           work on the presentation for Rally for the team  N/A    
+1717  Started  17ww41.Tue                                  checking in - start work  N/A    
+1726  Started  17ww41.Tue       work on patch issue - analyze differences lin files  N/A    
+1727  Started  17ww41.Wed                                  checking in - start work  N/A    
+1728  Started  17ww41.Wed   work on scrum, sprint roll over, presentation preparing  N/A    
+1736  Started  17ww42.Sun                                  checking in - start work  N/A    
+1737  Started  17ww42.Sun                                                       TnT  N/A    
+1738  Started  17ww42.Sun           work on the presentation for the RAlly training  N/A    
 
-DEBUG:src.gtd.gtd:stored new data:today | work on patch issue - analyze differences lin files
-DEBUG:src.gtd.gtd:data from c: today | work on patch issue - analyze differences lin files
-DEBUG:src.gtd.gtd:I am in parse start @48 | work on patch issue - analyze differences lin files
-DEBUG:src.gtd.gtd:I am in tokenize start @48 | work on patch issue - analyze differences lin files
-DEBUG:src.gtd.gtd:I am in tokenize_weekly start @48 | work on patch issue - analyze differences lin files
+DEBUG:src.gtd.gtd:stored new data:today | work on fuse PIF issue - with gil. Documentatino and more
+DEBUG:src.gtd.gtd:data from c: today | work on fuse PIF issue - with gil. Documentatino and more
+DEBUG:src.gtd.gtd:I am in parse start @48 | work on fuse PIF issue - with gil. Documentatino and more
+DEBUG:src.gtd.gtd:I am in tokenize start @48 | work on fuse PIF issue - with gil. Documentatino and more
+DEBUG:src.gtd.gtd:I am in tokenize_weekly start @48 | work on fuse PIF issue - with gil. Documentatino and more
 DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='start', start=(1, 0), end=(1, 5), line='start @48 | work on patch issue - analyze differences lin files')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='@', start=(1, 6), end=(1, 7), line='start @48 | work on patch issue - analyze differences lin files')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='start', start=(1, 0), end=(1, 5), line='start @48 | work on fuse PIF issue - with gil. Documentatino and more')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='@', start=(1, 6), end=(1, 7), line='start @48 | work on fuse PIF issue - with gil. Documentatino and more')
 DEBUG:src.gtd.gtd:start nud
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=2 (NUMBER), string='48', start=(1, 7), end=(1, 9), line='start @48 | work on patch issue - analyze differences lin files')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=2 (NUMBER), string='48', start=(1, 7), end=(1, 9), line='start @48 | work on fuse PIF issue - with gil. Documentatino and more')
 DEBUG:src.gtd.gtd:@ nud
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='|', start=(1, 10), end=(1, 11), line='start @48 | work on patch issue - analyze differences lin files')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='work', start=(1, 12), end=(1, 16), line='start @48 | work on patch issue - analyze differences lin files')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='on', start=(1, 17), end=(1, 19), line='start @48 | work on patch issue - analyze differences lin files')
-DEBUG:src.db.db:ID is: 1726
-DEBUG:src.db.db:        State  Start_Date                                           Description End_Date TASK PROJECT
-ID                                                                                                   
-1726  Started  17ww41.Tue   work on patch issue - analyze differences lin files                    48
-DEBUG:src.gtd.gtd:this is the return_message: Transaction: start activity COMPLETED. New ID is: 1726
-DEBUG:src.server.server:return_message: 0059:Transaction: start activity COMPLETED. New ID is: 1726
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='|', start=(1, 10), end=(1, 11), line='start @48 | work on fuse PIF issue - with gil. Documentatino and more')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='work', start=(1, 12), end=(1, 16), line='start @48 | work on fuse PIF issue - with gil. Documentatino and more')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='on', start=(1, 17), end=(1, 19), line='start @48 | work on fuse PIF issue - with gil. Documentatino and more')
+DEBUG:src.db.db:ID is: 1740
+DEBUG:src.db.db:        State  Start_Date                                                 Description End_Date TASK PROJECT
+ID                                                                                                         
+1740  Started  17ww42.Sun   work on fuse PIF issue - with gil. Documentatino and more                    48
+DEBUG:src.gtd.gtd:this is the return_message: Transaction: start activity COMPLETED. New ID is: 1740
+DEBUG:src.server.server:return_message: 0059:Transaction: start activity COMPLETED. New ID is: 1740
+INFO:root:Logging Finished

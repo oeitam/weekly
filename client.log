@@ -6,30 +6,27 @@ Megaproject db is online
 Project db is online
 Task db is online
 Activity db is online
+The ID in file is: 1740
+DEBUG:__main__:client script sending 0018:list activity
+DEBUG:__main__:ServerSaid: Showing items 100 to 113:
+     State    Start_Date  Description                                               End_Date
+ID                                                                                          
+1695  Started  17ww40.Wed                                  checking in - start work  N/A    
+1702  Started  17ww40.Wed                                            cleaning email  N/A    
+1703  Started  17ww40.Wed                                     more learninig on DCI  N/A    
+1708  Started  17ww41.Mon                                                        ci  N/A    
+1709  Started  17ww41.Mon                                                email, TnT  N/A    
+1711  Started  17ww41.Mon             learn DCI - email and proposition from Prasad  N/A    
+1715  Started  17ww41.Mon                                              ICL sysdebug  N/A    
+1716  Started  17ww41.Mon           work on the presentation for Rally for the team  N/A    
+1717  Started  17ww41.Tue                                  checking in - start work  N/A    
+1726  Started  17ww41.Tue       work on patch issue - analyze differences lin files  N/A    
+1727  Started  17ww41.Wed                                  checking in - start work  N/A    
+1728  Started  17ww41.Wed   work on scrum, sprint roll over, presentation preparing  N/A    
+1736  Started  17ww42.Sun                                  checking in - start work  N/A    
+1737  Started  17ww42.Sun                                                       TnT  N/A    
+1738  Started  17ww42.Sun           work on the presentation for the RAlly training  N/A    
 
-DEBUG:__main__:client script sending 0058:task @weekly | check if start @<some id> works or not
-DEBUG:__main__:ServerSaid: Transaction: create task COMPLETED. New ID is: 1724
-DEBUG:__main__:client script sending 0125:task @weekly | see how to make the ID different per prod/dev/demo and also if no ID file exists - create one from 100 on
-DEBUG:__main__:ServerSaid: Transaction: create task COMPLETED. New ID is: 1725
-DEBUG:__main__:client script sending 0014:list task
-DEBUG:__main__:ServerSaid: Showing items 19 to 32:
-     State   Description                                                                                          Start_Date  PROJECT Due_Date Expiration_Date
-ID                                                                                                                                                            
-1311  OnHold   create a command like 'gen weekly' or 'gen byweekly' with all the open tasks (?) and activities...  17ww39.Sun  weekly  N/A      N/A           
-1312  OnHold   create a variable that will filter only OPEN items. (could be done in another way ... at search...  17ww39.Sun  weekly  N/A      N/A           
-1313    Open   consider adding to a task or activity being closed, (adding a) text related to teh closure (lik...  17ww39.Sun  weekly  N/A      N/A           
-1396  Closed                         add a way to just print all activities of one week (or tasks and activities)  17ww39.Wed  weekly  N/A      N/A           
-1502  Closed                                    make the cont and halt and stop work for task and project as well  17ww39.Sat  weekly  N/A      N/A           
-1618  Closed                                                               add ability to delete task or activity  17ww40.Mon  weekly  N/A      N/A           
-1619  Closed                         seems that list for task for project may miss printing the latest one opened  17ww40.Mon  weekly  N/A      N/A           
-1621  Closed                           list search (pipe) weekly does not return the project weekly record itself  17ww40.Mon  weekly  N/A      N/A           
-1625    Open   check why if I do "task @27" it craetes a task with teh project name 27 and not looking for the...  17ww40.Mon  weekly  N/A      N/A           
-1626    Open                                add multiple criteria for list - like state is open and week is wwXX   17ww40.Mon  weekly  N/A      N/A           
-1704    Open                                 for online command - no need to print 'transaction completed' etc...  17ww40.Wed  weekly  N/A      N/A           
-1705    Open                     create one script that will launch the produciton mode w/o going through PyCharm  17ww40.Wed  weekly  N/A      N/A           
-1706    Open   create commonly used shortcuts (perhaps using a predefined dict in defs for the conversions (in...  17ww40.Wed  weekly  N/A      N/A           
-1724    Open                                                               check if start @<some id> works or not  17ww41.Tue  weekly                         
-1725    Open   see how to make the ID different per prod/dev/demo and also if no ID file exists - create one f...  17ww41.Tue  weekly                         
-
-DEBUG:__main__:client script sending 0064:today | work on patch issue - analyze differences lin files
-DEBUG:__main__:ServerSaid: Transaction: start activity COMPLETED. New ID is: 1726
+DEBUG:__main__:client script sending 0070:today | work on fuse PIF issue - with gil. Documentatino and more
+DEBUG:__main__:ServerSaid: Transaction: start activity COMPLETED. New ID is: 1740
+DEBUG:__main__:Client closing socket

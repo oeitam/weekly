@@ -1,12 +1,12 @@
 0002:
 0011:online
-0151:Transaction: online COMPLETED. New ID is: -1
+0186:Transaction: online COMPLETED. New ID is: -1
 Online Status:
 Megaproject db is online
 Project db is online
 Task db is online
 Activity db is online
-
+The last ID used for the DB is 1735
 
 0003:
 0031:list search | project_five
