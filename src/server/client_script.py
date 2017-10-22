@@ -4,12 +4,15 @@
 import socket
 import sys
 
+if 'C:\\Users\\oeitam\\PycharmProjects\\weekly' not in sys.path:
+    sys.path.append(r'C:\Users\oeitam\PycharmProjects\weekly')
+
+
 import os
-print(os.getcwd())
 import time
 from src import defs
-
-from test import test_defs
+if  defs.mode != 'prod':
+    from test import test_defs
 
 import logging
 c_logger = logging.getLogger(__name__)
@@ -29,7 +32,10 @@ sock.connect(server_address)
 wait_for_user = 0
 cnt = 1
 try:
-    lenm = len(test_defs.test_commands)
+    if defs.mode != 'prod':
+        lenm = len(test_defs.test_commands)
+    else:
+        lenm = 0
     mpos = 0
     while True:
     #for m in test_defs.test_commands:

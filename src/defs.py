@@ -2,25 +2,23 @@
 
 from ast import literal_eval
 
-# read local definition file and evaluate it
-f = open('C:\weekly.local\weekly.local.txt', 'r')
-l = []
-for line in f:
-    line = line.rstrip()
-    if (line[0] == '#'):
-        continue
-    l.append(literal_eval(line))
+import configparser
 
-f.close()
+config = configparser.ConfigParser()
+config.read(r'C:\weekly.local\weekly.local.cfg')
 
-location            = l[0]
-data_loc            = l[1]
-mode_sel            = l[2]
-local_client_script = l[3]
-data_loc_dropbox    = l[4]
-dev_or_prod         = l[5]
+dev_or_prod         = config['MAIN']['dev_or_prod']
+data_loc            = config['MAIN']['data_loc']
+mode_sel            = int(config['MAIN']['mode_sel'])
+local_client_script = config['MAIN']['local_client_script']
 
 data_loc = data_loc + '\\' + dev_or_prod
+
+# print(dev_or_prod)
+# print(data_loc)
+# print(mode_sel)
+# print(local_client_script)
+
 
 #         -0-        -1-      -2-
 mode = ['socket', 'direct', 'prod' ][mode_sel]

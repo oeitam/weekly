@@ -1,48 +1,12 @@
 0002:
-0011:online
-0186:Transaction: online COMPLETED. New ID is: -1
-Online Status:
-Megaproject db is online
-Project db is online
-Task db is online
-Activity db is online
-The last ID used for the DB is 1735
+0007:ci
+0059:Transaction: start activity COMPLETED. New ID is: 1813
 
 0003:
-0031:list search | project_five
-2018:Searching for  project_five:
+0007:co
+0059:Transaction: start activity COMPLETED. New ID is: 1814
 
-Results from Megaprojects DataFrame
-     Name    State Description                                          
-ID                                                                      
-1147   Work1  On      1all projects that relate to Work at Intel go here
-1167  Work11  On     11all projects that relate to Work at Intel go here
-
-Results from Projects DataFrame
-     Name           State    MEGAPROJECT Description                          
-ID                                                                            
-1155   project_five  Started   Work1       this is the first project I created
-1173  project_five1  Started  Work11       this is the first project I created
-1193   project_five  Started   Work1       this is the first project I created
-1214   project_five  Started   Work1       this is the first project I created
-1232  project_five1  Started  Work11       this is the first project I created
-1323   project_five  Started   Work1       this is the first project I created
-1344   project_five  Started   Work1       this is the first project I created
-1362  project_five1    Ended  Work11       this is the first project I created
-1414   project_five  Started   Work1       this is the first project I created
-1435   project_five  Started   Work1       this is the first project I created
-1453  project_five1    Ended  Work11       this is the first project I created
-1511   project_five    Ended   Work1       this is the first project I created
-1532   project_five  Started   Work1       this is the first project I created
-1550  project_five1  Started  Work11       this is the first project I created
-1634   project_five  Started   Work1       this is the first project I created
-1655   project_five  Started   Work1       this is the first project I created
-1673  project_five1  Started  Work11       this is the first project I created
-
-Results from Tasks DataFrame
-well ... nothing found here
-
-Results from Activities DataFrame
-well ... nothing found here
-
+0004:
+0025:today | do something
+0059:Transaction: start activity COMPLETED. New ID is: 1815
 

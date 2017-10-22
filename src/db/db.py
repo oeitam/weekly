@@ -104,11 +104,18 @@ class Db(object):
     # the next ID (+1)
     ###################################
     def get_new_ID(self, mode = 0):
-        fh = open('ID', 'r+')
+        path_to_ID_file = defs.data_loc + '\\ID'
+        if not os.path.isfile(path_to_ID_file):
+            fb = open(path_to_ID_file,'w')
+            fb.write('100')
+            fb.close()
+        #print(path_to_ID_file)
+        fh = open(path_to_ID_file, 'r+')
         cID = int(fh.read())
         fh.seek(0)
         fh.write(str(cID+1)) # increase by 1 for next time
-        if mode == 1:logger.debug('Starting with ID {}'.format(cID))
+        if mode == 1:
+            logger.debug('Starting with ID {}'.format(cID))
         logger.debug('ID is: {}'.format(cID))
         fh.close()
         if mode == 1:
@@ -123,7 +130,12 @@ class Db(object):
         # does not advance the ID !!
         ###################################
     def get_current_ID(self):
-        fh = open('ID', 'r')
+        path_to_ID_file = defs.data_loc + '\\ID'
+        if not os.path.isfile(path_to_ID_file):
+            fb = open(path_to_ID_file,'w')
+            fb.write('100')
+            fb.close()
+        fh = open(path_to_ID_file, 'r')
         cID = int(fh.read())
         logger.debug('current ID is: {}'.format(cID))
         fh.close()
@@ -287,7 +299,18 @@ class Db(object):
 
     # set the project name for the next transaction
     def set_project_name(self, project_name):
-        self.project_name = project_name
+        had_error = 0
+        if project_name.isdigit():
+            # look for the project 'verbal' name
+            if self.dfp is not None:
+                if int(project_name) in self.dfp.index:
+                    self.project_name = self.dfp.loc[int(project_name)].Name
+                else:
+                    had_error = 1
+            else:
+                had_error = 1
+        else:
+            self.project_name = project_name
 
     # set the project name for the next transaction
     def set_megaproject_name(self, megaproject_name):
@@ -722,25 +745,27 @@ class Db(object):
 
 
     def online_check(self):
+        # example
+        # '{:15} {:5} {:5} {:10}\n'.format('Megaproject','db', 'is', 'online')
         self.return_message_ext1 = '\nOnline Status:\n'
         if self.dfm is not None:
-            self.return_message_ext1 += 'Megaproject db is online\n'
+            self.return_message_ext1 += '{:12} {:4} {:4} {:8}\n'.format('Megaproject', 'db', 'is', 'online')
         else:
-            self.return_message_ext1 += 'Megaproject db is None\n'
+            self.return_message_ext1 += '{:12} {:4} {:4} {:8}\n'.format('Megaproject', 'db', 'is', 'None')
         if self.dfp is not None:
-            self.return_message_ext1 += 'Project db is online\n'
+            self.return_message_ext1 += '{:12} {:4} {:4} {:8}\n'.format('Project', 'db', 'is', 'online')
         else:
-            self.return_message_ext1 += 'Project db is None\n'
+            self.return_message_ext1 += '{:12} {:4} {:4} {:8}\n'.format('Project', 'db', 'is', 'None')
         if self.dft is not None:
-            self.return_message_ext1 += 'Task db is online\n'
+            self.return_message_ext1 += '{:12} {:4} {:4} {:8}\n'.format('Task', 'db', 'is', 'online')
         else:
-            self.return_message_ext1 += 'Task db is None\n'
+            self.return_message_ext1 += '{:12} {:4} {:4} {:8}\n'.format('Task', 'db', 'is', 'None')
         if self.dfa is not None:
-            self.return_message_ext1 += 'Activity db is online\n'
+            self.return_message_ext1 += '{:12} {:4} {:4} {:8}\n'.format('Activity', 'db', 'is', 'online')
         else:
-            self.return_message_ext1 += 'Activity db is None\n'
+            self.return_message_ext1 += '{:12} {:4} {:4} {:8}\n'.format('Activity', 'db', 'is', 'None')
         cid = self.get_current_ID()
-        lstr = "The ID in file is: {}".format(cid)
+        lstr = "The ID in file is: {}\n".format(cid)
         self.return_message_ext1     += lstr
         return True
 

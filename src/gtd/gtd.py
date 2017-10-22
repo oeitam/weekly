@@ -2,9 +2,11 @@
 import logging
 from random import randint
 logger = logging.getLogger(__name__)
+from src import defs
+
+
 
 symbol_table = {}
-
 
 class Gtd(object):
     def __init__(self, db = None):
@@ -95,7 +97,7 @@ class Gtd(object):
     def process(self):
         print('processing data from the client')
         logger.debug('data from c: %s',self.current_data)
-        if not self.sanitize_input():
+        if not self.sanitize_input:
             #raise UserWarning
             return False
         try:
@@ -114,6 +116,7 @@ class Gtd(object):
 
     # this function cleans the input to parsing from things that may be operatoprs
     # like = -,=,!,@ etc
+    @property
     def sanitize_input(self):
         # some syntax checks and expantions
         ################################
@@ -121,13 +124,14 @@ class Gtd(object):
         if ((self.current_data.replace(' ', '') == 'list') and ('list' not in gdb.transaction_type)):
             return False
 
+        ###############################################
+        # simple substitutions
+        for sect in defs.config.sections():
+            if 'replace_' in sect:
+                if defs.config[sect]['replacement_type'] == 'simple_substitution':
+                    if self.current_data == defs.config[sect]['replace_what']:
+                        self.current_data = defs.config[sect]['replace_with']
 
-        #############################################
-        # ci and co messages
-        if self.current_data == 'ci':
-            self.current_data = 'start @48 | checking in - start work'
-        if self.current_data == 'co':
-            self.current_data = 'start @48 | checking out - home'
 
         ##############################################
         # check if context need to be kept, and if not - clean it up
@@ -141,14 +145,15 @@ class Gtd(object):
             (t1,t2, t3) = self.current_data.partition('|')
             gdb.set_trans_description(t3)
 
-        ##############################################
-        # prepare a today | .... assuming
-        # that there is a project called 'today' which is number
-        # 48 (the number is what is important)
+        ########################################################
+        # pipe substitutions
         temp1 = self.current_data.partition('|')
-        if temp1[0].replace(' ', '') == 'today':
-            self.current_data = 'start @48 |' + temp1[2]
-        ##############################################
+        for sect in defs.config.sections():
+            if 'replace_' in sect:
+                if defs.config[sect]['replacement_type'] == 'pipe_substitution':
+                    if temp1[0].replace(' ', '') == defs.config[sect]['replace_what']:
+                        self.current_data = defs.config[sect]['replace_with'] + temp1[2]
+
         return True
 
 

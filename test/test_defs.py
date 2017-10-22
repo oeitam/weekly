@@ -7,10 +7,13 @@ from datetime import timedelta
 debug_delta = timedelta(days=0)
 
 test_commands = [
-    #"ci",
-    #"co",
-    "online",
-    "list search | project_five",
+    "ci",
+    "co",
+    "today | do something",
+    #"online",
+    #"task @1155 | this is some task",
+    #"list @10030",
+    #"list search | project_five",
     #"list",
     #"online",
     #"ci",

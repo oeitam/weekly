@@ -21,7 +21,6 @@ from src.server import server as serverinst
 def main():
 
 
-
     db = database.Db()
     gtd = gettingthingsdone.Gtd(db)
     server = serverinst.Server(gtd)

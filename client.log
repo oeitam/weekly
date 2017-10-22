@@ -1,32 +1,97 @@
 INFO:root:Logging (into clienr.log) Started
+DEBUG:__main__:client script sending 0011:ONLINE
+DEBUG:__main__:ServerSaid: Transaction: clean FAILED with ERROR: clean
 DEBUG:__main__:client script sending 0011:online
 DEBUG:__main__:ServerSaid: Transaction: online COMPLETED. New ID is: -1
 Online Status:
-Megaproject db is online
-Project db is online
-Task db is online
-Activity db is online
-The ID in file is: 1740
-DEBUG:__main__:client script sending 0018:list activity
-DEBUG:__main__:ServerSaid: Showing items 100 to 113:
-     State    Start_Date  Description                                               End_Date
-ID                                                                                          
-1695  Started  17ww40.Wed                                  checking in - start work  N/A    
-1702  Started  17ww40.Wed                                            cleaning email  N/A    
-1703  Started  17ww40.Wed                                     more learninig on DCI  N/A    
-1708  Started  17ww41.Mon                                                        ci  N/A    
-1709  Started  17ww41.Mon                                                email, TnT  N/A    
-1711  Started  17ww41.Mon             learn DCI - email and proposition from Prasad  N/A    
-1715  Started  17ww41.Mon                                              ICL sysdebug  N/A    
-1716  Started  17ww41.Mon           work on the presentation for Rally for the team  N/A    
-1717  Started  17ww41.Tue                                  checking in - start work  N/A    
-1726  Started  17ww41.Tue       work on patch issue - analyze differences lin files  N/A    
-1727  Started  17ww41.Wed                                  checking in - start work  N/A    
-1728  Started  17ww41.Wed   work on scrum, sprint roll over, presentation preparing  N/A    
-1736  Started  17ww42.Sun                                  checking in - start work  N/A    
-1737  Started  17ww42.Sun                                                       TnT  N/A    
-1738  Started  17ww42.Sun           work on the presentation for the RAlly training  N/A    
+Megaproject  db   is   online  
+Project      db   is   online  
+Task         db   is   online  
+Activity     db   is   online  
+The ID in file is: 1817
 
-DEBUG:__main__:client script sending 0070:today | work on fuse PIF issue - with gil. Documentatino and more
-DEBUG:__main__:ServerSaid: Transaction: start activity COMPLETED. New ID is: 1740
+DEBUG:__main__:client script sending 0018:list activity
+DEBUG:__main__:ServerSaid: Showing items 116 to 129:
+     State    Start_Date  Description                                                                          End_Date
+ID                                                                                                                     
+1742  Started  17ww42.Mon                                                             checking in - start work  N/A    
+1743  Started  17ww42.Mon   some discussion of closure on ACPI timer issues in HSD 1305299942 and it's sisters  N/A    
+1779  Started  17ww42.Tue                                                             checking in - start work  N/A    
+1780  Started  17ww42.Tue                                                               presentation for Rally  N/A    
+1781  Started  17ww42.Tue                          continue work on fuse and pif enablement, some with alex s\  N/A    
+1787  Started  17ww42.Tue                      continue 2 hours at night with alfonso on the fuse patch issues  N/A    
+1789  Started  17ww42.Wed                                                             checking in - start work  N/A    
+1790  Started  17ww42.Wed                                     try in the lab the code from alfonso - host 0947  N/A    
+1793  Started  17ww42.Wed                                                                           elkana 1x1  N/A    
+1794  Started  17ww42.Wed                                              work on enabling meetings for scrum etc  N/A    
+1795  Started  17ww42.Wed        work on validation of the fuse tool solution from yesterday that alfonso gave  N/A    
+1796  Started  17ww42.Thu                                                             checking in - start work  N/A    
+1799  Started  17ww42.Thu                                                                                  tnt  N/A    
+1801  Started  17ww43.Sun                                                             checking in - start work  N/A    
+1802  Started  17ww43.Sun                                                                            learn DCI  N/A    
+
+DEBUG:__main__:client script sending 0033:list task for project weekly
+DEBUG:__main__:ServerSaid: Showing items 20 to 33:
+     State   Description                                                                                          Start_Date  PROJECT  Due_Date  Expiration_Date
+ID                                                                                                                                                              
+1396  Closed                         add a way to just print all activities of one week (or tasks and activities)  17ww39.Wed  weekly N/A       N/A             
+1502  Closed                                    make the cont and halt and stop work for task and project as well  17ww39.Sat  weekly N/A       N/A             
+1618  Closed                                                               add ability to delete task or activity  17ww40.Mon  weekly N/A       N/A             
+1619  Closed                         seems that list for task for project may miss printing the latest one opened  17ww40.Mon  weekly N/A       N/A             
+1621  Closed                           list search (pipe) weekly does not return the project weekly record itself  17ww40.Mon  weekly N/A       N/A             
+1625  Closed   check why if I do "task @27" it craetes a task with teh project name 27 and not looking for the...  17ww40.Mon  weekly N/A       N/A             
+1626    Open                                add multiple criteria for list - like state is open and week is wwXX   17ww40.Mon  weekly N/A       N/A             
+1704    Open                                 for online command - no need to print 'transaction completed' etc...  17ww40.Wed  weekly N/A       N/A             
+1705  Closed                     create one script that will launch the produciton mode w/o going through PyCharm  17ww40.Wed  weekly N/A       N/A             
+1706    Open   create commonly used shortcuts (perhaps using a predefined dict in defs for the conversions (in...  17ww40.Wed  weekly N/A       N/A             
+1724  Closed                                                               check if start @<some id> works or not  17ww41.Tue  weekly N/A       N/A             
+1725  Closed   see how to make the ID different per prod/dev/demo and also if no ID file exists - create one f...  17ww41.Tue  weekly N/A       N/A             
+1800    Open   create a way to have a 'shortcuts' configuration file, so different users can easily create the...  17ww42.Thu  weekly N/A       N/A             
+1806    Open                               add that if the ID file does not exist, create one new starting at 100  17ww43.Sun  weekly N/A       N/A             
+1807    Open   if the configuration file does not exist - is it possile to create it? or default to a default ...  17ww43.Sun  weekly N/A       N/A             
+
+DEBUG:__main__:client script sending 0015:stop @1806
+DEBUG:__main__:ServerSaid: Transaction: stop something COMPLETED. Referenced ID is: 1806
+DEBUG:__main__:client script sending 0033:list task for project weekly
+DEBUG:__main__:ServerSaid: Showing items 20 to 33:
+     State   Description                                                                                          Start_Date  PROJECT  Due_Date  Expiration_Date
+ID                                                                                                                                                              
+1396  Closed                         add a way to just print all activities of one week (or tasks and activities)  17ww39.Wed  weekly N/A       N/A             
+1502  Closed                                    make the cont and halt and stop work for task and project as well  17ww39.Sat  weekly N/A       N/A             
+1618  Closed                                                               add ability to delete task or activity  17ww40.Mon  weekly N/A       N/A             
+1619  Closed                         seems that list for task for project may miss printing the latest one opened  17ww40.Mon  weekly N/A       N/A             
+1621  Closed                           list search (pipe) weekly does not return the project weekly record itself  17ww40.Mon  weekly N/A       N/A             
+1625  Closed   check why if I do "task @27" it craetes a task with teh project name 27 and not looking for the...  17ww40.Mon  weekly N/A       N/A             
+1626    Open                                add multiple criteria for list - like state is open and week is wwXX   17ww40.Mon  weekly N/A       N/A             
+1704    Open                                 for online command - no need to print 'transaction completed' etc...  17ww40.Wed  weekly N/A       N/A             
+1705  Closed                     create one script that will launch the produciton mode w/o going through PyCharm  17ww40.Wed  weekly N/A       N/A             
+1706    Open   create commonly used shortcuts (perhaps using a predefined dict in defs for the conversions (in...  17ww40.Wed  weekly N/A       N/A             
+1724  Closed                                                               check if start @<some id> works or not  17ww41.Tue  weekly N/A       N/A             
+1725  Closed   see how to make the ID different per prod/dev/demo and also if no ID file exists - create one f...  17ww41.Tue  weekly N/A       N/A             
+1800    Open   create a way to have a 'shortcuts' configuration file, so different users can easily create the...  17ww42.Thu  weekly N/A       N/A             
+1806  Closed                               add that if the ID file does not exist, create one new starting at 100  17ww43.Sun  weekly N/A       N/A             
+1807    Open   if the configuration file does not exist - is it possile to create it? or default to a default ...  17ww43.Sun  weekly N/A       N/A             
+
+DEBUG:__main__:client script sending 0015:stop @1800
+DEBUG:__main__:ServerSaid: Transaction: stop something COMPLETED. Referenced ID is: 1800
+DEBUG:__main__:client script sending 0033:list task for project weekly
+DEBUG:__main__:ServerSaid: Showing items 20 to 33:
+     State   Description                                                                                          Start_Date  PROJECT  Due_Date  Expiration_Date
+ID                                                                                                                                                              
+1396  Closed                         add a way to just print all activities of one week (or tasks and activities)  17ww39.Wed  weekly N/A       N/A             
+1502  Closed                                    make the cont and halt and stop work for task and project as well  17ww39.Sat  weekly N/A       N/A             
+1618  Closed                                                               add ability to delete task or activity  17ww40.Mon  weekly N/A       N/A             
+1619  Closed                         seems that list for task for project may miss printing the latest one opened  17ww40.Mon  weekly N/A       N/A             
+1621  Closed                           list search (pipe) weekly does not return the project weekly record itself  17ww40.Mon  weekly N/A       N/A             
+1625  Closed   check why if I do "task @27" it craetes a task with teh project name 27 and not looking for the...  17ww40.Mon  weekly N/A       N/A             
+1626    Open                                add multiple criteria for list - like state is open and week is wwXX   17ww40.Mon  weekly N/A       N/A             
+1704    Open                                 for online command - no need to print 'transaction completed' etc...  17ww40.Wed  weekly N/A       N/A             
+1705  Closed                     create one script that will launch the produciton mode w/o going through PyCharm  17ww40.Wed  weekly N/A       N/A             
+1706    Open   create commonly used shortcuts (perhaps using a predefined dict in defs for the conversions (in...  17ww40.Wed  weekly N/A       N/A             
+1724  Closed                                                               check if start @<some id> works or not  17ww41.Tue  weekly N/A       N/A             
+1725  Closed   see how to make the ID different per prod/dev/demo and also if no ID file exists - create one f...  17ww41.Tue  weekly N/A       N/A             
+1800  Closed   create a way to have a 'shortcuts' configuration file, so different users can easily create the...  17ww42.Thu  weekly N/A       N/A             
+1806  Closed                               add that if the ID file does not exist, create one new starting at 100  17ww43.Sun  weekly N/A       N/A             
+1807    Open   if the configuration file does not exist - is it possile to create it? or default to a default ...  17ww43.Sun  weekly N/A       N/A             
+
 DEBUG:__main__:Client closing socket
