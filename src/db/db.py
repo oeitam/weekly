@@ -231,6 +231,7 @@ class Db(object):
             self.list_for_val           = 'clean'
             self.list_attr              = 'clean'
             self.list_ww                = 'clean'
+            self.state_to_list          = 'clean'
         if sec2:
             self.list_resp_row_limit    = 15
             self.list_resp_rows         = -1
@@ -620,6 +621,9 @@ class Db(object):
             which_db = 'dfm' # stam
         df = self.db_table[which_db]
 
+        # apply the state, if exists, we are listing for
+        df = self.apply_state_to_df(df, which_db)
+
         if df is not None:
             if self.list_col_name != 'clean':
                 if self.list_col_rel == 'is':
@@ -655,8 +659,12 @@ class Db(object):
                     self.had_error()
             elif self.transaction_type == 'list for':
                 df = self.list_for()
+                if df is not None:
+                    df = self.apply_state_to_df(df, which_db)
             elif self.list_ww != 'clean':
                 df = df[df['Start_Date'].str.contains(self.list_ww)]
+                if df is not None:
+                    df = self.apply_state_to_df(df, which_db)
 
             if self.list_resp_rows == -1 : # means this is the first time we handle the specific lsit
                 self.list_resp_rows = len(df)
@@ -666,13 +674,22 @@ class Db(object):
             t1 = self.list_resp_rows
             t2 = max(self.list_resp_rows - self.list_resp_row_limit ,0)
             self.list_resp = self.df_to_list_resp(df[t2:t1], which_db)
-            self.list_resp = "Showing items {} to {}:\n".format(t2+1,max(t1-1,0)) + self.list_resp
+            self.list_resp = "Showing items {} to {}:\n".format(t2+1,max(t1,0)) + self.list_resp
             self.list_resp_rows = t2
         else:  # did not find it
             self.error_details = 'No megaprojects to list'
             logger.debug(self.error_details)
             return False
         return True
+
+    def apply_state_to_df(self, df, which_db):
+        # apply the state, if exists, we are listing for
+        if self.state_to_list != 'all':
+            if self.state_to_list == 'clean':
+                self.state_to_list = defs.state_open[which_db]
+            df = df[df['State'] == self.state_to_list]
+        return df
+
 
     def df_to_list_resp(self, df, which_db):
         s = df.to_string(
@@ -683,6 +700,7 @@ class Db(object):
 
     # process for the list for command, and return a df that corresponds to the search
     def list_for(self):
+        df = None
         if self.list_what_for == 'megaproject' and self.list_for_what == 'project':
             df = self.dfm[self.dfm['PROJECTs_List'].apply(lambda x: self.list_for_val in x)]
         elif self.list_what_for == 'project' and self.list_for_what == 'megaproject':
@@ -695,6 +713,10 @@ class Db(object):
             if not self.list_for_val.isdigit():
                 self.had_error()
             df = self.dfa[self.dfa['TASK'] == self.list_for_val]
+        if df is None:
+            self.error_details = 'List for unsuccessful'
+            self.had_error()
+            logger.debug(self.error_details)
         return df
 
     # print attributes

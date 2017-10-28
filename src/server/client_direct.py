@@ -47,7 +47,7 @@ class client(object):
         print('client: closing socket', file=sys.stdout)
         cd_logger.debug("Client closing socket")
         self.f.close()
-        input("OK?")
+        #input("OK?")
 
 
 

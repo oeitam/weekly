@@ -103,7 +103,7 @@ try:
 finally:
     print('client: closing socket', file=sys.stdout)
     c_logger.debug("Client closing socket")
-    input("OK?")
+    #input("OK?")
     sock.close()
 
 

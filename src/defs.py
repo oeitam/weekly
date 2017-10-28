@@ -3,6 +3,30 @@
 from ast import literal_eval
 
 import configparser
+import os
+
+# check if the config file exists, and if not - craete one
+def check_for_and_create_cfg():
+    if not os.path.isdir(r'C:\weekly.local'):
+        os.mkdir(r'C:\weekly.local')
+    if not os.path.isfile(r'C:\weekly.local\weekly.local.cfg'):
+        # write that file
+        f = open(r'C:\weekly.local\weekly.local.cfg','w')
+        f.write('\n')
+        f.write(r'[MAIN]')
+        f.write('\n')
+        f.write(r'data_loc = C:\weekly.local')
+        f.write('\n')
+        f.write(r'mode_sel = 2')
+        f.write('\n')
+        f.write(r'local_client_script = C:\Users\oeitam\PycharmProjects\weekly\src\server\client_script.py')
+        f.write('\n')
+        f.write(r'dev_or_prod = production')
+        f.write('\n')
+        f.write('\n')
+        f.close()
+
+check_for_and_create_cfg()
 
 config = configparser.ConfigParser()
 config.read(r'C:\weekly.local\weekly.local.cfg')
@@ -155,32 +179,25 @@ all_stat = { 'megaproject' : megaproject_states,
             }
 
 ###############
+state_open = { 'dfm' : 'On',
+               'dfp' : 'Started',
+               'dft' : 'Open',
+               'dfa' : 'Started'
+               }
 
-# keywords
-keywords = {'create',
-            'project',
-            'task',
-            'activity',
-            'ACTIVITY',
-            'attach',
-            'set',
-            'continue',
-            'resume',
-            'list',
-            'clean',
-            'search',
-            'start',
-            'delete',
-            'context',
-            'die',
-            }
+state_onhold = { 'dfm' : 'ERROR',
+                 'dfp' : 'OnHold',
+                 'dft' : 'OnHold',
+                 'dfa' : 'OnHold'
+                 }
+
+state_closed = { 'dfm' : 'Off',
+                 'dfp' : 'Ended',
+                 'dft' : 'Closed',
+                 'dfa' : 'Ended'
+               }
 
 
-##########
-MEGAPROJ = {
-    'home': 'projects that belong to private life, home',
-    'work': 'projects that belong to work'
-}
 
 # databases name
 db_names = {'dfm': 'Megaprojects DataFrame',
@@ -202,8 +219,8 @@ help_message = '''
 9  start @00000000 | two ...
 10 start @0 | some ...
 11 list search | ww26
-12 list activity ww17
-13 list task ww17
+12 list activity ww 17
+13 list task ww 17
 14 list megaproject columns
 15 list project columns
 16 list task columns
@@ -239,6 +256,5 @@ help_message = '''
 '''
 
 # ====================================================
-
 
 

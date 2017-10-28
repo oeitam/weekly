@@ -1,276 +1,242 @@
 INFO:root:Logging (into weekly.log)Started
 INFO:root:Logging (client direct) Started
 DEBUG:src.db.db:setting up databases
-DEBUG:src.db.db:Starting with ID 1816
-DEBUG:src.db.db:ID is: 1816
+DEBUG:src.db.db:Starting with ID 10260
+DEBUG:src.db.db:ID is: 10260
 DEBUG:src.db.db:class Db initialized
-DEBUG:src.gtd.gtd:stored new data:ONLINE
-DEBUG:src.gtd.gtd:data from c: ONLINE
-DEBUG:src.gtd.gtd:I am in parse ONLINE
-DEBUG:src.gtd.gtd:I am in tokenize ONLINE
-DEBUG:src.gtd.gtd:I am in tokenize_weekly ONLINE
+DEBUG:src.server.client_direct:client script sending 0075:list activity state OnHold col Start_Date drange 17ww35.Sun 17ww39.Mon
+DEBUG:src.gtd.gtd:stored new data:list activity state OnHold col Start_Date drange 17ww35.Sun 17ww39.Mon
+DEBUG:src.gtd.gtd:data from c: list activity state OnHold col Start_Date drange 17ww35.Sun 17ww39.Mon
+DEBUG:src.gtd.gtd:I am in parse list activity state OnHold col Start_Date drange 17ww35.Sun 17ww39.Mon
+DEBUG:src.gtd.gtd:I am in tokenize list activity state OnHold col Start_Date drange 17ww35.Sun 17ww39.Mon
+DEBUG:src.gtd.gtd:I am in tokenize_weekly list activity state OnHold col Start_Date drange 17ww35.Sun 17ww39.Mon
 DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='ONLINE', start=(1, 0), end=(1, 6), line='ONLINE')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
-DEBUG:src.db.db:in had_error. Huston - we have a problem!
-DEBUG:src.db.db:in had_error. Huston - we have a problem!
-DEBUG:src.gtd.gtd:this is the return_message: Transaction: clean FAILED with ERROR: clean
-DEBUG:src.server.server:return_message: 0048:Transaction: clean FAILED with ERROR: clean
-DEBUG:src.gtd.gtd:stored new data:online
-DEBUG:src.gtd.gtd:data from c: online
-DEBUG:src.gtd.gtd:I am in parse online
-DEBUG:src.gtd.gtd:I am in tokenize online
-DEBUG:src.gtd.gtd:I am in tokenize_weekly online
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='online', start=(1, 0), end=(1, 6), line='online')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
-DEBUG:src.gtd.gtd:online nud
-DEBUG:src.db.db:current ID is: 1817
-DEBUG:src.gtd.gtd:this is the return_message: Transaction: online COMPLETED. New ID is: -1
-Online Status:
-Megaproject  db   is   online  
-Project      db   is   online  
-Task         db   is   online  
-Activity     db   is   online  
-The ID in file is: 1817
-
-DEBUG:src.server.server:return_message: 0217:Transaction: online COMPLETED. New ID is: -1
-Online Status:
-Megaproject  db   is   online  
-Project      db   is   online  
-Task         db   is   online  
-Activity     db   is   online  
-The ID in file is: 1817
-
-DEBUG:src.gtd.gtd:stored new data:list activity
-DEBUG:src.gtd.gtd:data from c: list activity
-DEBUG:src.gtd.gtd:I am in parse list activity
-DEBUG:src.gtd.gtd:I am in tokenize list activity
-DEBUG:src.gtd.gtd:I am in tokenize_weekly list activity
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='list', start=(1, 0), end=(1, 4), line='list activity')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='activity', start=(1, 5), end=(1, 13), line='list activity')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='list', start=(1, 0), end=(1, 4), line='list activity state OnHold col Start_Date drange 17ww35.Sun 17ww39.Mon')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='activity', start=(1, 5), end=(1, 13), line='list activity state OnHold col Start_Date drange 17ww35.Sun 17ww39.Mon')
 DEBUG:src.gtd.gtd:list nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='state', start=(1, 14), end=(1, 19), line='list activity state OnHold col Start_Date drange 17ww35.Sun 17ww39.Mon')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='OnHold', start=(1, 20), end=(1, 26), line='list activity state OnHold col Start_Date drange 17ww35.Sun 17ww39.Mon')
+DEBUG:src.gtd.gtd:state nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='col', start=(1, 27), end=(1, 30), line='list activity state OnHold col Start_Date drange 17ww35.Sun 17ww39.Mon')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='Start_Date', start=(1, 31), end=(1, 41), line='list activity state OnHold col Start_Date drange 17ww35.Sun 17ww39.Mon')
+DEBUG:src.gtd.gtd:col nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='drange', start=(1, 42), end=(1, 48), line='list activity state OnHold col Start_Date drange 17ww35.Sun 17ww39.Mon')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=2 (NUMBER), string='17', start=(1, 49), end=(1, 51), line='list activity state OnHold col Start_Date drange 17ww35.Sun 17ww39.Mon')
+DEBUG:src.gtd.gtd:drange nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='ww35', start=(1, 51), end=(1, 55), line='list activity state OnHold col Start_Date drange 17ww35.Sun 17ww39.Mon')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='.', start=(1, 55), end=(1, 56), line='list activity state OnHold col Start_Date drange 17ww35.Sun 17ww39.Mon')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='Sun', start=(1, 56), end=(1, 59), line='list activity state OnHold col Start_Date drange 17ww35.Sun 17ww39.Mon')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=2 (NUMBER), string='17', start=(1, 60), end=(1, 62), line='list activity state OnHold col Start_Date drange 17ww35.Sun 17ww39.Mon')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='ww39', start=(1, 62), end=(1, 66), line='list activity state OnHold col Start_Date drange 17ww35.Sun 17ww39.Mon')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='.', start=(1, 66), end=(1, 67), line='list activity state OnHold col Start_Date drange 17ww35.Sun 17ww39.Mon')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='Mon', start=(1, 67), end=(1, 70), line='list activity state OnHold col Start_Date drange 17ww35.Sun 17ww39.Mon')
 DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
-DEBUG:src.gtd.gtd:this is the return_message: Showing items 116 to 129:
-     State    Start_Date  Description                                                                          End_Date
-ID                                                                                                                     
-1742  Started  17ww42.Mon                                                             checking in - start work  N/A    
-1743  Started  17ww42.Mon   some discussion of closure on ACPI timer issues in HSD 1305299942 and it's sisters  N/A    
-1779  Started  17ww42.Tue                                                             checking in - start work  N/A    
-1780  Started  17ww42.Tue                                                               presentation for Rally  N/A    
-1781  Started  17ww42.Tue                          continue work on fuse and pif enablement, some with alex s\  N/A    
-1787  Started  17ww42.Tue                      continue 2 hours at night with alfonso on the fuse patch issues  N/A    
-1789  Started  17ww42.Wed                                                             checking in - start work  N/A    
-1790  Started  17ww42.Wed                                     try in the lab the code from alfonso - host 0947  N/A    
-1793  Started  17ww42.Wed                                                                           elkana 1x1  N/A    
-1794  Started  17ww42.Wed                                              work on enabling meetings for scrum etc  N/A    
-1795  Started  17ww42.Wed        work on validation of the fuse tool solution from yesterday that alfonso gave  N/A    
-1796  Started  17ww42.Thu                                                             checking in - start work  N/A    
-1799  Started  17ww42.Thu                                                                                  tnt  N/A    
-1801  Started  17ww43.Sun                                                             checking in - start work  N/A    
-1802  Started  17ww43.Sun                                                                            learn DCI  N/A    
+DEBUG:src.gtd.gtd:this is the return_message: Showing items 1 to 14:
+   State   Start_Date  Description                                       End_Date   
+0   OnHold  17ww35.Sun                          checking in - start work  17ww35.Sat
+1   OnHold  17ww35.Thu                                               tnt  17ww39.Sun
+2   OnHold  17ww35.Sat      two this is some activity related to a taask  17ww35.Sat
+3   OnHold  17ww35.Sat    three this is some activity related to a taask         N/A
+4   OnHold  17ww35.Sat     one1 this is some activity related to a taask         N/A
+5   OnHold  17ww35.Sat   three1 this is some activity related to a taask         N/A
+6   OnHold  17ww35.Sat                               checking out - home         N/A
+7   OnHold  17ww35.Sat     five this is some activity related to a taask  17ww35.Sat
+8   OnHold  17ww39.Sun     four this is some activity related to a taask         N/A
+9   OnHold  17ww39.Sun    seven this is some activity related to a taask         N/A
+10  OnHold  17ww39.Sun                some activity, not project or task         N/A
+11  OnHold  17ww39.Sun    three this is some activity related to a taask         N/A
+12  OnHold  17ww39.Sun     four this is some activity related to a taask         N/A
+13  OnHold  17ww39.Sun      six this is some activity related to a taask         N/A
 
-DEBUG:src.server.server:return_message: 2071:Showing items 116 to 129:
-     State    Start_Date  Description                                                                          End_Date
-ID                                                                                                                     
-1742  Started  17ww42.Mon                                                             checking in - start work  N/A    
-1743  Started  17ww42.Mon   some discussion of closure on ACPI timer issues in HSD 1305299942 and it's sisters  N/A    
-1779  Started  17ww42.Tue                                                             checking in - start work  N/A    
-1780  Started  17ww42.Tue                                                               presentation for Rally  N/A    
-1781  Started  17ww42.Tue                          continue work on fuse and pif enablement, some with alex s\  N/A    
-1787  Started  17ww42.Tue                      continue 2 hours at night with alfonso on the fuse patch issues  N/A    
-1789  Started  17ww42.Wed                                                             checking in - start work  N/A    
-1790  Started  17ww42.Wed                                     try in the lab the code from alfonso - host 0947  N/A    
-1793  Started  17ww42.Wed                                                                           elkana 1x1  N/A    
-1794  Started  17ww42.Wed                                              work on enabling meetings for scrum etc  N/A    
-1795  Started  17ww42.Wed        work on validation of the fuse tool solution from yesterday that alfonso gave  N/A    
-1796  Started  17ww42.Thu                                                             checking in - start work  N/A    
-1799  Started  17ww42.Thu                                                                                  tnt  N/A    
-1801  Started  17ww43.Sun                                                             checking in - start work  N/A    
-1802  Started  17ww43.Sun                                                                            learn DCI  N/A    
+DEBUG:src.server.server:return_message: 1303:Showing items 1 to 14:
+   State   Start_Date  Description                                       End_Date   
+0   OnHold  17ww35.Sun                          checking in - start work  17ww35.Sat
+1   OnHold  17ww35.Thu                                               tnt  17ww39.Sun
+2   OnHold  17ww35.Sat      two this is some activity related to a taask  17ww35.Sat
+3   OnHold  17ww35.Sat    three this is some activity related to a taask         N/A
+4   OnHold  17ww35.Sat     one1 this is some activity related to a taask         N/A
+5   OnHold  17ww35.Sat   three1 this is some activity related to a taask         N/A
+6   OnHold  17ww35.Sat                               checking out - home         N/A
+7   OnHold  17ww35.Sat     five this is some activity related to a taask  17ww35.Sat
+8   OnHold  17ww39.Sun     four this is some activity related to a taask         N/A
+9   OnHold  17ww39.Sun    seven this is some activity related to a taask         N/A
+10  OnHold  17ww39.Sun                some activity, not project or task         N/A
+11  OnHold  17ww39.Sun    three this is some activity related to a taask         N/A
+12  OnHold  17ww39.Sun     four this is some activity related to a taask         N/A
+13  OnHold  17ww39.Sun      six this is some activity related to a taask         N/A
 
-DEBUG:src.gtd.gtd:stored new data:list task for project weekly
-DEBUG:src.gtd.gtd:data from c: list task for project weekly
-DEBUG:src.gtd.gtd:I am in parse list task for project weekly
-DEBUG:src.gtd.gtd:I am in tokenize list task for project weekly
-DEBUG:src.gtd.gtd:I am in tokenize_weekly list task for project weekly
+DEBUG:src.server.client_direct:ServerSaid: 1303:Showing items 1 to 14:
+   State   Start_Date  Description                                       End_Date   
+0   OnHold  17ww35.Sun                          checking in - start work  17ww35.Sat
+1   OnHold  17ww35.Thu                                               tnt  17ww39.Sun
+2   OnHold  17ww35.Sat      two this is some activity related to a taask  17ww35.Sat
+3   OnHold  17ww35.Sat    three this is some activity related to a taask         N/A
+4   OnHold  17ww35.Sat     one1 this is some activity related to a taask         N/A
+5   OnHold  17ww35.Sat   three1 this is some activity related to a taask         N/A
+6   OnHold  17ww35.Sat                               checking out - home         N/A
+7   OnHold  17ww35.Sat     five this is some activity related to a taask  17ww35.Sat
+8   OnHold  17ww39.Sun     four this is some activity related to a taask         N/A
+9   OnHold  17ww39.Sun    seven this is some activity related to a taask         N/A
+10  OnHold  17ww39.Sun                some activity, not project or task         N/A
+11  OnHold  17ww39.Sun    three this is some activity related to a taask         N/A
+12  OnHold  17ww39.Sun     four this is some activity related to a taask         N/A
+13  OnHold  17ww39.Sun      six this is some activity related to a taask         N/A
+
+DEBUG:src.server.client_direct:client script sending 0075:list activity col Start_Date drange 17ww35.Sun 17ww39.Mon state OnHold
+DEBUG:src.gtd.gtd:stored new data:list activity col Start_Date drange 17ww35.Sun 17ww39.Mon state OnHold
+DEBUG:src.gtd.gtd:data from c: list activity col Start_Date drange 17ww35.Sun 17ww39.Mon state OnHold
+DEBUG:src.gtd.gtd:I am in parse list activity col Start_Date drange 17ww35.Sun 17ww39.Mon state OnHold
+DEBUG:src.gtd.gtd:I am in tokenize list activity col Start_Date drange 17ww35.Sun 17ww39.Mon state OnHold
+DEBUG:src.gtd.gtd:I am in tokenize_weekly list activity col Start_Date drange 17ww35.Sun 17ww39.Mon state OnHold
 DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='list', start=(1, 0), end=(1, 4), line='list task for project weekly')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='task', start=(1, 5), end=(1, 9), line='list task for project weekly')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='list', start=(1, 0), end=(1, 4), line='list activity col Start_Date drange 17ww35.Sun 17ww39.Mon state OnHold')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='activity', start=(1, 5), end=(1, 13), line='list activity col Start_Date drange 17ww35.Sun 17ww39.Mon state OnHold')
 DEBUG:src.gtd.gtd:list nud
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='for', start=(1, 10), end=(1, 13), line='list task for project weekly')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='project', start=(1, 14), end=(1, 21), line='list task for project weekly')
-DEBUG:src.gtd.gtd:nud for
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='weekly', start=(1, 22), end=(1, 28), line='list task for project weekly')
-DEBUG:src.gtd.gtd:this is the return_message: Showing items 20 to 33:
-     State   Description                                                                                          Start_Date  PROJECT  Due_Date  Expiration_Date
-ID                                                                                                                                                              
-1396  Closed                         add a way to just print all activities of one week (or tasks and activities)  17ww39.Wed  weekly N/A       N/A             
-1502  Closed                                    make the cont and halt and stop work for task and project as well  17ww39.Sat  weekly N/A       N/A             
-1618  Closed                                                               add ability to delete task or activity  17ww40.Mon  weekly N/A       N/A             
-1619  Closed                         seems that list for task for project may miss printing the latest one opened  17ww40.Mon  weekly N/A       N/A             
-1621  Closed                           list search (pipe) weekly does not return the project weekly record itself  17ww40.Mon  weekly N/A       N/A             
-1625  Closed   check why if I do "task @27" it craetes a task with teh project name 27 and not looking for the...  17ww40.Mon  weekly N/A       N/A             
-1626    Open                                add multiple criteria for list - like state is open and week is wwXX   17ww40.Mon  weekly N/A       N/A             
-1704    Open                                 for online command - no need to print 'transaction completed' etc...  17ww40.Wed  weekly N/A       N/A             
-1705  Closed                     create one script that will launch the produciton mode w/o going through PyCharm  17ww40.Wed  weekly N/A       N/A             
-1706    Open   create commonly used shortcuts (perhaps using a predefined dict in defs for the conversions (in...  17ww40.Wed  weekly N/A       N/A             
-1724  Closed                                                               check if start @<some id> works or not  17ww41.Tue  weekly N/A       N/A             
-1725  Closed   see how to make the ID different per prod/dev/demo and also if no ID file exists - create one f...  17ww41.Tue  weekly N/A       N/A             
-1800    Open   create a way to have a 'shortcuts' configuration file, so different users can easily create the...  17ww42.Thu  weekly N/A       N/A             
-1806    Open                               add that if the ID file does not exist, create one new starting at 100  17ww43.Sun  weekly N/A       N/A             
-1807    Open   if the configuration file does not exist - is it possile to create it? or default to a default ...  17ww43.Sun  weekly N/A       N/A             
-
-DEBUG:src.server.server:return_message: 2766:Showing items 20 to 33:
-     State   Description                                                                                          Start_Date  PROJECT  Due_Date  Expiration_Date
-ID                                                                                                                                                              
-1396  Closed                         add a way to just print all activities of one week (or tasks and activities)  17ww39.Wed  weekly N/A       N/A             
-1502  Closed                                    make the cont and halt and stop work for task and project as well  17ww39.Sat  weekly N/A       N/A             
-1618  Closed                                                               add ability to delete task or activity  17ww40.Mon  weekly N/A       N/A             
-1619  Closed                         seems that list for task for project may miss printing the latest one opened  17ww40.Mon  weekly N/A       N/A             
-1621  Closed                           list search (pipe) weekly does not return the project weekly record itself  17ww40.Mon  weekly N/A       N/A             
-1625  Closed   check why if I do "task @27" it craetes a task with teh project name 27 and not looking for the...  17ww40.Mon  weekly N/A       N/A             
-1626    Open                                add multiple criteria for list - like state is open and week is wwXX   17ww40.Mon  weekly N/A       N/A             
-1704    Open                                 for online command - no need to print 'transaction completed' etc...  17ww40.Wed  weekly N/A       N/A             
-1705  Closed                     create one script that will launch the produciton mode w/o going through PyCharm  17ww40.Wed  weekly N/A       N/A             
-1706    Open   create commonly used shortcuts (perhaps using a predefined dict in defs for the conversions (in...  17ww40.Wed  weekly N/A       N/A             
-1724  Closed                                                               check if start @<some id> works or not  17ww41.Tue  weekly N/A       N/A             
-1725  Closed   see how to make the ID different per prod/dev/demo and also if no ID file exists - create one f...  17ww41.Tue  weekly N/A       N/A             
-1800    Open   create a way to have a 'shortcuts' configuration file, so different users can easily create the...  17ww42.Thu  weekly N/A       N/A             
-1806    Open                               add that if the ID file does not exist, create one new starting at 100  17ww43.Sun  weekly N/A       N/A             
-1807    Open   if the configuration file does not exist - is it possile to create it? or default to a default ...  17ww43.Sun  weekly N/A       N/A             
-
-DEBUG:src.gtd.gtd:command after replacement: stop @1806
-DEBUG:src.gtd.gtd:stored new data:stop @1806
-DEBUG:src.gtd.gtd:data from c: stop @1806
-DEBUG:src.gtd.gtd:I am in parse stop @1806
-DEBUG:src.gtd.gtd:I am in tokenize stop @1806
-DEBUG:src.gtd.gtd:I am in tokenize_weekly stop @1806
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='stop', start=(1, 0), end=(1, 4), line='stop @1806')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='@', start=(1, 5), end=(1, 6), line='stop @1806')
-DEBUG:src.gtd.gtd:stop nud
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=2 (NUMBER), string='1806', start=(1, 6), end=(1, 10), line='stop @1806')
-DEBUG:src.gtd.gtd:@ nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='col', start=(1, 14), end=(1, 17), line='list activity col Start_Date drange 17ww35.Sun 17ww39.Mon state OnHold')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='Start_Date', start=(1, 18), end=(1, 28), line='list activity col Start_Date drange 17ww35.Sun 17ww39.Mon state OnHold')
+DEBUG:src.gtd.gtd:col nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='drange', start=(1, 29), end=(1, 35), line='list activity col Start_Date drange 17ww35.Sun 17ww39.Mon state OnHold')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=2 (NUMBER), string='17', start=(1, 36), end=(1, 38), line='list activity col Start_Date drange 17ww35.Sun 17ww39.Mon state OnHold')
+DEBUG:src.gtd.gtd:drange nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='ww35', start=(1, 38), end=(1, 42), line='list activity col Start_Date drange 17ww35.Sun 17ww39.Mon state OnHold')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='.', start=(1, 42), end=(1, 43), line='list activity col Start_Date drange 17ww35.Sun 17ww39.Mon state OnHold')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='Sun', start=(1, 43), end=(1, 46), line='list activity col Start_Date drange 17ww35.Sun 17ww39.Mon state OnHold')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=2 (NUMBER), string='17', start=(1, 47), end=(1, 49), line='list activity col Start_Date drange 17ww35.Sun 17ww39.Mon state OnHold')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='ww39', start=(1, 49), end=(1, 53), line='list activity col Start_Date drange 17ww35.Sun 17ww39.Mon state OnHold')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='.', start=(1, 53), end=(1, 54), line='list activity col Start_Date drange 17ww35.Sun 17ww39.Mon state OnHold')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='Mon', start=(1, 54), end=(1, 57), line='list activity col Start_Date drange 17ww35.Sun 17ww39.Mon state OnHold')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='state', start=(1, 58), end=(1, 63), line='list activity col Start_Date drange 17ww35.Sun 17ww39.Mon state OnHold')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='OnHold', start=(1, 64), end=(1, 70), line='list activity col Start_Date drange 17ww35.Sun 17ww39.Mon state OnHold')
+DEBUG:src.gtd.gtd:state nud
 DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
-DEBUG:src.gtd.gtd:this is the return_message: Transaction: stop something COMPLETED. Referenced ID is: 1806
-DEBUG:src.server.server:return_message: 0066:Transaction: stop something COMPLETED. Referenced ID is: 1806
-DEBUG:src.gtd.gtd:stored new data:list task for project weekly
-DEBUG:src.gtd.gtd:data from c: list task for project weekly
-DEBUG:src.gtd.gtd:I am in parse list task for project weekly
-DEBUG:src.gtd.gtd:I am in tokenize list task for project weekly
-DEBUG:src.gtd.gtd:I am in tokenize_weekly list task for project weekly
+DEBUG:src.gtd.gtd:this is the return_message: Showing items 1 to 14:
+   State   Start_Date  Description                                       End_Date   
+0   OnHold  17ww35.Sun                          checking in - start work  17ww35.Sat
+1   OnHold  17ww35.Thu                                               tnt  17ww39.Sun
+2   OnHold  17ww35.Sat      two this is some activity related to a taask  17ww35.Sat
+3   OnHold  17ww35.Sat    three this is some activity related to a taask         N/A
+4   OnHold  17ww35.Sat     one1 this is some activity related to a taask         N/A
+5   OnHold  17ww35.Sat   three1 this is some activity related to a taask         N/A
+6   OnHold  17ww35.Sat                               checking out - home         N/A
+7   OnHold  17ww35.Sat     five this is some activity related to a taask  17ww35.Sat
+8   OnHold  17ww39.Sun     four this is some activity related to a taask         N/A
+9   OnHold  17ww39.Sun    seven this is some activity related to a taask         N/A
+10  OnHold  17ww39.Sun                some activity, not project or task         N/A
+11  OnHold  17ww39.Sun    three this is some activity related to a taask         N/A
+12  OnHold  17ww39.Sun     four this is some activity related to a taask         N/A
+13  OnHold  17ww39.Sun      six this is some activity related to a taask         N/A
+
+DEBUG:src.server.server:return_message: 1303:Showing items 1 to 14:
+   State   Start_Date  Description                                       End_Date   
+0   OnHold  17ww35.Sun                          checking in - start work  17ww35.Sat
+1   OnHold  17ww35.Thu                                               tnt  17ww39.Sun
+2   OnHold  17ww35.Sat      two this is some activity related to a taask  17ww35.Sat
+3   OnHold  17ww35.Sat    three this is some activity related to a taask         N/A
+4   OnHold  17ww35.Sat     one1 this is some activity related to a taask         N/A
+5   OnHold  17ww35.Sat   three1 this is some activity related to a taask         N/A
+6   OnHold  17ww35.Sat                               checking out - home         N/A
+7   OnHold  17ww35.Sat     five this is some activity related to a taask  17ww35.Sat
+8   OnHold  17ww39.Sun     four this is some activity related to a taask         N/A
+9   OnHold  17ww39.Sun    seven this is some activity related to a taask         N/A
+10  OnHold  17ww39.Sun                some activity, not project or task         N/A
+11  OnHold  17ww39.Sun    three this is some activity related to a taask         N/A
+12  OnHold  17ww39.Sun     four this is some activity related to a taask         N/A
+13  OnHold  17ww39.Sun      six this is some activity related to a taask         N/A
+
+DEBUG:src.server.client_direct:ServerSaid: 1303:Showing items 1 to 14:
+   State   Start_Date  Description                                       End_Date   
+0   OnHold  17ww35.Sun                          checking in - start work  17ww35.Sat
+1   OnHold  17ww35.Thu                                               tnt  17ww39.Sun
+2   OnHold  17ww35.Sat      two this is some activity related to a taask  17ww35.Sat
+3   OnHold  17ww35.Sat    three this is some activity related to a taask         N/A
+4   OnHold  17ww35.Sat     one1 this is some activity related to a taask         N/A
+5   OnHold  17ww35.Sat   three1 this is some activity related to a taask         N/A
+6   OnHold  17ww35.Sat                               checking out - home         N/A
+7   OnHold  17ww35.Sat     five this is some activity related to a taask  17ww35.Sat
+8   OnHold  17ww39.Sun     four this is some activity related to a taask         N/A
+9   OnHold  17ww39.Sun    seven this is some activity related to a taask         N/A
+10  OnHold  17ww39.Sun                some activity, not project or task         N/A
+11  OnHold  17ww39.Sun    three this is some activity related to a taask         N/A
+12  OnHold  17ww39.Sun     four this is some activity related to a taask         N/A
+13  OnHold  17ww39.Sun      six this is some activity related to a taask         N/A
+
+DEBUG:src.server.client_direct:client script sending 0062:list activity col Start_Date drange 17ww35.Sun 17ww39.Mon
+DEBUG:src.gtd.gtd:stored new data:list activity col Start_Date drange 17ww35.Sun 17ww39.Mon
+DEBUG:src.gtd.gtd:data from c: list activity col Start_Date drange 17ww35.Sun 17ww39.Mon
+DEBUG:src.gtd.gtd:I am in parse list activity col Start_Date drange 17ww35.Sun 17ww39.Mon
+DEBUG:src.gtd.gtd:I am in tokenize list activity col Start_Date drange 17ww35.Sun 17ww39.Mon
+DEBUG:src.gtd.gtd:I am in tokenize_weekly list activity col Start_Date drange 17ww35.Sun 17ww39.Mon
 DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='list', start=(1, 0), end=(1, 4), line='list task for project weekly')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='task', start=(1, 5), end=(1, 9), line='list task for project weekly')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='list', start=(1, 0), end=(1, 4), line='list activity col Start_Date drange 17ww35.Sun 17ww39.Mon')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='activity', start=(1, 5), end=(1, 13), line='list activity col Start_Date drange 17ww35.Sun 17ww39.Mon')
 DEBUG:src.gtd.gtd:list nud
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='for', start=(1, 10), end=(1, 13), line='list task for project weekly')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='project', start=(1, 14), end=(1, 21), line='list task for project weekly')
-DEBUG:src.gtd.gtd:nud for
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='weekly', start=(1, 22), end=(1, 28), line='list task for project weekly')
-DEBUG:src.gtd.gtd:this is the return_message: Showing items 20 to 33:
-     State   Description                                                                                          Start_Date  PROJECT  Due_Date  Expiration_Date
-ID                                                                                                                                                              
-1396  Closed                         add a way to just print all activities of one week (or tasks and activities)  17ww39.Wed  weekly N/A       N/A             
-1502  Closed                                    make the cont and halt and stop work for task and project as well  17ww39.Sat  weekly N/A       N/A             
-1618  Closed                                                               add ability to delete task or activity  17ww40.Mon  weekly N/A       N/A             
-1619  Closed                         seems that list for task for project may miss printing the latest one opened  17ww40.Mon  weekly N/A       N/A             
-1621  Closed                           list search (pipe) weekly does not return the project weekly record itself  17ww40.Mon  weekly N/A       N/A             
-1625  Closed   check why if I do "task @27" it craetes a task with teh project name 27 and not looking for the...  17ww40.Mon  weekly N/A       N/A             
-1626    Open                                add multiple criteria for list - like state is open and week is wwXX   17ww40.Mon  weekly N/A       N/A             
-1704    Open                                 for online command - no need to print 'transaction completed' etc...  17ww40.Wed  weekly N/A       N/A             
-1705  Closed                     create one script that will launch the produciton mode w/o going through PyCharm  17ww40.Wed  weekly N/A       N/A             
-1706    Open   create commonly used shortcuts (perhaps using a predefined dict in defs for the conversions (in...  17ww40.Wed  weekly N/A       N/A             
-1724  Closed                                                               check if start @<some id> works or not  17ww41.Tue  weekly N/A       N/A             
-1725  Closed   see how to make the ID different per prod/dev/demo and also if no ID file exists - create one f...  17ww41.Tue  weekly N/A       N/A             
-1800    Open   create a way to have a 'shortcuts' configuration file, so different users can easily create the...  17ww42.Thu  weekly N/A       N/A             
-1806  Closed                               add that if the ID file does not exist, create one new starting at 100  17ww43.Sun  weekly N/A       N/A             
-1807    Open   if the configuration file does not exist - is it possile to create it? or default to a default ...  17ww43.Sun  weekly N/A       N/A             
-
-DEBUG:src.server.server:return_message: 2766:Showing items 20 to 33:
-     State   Description                                                                                          Start_Date  PROJECT  Due_Date  Expiration_Date
-ID                                                                                                                                                              
-1396  Closed                         add a way to just print all activities of one week (or tasks and activities)  17ww39.Wed  weekly N/A       N/A             
-1502  Closed                                    make the cont and halt and stop work for task and project as well  17ww39.Sat  weekly N/A       N/A             
-1618  Closed                                                               add ability to delete task or activity  17ww40.Mon  weekly N/A       N/A             
-1619  Closed                         seems that list for task for project may miss printing the latest one opened  17ww40.Mon  weekly N/A       N/A             
-1621  Closed                           list search (pipe) weekly does not return the project weekly record itself  17ww40.Mon  weekly N/A       N/A             
-1625  Closed   check why if I do "task @27" it craetes a task with teh project name 27 and not looking for the...  17ww40.Mon  weekly N/A       N/A             
-1626    Open                                add multiple criteria for list - like state is open and week is wwXX   17ww40.Mon  weekly N/A       N/A             
-1704    Open                                 for online command - no need to print 'transaction completed' etc...  17ww40.Wed  weekly N/A       N/A             
-1705  Closed                     create one script that will launch the produciton mode w/o going through PyCharm  17ww40.Wed  weekly N/A       N/A             
-1706    Open   create commonly used shortcuts (perhaps using a predefined dict in defs for the conversions (in...  17ww40.Wed  weekly N/A       N/A             
-1724  Closed                                                               check if start @<some id> works or not  17ww41.Tue  weekly N/A       N/A             
-1725  Closed   see how to make the ID different per prod/dev/demo and also if no ID file exists - create one f...  17ww41.Tue  weekly N/A       N/A             
-1800    Open   create a way to have a 'shortcuts' configuration file, so different users can easily create the...  17ww42.Thu  weekly N/A       N/A             
-1806  Closed                               add that if the ID file does not exist, create one new starting at 100  17ww43.Sun  weekly N/A       N/A             
-1807    Open   if the configuration file does not exist - is it possile to create it? or default to a default ...  17ww43.Sun  weekly N/A       N/A             
-
-DEBUG:src.gtd.gtd:command after replacement: stop @1800
-DEBUG:src.gtd.gtd:stored new data:stop @1800
-DEBUG:src.gtd.gtd:data from c: stop @1800
-DEBUG:src.gtd.gtd:I am in parse stop @1800
-DEBUG:src.gtd.gtd:I am in tokenize stop @1800
-DEBUG:src.gtd.gtd:I am in tokenize_weekly stop @1800
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='stop', start=(1, 0), end=(1, 4), line='stop @1800')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='@', start=(1, 5), end=(1, 6), line='stop @1800')
-DEBUG:src.gtd.gtd:stop nud
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=2 (NUMBER), string='1800', start=(1, 6), end=(1, 10), line='stop @1800')
-DEBUG:src.gtd.gtd:@ nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='col', start=(1, 14), end=(1, 17), line='list activity col Start_Date drange 17ww35.Sun 17ww39.Mon')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='Start_Date', start=(1, 18), end=(1, 28), line='list activity col Start_Date drange 17ww35.Sun 17ww39.Mon')
+DEBUG:src.gtd.gtd:col nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='drange', start=(1, 29), end=(1, 35), line='list activity col Start_Date drange 17ww35.Sun 17ww39.Mon')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=2 (NUMBER), string='17', start=(1, 36), end=(1, 38), line='list activity col Start_Date drange 17ww35.Sun 17ww39.Mon')
+DEBUG:src.gtd.gtd:drange nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='ww35', start=(1, 38), end=(1, 42), line='list activity col Start_Date drange 17ww35.Sun 17ww39.Mon')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='.', start=(1, 42), end=(1, 43), line='list activity col Start_Date drange 17ww35.Sun 17ww39.Mon')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='Sun', start=(1, 43), end=(1, 46), line='list activity col Start_Date drange 17ww35.Sun 17ww39.Mon')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=2 (NUMBER), string='17', start=(1, 47), end=(1, 49), line='list activity col Start_Date drange 17ww35.Sun 17ww39.Mon')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='ww39', start=(1, 49), end=(1, 53), line='list activity col Start_Date drange 17ww35.Sun 17ww39.Mon')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='.', start=(1, 53), end=(1, 54), line='list activity col Start_Date drange 17ww35.Sun 17ww39.Mon')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='Mon', start=(1, 54), end=(1, 57), line='list activity col Start_Date drange 17ww35.Sun 17ww39.Mon')
 DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
-DEBUG:src.gtd.gtd:this is the return_message: Transaction: stop something COMPLETED. Referenced ID is: 1800
-DEBUG:src.server.server:return_message: 0066:Transaction: stop something COMPLETED. Referenced ID is: 1800
-DEBUG:src.gtd.gtd:stored new data:list task for project weekly
-DEBUG:src.gtd.gtd:data from c: list task for project weekly
-DEBUG:src.gtd.gtd:I am in parse list task for project weekly
-DEBUG:src.gtd.gtd:I am in tokenize list task for project weekly
-DEBUG:src.gtd.gtd:I am in tokenize_weekly list task for project weekly
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='list', start=(1, 0), end=(1, 4), line='list task for project weekly')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='task', start=(1, 5), end=(1, 9), line='list task for project weekly')
-DEBUG:src.gtd.gtd:list nud
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='for', start=(1, 10), end=(1, 13), line='list task for project weekly')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='project', start=(1, 14), end=(1, 21), line='list task for project weekly')
-DEBUG:src.gtd.gtd:nud for
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='weekly', start=(1, 22), end=(1, 28), line='list task for project weekly')
-DEBUG:src.gtd.gtd:this is the return_message: Showing items 20 to 33:
-     State   Description                                                                                          Start_Date  PROJECT  Due_Date  Expiration_Date
-ID                                                                                                                                                              
-1396  Closed                         add a way to just print all activities of one week (or tasks and activities)  17ww39.Wed  weekly N/A       N/A             
-1502  Closed                                    make the cont and halt and stop work for task and project as well  17ww39.Sat  weekly N/A       N/A             
-1618  Closed                                                               add ability to delete task or activity  17ww40.Mon  weekly N/A       N/A             
-1619  Closed                         seems that list for task for project may miss printing the latest one opened  17ww40.Mon  weekly N/A       N/A             
-1621  Closed                           list search (pipe) weekly does not return the project weekly record itself  17ww40.Mon  weekly N/A       N/A             
-1625  Closed   check why if I do "task @27" it craetes a task with teh project name 27 and not looking for the...  17ww40.Mon  weekly N/A       N/A             
-1626    Open                                add multiple criteria for list - like state is open and week is wwXX   17ww40.Mon  weekly N/A       N/A             
-1704    Open                                 for online command - no need to print 'transaction completed' etc...  17ww40.Wed  weekly N/A       N/A             
-1705  Closed                     create one script that will launch the produciton mode w/o going through PyCharm  17ww40.Wed  weekly N/A       N/A             
-1706    Open   create commonly used shortcuts (perhaps using a predefined dict in defs for the conversions (in...  17ww40.Wed  weekly N/A       N/A             
-1724  Closed                                                               check if start @<some id> works or not  17ww41.Tue  weekly N/A       N/A             
-1725  Closed   see how to make the ID different per prod/dev/demo and also if no ID file exists - create one f...  17ww41.Tue  weekly N/A       N/A             
-1800  Closed   create a way to have a 'shortcuts' configuration file, so different users can easily create the...  17ww42.Thu  weekly N/A       N/A             
-1806  Closed                               add that if the ID file does not exist, create one new starting at 100  17ww43.Sun  weekly N/A       N/A             
-1807    Open   if the configuration file does not exist - is it possile to create it? or default to a default ...  17ww43.Sun  weekly N/A       N/A             
+DEBUG:src.gtd.gtd:this is the return_message: Showing items 28 to 42:
+   State    Start_Date  Description                                       End_Date   
+27  Started  17ww35.Sat     one1 this is some activity related to a taask         N/A
+28  Started  17ww35.Sat     two1 this is some activity related to a taask         N/A
+29  Started  17ww35.Sat    four1 this is some activity related to a taask         N/A
+30  Started  17ww35.Sat    five1 this is some activity related to a taask         N/A
+31  Started  17ww35.Sat     six1 this is some activity related to a taask         N/A
+32  Started  17ww39.Sun                          checking in - start work         N/A
+33  Started  17ww39.Sun                               checking out - home         N/A
+34  Started  17ww39.Sun      two this is some activity related to a taask         N/A
+35  Started  17ww39.Sun     five this is some activity related to a taask         N/A
+36  Started  17ww39.Sun      one this is some activity related to a taask  17ww39.Fri
+37  Started  17ww39.Sun     one1 this is some activity related to a taask  17ww39.Sun
+38  Started  17ww39.Sun     two1 this is some activity related to a taask         N/A
+39  Started  17ww39.Sun    four1 this is some activity related to a taask  17ww39.Sun
+40  Started  17ww39.Sun    five1 this is some activity related to a taask  17ww39.Fri
+41  Started  17ww39.Sun   seven1 this is some activity related to a taask         N/A
 
-DEBUG:src.server.server:return_message: 2766:Showing items 20 to 33:
-     State   Description                                                                                          Start_Date  PROJECT  Due_Date  Expiration_Date
-ID                                                                                                                                                              
-1396  Closed                         add a way to just print all activities of one week (or tasks and activities)  17ww39.Wed  weekly N/A       N/A             
-1502  Closed                                    make the cont and halt and stop work for task and project as well  17ww39.Sat  weekly N/A       N/A             
-1618  Closed                                                               add ability to delete task or activity  17ww40.Mon  weekly N/A       N/A             
-1619  Closed                         seems that list for task for project may miss printing the latest one opened  17ww40.Mon  weekly N/A       N/A             
-1621  Closed                           list search (pipe) weekly does not return the project weekly record itself  17ww40.Mon  weekly N/A       N/A             
-1625  Closed   check why if I do "task @27" it craetes a task with teh project name 27 and not looking for the...  17ww40.Mon  weekly N/A       N/A             
-1626    Open                                add multiple criteria for list - like state is open and week is wwXX   17ww40.Mon  weekly N/A       N/A             
-1704    Open                                 for online command - no need to print 'transaction completed' etc...  17ww40.Wed  weekly N/A       N/A             
-1705  Closed                     create one script that will launch the produciton mode w/o going through PyCharm  17ww40.Wed  weekly N/A       N/A             
-1706    Open   create commonly used shortcuts (perhaps using a predefined dict in defs for the conversions (in...  17ww40.Wed  weekly N/A       N/A             
-1724  Closed                                                               check if start @<some id> works or not  17ww41.Tue  weekly N/A       N/A             
-1725  Closed   see how to make the ID different per prod/dev/demo and also if no ID file exists - create one f...  17ww41.Tue  weekly N/A       N/A             
-1800  Closed   create a way to have a 'shortcuts' configuration file, so different users can easily create the...  17ww42.Thu  weekly N/A       N/A             
-1806  Closed                               add that if the ID file does not exist, create one new starting at 100  17ww43.Sun  weekly N/A       N/A             
-1807    Open   if the configuration file does not exist - is it possile to create it? or default to a default ...  17ww43.Sun  weekly N/A       N/A             
+DEBUG:src.server.server:return_message: 1405:Showing items 28 to 42:
+   State    Start_Date  Description                                       End_Date   
+27  Started  17ww35.Sat     one1 this is some activity related to a taask         N/A
+28  Started  17ww35.Sat     two1 this is some activity related to a taask         N/A
+29  Started  17ww35.Sat    four1 this is some activity related to a taask         N/A
+30  Started  17ww35.Sat    five1 this is some activity related to a taask         N/A
+31  Started  17ww35.Sat     six1 this is some activity related to a taask         N/A
+32  Started  17ww39.Sun                          checking in - start work         N/A
+33  Started  17ww39.Sun                               checking out - home         N/A
+34  Started  17ww39.Sun      two this is some activity related to a taask         N/A
+35  Started  17ww39.Sun     five this is some activity related to a taask         N/A
+36  Started  17ww39.Sun      one this is some activity related to a taask  17ww39.Fri
+37  Started  17ww39.Sun     one1 this is some activity related to a taask  17ww39.Sun
+38  Started  17ww39.Sun     two1 this is some activity related to a taask         N/A
+39  Started  17ww39.Sun    four1 this is some activity related to a taask  17ww39.Sun
+40  Started  17ww39.Sun    five1 this is some activity related to a taask  17ww39.Fri
+41  Started  17ww39.Sun   seven1 this is some activity related to a taask         N/A
 
+DEBUG:src.server.client_direct:ServerSaid: 1405:Showing items 28 to 42:
+   State    Start_Date  Description                                       End_Date   
+27  Started  17ww35.Sat     one1 this is some activity related to a taask         N/A
+28  Started  17ww35.Sat     two1 this is some activity related to a taask         N/A
+29  Started  17ww35.Sat    four1 this is some activity related to a taask         N/A
+30  Started  17ww35.Sat    five1 this is some activity related to a taask         N/A
+31  Started  17ww35.Sat     six1 this is some activity related to a taask         N/A
+32  Started  17ww39.Sun                          checking in - start work         N/A
+33  Started  17ww39.Sun                               checking out - home         N/A
+34  Started  17ww39.Sun      two this is some activity related to a taask         N/A
+35  Started  17ww39.Sun     five this is some activity related to a taask         N/A
+36  Started  17ww39.Sun      one this is some activity related to a taask  17ww39.Fri
+37  Started  17ww39.Sun     one1 this is some activity related to a taask  17ww39.Sun
+38  Started  17ww39.Sun     two1 this is some activity related to a taask         N/A
+39  Started  17ww39.Sun    four1 this is some activity related to a taask  17ww39.Sun
+40  Started  17ww39.Sun    five1 this is some activity related to a taask  17ww39.Fri
+41  Started  17ww39.Sun   seven1 this is some activity related to a taask         N/A
+
+DEBUG:src.server.client_direct:Client closing socket
 INFO:root:Logging Finished

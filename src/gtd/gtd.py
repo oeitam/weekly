@@ -104,6 +104,7 @@ class Gtd(object):
             res = parse(self.current_data)
         except SyntaxError:
             logger.debug("parse exception: {}".format(res.__repr__()))
+            print("parse exception: {}".format(res.__repr__()))
         # at this point, the
         res1 = gdb.do_transaction()
         return True
@@ -162,6 +163,8 @@ class Gtd(object):
 
 def expression(rbp=0):
     global token
+    if token.id == "(end)":
+        return None
     t = token
     token = next(mnext)
     left = t.nud()
@@ -329,7 +332,7 @@ prefix("inc", 20)
 prefix("ninc", 20)
 prefix("not", 20)
 prefix("columns", 20)
-prefix("states", 20)
+prefix("state", 20)
 prefix("head", 20)
 prefix("tail", 20)
 prefix("columns", 20)
@@ -338,6 +341,7 @@ prefix("help", 20)
 prefix("delete", 20)
 prefix("online", 20)
 prefix("plus", 20)
+prefix("ww", 20)
 symbol(".", 120)
 
 
@@ -472,10 +476,13 @@ def nud(self):
 
     if token.id != "(end)":
         # if this is listing for ww - need to continue processing
-        if token.value and 'ww' in token.value:
-            gdb.list_ww = token.value
-        else:
-            self.second = expression() # continue process
+        #if token.value and 'ww' in token.value:
+        #    gdb.list_ww = token.value
+        #    advance()
+        #    self.second = expression() # continue process
+        #else:
+        #    #advance()
+        self.second = expression() # continue process
     else:
         pass # do nothing - that is ==> start folding back teh recursion
     return self
@@ -579,6 +586,10 @@ def nud(self):
         else:
             gdb.list_col_top += '.Sun'  # this is the default
             # now handle the top
+        advance()
+    else:
+        advance()
+    self.second = expression()
     return self
 
 @method(symbol("."))
@@ -647,4 +658,20 @@ def nud(self):
 @method(symbol("plus"))
 def nud(self):
     logger.debug("plus nud")
+    return self
+
+@method(symbol("state"))
+def nud(self):
+    logger.debug("state nud")
+    gdb.state_to_list = token.value
+    advance() # over the state
+    self.second = expression()
+    return self
+
+@method(symbol("ww"))
+def nud(self):
+    logger.debug("ww nud")
+    gdb.list_ww = 'ww'+ str(token.value)
+    advance() # over the week
+    self.second = expression()
     return self

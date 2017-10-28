@@ -1,12 +1,61 @@
 0002:
-0007:ci
-0059:Transaction: start activity COMPLETED. New ID is: 1813
+0075:list activity state OnHold col Start_Date drange 17ww35.Sun 17ww39.Mon
+1303:Showing items 1 to 14:
+   State   Start_Date  Description                                       End_Date   
+0   OnHold  17ww35.Sun                          checking in - start work  17ww35.Sat
+1   OnHold  17ww35.Thu                                               tnt  17ww39.Sun
+2   OnHold  17ww35.Sat      two this is some activity related to a taask  17ww35.Sat
+3   OnHold  17ww35.Sat    three this is some activity related to a taask         N/A
+4   OnHold  17ww35.Sat     one1 this is some activity related to a taask         N/A
+5   OnHold  17ww35.Sat   three1 this is some activity related to a taask         N/A
+6   OnHold  17ww35.Sat                               checking out - home         N/A
+7   OnHold  17ww35.Sat     five this is some activity related to a taask  17ww35.Sat
+8   OnHold  17ww39.Sun     four this is some activity related to a taask         N/A
+9   OnHold  17ww39.Sun    seven this is some activity related to a taask         N/A
+10  OnHold  17ww39.Sun                some activity, not project or task         N/A
+11  OnHold  17ww39.Sun    three this is some activity related to a taask         N/A
+12  OnHold  17ww39.Sun     four this is some activity related to a taask         N/A
+13  OnHold  17ww39.Sun      six this is some activity related to a taask         N/A
+
 
 0003:
-0007:co
-0059:Transaction: start activity COMPLETED. New ID is: 1814
+0075:list activity col Start_Date drange 17ww35.Sun 17ww39.Mon state OnHold
+1303:Showing items 1 to 14:
+   State   Start_Date  Description                                       End_Date   
+0   OnHold  17ww35.Sun                          checking in - start work  17ww35.Sat
+1   OnHold  17ww35.Thu                                               tnt  17ww39.Sun
+2   OnHold  17ww35.Sat      two this is some activity related to a taask  17ww35.Sat
+3   OnHold  17ww35.Sat    three this is some activity related to a taask         N/A
+4   OnHold  17ww35.Sat     one1 this is some activity related to a taask         N/A
+5   OnHold  17ww35.Sat   three1 this is some activity related to a taask         N/A
+6   OnHold  17ww35.Sat                               checking out - home         N/A
+7   OnHold  17ww35.Sat     five this is some activity related to a taask  17ww35.Sat
+8   OnHold  17ww39.Sun     four this is some activity related to a taask         N/A
+9   OnHold  17ww39.Sun    seven this is some activity related to a taask         N/A
+10  OnHold  17ww39.Sun                some activity, not project or task         N/A
+11  OnHold  17ww39.Sun    three this is some activity related to a taask         N/A
+12  OnHold  17ww39.Sun     four this is some activity related to a taask         N/A
+13  OnHold  17ww39.Sun      six this is some activity related to a taask         N/A
+
 
 0004:
-0025:today | do something
-0059:Transaction: start activity COMPLETED. New ID is: 1815
+0062:list activity col Start_Date drange 17ww35.Sun 17ww39.Mon
+1405:Showing items 28 to 42:
+   State    Start_Date  Description                                       End_Date   
+27  Started  17ww35.Sat     one1 this is some activity related to a taask         N/A
+28  Started  17ww35.Sat     two1 this is some activity related to a taask         N/A
+29  Started  17ww35.Sat    four1 this is some activity related to a taask         N/A
+30  Started  17ww35.Sat    five1 this is some activity related to a taask         N/A
+31  Started  17ww35.Sat     six1 this is some activity related to a taask         N/A
+32  Started  17ww39.Sun                          checking in - start work         N/A
+33  Started  17ww39.Sun                               checking out - home         N/A
+34  Started  17ww39.Sun      two this is some activity related to a taask         N/A
+35  Started  17ww39.Sun     five this is some activity related to a taask         N/A
+36  Started  17ww39.Sun      one this is some activity related to a taask  17ww39.Fri
+37  Started  17ww39.Sun     one1 this is some activity related to a taask  17ww39.Sun
+38  Started  17ww39.Sun     two1 this is some activity related to a taask         N/A
+39  Started  17ww39.Sun    four1 this is some activity related to a taask  17ww39.Sun
+40  Started  17ww39.Sun    five1 this is some activity related to a taask  17ww39.Fri
+41  Started  17ww39.Sun   seven1 this is some activity related to a taask         N/A
+
 
