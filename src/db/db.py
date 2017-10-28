@@ -7,6 +7,7 @@ import logging
 from src import defs
 from test import test_defs
 import shutil
+from terminaltables import SingleTable, AsciiTable
 
 from datetime import datetime, date, time, timedelta
 from ast import literal_eval
@@ -674,7 +675,23 @@ class Db(object):
             t1 = self.list_resp_rows
             t2 = max(self.list_resp_rows - self.list_resp_row_limit ,0)
             self.list_resp = self.df_to_list_resp(df[t2:t1], which_db)
+            #$#k1 = self.df_to_list_resp(df[t2:t1], which_db)
             self.list_resp = "Showing items {} to {}:\n".format(t2+1,max(t1,0)) + self.list_resp
+            #$#k2 = "Showing items {} to {}:\n".format(t2 + 1, max(t1, 0))
+            #$#l = []
+            #$#q = defs.columns_to_print_table[which_db]
+            #$#q.insert(0, 'ID')
+            #$#l.append(q)
+            #$#c = 0
+            #$#for line in k1.splitlines():
+            #$#    if c == 0:
+            #$#        c = c + 1
+            #$#        continue
+            #$#    sl = line.split(',')
+            #$#    l.append(sl)
+            #$#table_instance = AsciiTable(l,k2)
+            #$#table_instance.justify_columns[2] = 'right'
+            #$#self.list_resp = table_instance.table
             self.list_resp_rows = t2
         else:  # did not find it
             self.error_details = 'No megaprojects to list'
@@ -696,7 +713,11 @@ class Db(object):
                 columns=defs.columns_to_print_table[which_db],
                 na_rep='N/A', float_format=conv, index_names=True, justify='left')
         s = s + '\n'
+        #$#k = df.to_csv(
+        #$#        columns=defs.columns_to_print_table[which_db],
+        #$#        na_rep='N/A')#, float_format=conv, index_names=True, justify='left')
         return s
+        #$#return k
 
     # process for the list for command, and return a df that corresponds to the search
     def list_for(self):

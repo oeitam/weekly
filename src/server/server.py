@@ -46,7 +46,7 @@ class Server(object):
             return_message = "Illegal command was not processed"
         # return_message = defs.mlt
         l = str(len(return_message) + 5)
-        sl = "{:0>4}:".format(l)
+        sl = "{:0>4}:\n".format(l)
         slm = sl + return_message
         logger.debug('return_message: %s', slm)
         #print("--" + slm + "--")

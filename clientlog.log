@@ -1,26 +1,29 @@
 0002:
-0075:list activity state OnHold col Start_Date drange 17ww35.Sun 17ww39.Mon
-1303:Showing items 1 to 14:
-   State   Start_Date  Description                                       End_Date   
-0   OnHold  17ww35.Sun                          checking in - start work  17ww35.Sat
-1   OnHold  17ww35.Thu                                               tnt  17ww39.Sun
-2   OnHold  17ww35.Sat      two this is some activity related to a taask  17ww35.Sat
-3   OnHold  17ww35.Sat    three this is some activity related to a taask         N/A
-4   OnHold  17ww35.Sat     one1 this is some activity related to a taask         N/A
-5   OnHold  17ww35.Sat   three1 this is some activity related to a taask         N/A
-6   OnHold  17ww35.Sat                               checking out - home         N/A
-7   OnHold  17ww35.Sat     five this is some activity related to a taask  17ww35.Sat
-8   OnHold  17ww39.Sun     four this is some activity related to a taask         N/A
-9   OnHold  17ww39.Sun    seven this is some activity related to a taask         N/A
-10  OnHold  17ww39.Sun                some activity, not project or task         N/A
-11  OnHold  17ww39.Sun    three this is some activity related to a taask         N/A
-12  OnHold  17ww39.Sun     four this is some activity related to a taask         N/A
-13  OnHold  17ww39.Sun      six this is some activity related to a taask         N/A
+0072:list activity state all col Start_Date drange 17ww35.Sun 17ww39.Mon
+1405:
+Showing items 68 to 82:
+   State    Start_Date  Description                                       End_Date   
+67    Ended  17ww39.Sun      one this is some activity related to a taask         N/A
+68  Started  17ww39.Sun      one this is some activity related to a taask  17ww39.Fri
+69    Ended  17ww39.Sun      two this is some activity related to a taask  17ww39.Fri
+70   OnHold  17ww39.Sun    three this is some activity related to a taask         N/A
+71   OnHold  17ww39.Sun     four this is some activity related to a taask         N/A
+72    Ended  17ww39.Sun     five this is some activity related to a taask         N/A
+73   OnHold  17ww39.Sun      six this is some activity related to a taask         N/A
+74    Ended  17ww39.Sun    seven this is some activity related to a taask  17ww39.Fri
+75  Started  17ww39.Sun     one1 this is some activity related to a taask  17ww39.Sun
+76  Started  17ww39.Sun     two1 this is some activity related to a taask         N/A
+77    Ended  17ww39.Sun   three1 this is some activity related to a taask         N/A
+78  Started  17ww39.Sun    four1 this is some activity related to a taask  17ww39.Sun
+79  Started  17ww39.Sun    five1 this is some activity related to a taask  17ww39.Fri
+80    Ended  17ww39.Sun     six1 this is some activity related to a taask         N/A
+81  Started  17ww39.Sun   seven1 this is some activity related to a taask         N/A
 
 
 0003:
 0075:list activity col Start_Date drange 17ww35.Sun 17ww39.Mon state OnHold
-1303:Showing items 1 to 14:
+1303:
+Showing items 1 to 14:
    State   Start_Date  Description                                       End_Date   
 0   OnHold  17ww35.Sun                          checking in - start work  17ww35.Sat
 1   OnHold  17ww35.Thu                                               tnt  17ww39.Sun
@@ -40,7 +43,8 @@
 
 0004:
 0062:list activity col Start_Date drange 17ww35.Sun 17ww39.Mon
-1405:Showing items 28 to 42:
+1405:
+Showing items 28 to 42:
    State    Start_Date  Description                                       End_Date   
 27  Started  17ww35.Sat     one1 this is some activity related to a taask         N/A
 28  Started  17ww35.Sat     two1 this is some activity related to a taask         N/A
@@ -57,5 +61,28 @@
 39  Started  17ww39.Sun    four1 this is some activity related to a taask  17ww39.Sun
 40  Started  17ww39.Sun    five1 this is some activity related to a taask  17ww39.Fri
 41  Started  17ww39.Sun   seven1 this is some activity related to a taask         N/A
+
+
+0005:
+0024:list activity ww 43
+1491:
+Showing items 62 to 76:
+      State    Start_Date  Description                                       End_Date
+ID                                                                                   
+10211  Started  17ww43.Sat      one this is some activity related to a taask  N/A    
+10221  Started  17ww43.Sat      one this is some activity related to a taask  N/A    
+10222  Started  17ww43.Sat      two this is some activity related to a taask  N/A    
+10223  Started  17ww43.Sat    three this is some activity related to a taask  N/A    
+10224  Started  17ww43.Sat     four this is some activity related to a taask  N/A    
+10225  Started  17ww43.Sat     five this is some activity related to a taask  N/A    
+10226  Started  17ww43.Sat      six this is some activity related to a taask  N/A    
+10227  Started  17ww43.Sat    seven this is some activity related to a taask  N/A    
+10240  Started  17ww43.Sat     one1 this is some activity related to a taask  N/A    
+10241  Started  17ww43.Sat     two1 this is some activity related to a taask  N/A    
+10242  Started  17ww43.Sat   three1 this is some activity related to a taask  N/A    
+10243  Started  17ww43.Sat    four1 this is some activity related to a taask  N/A    
+10244  Started  17ww43.Sat    five1 this is some activity related to a taask  N/A    
+10245  Started  17ww43.Sat     six1 this is some activity related to a taask  N/A    
+10246  Started  17ww43.Sat   seven1 this is some activity related to a taask  N/A    
 
 
