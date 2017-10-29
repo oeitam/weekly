@@ -1,88 +1,1980 @@
 0002:
-0072:list activity state all col Start_Date drange 17ww35.Sun 17ww39.Mon
-1405:
-Showing items 68 to 82:
-   State    Start_Date  Description                                       End_Date   
-67    Ended  17ww39.Sun      one this is some activity related to a taask         N/A
-68  Started  17ww39.Sun      one this is some activity related to a taask  17ww39.Fri
-69    Ended  17ww39.Sun      two this is some activity related to a taask  17ww39.Fri
-70   OnHold  17ww39.Sun    three this is some activity related to a taask         N/A
-71   OnHold  17ww39.Sun     four this is some activity related to a taask         N/A
-72    Ended  17ww39.Sun     five this is some activity related to a taask         N/A
-73   OnHold  17ww39.Sun      six this is some activity related to a taask         N/A
-74    Ended  17ww39.Sun    seven this is some activity related to a taask  17ww39.Fri
-75  Started  17ww39.Sun     one1 this is some activity related to a taask  17ww39.Sun
-76  Started  17ww39.Sun     two1 this is some activity related to a taask         N/A
-77    Ended  17ww39.Sun   three1 this is some activity related to a taask         N/A
-78  Started  17ww39.Sun    four1 this is some activity related to a taask  17ww39.Sun
-79  Started  17ww39.Sun    five1 this is some activity related to a taask  17ww39.Fri
-80    Ended  17ww39.Sun     six1 this is some activity related to a taask         N/A
-81  Started  17ww39.Sun   seven1 this is some activity related to a taask         N/A
-
+0058:list activity col Start_Date drange 17ww35.Sun 17ww39
+1828:
++Showing items 27 to 41:------+--------------------------------------------------+------------+
+| ID   | State   | Start_Date | Description                                      | End_Date   |
++------+---------+------------+--------------------------------------------------+------------+
+| 1241 | Started | 17ww35.Sat |  four1 this is some activity related to a taask  | N/A        |
+| 1242 | Started | 17ww35.Sat |  five1 this is some activity related to a taask  | N/A        |
+| 1243 | Started | 17ww35.Sat |  six1 this is some activity related to a taask   | N/A        |
+| 1244 | Started | 17ww35.Sat |  seven1 this is some activity related to a taask | 17ww39.Sun |
+| 1319 | Started | 17ww39.Sun |  checking in - start work                        | N/A        |
+| 1320 | Started | 17ww39.Sun |  checking out - home                             | N/A        |
+| 1329 | Started | 17ww39.Sun |  two this is some activity related to a taask    | N/A        |
+| 1332 | Started | 17ww39.Sun |  five this is some activity related to a taask   | N/A        |
+| 1349 | Started | 17ww39.Sun |  one this is some activity related to a taask    | 17ww39.Fri |
+| 1350 | Started | 17ww39.Sun |  two this is some activity related to a taask    | 17ww39.Fri |
+| 1354 | Started | 17ww39.Sun |  six this is some activity related to a taask    | N/A        |
+| 1368 | Started | 17ww39.Sun |  one1 this is some activity related to a taask   | 17ww39.Sun |
+| 1371 | Started | 17ww39.Sun |  four1 this is some activity related to a taask  | 17ww39.Sun |
+| 1372 | Started | 17ww39.Sun |  five1 this is some activity related to a taask  | 17ww39.Fri |
+| 1374 | Started | 17ww39.Sun |  seven1 this is some activity related to a taask | N/A        |
++------+---------+------------+--------------------------------------------------+------------+
 
 0003:
-0075:list activity col Start_Date drange 17ww35.Sun 17ww39.Mon state OnHold
-1303:
-Showing items 1 to 14:
-   State   Start_Date  Description                                       End_Date   
-0   OnHold  17ww35.Sun                          checking in - start work  17ww35.Sat
-1   OnHold  17ww35.Thu                                               tnt  17ww39.Sun
-2   OnHold  17ww35.Sat      two this is some activity related to a taask  17ww35.Sat
-3   OnHold  17ww35.Sat    three this is some activity related to a taask         N/A
-4   OnHold  17ww35.Sat     one1 this is some activity related to a taask         N/A
-5   OnHold  17ww35.Sat   three1 this is some activity related to a taask         N/A
-6   OnHold  17ww35.Sat                               checking out - home         N/A
-7   OnHold  17ww35.Sat     five this is some activity related to a taask  17ww35.Sat
-8   OnHold  17ww39.Sun     four this is some activity related to a taask         N/A
-9   OnHold  17ww39.Sun    seven this is some activity related to a taask         N/A
-10  OnHold  17ww39.Sun                some activity, not project or task         N/A
-11  OnHold  17ww39.Sun    three this is some activity related to a taask         N/A
-12  OnHold  17ww39.Sun     four this is some activity related to a taask         N/A
-13  OnHold  17ww39.Sun      six this is some activity related to a taask         N/A
-
+0072:list activity state all col Start_Date drange 17ww35.Sun 17ww39.Mon
+1828:
++Showing items 66 to 80:------+--------------------------------------------------+------------+
+| ID   | State   | Start_Date | Description                                      | End_Date   |
++------+---------+------------+--------------------------------------------------+------------+
+| 1339 | Ended   | 17ww39.Sun |  one this is some activity related to a taask    | N/A        |
+| 1349 | Started | 17ww39.Sun |  one this is some activity related to a taask    | 17ww39.Fri |
+| 1350 | Started | 17ww39.Sun |  two this is some activity related to a taask    | 17ww39.Fri |
+| 1351 | OnHold  | 17ww39.Sun |  three this is some activity related to a taask  | N/A        |
+| 1352 | OnHold  | 17ww39.Sun |  four this is some activity related to a taask   | N/A        |
+| 1353 | Ended   | 17ww39.Sun |  five this is some activity related to a taask   | N/A        |
+| 1354 | Started | 17ww39.Sun |  six this is some activity related to a taask    | N/A        |
+| 1355 | Ended   | 17ww39.Sun |  seven this is some activity related to a taask  | 17ww39.Fri |
+| 1368 | Started | 17ww39.Sun |  one1 this is some activity related to a taask   | 17ww39.Sun |
+| 1369 | OnHold  | 17ww39.Sun |  two1 this is some activity related to a taask   | N/A        |
+| 1370 | Ended   | 17ww39.Sun |  three1 this is some activity related to a taask | N/A        |
+| 1371 | Started | 17ww39.Sun |  four1 this is some activity related to a taask  | 17ww39.Sun |
+| 1372 | Started | 17ww39.Sun |  five1 this is some activity related to a taask  | 17ww39.Fri |
+| 1373 | Ended   | 17ww39.Sun |  six1 this is some activity related to a taask   | N/A        |
+| 1374 | Started | 17ww39.Sun |  seven1 this is some activity related to a taask | N/A        |
++------+---------+------------+--------------------------------------------------+------------+
 
 0004:
-0062:list activity col Start_Date drange 17ww35.Sun 17ww39.Mon
-1405:
-Showing items 28 to 42:
-   State    Start_Date  Description                                       End_Date   
-27  Started  17ww35.Sat     one1 this is some activity related to a taask         N/A
-28  Started  17ww35.Sat     two1 this is some activity related to a taask         N/A
-29  Started  17ww35.Sat    four1 this is some activity related to a taask         N/A
-30  Started  17ww35.Sat    five1 this is some activity related to a taask         N/A
-31  Started  17ww35.Sat     six1 this is some activity related to a taask         N/A
-32  Started  17ww39.Sun                          checking in - start work         N/A
-33  Started  17ww39.Sun                               checking out - home         N/A
-34  Started  17ww39.Sun      two this is some activity related to a taask         N/A
-35  Started  17ww39.Sun     five this is some activity related to a taask         N/A
-36  Started  17ww39.Sun      one this is some activity related to a taask  17ww39.Fri
-37  Started  17ww39.Sun     one1 this is some activity related to a taask  17ww39.Sun
-38  Started  17ww39.Sun     two1 this is some activity related to a taask         N/A
-39  Started  17ww39.Sun    four1 this is some activity related to a taask  17ww39.Sun
-40  Started  17ww39.Sun    five1 this is some activity related to a taask  17ww39.Fri
-41  Started  17ww39.Sun   seven1 this is some activity related to a taask         N/A
-
+0075:list activity col Start_Date drange 17ww35.Sun 17ww39.Mon state OnHold
+1714:
++Showing items 1 to 14:------+--------------------------------------------------+------------+
+| ID   | State  | Start_Date | Description                                      | End_Date   |
++------+--------+------------+--------------------------------------------------+------------+
+| 69   | OnHold | 17ww35.Sun |  checking in - start work                        | 17ww35.Sat |
+| 82   | OnHold | 17ww35.Thu |  tnt                                             | 17ww39.Sun |
+| 1161 | OnHold | 17ww35.Sat |  two this is some activity related to a taask    | 17ww35.Sat |
+| 1162 | OnHold | 17ww35.Sat |  three this is some activity related to a taask  | N/A        |
+| 1179 | OnHold | 17ww35.Sat |  one1 this is some activity related to a taask   | N/A        |
+| 1181 | OnHold | 17ww35.Sat |  three1 this is some activity related to a taask | N/A        |
+| 1190 | OnHold | 17ww35.Sat |  checking out - home                             | N/A        |
+| 1202 | OnHold | 17ww35.Sat |  five this is some activity related to a taask   | 17ww35.Sat |
+| 1331 | OnHold | 17ww39.Sun |  four this is some activity related to a taask   | N/A        |
+| 1334 | OnHold | 17ww39.Sun |  seven this is some activity related to a taask  | N/A        |
+| 1335 | OnHold | 17ww39.Sun |  some activity, not project or task              | N/A        |
+| 1351 | OnHold | 17ww39.Sun |  three this is some activity related to a taask  | N/A        |
+| 1352 | OnHold | 17ww39.Sun |  four this is some activity related to a taask   | N/A        |
+| 1369 | OnHold | 17ww39.Sun |  two1 this is some activity related to a taask   | N/A        |
++------+--------+------------+--------------------------------------------------+------------+
 
 0005:
-0024:list activity ww 43
-1491:
-Showing items 62 to 76:
-      State    Start_Date  Description                                       End_Date
-ID                                                                                   
-10211  Started  17ww43.Sat      one this is some activity related to a taask  N/A    
-10221  Started  17ww43.Sat      one this is some activity related to a taask  N/A    
-10222  Started  17ww43.Sat      two this is some activity related to a taask  N/A    
-10223  Started  17ww43.Sat    three this is some activity related to a taask  N/A    
-10224  Started  17ww43.Sat     four this is some activity related to a taask  N/A    
-10225  Started  17ww43.Sat     five this is some activity related to a taask  N/A    
-10226  Started  17ww43.Sat      six this is some activity related to a taask  N/A    
-10227  Started  17ww43.Sat    seven this is some activity related to a taask  N/A    
-10240  Started  17ww43.Sat     one1 this is some activity related to a taask  N/A    
-10241  Started  17ww43.Sat     two1 this is some activity related to a taask  N/A    
-10242  Started  17ww43.Sat   three1 this is some activity related to a taask  N/A    
-10243  Started  17ww43.Sat    four1 this is some activity related to a taask  N/A    
-10244  Started  17ww43.Sat    five1 this is some activity related to a taask  N/A    
-10245  Started  17ww43.Sat     six1 this is some activity related to a taask  N/A    
-10246  Started  17ww43.Sat   seven1 this is some activity related to a taask  N/A    
+0062:list activity col Start_Date drange 17ww35.Sun 17ww39.Mon
+1828:
++Showing items 27 to 41:------+--------------------------------------------------+------------+
+| ID   | State   | Start_Date | Description                                      | End_Date   |
++------+---------+------------+--------------------------------------------------+------------+
+| 1241 | Started | 17ww35.Sat |  four1 this is some activity related to a taask  | N/A        |
+| 1242 | Started | 17ww35.Sat |  five1 this is some activity related to a taask  | N/A        |
+| 1243 | Started | 17ww35.Sat |  six1 this is some activity related to a taask   | N/A        |
+| 1244 | Started | 17ww35.Sat |  seven1 this is some activity related to a taask | 17ww39.Sun |
+| 1319 | Started | 17ww39.Sun |  checking in - start work                        | N/A        |
+| 1320 | Started | 17ww39.Sun |  checking out - home                             | N/A        |
+| 1329 | Started | 17ww39.Sun |  two this is some activity related to a taask    | N/A        |
+| 1332 | Started | 17ww39.Sun |  five this is some activity related to a taask   | N/A        |
+| 1349 | Started | 17ww39.Sun |  one this is some activity related to a taask    | 17ww39.Fri |
+| 1350 | Started | 17ww39.Sun |  two this is some activity related to a taask    | 17ww39.Fri |
+| 1354 | Started | 17ww39.Sun |  six this is some activity related to a taask    | N/A        |
+| 1368 | Started | 17ww39.Sun |  one1 this is some activity related to a taask   | 17ww39.Sun |
+| 1371 | Started | 17ww39.Sun |  four1 this is some activity related to a taask  | 17ww39.Sun |
+| 1372 | Started | 17ww39.Sun |  five1 this is some activity related to a taask  | 17ww39.Fri |
+| 1374 | Started | 17ww39.Sun |  seven1 this is some activity related to a taask | N/A        |
++------+---------+------------+--------------------------------------------------+------------+
 
+0006:
+0024:list activity ww 43
+1809:
++Showing items 54 to 68:-------+--------------------------------------------------+----------+
+| ID    | State   | Start_Date | Description                                      | End_Date |
++-------+---------+------------+--------------------------------------------------+----------+
+| 10204 | Started | 17ww43.Sat |  five this is some activity related to a taask   | N/A      |
+| 10205 | Started | 17ww43.Sat |  six this is some activity related to a taask    | N/A      |
+| 10207 | Started | 17ww43.Sat |  some activity, not project or task              | N/A      |
+| 10223 | Started | 17ww43.Sat |  three this is some activity related to a taask  | N/A      |
+| 10224 | Started | 17ww43.Sat |  four this is some activity related to a taask   | N/A      |
+| 10225 | Started | 17ww43.Sat |  five this is some activity related to a taask   | N/A      |
+| 10226 | Started | 17ww43.Sat |  six this is some activity related to a taask    | N/A      |
+| 10227 | Started | 17ww43.Sat |  seven this is some activity related to a taask  | N/A      |
+| 10240 | Started | 17ww43.Sat |  one1 this is some activity related to a taask   | N/A      |
+| 10241 | Started | 17ww43.Sat |  two1 this is some activity related to a taask   | N/A      |
+| 10242 | Started | 17ww43.Sat |  three1 this is some activity related to a taask | N/A      |
+| 10243 | Started | 17ww43.Sat |  four1 this is some activity related to a taask  | N/A      |
+| 10244 | Started | 17ww43.Sat |  five1 this is some activity related to a taask  | N/A      |
+| 10245 | Started | 17ww43.Sat |  six1 this is some activity related to a taask   | N/A      |
+| 10246 | Started | 17ww43.Sat |  seven1 this is some activity related to a taask | N/A      |
++-------+---------+------------+--------------------------------------------------+----------+
+
+0007:
+0082:create megaproject Work2 | 2all projects that relate to Work at Intel go here
+0064:
+Transaction: create megaproject COMPLETED. New ID is: 10476
+
+0008:
+0076:create project project_two @Work2 | this is the first project I created
+0060:
+Transaction: create project COMPLETED. New ID is: 10477
+
+0009:
+0007:ci
+0060:
+Transaction: start activity COMPLETED. New ID is: 10478
+
+0010:
+0007:co
+0060:
+Transaction: start activity COMPLETED. New ID is: 10479
+
+0011:
+0078:create project project_three @Work1 | this is the first project I created
+0060:
+Transaction: create project COMPLETED. New ID is: 10480
+
+0012:
+0077:create project project_four @Work2 | this is the first project I created
+0060:
+Transaction: create project COMPLETED. New ID is: 10481
+
+0013:
+0077:create project project_five @Work1 | this is the first project I created
+0060:
+Transaction: create project COMPLETED. New ID is: 10482
+
+0014:
+0068:task @project_one | 1this is what you need to do on project one
+0057:
+Transaction: create task COMPLETED. New ID is: 10483
+
+0015:
+0076:task @project_one | 1another this is what you need to do on project one
+0057:
+Transaction: create task COMPLETED. New ID is: 10484
+
+0016:
+0068:task @project_two | 1this is what you need to do on project two
+0057:
+Transaction: create task COMPLETED. New ID is: 10485
+
+0017:
+0076:task @project_two1 | 1second this is what you need to do on project two
+0057:
+Transaction: create task COMPLETED. New ID is: 10486
+
+0018:
+0074:task @project_two | 1third this is what you need to do on project two
+0057:
+Transaction: create task COMPLETED. New ID is: 10487
+
+0019:
+0067:start @00000000 | two this is some activity related to a taask
+0060:
+Transaction: start activity COMPLETED. New ID is: 10488
+
+0020:
+0069:start @00000000 | three this is some activity related to a taask
+0060:
+Transaction: start activity COMPLETED. New ID is: 10489
+
+0021:
+0068:start @00000000 | four this is some activity related to a taask
+0060:
+Transaction: start activity COMPLETED. New ID is: 10490
+
+0022:
+0068:start @00000000 | five this is some activity related to a taask
+0060:
+Transaction: start activity COMPLETED. New ID is: 10491
+
+0023:
+0067:start @00000000 | six this is some activity related to a taask
+0060:
+Transaction: start activity COMPLETED. New ID is: 10492
+
+0024:
+0069:start @00000000 | seven this is some activity related to a taask
+0060:
+Transaction: start activity COMPLETED. New ID is: 10493
+
+0025:
+0050:start @0 | some activity, not project or task
+0060:
+Transaction: start activity COMPLETED. New ID is: 10494
+
+0026:
+0024:list search | ww 26
+0274:
+Searching for  ww 26:
+
+Results from Megaprojects DataFrame
+well ... nothing found here
+
+Results from Projects DataFrame
+well ... nothing found here
+
+Results from Tasks DataFrame
+well ... nothing found here
+
+Results from Activities DataFrame
+well ... nothing found here
+
+
+0027:
+0024:list activity ww 17
+0025:
+No more data to show
+
+0028:
+0024:list activity ww 18
+0025:
+No more data to show
+
+0029:
+0024:list activity ww 19
+0025:
+No more data to show
+
+0030:
+0024:list activity ww 20
+0025:
+No more data to show
+
+0031:
+0020:list task ww 17
+0025:
+No more data to show
+
+0032:
+0020:list task ww 18
+0025:
+No more data to show
+
+0033:
+0020:list task ww 19
+0025:
+No more data to show
+
+0034:
+0020:list task ww 20
+0025:
+No more data to show
+
+0035:
+0029:list megaproject columns
+0076:
+Showing columns for megaprojects:
+Name
+State
+PROJECTs_List
+Description
+
+
+0036:
+0025:list project columns
+0070:
+Showing columns for projects:
+Name
+State
+MEGAPROJECT
+Description
+
+
+0037:
+0022:list task columns
+0153:
+Showing columns for tasks:
+State
+Description
+Start_Date
+PROJECT
+Due_Date
+Expiration_Date
+Location
+Context
+Reminders
+ACTIVITYs
+Sub_TASKs
+Parent_TASK
+
+
+0038:
+0026:list activity columns
+0087:
+Showing columns for activitys:
+State
+Start_Date
+Description
+End_Date
+TASK
+PROJECT
+
+
+0039:
+0028:list megaproject states
+0112:
+Showing states for megaprojects:
+On        : The MEGAPROJECT is open
+Off       : The MEGAPROJECT is closed
+
+
+0040:
+0024:list project states
+0196:
+Showing states for projects:
+Started   : The PROJECT started rolling
+OnHold    : The PROJECT is not active - so nothin in it can change.
+Ended     : The project is concluded, done, finished.
+
+
+0041:
+0021:list task states
+0167:
+Showing states for tasks:
+Open      : The TASK is created and may be on execution
+OnHold    : Execution on this TASK is stopped
+Closed    : The TASK is completed
+
+
+0042:
+0025:list activity states
+0171:
+Showing states for activitys:
+Started   : The TASK is created and may be on execution
+OnHold    : Execution on this TASK is stopped
+Ended     : The TASK is completed
+
+
+0043:
+0045:list megaproject for project project_one
+0448:
++Showing items 1 to 1:-+------------------------------------------------+
+| ID   | Name  | State | Description                                    |
++------+-------+-------+------------------------------------------------+
+| 1147 | Work1 |    On |  1all projects that relate to Work at Intel go |
+|      |       |       | here                                           |
++------+-------+-------+------------------------------------------------+
+
+0044:
+0039:list project for megaproject Work1
+1695:
++Showing items 27 to 41:+---------+-------------+--------------------------------------+
+| ID    | Name          |   State | MEGAPROJECT | Description                          |
++-------+---------------+---------+-------------+--------------------------------------+
+| 10214 | project_three | Started | Work1       |  this is the first project I created |
+| 10324 | project_three | Started | Work1       |  this is the first project I created |
+| 10326 | project_five  | Started | Work1       |  this is the first project I created |
+| 10351 | project_three | Started | Work1       |  this is the first project I created |
+| 10353 | project_five  | Started | Work1       |  this is the first project I created |
+| 10367 | project_one   | Started | Work1       |  this is the first project I created |
+| 10372 | project_three | Started | Work1       |  this is the first project I created |
+| 10374 | project_five  | Started | Work1       |  this is the first project I created |
+| 10410 | project_three | Started | Work1       |  this is the first project I created |
+| 10412 | project_five  | Started | Work1       |  this is the first project I created |
+| 10426 | project_one   | Started | Work1       |  this is the first project I created |
+| 10431 | project_three | Started | Work1       |  this is the first project I created |
+| 10433 | project_five  | Started | Work1       |  this is the first project I created |
+| 10480 | project_three | Started | Work1       |  this is the first project I created |
+| 10482 | project_five  | Started | Work1       |  this is the first project I created |
++-------+---------------+---------+-------------+--------------------------------------+
+
+0045:
+0038:list task for project project_two
+2417:
++Showing items 42 to 56:---------------------------------------------+------------+-------------+----------+-----------------+
+| ID    | State |                                        Description | Start_Date | PROJECT     | Due_Date | Expiration_Date |
++-------+-------+----------------------------------------------------+------------+-------------+----------+-----------------+
+| 10356 | Open  |        1this is what you need to do on project two | 17ww44.Sun | project_two | N/A      | N/A             |
+| 10358 | Open  |  1third this is what you need to do on project two | 17ww44.Sun | project_two | N/A      | N/A             |
+| 10376 | Open  |         this is what you need to do on project two | 17ww44.Sun | project_two | N/A      | N/A             |
+| 10377 | Open  |  second this is what you need to do on project two | 17ww44.Sun | project_two | N/A      | N/A             |
+| 10378 | Open  |  second this is what you need to do on project two | 17ww44.Sun | project_two | N/A      | N/A             |
+| 10395 | Open  |        1this is what you need to do on project two | 17ww44.Sun | project_two | N/A      | N/A             |
+| 10397 | Open  |  1third this is what you need to do on project two | 17ww44.Sun | project_two | N/A      | N/A             |
+| 10415 | Open  |        1this is what you need to do on project two | 17ww44.Sun | project_two | N/A      | N/A             |
+| 10417 | Open  |  1third this is what you need to do on project two | 17ww44.Sun | project_two | N/A      | N/A             |
+| 10436 | Open  |  second this is what you need to do on project two | 17ww44.Sun | project_two | N/A      | N/A             |
+| 10437 | Open  |  second this is what you need to do on project two | 17ww44.Sun | project_two | N/A      | N/A             |
+| 10454 | Open  |        1this is what you need to do on project two | 17ww44.Sun | project_two | N/A      | N/A             |
+| 10456 | Open  |  1third this is what you need to do on project two | 17ww44.Sun | project_two | N/A      | N/A             |
+| 10485 | Open  |        1this is what you need to do on project two | 17ww44.Sun | project_two |          |                 |
+| 10487 | Open  |  1third this is what you need to do on project two | 17ww44.Sun | project_two |          |                 |
++-------+-------+----------------------------------------------------+------------+-------------+----------+-----------------+
+
+0046:
+0042:list activity for project project_one
+0756:
++Showing items 1 to 4:---------+-------------------------------------------------+----------+
+| ID    | State   | Start_Date | Description                                     | End_Date |
++-------+---------+------------+-------------------------------------------------+----------+
+| 1166  | Started | 17ww35.Sat |  seven this is some activity related to a taask | N/A      |
+| 1440  | Started | 17ww39.Fri |  one this is some activity related to a taask   | N/A      |
+| 10384 | Started | 17ww44.Sun |  six this is some activity related to a taask   | N/A      |
+| 10401 | Started | 17ww44.Sun |  four1 this is some activity related to a taask | N/A      |
++-------+---------+------------+-------------------------------------------------+----------+
+
+0047:
+0009:list
+0025:
+No more data to show
+
+0048:
+0033:list activity for task @2334
+0025:
+No more data to show
+
+0049:
+0082:create megaproject Work1 | 1all projects that relate to Work at Intel go here
+0064:
+Transaction: create megaproject COMPLETED. New ID is: 10495
+
+0050:
+0062:list activity col Start_Date drange 17ww17.Sun 17ww20.Mon
+0025:
+No more data to show
+
+0051:
+0058:list activity col Start_Date drange 17ww17 17ww20.Mon
+0025:
+No more data to show
+
+0052:
+0058:list activity col Start_Date drange 17ww17.Sun 17ww20
+0025:
+No more data to show
+
+0053:
+0054:list activity col Start_Date drange 17ww17 17ww20
+0025:
+No more data to show
+
+0054:
+0055:list activity col Start_Date drange bot 17ww20.Mon
+0025:
+No more data to show
+
+0055:
+0051:list activity col Start_Date drange bot 17ww20
+0025:
+No more data to show
+
+0056:
+0055:list activity col Start_Date drange 17ww17.Sun top
+1809:
++Showing items 219 to 233:-----+--------------------------------------------------+----------+
+| ID    | State   | Start_Date | Description                                      | End_Date |
++-------+---------+------------+--------------------------------------------------+----------+
+| 10458 | Started | 17ww44.Sun |  two1 this is some activity related to a taask   | N/A      |
+| 10459 | Started | 17ww44.Sun |  three1 this is some activity related to a taask | N/A      |
+| 10460 | Started | 17ww44.Sun |  four1 this is some activity related to a taask  | N/A      |
+| 10461 | Started | 17ww44.Sun |  five1 this is some activity related to a taask  | N/A      |
+| 10462 | Started | 17ww44.Sun |  six1 this is some activity related to a taask   | N/A      |
+| 10463 | Started | 17ww44.Sun |  seven1 this is some activity related to a taask | N/A      |
+| 10478 | Started | 17ww44.Sun |  checking in - start work                        |          |
+| 10479 | Started | 17ww44.Sun |  checking out - go home                          |          |
+| 10488 | Started | 17ww44.Sun |  two this is some activity related to a taask    |          |
+| 10489 | Started | 17ww44.Sun |  three this is some activity related to a taask  |          |
+| 10490 | Started | 17ww44.Sun |  four this is some activity related to a taask   |          |
+| 10491 | Started | 17ww44.Sun |  five this is some activity related to a taask   |          |
+| 10492 | Started | 17ww44.Sun |  six this is some activity related to a taask    |          |
+| 10493 | Started | 17ww44.Sun |  seven this is some activity related to a taask  |          |
+| 10494 | Started | 17ww44.Sun |  some activity, not project or task              |          |
++-------+---------+------------+--------------------------------------------------+----------+
+
+0057:
+0051:list activity col Start_Date drange 17ww17 top
+1809:
++Showing items 219 to 233:-----+--------------------------------------------------+----------+
+| ID    | State   | Start_Date | Description                                      | End_Date |
++-------+---------+------------+--------------------------------------------------+----------+
+| 10458 | Started | 17ww44.Sun |  two1 this is some activity related to a taask   | N/A      |
+| 10459 | Started | 17ww44.Sun |  three1 this is some activity related to a taask | N/A      |
+| 10460 | Started | 17ww44.Sun |  four1 this is some activity related to a taask  | N/A      |
+| 10461 | Started | 17ww44.Sun |  five1 this is some activity related to a taask  | N/A      |
+| 10462 | Started | 17ww44.Sun |  six1 this is some activity related to a taask   | N/A      |
+| 10463 | Started | 17ww44.Sun |  seven1 this is some activity related to a taask | N/A      |
+| 10478 | Started | 17ww44.Sun |  checking in - start work                        |          |
+| 10479 | Started | 17ww44.Sun |  checking out - go home                          |          |
+| 10488 | Started | 17ww44.Sun |  two this is some activity related to a taask    |          |
+| 10489 | Started | 17ww44.Sun |  three this is some activity related to a taask  |          |
+| 10490 | Started | 17ww44.Sun |  four this is some activity related to a taask   |          |
+| 10491 | Started | 17ww44.Sun |  five this is some activity related to a taask   |          |
+| 10492 | Started | 17ww44.Sun |  six this is some activity related to a taask    |          |
+| 10493 | Started | 17ww44.Sun |  seven this is some activity related to a taask  |          |
+| 10494 | Started | 17ww44.Sun |  some activity, not project or task              |          |
++-------+---------+------------+--------------------------------------------------+----------+
+
+0058:
+0048:list activity col Start_Date drange bot top
+1809:
++Showing items 219 to 233:-----+--------------------------------------------------+----------+
+| ID    | State   | Start_Date | Description                                      | End_Date |
++-------+---------+------------+--------------------------------------------------+----------+
+| 10458 | Started | 17ww44.Sun |  two1 this is some activity related to a taask   | N/A      |
+| 10459 | Started | 17ww44.Sun |  three1 this is some activity related to a taask | N/A      |
+| 10460 | Started | 17ww44.Sun |  four1 this is some activity related to a taask  | N/A      |
+| 10461 | Started | 17ww44.Sun |  five1 this is some activity related to a taask  | N/A      |
+| 10462 | Started | 17ww44.Sun |  six1 this is some activity related to a taask   | N/A      |
+| 10463 | Started | 17ww44.Sun |  seven1 this is some activity related to a taask | N/A      |
+| 10478 | Started | 17ww44.Sun |  checking in - start work                        |          |
+| 10479 | Started | 17ww44.Sun |  checking out - go home                          |          |
+| 10488 | Started | 17ww44.Sun |  two this is some activity related to a taask    |          |
+| 10489 | Started | 17ww44.Sun |  three this is some activity related to a taask  |          |
+| 10490 | Started | 17ww44.Sun |  four this is some activity related to a taask   |          |
+| 10491 | Started | 17ww44.Sun |  five this is some activity related to a taask   |          |
+| 10492 | Started | 17ww44.Sun |  six this is some activity related to a taask    |          |
+| 10493 | Started | 17ww44.Sun |  seven this is some activity related to a taask  |          |
+| 10494 | Started | 17ww44.Sun |  some activity, not project or task              |          |
++-------+---------+------------+--------------------------------------------------+----------+
+
+0059:
+0045:list megaproject col ID irange 2569 2631
+0025:
+No more data to show
+
+0060:
+0044:list megaproject col ID irange 2569 top
+2622:
++Showing items 5 to 19:--+-------------------------------------------------+
+| ID    | Name   | State | Description                                     |
++-------+--------+-------+-------------------------------------------------+
+| 10230 | Work21 |    On |  21all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 10320 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10339 | Work1  |    On |  1all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10347 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10366 | Work1  |    On |  1all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10370 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10386 | Work11 |    On |  11all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 10388 | Work21 |    On |  21all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 10406 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10425 | Work1  |    On |  1all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10429 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10445 | Work11 |    On |  11all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 10447 | Work21 |    On |  21all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 10476 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10495 | Work1  |    On |  1all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
++-------+--------+-------+-------------------------------------------------+
+
+0061:
+0044:list megaproject col ID irange bot 2631
+2588:
++Showing items 19 to 33:+-------------------------------------------------+
+| ID   | Name   | State | Description                                     |
++------+--------+-------+-------------------------------------------------+
+| 1408 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|      |        |       | here                                            |
+| 1427 | Work1  |    On |  1all projects that relate to Work at Intel go  |
+|      |        |       | here                                            |
+| 1431 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|      |        |       | here                                            |
+| 1447 | Work11 |    On |  11all projects that relate to Work at Intel go |
+|      |        |       | here                                            |
+| 1449 | Work21 |    On |  21all projects that relate to Work at Intel go |
+|      |        |       | here                                            |
+| 1505 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|      |        |       | here                                            |
+| 1524 | Work1  |    On |  1all projects that relate to Work at Intel go  |
+|      |        |       | here                                            |
+| 1528 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|      |        |       | here                                            |
+| 1544 | Work11 |    On |  11all projects that relate to Work at Intel go |
+|      |        |       | here                                            |
+| 1546 | Work21 |    On |  21all projects that relate to Work at Intel go |
+|      |        |       | here                                            |
+| 1628 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|      |        |       | here                                            |
+| 1647 | Work1  |    On |  1all projects that relate to Work at Intel go  |
+|      |        |       | here                                            |
+| 1651 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|      |        |       | here                                            |
+| 1667 | Work11 |    On |  11all projects that relate to Work at Intel go |
+|      |        |       | here                                            |
+| 1669 | Work21 |    On |  21all projects that relate to Work at Intel go |
+|      |        |       | here                                            |
++------+--------+-------+-------------------------------------------------+
+
+0062:
+0043:list megaproject col ID irange bot top
+2622:
++Showing items 38 to 52:-+-------------------------------------------------+
+| ID    | Name   | State | Description                                     |
++-------+--------+-------+-------------------------------------------------+
+| 10230 | Work21 |    On |  21all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 10320 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10339 | Work1  |    On |  1all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10347 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10366 | Work1  |    On |  1all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10370 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10386 | Work11 |    On |  11all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 10388 | Work21 |    On |  21all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 10406 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10425 | Work1  |    On |  1all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10429 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10445 | Work11 |    On |  11all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 10447 | Work21 |    On |  21all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 10476 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10495 | Work1  |    On |  1all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
++-------+--------+-------+-------------------------------------------------+
+
+0063:
+0019:halt @00000000
+0066:
+Transaction: halt something COMPLETED. Referenced ID is: 1142
+
+0064:
+0019:stop @00000000
+0066:
+Transaction: stop something COMPLETED. Referenced ID is: 1637
+
+0065:
+0019:cont @00000000
+0066:
+Transaction: cont something COMPLETED. Referenced ID is: 1143
+
+0066:
+0019:list @00000000
+0348:
+     State Description                                   Start_Date  PROJECT       Due_Date  Expiration_Date  Location  Context  Reminders ACTIVITYs Sub_TASKs  Parent_TASK
+1454  Open   1this is what you need to do on project one  17ww39.Fri  project_one N/A       N/A              N/A       N/A      N/A         []        []       N/A         
+
+0067:
+0021:list megaproject
+2622:
++Showing items 38 to 52:-+-------------------------------------------------+
+| ID    | Name   | State | Description                                     |
++-------+--------+-------+-------------------------------------------------+
+| 10230 | Work21 |    On |  21all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 10320 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10339 | Work1  |    On |  1all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10347 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10366 | Work1  |    On |  1all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10370 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10386 | Work11 |    On |  11all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 10388 | Work21 |    On |  21all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 10406 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10425 | Work1  |    On |  1all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10429 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10445 | Work11 |    On |  11all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 10447 | Work21 |    On |  21all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 10476 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10495 | Work1  |    On |  1all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
++-------+--------+-------+-------------------------------------------------+
+
+0068:
+0009:list
+2622:
++Showing items 23 to 37:-+-------------------------------------------------+
+| ID    | Name   | State | Description                                     |
++-------+--------+-------+-------------------------------------------------+
+| 1449  | Work21 |    On |  21all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 1505  | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 1524  | Work1  |    On |  1all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 1528  | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 1544  | Work11 |    On |  11all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 1546  | Work21 |    On |  21all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 1628  | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 1647  | Work1  |    On |  1all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 1651  | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 1667  | Work11 |    On |  11all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 1669  | Work21 |    On |  21all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 10189 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10208 | Work1  |    On |  1all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10212 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10228 | Work11 |    On |  11all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
++-------+--------+-------+-------------------------------------------------+
+
+0069:
+0009:list
+2588:
++Showing items 8 to 22:-+-------------------------------------------------+
+| ID   | Name   | State | Description                                     |
++------+--------+-------+-------------------------------------------------+
+| 1169 | Work21 |    On |  21all projects that relate to Work at Intel go |
+|      |        |       | here                                            |
+| 1187 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|      |        |       | here                                            |
+| 1206 | Work1  |    On |  1all projects that relate to Work at Intel go  |
+|      |        |       | here                                            |
+| 1210 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|      |        |       | here                                            |
+| 1226 | Work11 |    On |  11all projects that relate to Work at Intel go |
+|      |        |       | here                                            |
+| 1228 | Work21 |    On |  21all projects that relate to Work at Intel go |
+|      |        |       | here                                            |
+| 1317 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|      |        |       | here                                            |
+| 1336 | Work1  |    On |  1all projects that relate to Work at Intel go  |
+|      |        |       | here                                            |
+| 1340 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|      |        |       | here                                            |
+| 1356 | Work11 |    On |  11all projects that relate to Work at Intel go |
+|      |        |       | here                                            |
+| 1358 | Work21 |    On |  21all projects that relate to Work at Intel go |
+|      |        |       | here                                            |
+| 1408 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|      |        |       | here                                            |
+| 1427 | Work1  |    On |  1all projects that relate to Work at Intel go  |
+|      |        |       | here                                            |
+| 1431 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|      |        |       | here                                            |
+| 1447 | Work11 |    On |  11all projects that relate to Work at Intel go |
+|      |        |       | here                                            |
++------+--------+-------+-------------------------------------------------+
+
+0070:
+0039:list megaproject col Name is Work1
+1954:
++Showing items 1 to 11:-+------------------------------------------------+
+| ID    | Name  | State | Description                                    |
++-------+-------+-------+------------------------------------------------+
+| 1147  | Work1 |    On |  1all projects that relate to Work at Intel go |
+|       |       |       | here                                           |
+| 1206  | Work1 |    On |  1all projects that relate to Work at Intel go |
+|       |       |       | here                                           |
+| 1336  | Work1 |    On |  1all projects that relate to Work at Intel go |
+|       |       |       | here                                           |
+| 1427  | Work1 |    On |  1all projects that relate to Work at Intel go |
+|       |       |       | here                                           |
+| 1524  | Work1 |    On |  1all projects that relate to Work at Intel go |
+|       |       |       | here                                           |
+| 1647  | Work1 |    On |  1all projects that relate to Work at Intel go |
+|       |       |       | here                                           |
+| 10208 | Work1 |    On |  1all projects that relate to Work at Intel go |
+|       |       |       | here                                           |
+| 10339 | Work1 |    On |  1all projects that relate to Work at Intel go |
+|       |       |       | here                                           |
+| 10366 | Work1 |    On |  1all projects that relate to Work at Intel go |
+|       |       |       | here                                           |
+| 10425 | Work1 |    On |  1all projects that relate to Work at Intel go |
+|       |       |       | here                                           |
+| 10495 | Work1 |    On |  1all projects that relate to Work at Intel go |
+|       |       |       | here                                           |
++-------+-------+-------+------------------------------------------------+
+
+0071:
+0021:list megaproject
+2622:
++Showing items 38 to 52:-+-------------------------------------------------+
+| ID    | Name   | State | Description                                     |
++-------+--------+-------+-------------------------------------------------+
+| 10230 | Work21 |    On |  21all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 10320 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10339 | Work1  |    On |  1all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10347 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10366 | Work1  |    On |  1all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10370 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10386 | Work11 |    On |  11all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 10388 | Work21 |    On |  21all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 10406 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10425 | Work1  |    On |  1all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10429 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10445 | Work11 |    On |  11all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 10447 | Work21 |    On |  21all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 10476 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10495 | Work1  |    On |  1all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
++-------+--------+-------+-------------------------------------------------+
+
+0072:
+0009:list
+2622:
++Showing items 23 to 37:-+-------------------------------------------------+
+| ID    | Name   | State | Description                                     |
++-------+--------+-------+-------------------------------------------------+
+| 1449  | Work21 |    On |  21all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 1505  | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 1524  | Work1  |    On |  1all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 1528  | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 1544  | Work11 |    On |  11all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 1546  | Work21 |    On |  21all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 1628  | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 1647  | Work1  |    On |  1all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 1651  | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 1667  | Work11 |    On |  11all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 1669  | Work21 |    On |  21all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 10189 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10208 | Work1  |    On |  1all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10212 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10228 | Work11 |    On |  11all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
++-------+--------+-------+-------------------------------------------------+
+
+0073:
+0009:list
+2588:
++Showing items 8 to 22:-+-------------------------------------------------+
+| ID   | Name   | State | Description                                     |
++------+--------+-------+-------------------------------------------------+
+| 1169 | Work21 |    On |  21all projects that relate to Work at Intel go |
+|      |        |       | here                                            |
+| 1187 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|      |        |       | here                                            |
+| 1206 | Work1  |    On |  1all projects that relate to Work at Intel go  |
+|      |        |       | here                                            |
+| 1210 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|      |        |       | here                                            |
+| 1226 | Work11 |    On |  11all projects that relate to Work at Intel go |
+|      |        |       | here                                            |
+| 1228 | Work21 |    On |  21all projects that relate to Work at Intel go |
+|      |        |       | here                                            |
+| 1317 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|      |        |       | here                                            |
+| 1336 | Work1  |    On |  1all projects that relate to Work at Intel go  |
+|      |        |       | here                                            |
+| 1340 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|      |        |       | here                                            |
+| 1356 | Work11 |    On |  11all projects that relate to Work at Intel go |
+|      |        |       | here                                            |
+| 1358 | Work21 |    On |  21all projects that relate to Work at Intel go |
+|      |        |       | here                                            |
+| 1408 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|      |        |       | here                                            |
+| 1427 | Work1  |    On |  1all projects that relate to Work at Intel go  |
+|      |        |       | here                                            |
+| 1431 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|      |        |       | here                                            |
+| 1447 | Work11 |    On |  11all projects that relate to Work at Intel go |
+|      |        |       | here                                            |
++------+--------+-------+-------------------------------------------------+
+
+0074:
+0009:list
+1189:
++Showing items 1 to 7:-----+-------------------------------------------------+
+| ID   | Name      | State | Description                                     |
++------+-----------+-------+-------------------------------------------------+
+| 12   | Work      |    On |  all work stuff                                 |
+| 13   | Home      |    On |  all home stuff                                 |
+| 31   | Sightings |    On |  for lab sightings                              |
+| 1130 | Work2     |    On |  2all projects that relate to Work at Intel go  |
+|      |           |       | here                                            |
+| 1147 | Work1     |    On |  1all projects that relate to Work at Intel go  |
+|      |           |       | here                                            |
+| 1151 | Work2     |    On |  2all projects that relate to Work at Intel go  |
+|      |           |       | here                                            |
+| 1167 | Work11    |    On |  11all projects that relate to Work at Intel go |
+|      |           |       | here                                            |
++------+-----------+-------+-------------------------------------------------+
+
+0075:
+0009:list
+0025:
+No more data to show
+
+0076:
+0030:list megaproject limit 30
+4932:
++Showing items 23 to 52:-+-------------------------------------------------+
+| ID    | Name   | State | Description                                     |
++-------+--------+-------+-------------------------------------------------+
+| 1449  | Work21 |    On |  21all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 1505  | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 1524  | Work1  |    On |  1all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 1528  | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 1544  | Work11 |    On |  11all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 1546  | Work21 |    On |  21all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 1628  | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 1647  | Work1  |    On |  1all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 1651  | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 1667  | Work11 |    On |  11all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 1669  | Work21 |    On |  21all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 10189 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10208 | Work1  |    On |  1all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10212 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10228 | Work11 |    On |  11all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 10230 | Work21 |    On |  21all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 10320 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10339 | Work1  |    On |  1all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10347 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10366 | Work1  |    On |  1all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10370 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10386 | Work11 |    On |  11all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 10388 | Work21 |    On |  21all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 10406 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10425 | Work1  |    On |  1all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10429 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10445 | Work11 |    On |  11all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 10447 | Work21 |    On |  21all projects that relate to Work at Intel go |
+|       |        |       | here                                            |
+| 10476 | Work2  |    On |  2all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
+| 10495 | Work1  |    On |  1all projects that relate to Work at Intel go  |
+|       |        |       | here                                            |
++-------+--------+-------+-------------------------------------------------+
+
+0077:
+0009:list
+3559:
++Showing items 1 to 22:----+-------------------------------------------------+
+| ID   | Name      | State | Description                                     |
++------+-----------+-------+-------------------------------------------------+
+| 12   | Work      |    On |  all work stuff                                 |
+| 13   | Home      |    On |  all home stuff                                 |
+| 31   | Sightings |    On |  for lab sightings                              |
+| 1130 | Work2     |    On |  2all projects that relate to Work at Intel go  |
+|      |           |       | here                                            |
+| 1147 | Work1     |    On |  1all projects that relate to Work at Intel go  |
+|      |           |       | here                                            |
+| 1151 | Work2     |    On |  2all projects that relate to Work at Intel go  |
+|      |           |       | here                                            |
+| 1167 | Work11    |    On |  11all projects that relate to Work at Intel go |
+|      |           |       | here                                            |
+| 1169 | Work21    |    On |  21all projects that relate to Work at Intel go |
+|      |           |       | here                                            |
+| 1187 | Work2     |    On |  2all projects that relate to Work at Intel go  |
+|      |           |       | here                                            |
+| 1206 | Work1     |    On |  1all projects that relate to Work at Intel go  |
+|      |           |       | here                                            |
+| 1210 | Work2     |    On |  2all projects that relate to Work at Intel go  |
+|      |           |       | here                                            |
+| 1226 | Work11    |    On |  11all projects that relate to Work at Intel go |
+|      |           |       | here                                            |
+| 1228 | Work21    |    On |  21all projects that relate to Work at Intel go |
+|      |           |       | here                                            |
+| 1317 | Work2     |    On |  2all projects that relate to Work at Intel go  |
+|      |           |       | here                                            |
+| 1336 | Work1     |    On |  1all projects that relate to Work at Intel go  |
+|      |           |       | here                                            |
+| 1340 | Work2     |    On |  2all projects that relate to Work at Intel go  |
+|      |           |       | here                                            |
+| 1356 | Work11    |    On |  11all projects that relate to Work at Intel go |
+|      |           |       | here                                            |
+| 1358 | Work21    |    On |  21all projects that relate to Work at Intel go |
+|      |           |       | here                                            |
+| 1408 | Work2     |    On |  2all projects that relate to Work at Intel go  |
+|      |           |       | here                                            |
+| 1427 | Work1     |    On |  1all projects that relate to Work at Intel go  |
+|      |           |       | here                                            |
+| 1431 | Work2     |    On |  2all projects that relate to Work at Intel go  |
+|      |           |       | here                                            |
+| 1447 | Work11    |    On |  11all projects that relate to Work at Intel go |
+|      |           |       | here                                            |
++------+-----------+-------+-------------------------------------------------+
+
+0078:
+0009:list
+0025:
+No more data to show
+
+0079:
+0009:list
+0025:
+No more data to show
+
+0080:
+0009:list
+0025:
+No more data to show
+
+0081:
+0009:list
+0025:
+No more data to show
+
+0082:
+0017:list project
+1714:
++Showing items 100 to 114:---------+-------------+--------------------------------------+
+| ID    | Name           |   State | MEGAPROJECT | Description                          |
++-------+----------------+---------+-------------+--------------------------------------+
+| 10412 | project_five   | Started | Work1       |  this is the first project I created |
+| 10426 | project_one    | Started | Work1       |  this is the first project I created |
+| 10430 | project_two    | Started | Work2       |  this is the first project I created |
+| 10431 | project_three  | Started | Work1       |  this is the first project I created |
+| 10432 | project_four   | Started | Work2       |  this is the first project I created |
+| 10433 | project_five   | Started | Work1       |  this is the first project I created |
+| 10446 | project_one1   | Started | Work11      |  this is the first project I created |
+| 10448 | project_two1   | Started | Work21      |  this is the first project I created |
+| 10449 | project_three1 | Started | Work11      |  this is the first project I created |
+| 10450 | project_four1  | Started | Work21      |  this is the first project I created |
+| 10451 | project_five1  | Started | Work11      |  this is the first project I created |
+| 10477 | project_two    | Started | Work2       |  this is the first project I created |
+| 10480 | project_three  | Started | Work1       |  this is the first project I created |
+| 10481 | project_four   | Started | Work2       |  this is the first project I created |
+| 10482 | project_five   | Started | Work1       |  this is the first project I created |
++-------+----------------+---------+-------------+--------------------------------------+
+
+0083:
+0009:list
+1714:
++Showing items 85 to 99:-+---------+-------------+--------------------------------------+
+| ID    | Name           |   State | MEGAPROJECT | Description                          |
++-------+----------------+---------+-------------+--------------------------------------+
+| 10352 | project_four   | Started | Work2       |  this is the first project I created |
+| 10353 | project_five   | Started | Work1       |  this is the first project I created |
+| 10367 | project_one    | Started | Work1       |  this is the first project I created |
+| 10371 | project_two    | Started | Work2       |  this is the first project I created |
+| 10372 | project_three  | Started | Work1       |  this is the first project I created |
+| 10373 | project_four   | Started | Work2       |  this is the first project I created |
+| 10374 | project_five   | Started | Work1       |  this is the first project I created |
+| 10387 | project_one1   | Started | Work11      |  this is the first project I created |
+| 10389 | project_two1   | Started | Work21      |  this is the first project I created |
+| 10390 | project_three1 | Started | Work11      |  this is the first project I created |
+| 10391 | project_four1  | Started | Work21      |  this is the first project I created |
+| 10392 | project_five1  | Started | Work11      |  this is the first project I created |
+| 10407 | project_two    | Started | Work2       |  this is the first project I created |
+| 10410 | project_three  | Started | Work1       |  this is the first project I created |
+| 10411 | project_four   | Started | Work2       |  this is the first project I created |
++-------+----------------+---------+-------------+--------------------------------------+
+
+0084:
+0009:list
+1714:
++Showing items 70 to 84:-+---------+-------------+--------------------------------------+
+| ID    | Name           |   State | MEGAPROJECT | Description                          |
++-------+----------------+---------+-------------+--------------------------------------+
+| 10190 | project_two    | Started | Work2       |  this is the first project I created |
+| 10193 | project_three  | Started | Work1       |  this is the first project I created |
+| 10194 | project_four   | Started | Work2       |  this is the first project I created |
+| 10195 | project_five   | Started | Work1       |  this is the first project I created |
+| 10213 | project_two    | Started | Work2       |  this is the first project I created |
+| 10214 | project_three  | Started | Work1       |  this is the first project I created |
+| 10215 | project_four   | Started | Work2       |  this is the first project I created |
+| 10229 | project_one1   | Started | Work11      |  this is the first project I created |
+| 10232 | project_three1 | Started | Work11      |  this is the first project I created |
+| 10234 | project_five1  | Started | Work11      |  this is the first project I created |
+| 10324 | project_three  | Started | Work1       |  this is the first project I created |
+| 10325 | project_four   | Started | Work2       |  this is the first project I created |
+| 10326 | project_five   | Started | Work1       |  this is the first project I created |
+| 10348 | project_two    | Started | Work2       |  this is the first project I created |
+| 10351 | project_three  | Started | Work1       |  this is the first project I created |
++-------+----------------+---------+-------------+--------------------------------------+
+
+0085:
+0041:list project col Name is project_two
+1657:
++Showing items 3 to 17:---------+-------------+--------------------------------------+
+| ID    | Name        |   State | MEGAPROJECT | Description                          |
++-------+-------------+---------+-------------+--------------------------------------+
+| 1188  | project_two | Started | Work2       |  this is the first project I created |
+| 1211  | project_two | Started | Work2       |  this is the first project I created |
+| 1341  | project_two | Started | Work2       |  this is the first project I created |
+| 1409  | project_two | Started | Work2       |  this is the first project I created |
+| 1432  | project_two | Started | Work2       |  this is the first project I created |
+| 1529  | project_two | Started | Work2       |  this is the first project I created |
+| 1629  | project_two | Started | Work2       |  this is the first project I created |
+| 1652  | project_two | Started | Work2       |  this is the first project I created |
+| 10190 | project_two | Started | Work2       |  this is the first project I created |
+| 10213 | project_two | Started | Work2       |  this is the first project I created |
+| 10348 | project_two | Started | Work2       |  this is the first project I created |
+| 10371 | project_two | Started | Work2       |  this is the first project I created |
+| 10407 | project_two | Started | Work2       |  this is the first project I created |
+| 10430 | project_two | Started | Work2       |  this is the first project I created |
+| 10477 | project_two | Started | Work2       |  this is the first project I created |
++-------+-------------+---------+-------------+--------------------------------------+
+
+0086:
+0009:list
+0520:
++Showing items 1 to 2:---------+-------------+--------------------------------------+
+| ID   | Name        |   State | MEGAPROJECT | Description                          |
++------+-------------+---------+-------------+--------------------------------------+
+| 1131 | project_two | Started | Work2       |  this is the first project I created |
+| 1152 | project_two | Started | Work2       |  this is the first project I created |
++------+-------------+---------+-------------+--------------------------------------+
+
+0087:
+0009:list
+0025:
+No more data to show
+
+0088:
+0014:list task
+3076:
++Showing items 122 to 136:-------------------------------------------+------------+--------------+----------+-----------------+
+| ID    | State |                                        Description | Start_Date | PROJECT      | Due_Date | Expiration_Date |
++-------+-------+----------------------------------------------------+------------+--------------+----------+-----------------+
+| 10417 | Open  |  1third this is what you need to do on project two | 17ww44.Sun | project_two  | N/A      | N/A             |
+| 10427 | Open  |         this is what you need to do on project one | 17ww44.Sun | project_one  | N/A      | N/A             |
+| 10434 | Open  |     another this is what you need to do on project | 17ww44.Sun | project_one  | N/A      | N/A             |
+|       |       |                                                one |            |              |          |                 |
+| 10436 | Open  |  second this is what you need to do on project two | 17ww44.Sun | project_two  | N/A      | N/A             |
+| 10437 | Open  |  second this is what you need to do on project two | 17ww44.Sun | project_two  | N/A      | N/A             |
+| 10452 | Open  |        1this is what you need to do on project one | 17ww44.Sun | project_one  | N/A      | N/A             |
+| 10453 | Open  |    1another this is what you need to do on project | 17ww44.Sun | project_one  | N/A      | N/A             |
+|       |       |                                                one |            |              |          |                 |
+| 10454 | Open  |        1this is what you need to do on project two | 17ww44.Sun | project_two  | N/A      | N/A             |
+| 10455 | Open  |     1second this is what you need to do on project | 17ww44.Sun | project_two1 | N/A      | N/A             |
+|       |       |                                                two |            |              |          |                 |
+| 10456 | Open  |  1third this is what you need to do on project two | 17ww44.Sun | project_two  | N/A      | N/A             |
+| 10483 | Open  |        1this is what you need to do on project one | 17ww44.Sun | project_one  |          |                 |
+| 10484 | Open  |    1another this is what you need to do on project | 17ww44.Sun | project_one  |          |                 |
+|       |       |                                                one |            |              |          |                 |
+| 10485 | Open  |        1this is what you need to do on project two | 17ww44.Sun | project_two  |          |                 |
+| 10486 | Open  |     1second this is what you need to do on project | 17ww44.Sun | project_two1 |          |                 |
+|       |       |                                                two |            |              |          |                 |
+| 10487 | Open  |  1third this is what you need to do on project two | 17ww44.Sun | project_two  |          |                 |
++-------+-------+----------------------------------------------------+------------+--------------+----------+-----------------+
+
+0089:
+0009:list
+3076:
++Showing items 107 to 121:-------------------------------------------+------------+--------------+----------+-----------------+
+| ID    | State |                                        Description | Start_Date | PROJECT      | Due_Date | Expiration_Date |
++-------+-------+----------------------------------------------------+------------+--------------+----------+-----------------+
+| 10358 | Open  |  1third this is what you need to do on project two | 17ww44.Sun | project_two  | N/A      | N/A             |
+| 10368 | Open  |         this is what you need to do on project one | 17ww44.Sun | project_one  | N/A      | N/A             |
+| 10375 | Open  |     another this is what you need to do on project | 17ww44.Sun | project_one  | N/A      | N/A             |
+|       |       |                                                one |            |              |          |                 |
+| 10376 | Open  |         this is what you need to do on project two | 17ww44.Sun | project_two  | N/A      | N/A             |
+| 10377 | Open  |  second this is what you need to do on project two | 17ww44.Sun | project_two  | N/A      | N/A             |
+| 10378 | Open  |  second this is what you need to do on project two | 17ww44.Sun | project_two  | N/A      | N/A             |
+| 10393 | Open  |        1this is what you need to do on project one | 17ww44.Sun | project_one  | N/A      | N/A             |
+| 10394 | Open  |    1another this is what you need to do on project | 17ww44.Sun | project_one  | N/A      | N/A             |
+|       |       |                                                one |            |              |          |                 |
+| 10395 | Open  |        1this is what you need to do on project two | 17ww44.Sun | project_two  | N/A      | N/A             |
+| 10396 | Open  |     1second this is what you need to do on project | 17ww44.Sun | project_two1 | N/A      | N/A             |
+|       |       |                                                two |            |              |          |                 |
+| 10397 | Open  |  1third this is what you need to do on project two | 17ww44.Sun | project_two  | N/A      | N/A             |
+| 10413 | Open  |        1this is what you need to do on project one | 17ww44.Sun | project_one  | N/A      | N/A             |
+| 10414 | Open  |    1another this is what you need to do on project | 17ww44.Sun | project_one  | N/A      | N/A             |
+|       |       |                                                one |            |              |          |                 |
+| 10415 | Open  |        1this is what you need to do on project two | 17ww44.Sun | project_two  | N/A      | N/A             |
+| 10416 | Open  |     1second this is what you need to do on project | 17ww44.Sun | project_two1 | N/A      | N/A             |
+|       |       |                                                two |            |              |          |                 |
++-------+-------+----------------------------------------------------+------------+--------------+----------+-----------------+
+
+0090:
+0009:list
+3204:
++Showing items 92 to 106:--------------------------------------------+------------+--------------+----------+-----------------+
+| ID    | State |                                        Description | Start_Date | PROJECT      | Due_Date | Expiration_Date |
++-------+-------+----------------------------------------------------+------------+--------------+----------+-----------------+
+| 10220 | Open  |  second this is what you need to do on project two | 17ww43.Sat | project_two  | N/A      | N/A             |
+| 10235 | Open  |        1this is what you need to do on project one | 17ww43.Sat | project_one  | N/A      | N/A             |
+| 10236 | Open  |    1another this is what you need to do on project | 17ww43.Sat | project_one  | N/A      | N/A             |
+|       |       |                                                one |            |              |          |                 |
+| 10237 | Open  |        1this is what you need to do on project two | 17ww43.Sat | project_two  | N/A      | N/A             |
+| 10238 | Open  |     1second this is what you need to do on project | 17ww43.Sat | project_two1 | N/A      | N/A             |
+|       |       |                                                two |            |              |          |                 |
+| 10239 | Open  |  1third this is what you need to do on project two | 17ww43.Sat | project_two  | N/A      | N/A             |
+| 10327 | Open  |        1this is what you need to do on project one | 17ww44.Sun | project_one  | N/A      | N/A             |
+| 10328 | Open  |    1another this is what you need to do on project | 17ww44.Sun | project_one  | N/A      | N/A             |
+|       |       |                                                one |            |              |          |                 |
+| 10329 | Open  |        1this is what you need to do on project two | 17ww44.Sun | project_two  | N/A      | N/A             |
+| 10330 | Open  |     1second this is what you need to do on project | 17ww44.Sun | project_two1 | N/A      | N/A             |
+|       |       |                                                two |            |              |          |                 |
+| 10331 | Open  |  1third this is what you need to do on project two | 17ww44.Sun | project_two  | N/A      | N/A             |
+| 10354 | Open  |        1this is what you need to do on project one | 17ww44.Sun | project_one  | N/A      | N/A             |
+| 10355 | Open  |    1another this is what you need to do on project | 17ww44.Sun | project_one  | N/A      | N/A             |
+|       |       |                                                one |            |              |          |                 |
+| 10356 | Open  |        1this is what you need to do on project two | 17ww44.Sun | project_two  | N/A      | N/A             |
+| 10357 | Open  |     1second this is what you need to do on project | 17ww44.Sun | project_two1 | N/A      | N/A             |
+|       |       |                                                two |            |              |          |                 |
++-------+-------+----------------------------------------------------+------------+--------------+----------+-----------------+
+
+0091:
+0041:list task col PROJECT is project_two
+2417:
++Showing items 41 to 55:---------------------------------------------+------------+-------------+----------+-----------------+
+| ID    | State |                                        Description | Start_Date | PROJECT     | Due_Date | Expiration_Date |
++-------+-------+----------------------------------------------------+------------+-------------+----------+-----------------+
+| 10356 | Open  |        1this is what you need to do on project two | 17ww44.Sun | project_two | N/A      | N/A             |
+| 10358 | Open  |  1third this is what you need to do on project two | 17ww44.Sun | project_two | N/A      | N/A             |
+| 10376 | Open  |         this is what you need to do on project two | 17ww44.Sun | project_two | N/A      | N/A             |
+| 10377 | Open  |  second this is what you need to do on project two | 17ww44.Sun | project_two | N/A      | N/A             |
+| 10378 | Open  |  second this is what you need to do on project two | 17ww44.Sun | project_two | N/A      | N/A             |
+| 10395 | Open  |        1this is what you need to do on project two | 17ww44.Sun | project_two | N/A      | N/A             |
+| 10397 | Open  |  1third this is what you need to do on project two | 17ww44.Sun | project_two | N/A      | N/A             |
+| 10415 | Open  |        1this is what you need to do on project two | 17ww44.Sun | project_two | N/A      | N/A             |
+| 10417 | Open  |  1third this is what you need to do on project two | 17ww44.Sun | project_two | N/A      | N/A             |
+| 10436 | Open  |  second this is what you need to do on project two | 17ww44.Sun | project_two | N/A      | N/A             |
+| 10437 | Open  |  second this is what you need to do on project two | 17ww44.Sun | project_two | N/A      | N/A             |
+| 10454 | Open  |        1this is what you need to do on project two | 17ww44.Sun | project_two | N/A      | N/A             |
+| 10456 | Open  |  1third this is what you need to do on project two | 17ww44.Sun | project_two | N/A      | N/A             |
+| 10485 | Open  |        1this is what you need to do on project two | 17ww44.Sun | project_two |          |                 |
+| 10487 | Open  |  1third this is what you need to do on project two | 17ww44.Sun | project_two |          |                 |
++-------+-------+----------------------------------------------------+------------+-------------+----------+-----------------+
+
+0092:
+0009:list
+2417:
++Showing items 26 to 40:---------------------------------------------+------------+-------------+----------+-----------------+
+| ID    | State |                                        Description | Start_Date | PROJECT     | Due_Date | Expiration_Date |
++-------+-------+----------------------------------------------------+------------+-------------+----------+-----------------+
+| 1639  | Open  |  1third this is what you need to do on project two | 17ww40.Mon | project_two | N/A      | N/A             |
+| 1657  | Open  |         this is what you need to do on project two | 17ww40.Mon | project_two | N/A      | N/A             |
+| 1658  | Open  |  second this is what you need to do on project two | 17ww40.Mon | project_two | N/A      | N/A             |
+| 1659  | Open  |  second this is what you need to do on project two | 17ww40.Mon | project_two | N/A      | N/A             |
+| 1676  | Open  |        1this is what you need to do on project two | 17ww40.Mon | project_two | N/A      | N/A             |
+| 1678  | Open  |  1third this is what you need to do on project two | 17ww40.Mon | project_two | N/A      | N/A             |
+| 10198 | Open  |        1this is what you need to do on project two | 17ww43.Sat | project_two | N/A      | N/A             |
+| 10200 | Open  |  1third this is what you need to do on project two | 17ww43.Sat | project_two | N/A      | N/A             |
+| 10218 | Open  |         this is what you need to do on project two | 17ww43.Sat | project_two | N/A      | N/A             |
+| 10219 | Open  |  second this is what you need to do on project two | 17ww43.Sat | project_two | N/A      | N/A             |
+| 10220 | Open  |  second this is what you need to do on project two | 17ww43.Sat | project_two | N/A      | N/A             |
+| 10237 | Open  |        1this is what you need to do on project two | 17ww43.Sat | project_two | N/A      | N/A             |
+| 10239 | Open  |  1third this is what you need to do on project two | 17ww43.Sat | project_two | N/A      | N/A             |
+| 10329 | Open  |        1this is what you need to do on project two | 17ww44.Sun | project_two | N/A      | N/A             |
+| 10331 | Open  |  1third this is what you need to do on project two | 17ww44.Sun | project_two | N/A      | N/A             |
++-------+-------+----------------------------------------------------+------------+-------------+----------+-----------------+
+
+0093:
+0009:list
+2398:
++Showing items 11 to 25:--------------------------------------------+------------+-------------+----------+-----------------+
+| ID   | State |                                        Description | Start_Date | PROJECT     | Due_Date | Expiration_Date |
++------+-------+----------------------------------------------------+------------+-------------+----------+-----------------+
+| 1218 | Open  |  second this is what you need to do on project two | 17ww35.Sat | project_two | N/A      | N/A             |
+| 1235 | Open  |        1this is what you need to do on project two | 17ww35.Sat | project_two | N/A      | N/A             |
+| 1326 | Open  |        1this is what you need to do on project two | 17ww39.Sun | project_two | N/A      | N/A             |
+| 1346 | Open  |         this is what you need to do on project two | 17ww39.Sun | project_two | N/A      | N/A             |
+| 1347 | Open  |  second this is what you need to do on project two | 17ww39.Sun | project_two | N/A      | N/A             |
+| 1367 | Open  |  1third this is what you need to do on project two | 17ww39.Sun | project_two | N/A      | N/A             |
+| 1417 | Open  |        1this is what you need to do on project two | 17ww39.Fri | project_two | N/A      | N/A             |
+| 1419 | Open  |  1third this is what you need to do on project two | 17ww39.Fri | project_two | N/A      | N/A             |
+| 1437 | Open  |         this is what you need to do on project two | 17ww39.Fri | project_two | N/A      | N/A             |
+| 1456 | Open  |        1this is what you need to do on project two | 17ww39.Fri | project_two | N/A      | N/A             |
+| 1458 | Open  |  1third this is what you need to do on project two | 17ww39.Fri | project_two | N/A      | N/A             |
+| 1514 | Open  |        1this is what you need to do on project two | 17ww39.Sat | project_two | N/A      | N/A             |
+| 1516 | Open  |  1third this is what you need to do on project two | 17ww39.Sat | project_two | N/A      | N/A             |
+| 1534 | Open  |         this is what you need to do on project two | 17ww39.Sat | project_two | N/A      | N/A             |
+| 1555 | Open  |  1third this is what you need to do on project two | 17ww39.Sat | project_two | N/A      | N/A             |
++------+-------+----------------------------------------------------+------------+-------------+----------+-----------------+
+
+0094:
+0018:list activity
+1809:
++Showing items 219 to 233:-----+--------------------------------------------------+----------+
+| ID    | State   | Start_Date | Description                                      | End_Date |
++-------+---------+------------+--------------------------------------------------+----------+
+| 10458 | Started | 17ww44.Sun |  two1 this is some activity related to a taask   | N/A      |
+| 10459 | Started | 17ww44.Sun |  three1 this is some activity related to a taask | N/A      |
+| 10460 | Started | 17ww44.Sun |  four1 this is some activity related to a taask  | N/A      |
+| 10461 | Started | 17ww44.Sun |  five1 this is some activity related to a taask  | N/A      |
+| 10462 | Started | 17ww44.Sun |  six1 this is some activity related to a taask   | N/A      |
+| 10463 | Started | 17ww44.Sun |  seven1 this is some activity related to a taask | N/A      |
+| 10478 | Started | 17ww44.Sun |  checking in - start work                        |          |
+| 10479 | Started | 17ww44.Sun |  checking out - go home                          |          |
+| 10488 | Started | 17ww44.Sun |  two this is some activity related to a taask    |          |
+| 10489 | Started | 17ww44.Sun |  three this is some activity related to a taask  |          |
+| 10490 | Started | 17ww44.Sun |  four this is some activity related to a taask   |          |
+| 10491 | Started | 17ww44.Sun |  five this is some activity related to a taask   |          |
+| 10492 | Started | 17ww44.Sun |  six this is some activity related to a taask    |          |
+| 10493 | Started | 17ww44.Sun |  seven this is some activity related to a taask  |          |
+| 10494 | Started | 17ww44.Sun |  some activity, not project or task              |          |
++-------+---------+------------+--------------------------------------------------+----------+
+
+0095:
+0009:list
+1790:
++Showing items 204 to 218:-----+-------------------------------------------------+----------+
+| ID    | State   | Start_Date | Description                                     | End_Date |
++-------+---------+------------+-------------------------------------------------+----------+
+| 10419 | Started | 17ww44.Sun |  three this is some activity related to a taask | N/A      |
+| 10420 | Started | 17ww44.Sun |  four this is some activity related to a taask  | N/A      |
+| 10421 | Started | 17ww44.Sun |  five this is some activity related to a taask  | N/A      |
+| 10422 | Started | 17ww44.Sun |  six this is some activity related to a taask   | N/A      |
+| 10423 | Started | 17ww44.Sun |  seven this is some activity related to a taask | N/A      |
+| 10424 | Started | 17ww44.Sun |  some activity, not project or task             | N/A      |
+| 10428 | Started | 17ww44.Sun |  one this is some activity related to a taask   | N/A      |
+| 10438 | Started | 17ww44.Sun |  one this is some activity related to a taask   | N/A      |
+| 10439 | Started | 17ww44.Sun |  two this is some activity related to a taask   | N/A      |
+| 10440 | Started | 17ww44.Sun |  three this is some activity related to a taask | N/A      |
+| 10441 | Started | 17ww44.Sun |  four this is some activity related to a taask  | N/A      |
+| 10442 | Started | 17ww44.Sun |  five this is some activity related to a taask  | N/A      |
+| 10443 | Started | 17ww44.Sun |  six this is some activity related to a taask   | N/A      |
+| 10444 | Started | 17ww44.Sun |  seven this is some activity related to a taask | N/A      |
+| 10457 | Started | 17ww44.Sun |  one1 this is some activity related to a taask  | N/A      |
++-------+---------+------------+-------------------------------------------------+----------+
+
+0096:
+0009:list
+1809:
++Showing items 189 to 203:-----+--------------------------------------------------+----------+
+| ID    | State   | Start_Date | Description                                      | End_Date |
++-------+---------+------------+--------------------------------------------------+----------+
+| 10381 | Started | 17ww44.Sun |  three this is some activity related to a taask  | N/A      |
+| 10382 | Started | 17ww44.Sun |  four this is some activity related to a taask   | N/A      |
+| 10383 | Started | 17ww44.Sun |  five this is some activity related to a taask   | N/A      |
+| 10384 | Started | 17ww44.Sun |  six this is some activity related to a taask    | N/A      |
+| 10385 | Started | 17ww44.Sun |  seven this is some activity related to a taask  | N/A      |
+| 10398 | Started | 17ww44.Sun |  one1 this is some activity related to a taask   | N/A      |
+| 10399 | Started | 17ww44.Sun |  two1 this is some activity related to a taask   | N/A      |
+| 10400 | Started | 17ww44.Sun |  three1 this is some activity related to a taask | N/A      |
+| 10401 | Started | 17ww44.Sun |  four1 this is some activity related to a taask  | N/A      |
+| 10402 | Started | 17ww44.Sun |  five1 this is some activity related to a taask  | N/A      |
+| 10403 | Started | 17ww44.Sun |  six1 this is some activity related to a taask   | N/A      |
+| 10404 | Started | 17ww44.Sun |  seven1 this is some activity related to a taask | N/A      |
+| 10408 | Started | 17ww44.Sun |  checking in - start work                        | N/A      |
+| 10409 | Started | 17ww44.Sun |  checking out - go home                          | N/A      |
+| 10418 | Started | 17ww44.Sun |  two this is some activity related to a taask    | N/A      |
++-------+---------+------------+--------------------------------------------------+----------+
+
+0097:
+0038:list activity col PROJECT is 1498
+0025:
+No more data to show
+
+0098:
+0009:list
+0025:
+No more data to show
+
+0099:
+0042:list activity col Description inc one
+1809:
++Showing items 1 to 15:--------+------------------------------------------------+------------+
+| ID    | State   | Start_Date | Description                                    | End_Date   |
++-------+---------+------------+------------------------------------------------+------------+
+| 1160  | Started | 17ww35.Sat |  one this is some activity related to a taask  | N/A        |
+| 1238  | Started | 17ww35.Sat |  one1 this is some activity related to a taask | N/A        |
+| 1349  | Started | 17ww39.Sun |  one this is some activity related to a taask  | 17ww39.Fri |
+| 1368  | Started | 17ww39.Sun |  one1 this is some activity related to a taask | 17ww39.Sun |
+| 1440  | Started | 17ww39.Fri |  one this is some activity related to a taask  | N/A        |
+| 1650  | Started | 17ww40.Mon |  one this is some activity related to a taask  | N/A        |
+| 1660  | Started | 17ww40.Mon |  one this is some activity related to a taask  | N/A        |
+| 1679  | Started | 17ww40.Mon |  one1 this is some activity related to a taask | N/A        |
+| 10240 | Started | 17ww43.Sat |  one1 this is some activity related to a taask | N/A        |
+| 10369 | Started | 17ww44.Sun |  one this is some activity related to a taask  | N/A        |
+| 10379 | Started | 17ww44.Sun |  one this is some activity related to a taask  | N/A        |
+| 10398 | Started | 17ww44.Sun |  one1 this is some activity related to a taask | N/A        |
+| 10428 | Started | 17ww44.Sun |  one this is some activity related to a taask  | N/A        |
+| 10438 | Started | 17ww44.Sun |  one this is some activity related to a taask  | N/A        |
+| 10457 | Started | 17ww44.Sun |  one1 this is some activity related to a taask | N/A        |
++-------+---------+------------+------------------------------------------------+------------+
+
+0100:
+0009:list
+0025:
+No more data to show
+
+0101:
+0039:list activity col PROJECT not 1498
+1809:
++Showing items 219 to 233:-----+--------------------------------------------------+----------+
+| ID    | State   | Start_Date | Description                                      | End_Date |
++-------+---------+------------+--------------------------------------------------+----------+
+| 10458 | Started | 17ww44.Sun |  two1 this is some activity related to a taask   | N/A      |
+| 10459 | Started | 17ww44.Sun |  three1 this is some activity related to a taask | N/A      |
+| 10460 | Started | 17ww44.Sun |  four1 this is some activity related to a taask  | N/A      |
+| 10461 | Started | 17ww44.Sun |  five1 this is some activity related to a taask  | N/A      |
+| 10462 | Started | 17ww44.Sun |  six1 this is some activity related to a taask   | N/A      |
+| 10463 | Started | 17ww44.Sun |  seven1 this is some activity related to a taask | N/A      |
+| 10478 | Started | 17ww44.Sun |  checking in - start work                        |          |
+| 10479 | Started | 17ww44.Sun |  checking out - go home                          |          |
+| 10488 | Started | 17ww44.Sun |  two this is some activity related to a taask    |          |
+| 10489 | Started | 17ww44.Sun |  three this is some activity related to a taask  |          |
+| 10490 | Started | 17ww44.Sun |  four this is some activity related to a taask   |          |
+| 10491 | Started | 17ww44.Sun |  five this is some activity related to a taask   |          |
+| 10492 | Started | 17ww44.Sun |  six this is some activity related to a taask    |          |
+| 10493 | Started | 17ww44.Sun |  seven this is some activity related to a taask  |          |
+| 10494 | Started | 17ww44.Sun |  some activity, not project or task              |          |
++-------+---------+------------+--------------------------------------------------+----------+
+
+0102:
+0009:list
+1790:
++Showing items 204 to 218:-----+-------------------------------------------------+----------+
+| ID    | State   | Start_Date | Description                                     | End_Date |
++-------+---------+------------+-------------------------------------------------+----------+
+| 10419 | Started | 17ww44.Sun |  three this is some activity related to a taask | N/A      |
+| 10420 | Started | 17ww44.Sun |  four this is some activity related to a taask  | N/A      |
+| 10421 | Started | 17ww44.Sun |  five this is some activity related to a taask  | N/A      |
+| 10422 | Started | 17ww44.Sun |  six this is some activity related to a taask   | N/A      |
+| 10423 | Started | 17ww44.Sun |  seven this is some activity related to a taask | N/A      |
+| 10424 | Started | 17ww44.Sun |  some activity, not project or task             | N/A      |
+| 10428 | Started | 17ww44.Sun |  one this is some activity related to a taask   | N/A      |
+| 10438 | Started | 17ww44.Sun |  one this is some activity related to a taask   | N/A      |
+| 10439 | Started | 17ww44.Sun |  two this is some activity related to a taask   | N/A      |
+| 10440 | Started | 17ww44.Sun |  three this is some activity related to a taask | N/A      |
+| 10441 | Started | 17ww44.Sun |  four this is some activity related to a taask  | N/A      |
+| 10442 | Started | 17ww44.Sun |  five this is some activity related to a taask  | N/A      |
+| 10443 | Started | 17ww44.Sun |  six this is some activity related to a taask   | N/A      |
+| 10444 | Started | 17ww44.Sun |  seven this is some activity related to a taask | N/A      |
+| 10457 | Started | 17ww44.Sun |  one1 this is some activity related to a taask  | N/A      |
++-------+---------+------------+-------------------------------------------------+----------+
+
+0103:
+0040:list activity col PROJECT ninc 1498
+1790:
++Showing items 124 to 138:-----+-------------------------------------------------+----------+
+| ID    | State   | Start_Date | Description                                     | End_Date |
++-------+---------+------------+-------------------------------------------------+----------+
+| 10443 | Started | 17ww44.Sun |  six this is some activity related to a taask   | N/A      |
+| 10444 | Started | 17ww44.Sun |  seven this is some activity related to a taask | N/A      |
+| 10457 | Started | 17ww44.Sun |  one1 this is some activity related to a taask  | N/A      |
+| 10460 | Started | 17ww44.Sun |  four1 this is some activity related to a taask | N/A      |
+| 10461 | Started | 17ww44.Sun |  five1 this is some activity related to a taask | N/A      |
+| 10462 | Started | 17ww44.Sun |  six1 this is some activity related to a taask  | N/A      |
+| 10478 | Started | 17ww44.Sun |  checking in - start work                       |          |
+| 10479 | Started | 17ww44.Sun |  checking out - go home                         |          |
+| 10488 | Started | 17ww44.Sun |  two this is some activity related to a taask   |          |
+| 10489 | Started | 17ww44.Sun |  three this is some activity related to a taask |          |
+| 10490 | Started | 17ww44.Sun |  four this is some activity related to a taask  |          |
+| 10491 | Started | 17ww44.Sun |  five this is some activity related to a taask  |          |
+| 10492 | Started | 17ww44.Sun |  six this is some activity related to a taask   |          |
+| 10493 | Started | 17ww44.Sun |  seven this is some activity related to a taask |          |
+| 10494 | Started | 17ww44.Sun |  some activity, not project or task             |          |
++-------+---------+------------+-------------------------------------------------+----------+
+
+0104:
+0009:list
+1790:
++Showing items 109 to 123:-----+-------------------------------------------------+----------+
+| ID    | State   | Start_Date | Description                                     | End_Date |
++-------+---------+------------+-------------------------------------------------+----------+
+| 10384 | Started | 17ww44.Sun |  six this is some activity related to a taask   | N/A      |
+| 10385 | Started | 17ww44.Sun |  seven this is some activity related to a taask | N/A      |
+| 10398 | Started | 17ww44.Sun |  one1 this is some activity related to a taask  | N/A      |
+| 10399 | Started | 17ww44.Sun |  two1 this is some activity related to a taask  | N/A      |
+| 10401 | Started | 17ww44.Sun |  four1 this is some activity related to a taask | N/A      |
+| 10403 | Started | 17ww44.Sun |  six1 this is some activity related to a taask  | N/A      |
+| 10408 | Started | 17ww44.Sun |  checking in - start work                       | N/A      |
+| 10409 | Started | 17ww44.Sun |  checking out - go home                         | N/A      |
+| 10418 | Started | 17ww44.Sun |  two this is some activity related to a taask   | N/A      |
+| 10419 | Started | 17ww44.Sun |  three this is some activity related to a taask | N/A      |
+| 10421 | Started | 17ww44.Sun |  five this is some activity related to a taask  | N/A      |
+| 10422 | Started | 17ww44.Sun |  six this is some activity related to a taask   | N/A      |
+| 10428 | Started | 17ww44.Sun |  one this is some activity related to a taask   | N/A      |
+| 10438 | Started | 17ww44.Sun |  one this is some activity related to a taask   | N/A      |
+| 10440 | Started | 17ww44.Sun |  three this is some activity related to a taask | N/A      |
++-------+---------+------------+-------------------------------------------------+----------+
+
+0105:
+0009:list
+1809:
++Showing items 94 to 108:------+--------------------------------------------------+----------+
+| ID    | State   | Start_Date | Description                                      | End_Date |
++-------+---------+------------+--------------------------------------------------+----------+
+| 10205 | Started | 17ww43.Sat |  six this is some activity related to a taask    | N/A      |
+| 10225 | Started | 17ww43.Sat |  five this is some activity related to a taask   | N/A      |
+| 10226 | Started | 17ww43.Sat |  six this is some activity related to a taask    | N/A      |
+| 10227 | Started | 17ww43.Sat |  seven this is some activity related to a taask  | N/A      |
+| 10246 | Started | 17ww43.Sat |  seven1 this is some activity related to a taask | N/A      |
+| 10322 | Started | 17ww44.Sun |  checking in - start work                        | N/A      |
+| 10323 | Started | 17ww44.Sun |  checking out - go home                          | N/A      |
+| 10332 | Started | 17ww44.Sun |  two this is some activity related to a taask    | N/A      |
+| 10334 | Started | 17ww44.Sun |  four this is some activity related to a taask   | N/A      |
+| 10349 | Started | 17ww44.Sun |  checking in - start work                        | N/A      |
+| 10350 | Started | 17ww44.Sun |  checking out - go home                          | N/A      |
+| 10359 | Started | 17ww44.Sun |  two this is some activity related to a taask    | N/A      |
+| 10361 | Started | 17ww44.Sun |  four this is some activity related to a taask   | N/A      |
+| 10369 | Started | 17ww44.Sun |  one this is some activity related to a taask    | N/A      |
+| 10381 | Started | 17ww44.Sun |  three this is some activity related to a taask  | N/A      |
++-------+---------+------------+--------------------------------------------------+----------+
+
+0106:
+0014:list task
+3076:
++Showing items 122 to 136:-------------------------------------------+------------+--------------+----------+-----------------+
+| ID    | State |                                        Description | Start_Date | PROJECT      | Due_Date | Expiration_Date |
++-------+-------+----------------------------------------------------+------------+--------------+----------+-----------------+
+| 10417 | Open  |  1third this is what you need to do on project two | 17ww44.Sun | project_two  | N/A      | N/A             |
+| 10427 | Open  |         this is what you need to do on project one | 17ww44.Sun | project_one  | N/A      | N/A             |
+| 10434 | Open  |     another this is what you need to do on project | 17ww44.Sun | project_one  | N/A      | N/A             |
+|       |       |                                                one |            |              |          |                 |
+| 10436 | Open  |  second this is what you need to do on project two | 17ww44.Sun | project_two  | N/A      | N/A             |
+| 10437 | Open  |  second this is what you need to do on project two | 17ww44.Sun | project_two  | N/A      | N/A             |
+| 10452 | Open  |        1this is what you need to do on project one | 17ww44.Sun | project_one  | N/A      | N/A             |
+| 10453 | Open  |    1another this is what you need to do on project | 17ww44.Sun | project_one  | N/A      | N/A             |
+|       |       |                                                one |            |              |          |                 |
+| 10454 | Open  |        1this is what you need to do on project two | 17ww44.Sun | project_two  | N/A      | N/A             |
+| 10455 | Open  |     1second this is what you need to do on project | 17ww44.Sun | project_two1 | N/A      | N/A             |
+|       |       |                                                two |            |              |          |                 |
+| 10456 | Open  |  1third this is what you need to do on project two | 17ww44.Sun | project_two  | N/A      | N/A             |
+| 10483 | Open  |        1this is what you need to do on project one | 17ww44.Sun | project_one  |          |                 |
+| 10484 | Open  |    1another this is what you need to do on project | 17ww44.Sun | project_one  |          |                 |
+|       |       |                                                one |            |              |          |                 |
+| 10485 | Open  |        1this is what you need to do on project two | 17ww44.Sun | project_two  |          |                 |
+| 10486 | Open  |     1second this is what you need to do on project | 17ww44.Sun | project_two1 |          |                 |
+|       |       |                                                two |            |              |          |                 |
+| 10487 | Open  |  1third this is what you need to do on project two | 17ww44.Sun | project_two  |          |                 |
++-------+-------+----------------------------------------------------+------------+--------------+----------+-----------------+
+
+0107:
+0018:list activity
+1809:
++Showing items 219 to 233:-----+--------------------------------------------------+----------+
+| ID    | State   | Start_Date | Description                                      | End_Date |
++-------+---------+------------+--------------------------------------------------+----------+
+| 10458 | Started | 17ww44.Sun |  two1 this is some activity related to a taask   | N/A      |
+| 10459 | Started | 17ww44.Sun |  three1 this is some activity related to a taask | N/A      |
+| 10460 | Started | 17ww44.Sun |  four1 this is some activity related to a taask  | N/A      |
+| 10461 | Started | 17ww44.Sun |  five1 this is some activity related to a taask  | N/A      |
+| 10462 | Started | 17ww44.Sun |  six1 this is some activity related to a taask   | N/A      |
+| 10463 | Started | 17ww44.Sun |  seven1 this is some activity related to a taask | N/A      |
+| 10478 | Started | 17ww44.Sun |  checking in - start work                        |          |
+| 10479 | Started | 17ww44.Sun |  checking out - go home                          |          |
+| 10488 | Started | 17ww44.Sun |  two this is some activity related to a taask    |          |
+| 10489 | Started | 17ww44.Sun |  three this is some activity related to a taask  |          |
+| 10490 | Started | 17ww44.Sun |  four this is some activity related to a taask   |          |
+| 10491 | Started | 17ww44.Sun |  five this is some activity related to a taask   |          |
+| 10492 | Started | 17ww44.Sun |  six this is some activity related to a taask    |          |
+| 10493 | Started | 17ww44.Sun |  seven this is some activity related to a taask  |          |
+| 10494 | Started | 17ww44.Sun |  some activity, not project or task              |          |
++-------+---------+------------+--------------------------------------------------+----------+
+
+0108:
+0076:create project project_one @Work1 | this is the first project I created
+0060:
+Transaction: create project COMPLETED. New ID is: 10496
+
+0109:
+0067:task @project_one | this is what you need to do on project one
+0057:
+Transaction: create task COMPLETED. New ID is: 10497
+
+0110:
+0067:start @00000000 | one this is some activity related to a taask
+0060:
+Transaction: start activity COMPLETED. New ID is: 10498
+
+0111:
+0019:stop @00000000
+0066:
+Transaction: stop something COMPLETED. Referenced ID is: 1673
+
+0112:
+0019:stop @00000000
+0067:
+Transaction: stop something COMPLETED. Referenced ID is: 10496
+
+0113:
+0019:stop @00000000
+0066:
+Transaction: stop something COMPLETED. Referenced ID is: 1244
+
+0114:
+0019:stop @00000000
+0066:
+Transaction: stop something COMPLETED. Referenced ID is: 1238
+
+0115:
+0019:halt @00000000
+0066:
+Transaction: halt something COMPLETED. Referenced ID is: 1451
+
+0116:
+0019:halt @00000000
+0067:
+Transaction: halt something COMPLETED. Referenced ID is: 10193
+
+0117:
+0019:halt @00000000
+0066:
+Transaction: halt something COMPLETED. Referenced ID is: 1215
+
+0118:
+0019:cont @00000000
+0067:
+Transaction: cont something COMPLETED. Referenced ID is: 10044
+
+0119:
+0019:halt @00000000
+0067:
+Transaction: halt something COMPLETED. Referenced ID is: 10480
+
+0120:
+0082:create megaproject Work2 | 2all projects that relate to Work at Intel go here
+0064:
+Transaction: create megaproject COMPLETED. New ID is: 10499
+
+0121:
+0076:create project project_two @Work2 | this is the first project I created
+0060:
+Transaction: create project COMPLETED. New ID is: 10500
+
+0122:
+0078:create project project_three @Work1 | this is the first project I created
+0060:
+Transaction: create project COMPLETED. New ID is: 10501
+
+0123:
+0077:create project project_four @Work2 | this is the first project I created
+0060:
+Transaction: create project COMPLETED. New ID is: 10502
+
+0124:
+0077:create project project_five @Work1 | this is the first project I created
+0060:
+Transaction: create project COMPLETED. New ID is: 10503
+
+0125:
+0075:task @project_one | another this is what you need to do on project one
+0057:
+Transaction: create task COMPLETED. New ID is: 10504
+
+0126:
+0067:task @project_two | this is what you need to do on project two
+0057:
+Transaction: create task COMPLETED. New ID is: 10505
+
+0127:
+0074:task @project_two | second this is what you need to do on project two
+0057:
+Transaction: create task COMPLETED. New ID is: 10506
+
+0128:
+0074:task @project_two | second this is what you need to do on project two
+0057:
+Transaction: create task COMPLETED. New ID is: 10507
+
+0129:
+0067:start @00000000 | one this is some activity related to a taask
+0060:
+Transaction: start activity COMPLETED. New ID is: 10508
+
+0130:
+0019:stop @00000000
+0064:
+Transaction: stop something COMPLETED. Referenced ID is: 14
+
+0131:
+0019:cont @00000000
+0066:
+Transaction: cont something COMPLETED. Referenced ID is: 1511
+
+0132:
+0019:list @00000000
+0222:
+     Description                                     End_Date     End_Time PROJECT Start_Date  State   TASK 
+1202   five this is some activity related to a taask  17ww35.Sat N/A        1170    17ww35.Sat  OnHold  None
+
+0133:
+0019:list @00000000
+0124:
+   Name  State PROJECTs_List               Description     
+12  Work  On    [stng, learn, misc, today]   all work stuff
+
+0134:
+0019:list @00000000
+0180:
+      Description                 End_Date  End_Time PROJECT Start_Date  State    TASK 
+10077   checking in - start work N/A       N/A        48      17ww43.Sun  Started  None
+
+0135:
+0067:start @00000000 | two this is some activity related to a taask
+0060:
+Transaction: start activity COMPLETED. New ID is: 10509
+
+0136:
+0069:start @00000000 | three this is some activity related to a taask
+0060:
+Transaction: start activity COMPLETED. New ID is: 10510
+
+0137:
+0068:start @00000000 | four this is some activity related to a taask
+0060:
+Transaction: start activity COMPLETED. New ID is: 10511
+
+0138:
+0068:start @00000000 | five this is some activity related to a taask
+0060:
+Transaction: start activity COMPLETED. New ID is: 10512
+
+0139:
+0067:start @00000000 | six this is some activity related to a taask
+0060:
+Transaction: start activity COMPLETED. New ID is: 10513
+
+0140:
+0069:start @00000000 | seven this is some activity related to a taask
+0060:
+Transaction: start activity COMPLETED. New ID is: 10514
+
+0141:
+0084:create megaproject Work11 | 11all projects that relate to Work at Intel go here
+0064:
+Transaction: create megaproject COMPLETED. New ID is: 10515
+
+0142:
+0078:create project project_one1 @Work11 | this is the first project I created
+0060:
+Transaction: create project COMPLETED. New ID is: 10516
+
+0143:
+0084:create megaproject Work21 | 21all projects that relate to Work at Intel go here
+0064:
+Transaction: create megaproject COMPLETED. New ID is: 10517
+
+0144:
+0078:create project project_two1 @Work21 | this is the first project I created
+0060:
+Transaction: create project COMPLETED. New ID is: 10518
+
+0145:
+0080:create project project_three1 @Work11 | this is the first project I created
+0060:
+Transaction: create project COMPLETED. New ID is: 10519
+
+0146:
+0079:create project project_four1 @Work21 | this is the first project I created
+0060:
+Transaction: create project COMPLETED. New ID is: 10520
+
+0147:
+0019:list @00000000
+0164:
+      Name           State    MEGAPROJECT Description                          
+10391  project_four1  Started  Work21       this is the first project I created
+
+0148:
+0019:list @00000000
+0180:
+      Name    State PROJECTs_List Description                                          
+10388  Work21  On    []             21all projects that relate to Work at Intel go here
+
+0149:
+0019:list @00000000
+0158:
+     Name           State  MEGAPROJECT Description                          
+1673  project_five1  Ended  Work11       this is the first project I created
+
+0150:
+0079:create project project_five1 @Work11 | this is the first project I created
+0060:
+Transaction: create project COMPLETED. New ID is: 10521
+
+0151:
+0068:task @project_one | 1this is what you need to do on project one
+0057:
+Transaction: create task COMPLETED. New ID is: 10522
+
+0152:
+0076:task @project_one | 1another this is what you need to do on project one
+0057:
+Transaction: create task COMPLETED. New ID is: 10523
+
+0153:
+0068:task @project_two | 1this is what you need to do on project two
+0057:
+Transaction: create task COMPLETED. New ID is: 10524
+
+0154:
+0076:task @project_two1 | 1second this is what you need to do on project two
+0057:
+Transaction: create task COMPLETED. New ID is: 10525
+
+0155:
+0074:task @project_two | 1third this is what you need to do on project two
+0057:
+Transaction: create task COMPLETED. New ID is: 10526
+
+0156:
+0068:start @00000000 | one1 this is some activity related to a taask
+0060:
+Transaction: start activity COMPLETED. New ID is: 10527
+
+0157:
+0068:start @00000000 | two1 this is some activity related to a taask
+0060:
+Transaction: start activity COMPLETED. New ID is: 10528
+
+0158:
+0070:start @00000000 | three1 this is some activity related to a taask
+0060:
+Transaction: start activity COMPLETED. New ID is: 10529
+
+0159:
+0069:start @00000000 | four1 this is some activity related to a taask
+0060:
+Transaction: start activity COMPLETED. New ID is: 10530
+
+0160:
+0069:start @00000000 | five1 this is some activity related to a taask
+0060:
+Transaction: start activity COMPLETED. New ID is: 10531
+
+0161:
+0068:start @00000000 | six1 this is some activity related to a taask
+0060:
+Transaction: start activity COMPLETED. New ID is: 10532
+
+0162:
+0070:start @00000000 | seven1 this is some activity related to a taask
+0060:
+Transaction: start activity COMPLETED. New ID is: 10533
+
+0163:
+0019:stop @00000000
+0067:
+Transaction: stop something COMPLETED. Referenced ID is: 10524
+
+0164:
+0019:stop @00000000
+0066:
+Transaction: stop something COMPLETED. Referenced ID is: 1643
+
+0165:
+0019:stop @00000000
+0066:
+Transaction: stop something COMPLETED. Referenced ID is: 1671
+
+0166:
+0019:list @00000000
+0222:
+     Description                                       End_Date     End_Time PROJECT Start_Date  State  TASK
+1244   seven1 this is some activity related to a taask  17ww39.Sun N/A        None    17ww35.Sat  Ended  38 
+
+0167:
+0019:stop @00000000
+0066:
+Transaction: stop something COMPLETED. Referenced ID is: 1145
+
+0168:
+0019:stop @00000000
+0067:
+Transaction: stop something COMPLETED. Referenced ID is: 10376
+
+0169:
+0019:stop @00000000
+0067:
+Transaction: stop something COMPLETED. Referenced ID is: 10368
+
+0170:
+0019:list @00000000
+0166:
+      Name            State    MEGAPROJECT Description                          
+10519  project_three1  Started  Work11       this is the first project I created
+
+0171:
+0019:cont @00000000
+0066:
+Transaction: cont something COMPLETED. Referenced ID is: 1642
+
+0172:
+0019:cont @00000000
+0066:
+Transaction: cont something COMPLETED. Referenced ID is: 1149
+
+0173:
+0019:cont @00000000
+0066:
+Transaction: cont something COMPLETED. Referenced ID is: 1189
+
+0174:
+0019:halt @00000000
+0067:
+Transaction: halt something COMPLETED. Referenced ID is: 10481
+
+0175:
+0019:halt @00000000
+0067:
+Transaction: halt something COMPLETED. Referenced ID is: 10418
+
+0176:
+0019:halt @00000000
+0066:
+Transaction: halt something COMPLETED. Referenced ID is: 1223
 

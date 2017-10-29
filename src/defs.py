@@ -35,6 +35,9 @@ dev_or_prod         = config['MAIN']['dev_or_prod']
 data_loc            = config['MAIN']['data_loc']
 mode_sel            = int(config['MAIN']['mode_sel'])
 local_client_script = config['MAIN']['local_client_script']
+use_tables          = config['MAIN']['use_tables']
+max_width           = int(config['MAIN']['max_width'])
+
 
 data_loc = data_loc + '\\' + dev_or_prod
 

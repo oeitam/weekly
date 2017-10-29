@@ -1,13 +1,14 @@
 
 import os.path
-import numpy as np
+#import numpy as np
 import os
 import pandas as pd
 import logging
 from src import defs
 from test import test_defs
-import shutil
-from terminaltables import SingleTable, AsciiTable
+#import shutil
+from terminaltables import AsciiTable
+from textwrap import wrap
 
 from datetime import datetime, date, time, timedelta
 from ast import literal_eval
@@ -649,7 +650,12 @@ class Db(object):
                     if self.list_col_bot != 'bot' and self.list_col_top != 'top':  # val -> val
                         df1 = df[df[self.list_col_name].apply(date_conv) >= date_conv(self.list_col_bot)].copy()
                         df2 = df[df[self.list_col_name].apply(date_conv) <= date_conv(self.list_col_top)].copy()
-                        df = pd.merge(df1,df2)
+                        #df = pd.merge(df1, df2, how='inner',
+                        #              left_on=defs.columns_to_print_table[which_db],
+                        #              right_on=defs.columns_to_print_table[which_db],
+                        #              left_index=True, right_index=True)
+                        #df = df1.merge(df2,left_index=True,right_index=True)#.sort_index()
+                        df  = pd.merge(df1,df2,on=defs.columns_to_print_table[which_db],left_index=True,right_index=True)
                     elif self.list_col_bot != 'bot' and self.list_col_top == 'top':  # val -> top
                         df = df[df[self.list_col_name].apply(date_conv) >= date_conv(self.list_col_bot)]
                     elif self.list_col_bot == 'bot' and self.list_col_top != 'top':  # bot -> val
@@ -674,27 +680,16 @@ class Db(object):
                 return True
             t1 = self.list_resp_rows
             t2 = max(self.list_resp_rows - self.list_resp_row_limit ,0)
-            self.list_resp = self.df_to_list_resp(df[t2:t1], which_db)
-            #$#k1 = self.df_to_list_resp(df[t2:t1], which_db)
-            self.list_resp = "Showing items {} to {}:\n".format(t2+1,max(t1,0)) + self.list_resp
-            #$#k2 = "Showing items {} to {}:\n".format(t2 + 1, max(t1, 0))
-            #$#l = []
-            #$#q = defs.columns_to_print_table[which_db]
-            #$#q.insert(0, 'ID')
-            #$#l.append(q)
-            #$#c = 0
-            #$#for line in k1.splitlines():
-            #$#    if c == 0:
-            #$#        c = c + 1
-            #$#        continue
-            #$#    sl = line.split(',')
-            #$#    l.append(sl)
-            #$#table_instance = AsciiTable(l,k2)
-            #$#table_instance.justify_columns[2] = 'right'
-            #$#self.list_resp = table_instance.table
+            resp_title  = "Showing items {} to {}:".format(t2+1,max(t1,0))
+            resp_cont_1 = self.df_to_list_resp(df[t2:t1], which_db, resp_title)
+            if defs.use_tables == 'no':
+                self.list_resp = resp_title + '\n'+ resp_cont_1
+            else:
+                self.list_resp = resp_cont_1
+
             self.list_resp_rows = t2
         else:  # did not find it
-            self.error_details = 'No megaprojects to list'
+            self.error_details = 'No SOMETHING to list'
             logger.debug(self.error_details)
             return False
         return True
@@ -708,16 +703,36 @@ class Db(object):
         return df
 
 
-    def df_to_list_resp(self, df, which_db):
-        s = df.to_string(
+    def df_to_list_resp(self, df, which_db, title):
+        if defs.use_tables == 'no':
+            s = df.to_string(
                 columns=defs.columns_to_print_table[which_db],
                 na_rep='N/A', float_format=conv, index_names=True, justify='left')
-        s = s + '\n'
-        #$#k = df.to_csv(
-        #$#        columns=defs.columns_to_print_table[which_db],
-        #$#        na_rep='N/A')#, float_format=conv, index_names=True, justify='left')
-        return s
-        #$#return k
+            s = s + '\n'
+            return s
+        elif defs.use_tables == 'ascii':
+            csv_str = df.to_csv(sep='|',
+                columns=defs.columns_to_print_table[which_db],
+                na_rep='N/A')#, float_format=conv, index_names=True, justify='left')
+            l = []
+            q = defs.columns_to_print_table[which_db][:]
+            q.insert(0, 'ID')
+            l.append(q)
+            c = 0
+            for line in csv_str.splitlines():
+                if c == 0:
+                    c = c + 1
+                    continue
+                sl = line.split('|')
+                for i in range(0,len(sl)):
+                    if len(sl[i]) > defs.max_width:
+                        sl[i] = '\n'.join(wrap(sl[i], defs.max_width))
+                l.append(sl)
+            table_instance = AsciiTable(l,title)
+            table_instance.justify_columns[2] = 'right'
+            return table_instance.table
+        else:
+            return False
 
     # process for the list for command, and return a df that corresponds to the search
     def list_for(self):

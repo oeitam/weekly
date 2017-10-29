@@ -6,46 +6,38 @@ Megaproject  db   is   online
 Project      db   is   online  
 Task         db   is   online  
 Activity     db   is   online  
-The ID in file is: 1842
+The ID in file is: 1849
 
 DEBUG:__main__:client script sending 0014:list task
-DEBUG:__main__:ServerSaid: Showing items 1 to 4:
-     State Description                                                                                          Start_Date  PROJECT  Due_Date  Expiration_Date
-ID                                                                                                                                                            
-49    Open              check out the build that Kunal sent and try to put it on a unit in the lab for tomorrow  17ww28.Wed   today N/A       N/A             
-62    Open                                                         add the nice tables like we have in pythonsv  17ww28.Thu  weekly N/A       N/A             
-1259  Open                                                                                   task force meeting  17ww36.Mon   today N/A       N/A             
-1313  Open   consider adding to a task or activity being closed, (adding a) text related to teh closure (lik...  17ww39.Sun  weekly N/A       N/A             
-
-DEBUG:__main__:client script sending 0027:list task state OnHold
-DEBUG:__main__:ServerSaid: Showing items 1 to 9:
-     State   Description                                                                                          Start_Date  PROJECT  Due_Date  Expiration_Date
-ID                                                                                                                                                              
-35    OnHold               add informative prints into list_resp as commands execute (like - name of project etc)  17ww28.Tue  weekly N/A       N/A             
-38    OnHold                  add a capability to process batch file with commands (client side feature probably)  17ww28.Tue  weekly N/A       N/A             
-51    OnHold   consider a command/database of something like 'open' which is an open item, not a task or activ...  17ww28.Wed  weekly N/A       N/A             
-55    OnHold   put the databases csv files in dropbox, so it can be shared on multiple computers (and potentia...  17ww28.Thu  weekly N/A       N/A             
-57    OnHold   create soem method (checksum? other) where the program validates its internal db is in sync wit...  17ww28.Thu  weekly N/A       N/A             
-58    OnHold                                                add the time activity/task created, not just the data  17ww28.Thu  weekly N/A       N/A             
-1310  OnHold          add a command like 'help task' which would grep for lines with 'task' from the help message  17ww39.Sun  weekly N/A       N/A             
-1311  OnHold   create a command like 'gen weekly' or 'gen byweekly' with all the open tasks (?) and activities...  17ww39.Sun  weekly N/A       N/A             
-1704  OnHold                                 for online command - no need to print 'transaction completed' etc...  17ww40.Wed  weekly N/A       N/A             
-
-DEBUG:__main__:client script sending 0013:list @49
-DEBUG:__main__:ServerSaid:    State Description                                                                               Start_Date  PROJECT  Due_Date  Expiration_Date  Location  Context  Reminders ACTIVITYs Sub_TASKs  Parent_TASK
-49  Open   check out the build that Kunal sent and try to put it on a unit in the lab for tomorrow  17ww28.Wed  today  N/A       N/A              N/A       N/A      N/A         []        []       N/A         
-DEBUG:__main__:client script sending 0015:delete @49
-DEBUG:__main__:ServerSaid: Transaction: delete id COMPLETED. New ID is: -1
-DEBUG:__main__:client script sending 0013:list @49
-DEBUG:__main__:ServerSaid: Transaction: list id FAILED with ERROR: Requested ID 49 to list was not found
-DEBUG:__main__:client script sending 0014:list task
-DEBUG:__main__:ServerSaid: Showing items 1 to 3:
-     State Description                                                                                          Start_Date  PROJECT  Due_Date  Expiration_Date
-ID                                                                                                                                                            
-62    Open                                                         add the nice tables like we have in pythonsv  17ww28.Thu  weekly N/A       N/A             
-1259  Open                                                                                   task force meeting  17ww36.Mon   today N/A       N/A             
-1313  Open   consider adding to a task or activity being closed, (adding a) text related to teh closure (lik...  17ww39.Sun  weekly N/A       N/A             
-
-DEBUG:__main__:client script sending 0017:delete @1259
-DEBUG:__main__:ServerSaid: Transaction: delete id COMPLETED. New ID is: -1
+DEBUG:__main__:ServerSaid: +Showing items 1 to 2:--------------------------------------------+------------+---------+----------+-----------------+
+| ID   | State |                                      Description | Start_Date | PROJECT | Due_Date | Expiration_Date |
++------+-------+--------------------------------------------------+------------+---------+----------+-----------------+
+| 62   | Open  |     add the nice tables like we have in pythonsv | 17ww28.Thu | weekly  | N/A      | N/A             |
+| 1313 | Open  |      consider adding to a task or activity being | 17ww39.Sun | weekly  | N/A      | N/A             |
+|      |       |   closed, (adding a) text related to teh closure |            |         |          |                 |
+|      |       | (like - fixed, what was done, what remains etc). |            |         |          |                 |
++------+-------+--------------------------------------------------+------------+---------+----------+-----------------+
+DEBUG:__main__:client script sending 0018:list activity
+DEBUG:__main__:ServerSaid: +Showing items 122 to 136:----+----------------------------------------------------+----------+
+| ID   | State   | Start_Date | Description                                        | End_Date |
++------+---------+------------+----------------------------------------------------+----------+
+| 1819 | Started | 17ww43.Mon |  trying to get access to some PCH documents        | N/A      |
+| 1820 | Started | 17ww43.Mon |  looking at an older CNL HSD that needs closure    | N/A      |
+|      |         |            | 1305157355                                         |          |
+| 1821 | Started | 17ww43.Mon |  keep it inside class                              | N/A      |
+| 1822 | Started | 17ww43.Mon |  working on DbC enabling with Yannai, Maor         | N/A      |
+| 1825 | Started | 17ww43.Tue |  checking in - start work                          | N/A      |
+| 1826 | Started | 17ww43.Tue |  tnt                                               | N/A      |
+| 1828 | Started | 17ww43.Tue |  working in teh lab, also wtih yannai in enabling  | N/A      |
+|      |         |            | DbC                                                |          |
+| 1830 | Started | 17ww43.Wed |  checking in - start work                          | N/A      |
+| 1831 | Started | 17ww43.Wed |  work at the lab to try connect DbC                | N/A      |
+| 1836 | Started | 17ww43.Wed |  all afternoon - also on the DbC2 and on meetings  | N/A      |
+| 1837 | Started | 17ww43.Thu |  checking in - start work                          | N/A      |
+| 1838 | Started | 17ww43.Thu |  continue and work in teh lab on enabling DCI over | N/A      |
+|      |         |            | DbC USB2                                           |          |
+| 1843 | Started | 17ww44.Sun |  checking in - start work                          | N/A      |
+| 1845 | Started | 17ww44.Sun |  work at the lab on DbC. Continue                  | N/A      |
+| 1846 | Started | 17ww44.Sun |  TnT like - Rally, and other things                | N/A      |
++------+---------+------------+----------------------------------------------------+----------+
 DEBUG:__main__:Client closing socket

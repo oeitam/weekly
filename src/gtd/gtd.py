@@ -142,6 +142,9 @@ class Gtd(object):
         ##############################################
         # since teh tokenizer is not dealing well with the '|'
         # use this piece of code to handle that part
+        # but first we check that there are no more than one '|'
+        if self.current_data.count('|') > 1:
+            return False
         if '|' in self.current_data:
             (t1,t2, t3) = self.current_data.partition('|')
             gdb.set_trans_description(t3)
@@ -254,7 +257,10 @@ def advance(id=None):
     global token
     if id and token.id != id:
         raise SyntaxError("Expected %r" % id)
-    token = next(mnext)
+    try:
+        token = next(mnext)
+    except StopIteration:
+        return
 
 
 
