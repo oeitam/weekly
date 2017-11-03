@@ -235,7 +235,10 @@ class Db(object):
             self.list_ww                = 'clean'
             self.state_to_list          = 'clean'
         if sec2:
-            self.list_resp_row_limit    = 15
+            if hasattr(defs,'list_num_of_lines'):
+                self.list_resp_row_limit = defs.list_num_of_lines
+            else:
+                self.list_resp_row_limit    = 15
             self.list_resp_rows         = -1
 
     def store_context(self):

@@ -156,7 +156,7 @@ class Gtd(object):
             if 'replace_' in sect:
                 if defs.config[sect]['replacement_type'] == 'pipe_substitution':
                     if temp1[0].replace(' ', '') == defs.config[sect]['replace_what']:
-                        self.current_data = defs.config[sect]['replace_with'] + temp1[2]
+                        self.current_data = defs.config[sect]['replace_with']
 
         return True
 

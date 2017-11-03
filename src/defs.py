@@ -37,7 +37,7 @@ mode_sel            = int(config['MAIN']['mode_sel'])
 local_client_script = config['MAIN']['local_client_script']
 use_tables          = config['MAIN']['use_tables']
 max_width           = int(config['MAIN']['max_width'])
-
+list_num_of_lines   = int(config['MAIN']['list_num_of_lines'])
 
 data_loc = data_loc + '\\' + dev_or_prod
 
@@ -255,6 +255,8 @@ help_message = '''
 42 cont @00000000
 43 today | doing this something today
 44 delete @1234
+45 list task ww 17 state OnHold
+46 list activity state Ended ww 17
 ==================================
 '''
 

@@ -6,19 +6,76 @@ Megaproject  db   is   online
 Project      db   is   online  
 Task         db   is   online  
 Activity     db   is   online  
-The ID in file is: 1849
+The ID in file is: 1858
 
+DEBUG:__main__:client script sending 0007:ci
+DEBUG:__main__:ServerSaid: Transaction: start activity COMPLETED. New ID is: 1858
+DEBUG:__main__:client script sending 0076:today | work in the lab on ther DbC issue - try and capture Lecroy logs
+DEBUG:__main__:ServerSaid: Transaction: start activity COMPLETED. New ID is: 1859
+DEBUG:__main__:client script sending 0009:help
+DEBUG:__main__:ServerSaid: 
+==================================
+1  ci
+2  co
+3  help
+4  die
+5  start @00000000 | two...
+6  create megaproject Work2 | 2all ...
+7  create project project_two @Work2 | th...
+8  task @project_one | 1this ...
+9  start @00000000 | two ...
+10 start @0 | some ...
+11 list search | ww26
+12 list activity ww 17
+13 list task ww 17
+14 list megaproject columns
+15 list project columns
+16 list task columns
+17 list activity columns
+18 list megaproject states
+19 list project states
+20 list task states
+21 list activity states
+22 list megaproject for project project_one
+23 list project for megaproject Work1
+24 list task for project project_two
+25 list activity for project project_one
+26 list activity for task @2334
+27 list activity col Start_Date drange 17ww17.Sun 17ww20.Mon
+28 list activity col Start_Date drange 17ww17 17ww20.Mon
+29 list activity col Start_Date drange 17ww17.Sun 17ww20
+30 list activity col Start_Date drange 17ww17 17ww20
+31 list activity col Start_Date drange bot 17ww20.Mon
+32 list activity col Start_Date drange bot 17ww20
+33 list activity col Start_Date drange 17ww17.Sun top
+34 list activity col Start_Date drange 17ww17 top
+35 list activity col Start_Date drange bot top
+36 list megaproject col ID irange 2569 2631
+37 list megaproject col ID irange 2569 top
+38 list megaproject col ID irange bot 2631
+39 list megaproject col ID irange bot top
+40 halt @00000000
+41 stop @00000000
+42 cont @00000000
+43 today | doing this something today
+44 delete @1234
+==================================
+
+DEBUG:__main__:client script sending 0039:task @weekly | update help messaGE
+DEBUG:__main__:ServerSaid: Transaction: create task COMPLETED. New ID is: 1860
 DEBUG:__main__:client script sending 0014:list task
 DEBUG:__main__:ServerSaid: +Showing items 1 to 2:--------------------------------------------+------------+---------+----------+-----------------+
 | ID   | State |                                      Description | Start_Date | PROJECT | Due_Date | Expiration_Date |
 +------+-------+--------------------------------------------------+------------+---------+----------+-----------------+
-| 62   | Open  |     add the nice tables like we have in pythonsv | 17ww28.Thu | weekly  | N/A      | N/A             |
 | 1313 | Open  |      consider adding to a task or activity being | 17ww39.Sun | weekly  | N/A      | N/A             |
 |      |       |   closed, (adding a) text related to teh closure |            |         |          |                 |
 |      |       | (like - fixed, what was done, what remains etc). |            |         |          |                 |
+| 1860 | Open  |                              update help messaGE | 17ww44.Wed | weekly  |          |                 |
 +------+-------+--------------------------------------------------+------------+---------+----------+-----------------+
-DEBUG:__main__:client script sending 0018:list activity
-DEBUG:__main__:ServerSaid: +Showing items 122 to 136:----+----------------------------------------------------+----------+
+DEBUG:__main__:client script sending 0034:today | met with the CSME guy
+DEBUG:__main__:ServerSaid: Transaction: start activity COMPLETED. New ID is: 1861
+DEBUG:__main__:client script sending 0054:list activity col Start_Date drange 17ww41 17ww44
+DEBUG:__main__:ServerSaid: +Showing items 30 to 44:------+----------------------------------------------------+----------+
 | ID   | State   | Start_Date | Description                                        | End_Date |
 +------+---------+------------+----------------------------------------------------+----------+
 | 1819 | Started | 17ww43.Mon |  trying to get access to some PCH documents        | N/A      |
@@ -40,4 +97,401 @@ DEBUG:__main__:ServerSaid: +Showing items 122 to 136:----+----------------------
 | 1845 | Started | 17ww44.Sun |  work at the lab on DbC. Continue                  | N/A      |
 | 1846 | Started | 17ww44.Sun |  TnT like - Rally, and other things                | N/A      |
 +------+---------+------------+----------------------------------------------------+----------+
+DEBUG:__main__:client script sending 0009:list
+DEBUG:__main__:ServerSaid: +Showing items 15 to 29:------+----------------------------------------------------+----------+
+| ID   | State   | Start_Date | Description                                        | End_Date |
++------+---------+------------+----------------------------------------------------+----------+
+| 1743 | Started | 17ww42.Mon |  some discussion of closure on ACPI timer issues   | N/A      |
+|      |         |            | in HSD 1305299942 and it's sisters                 |          |
+| 1779 | Started | 17ww42.Tue |  checking in - start work                          | N/A      |
+| 1780 | Started | 17ww42.Tue |  presentation for Rally                            | N/A      |
+| 1781 | Started | 17ww42.Tue |  continue work on fuse and pif enablement, some    | N/A      |
+|      |         |            | with alex s\                                       |          |
+| 1787 | Started | 17ww42.Tue |  continue 2 hours at night with alfonso on the     | N/A      |
+|      |         |            | fuse patch issues                                  |          |
+| 1789 | Started | 17ww42.Wed |  checking in - start work                          | N/A      |
+| 1790 | Started | 17ww42.Wed |  try in the lab the code from alfonso - host 0947  | N/A      |
+| 1793 | Started | 17ww42.Wed |  elkana 1x1                                        | N/A      |
+| 1794 | Started | 17ww42.Wed |  work on enabling meetings for scrum etc           | N/A      |
+| 1795 | Started | 17ww42.Wed |  work on validation of the fuse tool solution from | N/A      |
+|      |         |            | yesterday that alfonso gave                        |          |
+| 1796 | Started | 17ww42.Thu |  checking in - start work                          | N/A      |
+| 1799 | Started | 17ww42.Thu |  tnt                                               | N/A      |
+| 1801 | Started | 17ww43.Sun |  checking in - start work                          | N/A      |
+| 1802 | Started | 17ww43.Sun |  learn DCI                                         | N/A      |
+| 1818 | Started | 17ww43.Mon |  checking in - start work                          | N/A      |
++------+---------+------------+----------------------------------------------------+----------+
+DEBUG:__main__:client script sending 0009:list
+DEBUG:__main__:ServerSaid: +Showing items 1 to 14:-------+---------------------------------------------------+----------+
+| ID   | State   | Start_Date | Description                                       | End_Date |
++------+---------+------------+---------------------------------------------------+----------+
+| 1708 | Started | 17ww41.Mon |  ci                                               | N/A      |
+| 1709 | Started | 17ww41.Mon |  email, TnT                                       | N/A      |
+| 1711 | Started | 17ww41.Mon |  learn DCI - email and proposition from Prasad    | N/A      |
+| 1715 | Started | 17ww41.Mon |  ICL sysdebug                                     | N/A      |
+| 1716 | Started | 17ww41.Mon |  work on the presentation for Rally for the team  | N/A      |
+| 1717 | Started | 17ww41.Tue |  checking in - start work                         | N/A      |
+| 1726 | Started | 17ww41.Tue |  work on patch issue - analyze differences lin    | N/A      |
+|      |         |            | files                                             |          |
+| 1727 | Started | 17ww41.Wed |  checking in - start work                         | N/A      |
+| 1728 | Started | 17ww41.Wed |  work on scrum, sprint roll over, presentation    | N/A      |
+|      |         |            | preparing                                         |          |
+| 1736 | Started | 17ww42.Sun |  checking in - start work                         | N/A      |
+| 1737 | Started | 17ww42.Sun |  TnT                                              | N/A      |
+| 1738 | Started | 17ww42.Sun |  work on the presentation for the RAlly training  | N/A      |
+| 1740 | Started | 17ww42.Sun |  work on fuse PIF issue - with gil. Documentatino | N/A      |
+|      |         |            | and more                                          |          |
+| 1742 | Started | 17ww42.Mon |  checking in - start work                         | N/A      |
++------+---------+------------+---------------------------------------------------+----------+
+DEBUG:__main__:client script sending 0042:today | talk to costa about dbc issue
+DEBUG:__main__:ServerSaid: Transaction: start activity COMPLETED. New ID is: 1862
+DEBUG:__main__:client script sending 0041:today | hook up lecroy for dbc issue
+DEBUG:__main__:ServerSaid: Transaction: start activity COMPLETED. New ID is: 1863
+DEBUG:__main__:client script sending 0033:today | lab on DbC .... more
+DEBUG:__main__:ServerSaid: Transaction: start activity COMPLETED. New ID is: 1864
+DEBUG:__main__:client script sending 0018:list activity
+DEBUG:__main__:ServerSaid: +Showing items 134 to 148:----+-------------------------------------------------+----------+
+| ID   | State   | Start_Date | Description                                     | End_Date |
++------+---------+------------+-------------------------------------------------+----------+
+| 1843 | Started | 17ww44.Sun |  checking in - start work                       | N/A      |
+| 1845 | Started | 17ww44.Sun |  work at the lab on DbC. Continue               | N/A      |
+| 1846 | Started | 17ww44.Sun |  TnT like - Rally, and other things             | N/A      |
+| 1850 | Started | 17ww44.Mon |  checking in - start work                       | N/A      |
+| 1851 | Started | 17ww44.Mon |  working on enabling DbC on the BIOS. Continue. | N/A      |
+| 1852 | Started | 17ww44.Mon |  work on DbC2 in the lab and meetings in the    | N/A      |
+|      |         |            | evening at home                                 |          |
+| 1853 | Started | 17ww44.Tue |  checking in - start work                       | N/A      |
+| 1854 | Started | 17ww44.Tue |  work in the lab on DbC2 things                 | N/A      |
+| 1855 | Started | 17ww44.Tue |  some Rally                                     | N/A      |
+| 1858 | Started | 17ww44.Wed |  checking in - start work                       |          |
+| 1859 | Started | 17ww44.Wed |  work in the lab on ther DbC issue - try and    |          |
+|      |         |            | capture Lecroy logs                             |          |
+| 1861 | Started | 17ww44.Wed |  met with the CSME guy                          |          |
+| 1862 | Started | 17ww44.Wed |  talk to costa about dbc issue                  |          |
+| 1863 | Started | 17ww44.Wed |  hook up lecroy for dbc issue                   |          |
+| 1864 | Started | 17ww44.Wed |  lab on DbC .... more                           |          |
++------+---------+------------+-------------------------------------------------+----------+
+DEBUG:__main__:client script sending 0034:today | help ahmad with Rally
+DEBUG:__main__:ServerSaid: 
+==================================
+1  ci
+2  co
+3  help
+4  die
+5  start @00000000 | two...
+6  create megaproject Work2 | 2all ...
+7  create project project_two @Work2 | th...
+8  task @project_one | 1this ...
+9  start @00000000 | two ...
+10 start @0 | some ...
+11 list search | ww26
+12 list activity ww 17
+13 list task ww 17
+14 list megaproject columns
+15 list project columns
+16 list task columns
+17 list activity columns
+18 list megaproject states
+19 list project states
+20 list task states
+21 list activity states
+22 list megaproject for project project_one
+23 list project for megaproject Work1
+24 list task for project project_two
+25 list activity for project project_one
+26 list activity for task @2334
+27 list activity col Start_Date drange 17ww17.Sun 17ww20.Mon
+28 list activity col Start_Date drange 17ww17 17ww20.Mon
+29 list activity col Start_Date drange 17ww17.Sun 17ww20
+30 list activity col Start_Date drange 17ww17 17ww20
+31 list activity col Start_Date drange bot 17ww20.Mon
+32 list activity col Start_Date drange bot 17ww20
+33 list activity col Start_Date drange 17ww17.Sun top
+34 list activity col Start_Date drange 17ww17 top
+35 list activity col Start_Date drange bot top
+36 list megaproject col ID irange 2569 2631
+37 list megaproject col ID irange 2569 top
+38 list megaproject col ID irange bot 2631
+39 list megaproject col ID irange bot top
+40 halt @00000000
+41 stop @00000000
+42 cont @00000000
+43 today | doing this something today
+44 delete @1234
+==================================
+
+DEBUG:__main__:client script sending 0034:today | help ahmad with rally
+DEBUG:__main__:ServerSaid: 
+==================================
+1  ci
+2  co
+3  help
+4  die
+5  start @00000000 | two...
+6  create megaproject Work2 | 2all ...
+7  create project project_two @Work2 | th...
+8  task @project_one | 1this ...
+9  start @00000000 | two ...
+10 start @0 | some ...
+11 list search | ww26
+12 list activity ww 17
+13 list task ww 17
+14 list megaproject columns
+15 list project columns
+16 list task columns
+17 list activity columns
+18 list megaproject states
+19 list project states
+20 list task states
+21 list activity states
+22 list megaproject for project project_one
+23 list project for megaproject Work1
+24 list task for project project_two
+25 list activity for project project_one
+26 list activity for task @2334
+27 list activity col Start_Date drange 17ww17.Sun 17ww20.Mon
+28 list activity col Start_Date drange 17ww17 17ww20.Mon
+29 list activity col Start_Date drange 17ww17.Sun 17ww20
+30 list activity col Start_Date drange 17ww17 17ww20
+31 list activity col Start_Date drange bot 17ww20.Mon
+32 list activity col Start_Date drange bot 17ww20
+33 list activity col Start_Date drange 17ww17.Sun top
+34 list activity col Start_Date drange 17ww17 top
+35 list activity col Start_Date drange bot top
+36 list megaproject col ID irange 2569 2631
+37 list megaproject col ID irange 2569 top
+38 list megaproject col ID irange bot 2631
+39 list megaproject col ID irange bot top
+40 halt @00000000
+41 stop @00000000
+42 cont @00000000
+43 today | doing this something today
+44 delete @1234
+==================================
+
+DEBUG:__main__:client script sending 0005:
+DEBUG:__main__:ServerSaid: Transaction: clean FAILED with ERROR: clean
+DEBUG:__main__:client script sending 0101:task @weekly | check why this text gets me the help message - today <pype> help ahmad with rally
+DEBUG:__main__:ServerSaid: Transaction: create task COMPLETED. New ID is: 1865
+DEBUG:__main__:client script sending 0014:list task
+DEBUG:__main__:ServerSaid: +Showing items 1 to 3:--------------------------------------------+------------+---------+----------+-----------------+
+| ID   | State |                                      Description | Start_Date | PROJECT | Due_Date | Expiration_Date |
++------+-------+--------------------------------------------------+------------+---------+----------+-----------------+
+| 1313 | Open  |      consider adding to a task or activity being | 17ww39.Sun | weekly  | N/A      | N/A             |
+|      |       |   closed, (adding a) text related to teh closure |            |         |          |                 |
+|      |       | (like - fixed, what was done, what remains etc). |            |         |          |                 |
+| 1860 | Open  |                              update help messaGE | 17ww44.Wed | weekly  |          |                 |
+| 1865 | Open  |   check why this text gets me the help message - | 17ww44.Wed | weekly  |          |                 |
+|      |       |               today <pype> help ahmad with rally |            |         |          |                 |
++------+-------+--------------------------------------------------+------------+---------+----------+-----------------+
+DEBUG:__main__:client script sending 0007:ся
+DEBUG:__main__:ServerSaid: Transaction: clean FAILED with ERROR: clean
+DEBUG:__main__:client script sending 0007:ci
+DEBUG:__main__:ServerSaid: Transaction: start activity COMPLETED. New ID is: 1866
+DEBUG:__main__:client script sending 0044:today | work at the lab related to DbC 
+DEBUG:__main__:ServerSaid: Transaction: start activity COMPLETED. New ID is: 1867
+DEBUG:__main__:client script sending 0061:task @weekly | add the length of the list as a parameter
+DEBUG:__main__:ServerSaid: Transaction: create task COMPLETED. New ID is: 1868
+DEBUG:__main__:client script sending 0033:task @weekly | add reminders
+DEBUG:__main__:ServerSaid: Transaction: create task COMPLETED. New ID is: 1869
+DEBUG:__main__:client script sending 0028:today | enable on ICL Y
+DEBUG:__main__:ServerSaid: Transaction: start activity COMPLETED. New ID is: 1870
+DEBUG:__main__:client script sending 0037:today | enable on ICL U LP DDR 4
+DEBUG:__main__:ServerSaid: Transaction: start activity COMPLETED. New ID is: 1871
+DEBUG:__main__:client script sending 0011:online
+DEBUG:__main__:ServerSaid: Transaction: online COMPLETED. New ID is: -1
+Online Status:
+Megaproject  db   is   online  
+Project      db   is   online  
+Task         db   is   online  
+Activity     db   is   online  
+The ID in file is: 1872
+
+DEBUG:__main__:client script sending 0018:list activity
+DEBUG:__main__:ServerSaid: +Showing items 138 to 152:----+-------------------------------------------------+----------+
+| ID   | State   | Start_Date | Description                                     | End_Date |
++------+---------+------------+-------------------------------------------------+----------+
+| 1851 | Started | 17ww44.Mon |  working on enabling DbC on the BIOS. Continue. | N/A      |
+| 1852 | Started | 17ww44.Mon |  work on DbC2 in the lab and meetings in the    | N/A      |
+|      |         |            | evening at home                                 |          |
+| 1853 | Started | 17ww44.Tue |  checking in - start work                       | N/A      |
+| 1854 | Started | 17ww44.Tue |  work in the lab on DbC2 things                 | N/A      |
+| 1855 | Started | 17ww44.Tue |  some Rally                                     | N/A      |
+| 1858 | Started | 17ww44.Wed |  checking in - start work                       |          |
+| 1859 | Started | 17ww44.Wed |  work in the lab on ther DbC issue - try and    |          |
+|      |         |            | capture Lecroy logs                             |          |
+| 1861 | Started | 17ww44.Wed |  met with the CSME guy                          |          |
+| 1862 | Started | 17ww44.Wed |  talk to costa about dbc issue                  |          |
+| 1863 | Started | 17ww44.Wed |  hook up lecroy for dbc issue                   |          |
+| 1864 | Started | 17ww44.Wed |  lab on DbC .... more                           |          |
+| 1866 | Started | 17ww44.Thu |  checking in - start work                       |          |
+| 1867 | Started | 17ww44.Thu |  work at the lab related to DbC                 |          |
+| 1870 | Started | 17ww44.Thu |  enable on ICL Y                                |          |
+| 1871 | Started | 17ww44.Thu |  enable on ICL U LP DDR 4                       |          |
++------+---------+------------+-------------------------------------------------+----------+
+DEBUG:__main__:client script sending 0014:list task
+DEBUG:__main__:ServerSaid: +Showing items 1 to 5:--------------------------------------------+------------+---------+----------+-----------------+
+| ID   | State |                                      Description | Start_Date | PROJECT | Due_Date | Expiration_Date |
++------+-------+--------------------------------------------------+------------+---------+----------+-----------------+
+| 1313 | Open  |      consider adding to a task or activity being | 17ww39.Sun | weekly  | N/A      | N/A             |
+|      |       |   closed, (adding a) text related to teh closure |            |         |          |                 |
+|      |       | (like - fixed, what was done, what remains etc). |            |         |          |                 |
+| 1860 | Open  |                              update help messaGE | 17ww44.Wed | weekly  |          |                 |
+| 1865 | Open  |   check why this text gets me the help message - | 17ww44.Wed | weekly  |          |                 |
+|      |       |               today <pype> help ahmad with rally |            |         |          |                 |
+| 1868 | Open  |        add the length of the list as a parameter | 17ww44.Thu | weekly  |          |                 |
+| 1869 | Open  |                                    add reminders | 17ww44.Thu | weekly  |          |                 |
++------+-------+--------------------------------------------------+------------+---------+----------+-----------------+
+DEBUG:__main__:client script sending 0255:task @weekly | move the printing of the tables to the client, so can use color and solid line. make this a chice, since I expect it will take a while. this may mean that the info given back on list_resp may not be for direct printing any more (json?)
+DEBUG:__main__:ServerSaid: Transaction: create task COMPLETED. New ID is: 1872
+DEBUG:__main__:client script sending 0014:list talk
+DEBUG:__main__:ServerSaid: Transaction: clean FAILED with ERROR: clean
+DEBUG:__main__:client script sending 0014:list task
+DEBUG:__main__:ServerSaid: +Showing items 1 to 6:----------------------------------------------+------------+---------+----------+-----------------+
+| ID   | State |                                        Description | Start_Date | PROJECT | Due_Date | Expiration_Date |
++------+-------+----------------------------------------------------+------------+---------+----------+-----------------+
+| 1313 | Open  |        consider adding to a task or activity being | 17ww39.Sun | weekly  | N/A      | N/A             |
+|      |       |     closed, (adding a) text related to teh closure |            |         |          |                 |
+|      |       |   (like - fixed, what was done, what remains etc). |            |         |          |                 |
+| 1860 | Open  |                                update help messaGE | 17ww44.Wed | weekly  |          |                 |
+| 1865 | Open  |     check why this text gets me the help message - | 17ww44.Wed | weekly  |          |                 |
+|      |       |                 today <pype> help ahmad with rally |            |         |          |                 |
+| 1868 | Open  |          add the length of the list as a parameter | 17ww44.Thu | weekly  |          |                 |
+| 1869 | Open  |                                      add reminders | 17ww44.Thu | weekly  |          |                 |
+| 1872 | Open  |  move the printing of the tables to the client, so | 17ww44.Thu | weekly  |          |                 |
+|      |       |   can use color and solid line. make this a chice, |            |         |          |                 |
+|      |       | since I expect it will take a while. this may mean |            |         |          |                 |
+|      |       |   that the info given back on list_resp may not be |            |         |          |                 |
+|      |       |               for direct printing any more (json?) |            |         |          |                 |
++------+-------+----------------------------------------------------+------------+---------+----------+-----------------+
+DEBUG:__main__:client script sending 0033:list task for project weekly
+DEBUG:__main__:ServerSaid: +Showing items 1 to 6:----------------------------------------------+------------+---------+----------+-----------------+
+| ID   | State |                                        Description | Start_Date | PROJECT | Due_Date | Expiration_Date |
++------+-------+----------------------------------------------------+------------+---------+----------+-----------------+
+| 1313 | Open  |        consider adding to a task or activity being | 17ww39.Sun | weekly  | N/A      | N/A             |
+|      |       |     closed, (adding a) text related to teh closure |            |         |          |                 |
+|      |       |   (like - fixed, what was done, what remains etc). |            |         |          |                 |
+| 1860 | Open  |                                update help messaGE | 17ww44.Wed | weekly  |          |                 |
+| 1865 | Open  |     check why this text gets me the help message - | 17ww44.Wed | weekly  |          |                 |
+|      |       |                 today <pype> help ahmad with rally |            |         |          |                 |
+| 1868 | Open  |          add the length of the list as a parameter | 17ww44.Thu | weekly  |          |                 |
+| 1869 | Open  |                                      add reminders | 17ww44.Thu | weekly  |          |                 |
+| 1872 | Open  |  move the printing of the tables to the client, so | 17ww44.Thu | weekly  |          |                 |
+|      |       |   can use color and solid line. make this a chice, |            |         |          |                 |
+|      |       | since I expect it will take a while. this may mean |            |         |          |                 |
+|      |       |   that the info given back on list_resp may not be |            |         |          |                 |
+|      |       |               for direct printing any more (json?) |            |         |          |                 |
++------+-------+----------------------------------------------------+------------+---------+----------+-----------------+
+DEBUG:__main__:client script sending 0046:list task for project weekly state OnHold
+DEBUG:__main__:ServerSaid: +Showing items 1 to 6:----------------------------------------------+------------+---------+----------+-----------------+
+| ID   | State |                                        Description | Start_Date | PROJECT | Due_Date | Expiration_Date |
++------+-------+----------------------------------------------------+------------+---------+----------+-----------------+
+| 1313 | Open  |        consider adding to a task or activity being | 17ww39.Sun | weekly  | N/A      | N/A             |
+|      |       |     closed, (adding a) text related to teh closure |            |         |          |                 |
+|      |       |   (like - fixed, what was done, what remains etc). |            |         |          |                 |
+| 1860 | Open  |                                update help messaGE | 17ww44.Wed | weekly  |          |                 |
+| 1865 | Open  |     check why this text gets me the help message - | 17ww44.Wed | weekly  |          |                 |
+|      |       |                 today <pype> help ahmad with rally |            |         |          |                 |
+| 1868 | Open  |          add the length of the list as a parameter | 17ww44.Thu | weekly  |          |                 |
+| 1869 | Open  |                                      add reminders | 17ww44.Thu | weekly  |          |                 |
+| 1872 | Open  |  move the printing of the tables to the client, so | 17ww44.Thu | weekly  |          |                 |
+|      |       |   can use color and solid line. make this a chice, |            |         |          |                 |
+|      |       | since I expect it will take a while. this may mean |            |         |          |                 |
+|      |       |   that the info given back on list_resp may not be |            |         |          |                 |
+|      |       |               for direct printing any more (json?) |            |         |          |                 |
++------+-------+----------------------------------------------------+------------+---------+----------+-----------------+
+DEBUG:__main__:client script sending 0009:help
+DEBUG:__main__:ServerSaid: 
+==================================
+1  ci
+2  co
+3  help
+4  die
+5  start @00000000 | two...
+6  create megaproject Work2 | 2all ...
+7  create project project_two @Work2 | th...
+8  task @project_one | 1this ...
+9  start @00000000 | two ...
+10 start @0 | some ...
+11 list search | ww26
+12 list activity ww 17
+13 list task ww 17
+14 list megaproject columns
+15 list project columns
+16 list task columns
+17 list activity columns
+18 list megaproject states
+19 list project states
+20 list task states
+21 list activity states
+22 list megaproject for project project_one
+23 list project for megaproject Work1
+24 list task for project project_two
+25 list activity for project project_one
+26 list activity for task @2334
+27 list activity col Start_Date drange 17ww17.Sun 17ww20.Mon
+28 list activity col Start_Date drange 17ww17 17ww20.Mon
+29 list activity col Start_Date drange 17ww17.Sun 17ww20
+30 list activity col Start_Date drange 17ww17 17ww20
+31 list activity col Start_Date drange bot 17ww20.Mon
+32 list activity col Start_Date drange bot 17ww20
+33 list activity col Start_Date drange 17ww17.Sun top
+34 list activity col Start_Date drange 17ww17 top
+35 list activity col Start_Date drange bot top
+36 list megaproject col ID irange 2569 2631
+37 list megaproject col ID irange 2569 top
+38 list megaproject col ID irange bot 2631
+39 list megaproject col ID irange bot top
+40 halt @00000000
+41 stop @00000000
+42 cont @00000000
+43 today | doing this something today
+44 delete @1234
+==================================
+
+DEBUG:__main__:client script sending 0021:list task states
+DEBUG:__main__:ServerSaid: Showing states for tasks:
+Open      : The TASK is created and may be on execution
+OnHold    : Execution on this TASK is stopped
+Closed    : The TASK is completed
+
+DEBUG:__main__:client script sending 0025:list activity states
+DEBUG:__main__:ServerSaid: Showing states for activitys:
+Started   : The TASK is created and may be on execution
+OnHold    : Execution on this TASK is stopped
+Ended     : The TASK is completed
+
+DEBUG:__main__:client script sending 0022:list task columns
+DEBUG:__main__:ServerSaid: Showing columns for tasks:
+State
+Description
+Start_Date
+PROJECT
+Due_Date
+Expiration_Date
+Location
+Context
+Reminders
+ACTIVITYs
+Sub_TASKs
+Parent_TASK
+
+DEBUG:__main__:client script sending 0033:list task for project weekly
+DEBUG:__main__:ServerSaid: +Showing items 1 to 6:----------------------------------------------+------------+---------+----------+-----------------+
+| ID   | State |                                        Description | Start_Date | PROJECT | Due_Date | Expiration_Date |
++------+-------+----------------------------------------------------+------------+---------+----------+-----------------+
+| 1313 | Open  |        consider adding to a task or activity being | 17ww39.Sun | weekly  | N/A      | N/A             |
+|      |       |     closed, (adding a) text related to teh closure |            |         |          |                 |
+|      |       |   (like - fixed, what was done, what remains etc). |            |         |          |                 |
+| 1860 | Open  |                                update help messaGE | 17ww44.Wed | weekly  |          |                 |
+| 1865 | Open  |     check why this text gets me the help message - | 17ww44.Wed | weekly  |          |                 |
+|      |       |                 today <pype> help ahmad with rally |            |         |          |                 |
+| 1868 | Open  |          add the length of the list as a parameter | 17ww44.Thu | weekly  |          |                 |
+| 1869 | Open  |                                      add reminders | 17ww44.Thu | weekly  |          |                 |
+| 1872 | Open  |  move the printing of the tables to the client, so | 17ww44.Thu | weekly  |          |                 |
+|      |       |   can use color and solid line. make this a chice, |            |         |          |                 |
+|      |       | since I expect it will take a while. this may mean |            |         |          |                 |
+|      |       |   that the info given back on list_resp may not be |            |         |          |                 |
+|      |       |               for direct printing any more (json?) |            |         |          |                 |
++------+-------+----------------------------------------------------+------------+---------+----------+-----------------+
 DEBUG:__main__:Client closing socket
