@@ -4,6 +4,7 @@ from ast import literal_eval
 
 import configparser
 import os
+from datetime import datetime #, date, time, timedelta
 
 # check if the config file exists, and if not - craete one
 def check_for_and_create_cfg():
@@ -37,15 +38,12 @@ mode_sel            = int(config['MAIN']['mode_sel'])
 local_client_script = config['MAIN']['local_client_script']
 use_tables          = config['MAIN']['use_tables']
 max_width           = int(config['MAIN']['max_width'])
-list_num_of_lines   = int(config['MAIN']['list_num_of_lines'])
+list_resp_row_limit = int(config['MAIN']['list_resp_row_limit'])
 
 data_loc = data_loc + '\\' + dev_or_prod
 
-# print(dev_or_prod)
-# print(data_loc)
-# print(mode_sel)
-# print(local_client_script)
 
+future = datetime.strptime('31/Dec/2099', '%d/%b/%Y')
 
 #         -0-        -1-      -2-
 mode = ['socket', 'direct', 'prod' ][mode_sel]
@@ -81,9 +79,10 @@ dft_columns = ['State',
                # optional from here
                'Due_Date',
                'Expiration_Date',
+               'Wakeup_Date',
                'Location',
                'Context',
-               'Reminders',
+               #'Reminders',
                'ACTIVITYs',
                'Sub_TASKs',
                'Parent_TASK',
@@ -93,6 +92,7 @@ dfa_columns = ['State',
                'Start_Date',
                'Description',
                'End_Date',
+               'Wakeup_Date',
                'TASK',
                'PROJECT'
                ]
@@ -122,7 +122,7 @@ dft_columns_to_print = ['State',
                         'PROJECT',
                         # optional from here
                         'Due_Date',
-                        'Expiration_Date',
+                        'Wakeup_Date'
                         #'Location',
                         #'Context',
                         #'Reminders',
@@ -135,6 +135,7 @@ dfa_columns_to_print = ['State',
                         'Start_Date',
                         'Description',
                         'End_Date',
+                        'Wakeup_Date'
                         #'TASK',
                         #'PROJECT'
                         ]
@@ -166,13 +167,15 @@ project_states   = {'Started' : 'The PROJECT started rolling',
                     }
 
 task_states      = {'Open'   : 'The TASK is created and may be on execution',
-                    'OnHold': 'Execution on this TASK is stopped',
+                    'OnHold' : 'Execution on this TASK is stopped',
                     'Closed' : 'The TASK is completed',
+                    'Dormant': 'The TASK is to be completed in the future',
                     }
 
-activity_states  = {'Started': 'The TASK is created and may be on execution',
-                    'OnHold': 'Execution on this TASK is stopped',
-                    'Ended'  : 'The TASK is completed',
+activity_states  = {'Started': 'The ACTIVITY is created and may be on execution',
+                    'OnHold': 'Execution on this ACTIVITY is stopped',
+                    'Ended'  : 'The ACTIVITY is completed',
+                    'Dormant': 'The ACTIVITY is to be completed in the future',
                     }
 
 all_stat = { 'megaproject' : megaproject_states,
@@ -201,6 +204,11 @@ state_closed = { 'dfm' : 'Off',
                }
 
 
+state_Dormant = { 'dfm' : '',
+                  'dfp' : '',
+                  'dft' : 'Dormant',
+                  'dfa' : 'Dormant'
+               }
 
 # databases name
 db_names = {'dfm': 'Megaprojects DataFrame',
@@ -257,6 +265,12 @@ help_message = '''
 44 delete @1234
 45 list task ww 17 state OnHold
 46 list activity state Ended ww 17
+47 sleep @11540 17ww50.Tue
+48 sleep @11540 17ww50
+49 sleep @10687 20171205
+50 sleep @10673 plus 88
+51 sleep @10673
+52 list wakeup
 ==================================
 '''
 

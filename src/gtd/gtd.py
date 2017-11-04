@@ -74,6 +74,18 @@ class Gtd(object):
             r = randint(0,len(l3)-1)
             data = data.replace('00000000', str(l3[r]))#.zfill(8))
             logger.debug('command after replacement: {}'.format(data))
+        elif r'sleep @' in data:
+            # list(g[g.State == 'Closed']['ID'])
+            l1 = list(gdb.dfa[gdb.dfa.State == 'Started'].index)
+            l1 += list(gdb.dft[gdb.dft.State == 'Open'].index)
+            #l1 += list(gdb.dfp[gdb.dfp.State == 'Started'].index)
+            l2 = []
+            l3 = l1 + l2
+            if len(l3) == 0:
+                raise ValueError('for some reason, got an empty list in @0000 replacement')
+            r = randint(0, len(l3) - 1)
+            data = data.replace('00000000', str(l3[r]))  # .zfill(8))
+            logger.debug('command after replacement: {}'.format(data))
         elif r'list @' in data:
             #list(g[g.State == 'Closed']['ID'])
             l1 = list(gdb.dfm.index.values)
@@ -348,6 +360,7 @@ prefix("delete", 20)
 prefix("online", 20)
 prefix("plus", 20)
 prefix("ww", 20)
+prefix("sleep",20)
 symbol(".", 120)
 
 
@@ -392,17 +405,35 @@ def nud(self):
         advance()  # to check what is beyond ..
     elif gdb.transaction_type == 'start activity':
         # deal with the spacial case where token.value can be 'n'
-        gdb.use_this_ID_for_ref = int(token.value) #get the id to relate the task creation to
+        gdb.use_this_ID_for_ref = int(token.value) #get the id to relate to the action
     elif gdb.transaction_type == "stop something":
-        gdb.use_this_ID_for_ref = int(token.value) #get the id to relate the task creation to
+        gdb.use_this_ID_for_ref = int(token.value) #get the id to relate to the action
     elif gdb.transaction_type == "cont something":
-        gdb.use_this_ID_for_ref = int(token.value) #get the id to relate the task creation to
+        gdb.use_this_ID_for_ref = int(token.value) #get the id to relate to the action
     elif gdb.transaction_type == "halt something":
-        gdb.use_this_ID_for_ref = int(token.value)  # get the id to relate the task creation to
+        gdb.use_this_ID_for_ref = int(token.value)  # get the id relate to to the action
+    elif gdb.transaction_type == "sleep something":
+        gdb.use_this_ID_for_ref = int(token.value)  # get the id relate to to the action
+        # for teh case we have more like
+        # 17ww44.Mon
+        # 20171104
+        # plus
+        advance()
+        if token.id != '(end)':
+            if token.id != 'plus':
+                gdb.wakeup_time = str(token.value)
+                advance()
+                if token.id != '(end)':
+                    gdb.wakeup_time += str(token.value)
+                advance()
+                if token.id != '(end)':
+                    advance(".")
+                    gdb.wakeup_time += "." + str(token.value)
+
     elif gdb.transaction_type == "list id":
-        gdb.use_this_ID_for_ref = int(token.value)  # get the id to relate the task creation to
+        gdb.use_this_ID_for_ref = int(token.value)  # get the id relate to to the action
     elif gdb.transaction_type == "delete id":
-        gdb.use_this_ID_for_ref = int(token.value)  # get the id to relate the task creation to
+        gdb.use_this_ID_for_ref = int(token.value)  # get the id relate to to the action
 
     self.first = expression()
     return self
@@ -475,6 +506,10 @@ def nud(self):
         advance()
     elif token.value == 'search':
         gdb.transaction_is('list search')
+        # wrap it up
+        return self
+    elif token.value == 'wakeup':
+        gdb.transaction_is('list wakeup')
         # wrap it up
         return self
     elif token.id == '(end)':
@@ -664,6 +699,8 @@ def nud(self):
 @method(symbol("plus"))
 def nud(self):
     logger.debug("plus nud")
+    gdb.wakeup_time = "plus "+ str(token.value)
+    # assume no more out there, start folding back
     return self
 
 @method(symbol("state"))
@@ -679,5 +716,12 @@ def nud(self):
     logger.debug("ww nud")
     gdb.list_ww = 'ww'+ str(token.value)
     advance() # over the week
+    self.second = expression()
+    return self
+
+@method(symbol("sleep"))
+def nud(self):
+    logger.debug('sleep nud')
+    gdb.transaction_is('sleep something')
     self.second = expression()
     return self

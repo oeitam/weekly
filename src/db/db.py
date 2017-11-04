@@ -4,6 +4,8 @@ import os.path
 import os
 import pandas as pd
 import logging
+import re
+
 from src import defs
 from test import test_defs
 #import shutil
@@ -35,6 +37,21 @@ def date_conv(ds):
     if ds3 == 'Sun':
         r = r - one_week
     return(r)
+
+
+def date_conv_max_date(ds):
+    if isinstance(ds, str) :
+        ds1,ds2,ds3 = ds.partition('.')
+        st1 = defs.days_of_week.get(ds3, None)
+        if not st1: # meaning - None
+            raise ValueError
+        r = datetime.strptime(ds1 + st1, "%yww%W-%w")
+        if ds3 == 'Sun':
+            r = r - one_week
+        return(r)
+    else:
+        return defs.future
+
 
 def mycnv2(x,other_df,str_to_cmp):
     if type(x) == str and x != '':
@@ -82,6 +99,7 @@ class Db(object):
                                   'stop something'     : self.stop_something,
                                   'cont something'     : self.cont_something,
                                   'halt something'     : self.halt_something,
+                                  'sleep something'    : self.sleep_something,
                                   'list id'            : self.list_id,
                                   'list megaproject'   : self.list_glob,
                                   'list project'       : self.list_glob,
@@ -89,6 +107,7 @@ class Db(object):
                                   'list activity'      : self.list_glob,
                                   'list for'           : self.list_glob,
                                   'list search'        : self.list_search,
+                                  'list wakeup'        : self.list_wakeup,
                                   'help'               : self.help_message,
                                   'delete id'          : self.delete_id,
                                   'online'             : self.online_check,
@@ -144,11 +163,13 @@ class Db(object):
         return cID
 
     # expecting date (like date.today())
-    def get_time_str(self, d = None):
+    def get_time_str(self, d = None, timedel = None):
         #d = date.today()
         if d is None:
             d = date.today()
-        d = d - test_defs.debug_delta
+        #d = d - test_defs.debug_delta
+        if timedel :
+            d = d + timedel
         tt = d.timetuple()
         y = str(tt[0])[2:4]
         if tt[6] == 6:  # if a sunday, need to advance ww by one
@@ -234,15 +255,19 @@ class Db(object):
             self.list_attr              = 'clean'
             self.list_ww                = 'clean'
             self.state_to_list          = 'clean'
+            self.wakeup_time            = 'clean'
         if sec2:
-            if hasattr(defs,'list_num_of_lines'):
-                self.list_resp_row_limit = defs.list_num_of_lines
+            if hasattr(defs,'list_resp_row_limit'):
+                self.list_resp_row_limit = defs.list_resp_row_limit
             else:
                 self.list_resp_row_limit    = 15
             self.list_resp_rows         = -1
 
     def store_context(self):
-        self.last_list_resp_row_limit = 15
+        if hasattr(defs, 'list_resp_row_limit'):
+            self.list_resp_row_limit = defs.list_resp_row_limit
+        else:
+            self.list_resp_row_limit = 15
         self.last_list_resp_rows = -1
 
     # add a dataframe to a db
@@ -461,7 +486,7 @@ class Db(object):
             logger.debug(self.error_details)
             return False
         l = ['Started', self.get_time_str(date.today()), self.trans_description,
-             ''] + couple
+             '', ''] + couple
         ldf = pd.DataFrame(data=[l], index=[pID], columns=defs.dfa_columns)
         ldf.index.name = 'ID'
         logger.debug(ldf.to_string())
@@ -535,11 +560,63 @@ class Db(object):
                 #self.dft.loc[self.use_this_ID_for_ref, 'End_Time'] = ''
 
         if state != 'id in db':
-            self.error_details = 'Requested to halt ACTIVITY or TASK or PROJECT {} failed (probably incorrect ID)'\
+            self.error_details = 'Request to halt ACTIVITY or TASK or PROJECT {} failed (probably incorrect ID)'\
                 .format(self.use_this_ID_for_ref)
             logger.debug(self.error_details)
             return False
         return True
+
+    def sleep_something(self):
+        # find the wakeup time
+        if self.wakeup_time != 'clean':
+            m0 = re.match('(\d\d)ww(\d\d)$', self.wakeup_time)
+            if m0 :
+                self.wakeup_time += ".Sun"
+            m1 = re.match('(\d\d)ww(\d\d)\.[a-zA-Z]{3}', self.wakeup_time)
+            if not m1 : # if no match, need to convert to work week
+                m2 = re.match('\d{8}',self.wakeup_time)
+                if m2 : # this is a YYYYMMDD date
+                    y = int(self.wakeup_time[0:4])
+                    m = int(self.wakeup_time[4:6])
+                    d = int(self.wakeup_time[6:8])
+                    dt = date(y,m,d)
+                    self.wakeup_time = self.get_time_str(dt)
+                else: # so this is a "plus XX" type of
+                    m3 = re.match('plus (\d+)',self.wakeup_time)
+                    if m3 :
+                        timedel = timedelta(days=int(m3.groups(1)[0]))
+                        self.wakeup_time = self.get_time_str(timedel=timedel)
+
+        # handle activity, and then task
+        state = 'idle' # helps understand status
+        # activity
+        if self.dfa is not None:
+            state = 'found db'
+            if self.use_this_ID_for_ref in self.dfa.index.values:
+                state = 'id in db'
+                # process
+                self.dfa.loc[self.use_this_ID_for_ref, 'State'] = 'Dormant'
+                if self.wakeup_time != 'clean':
+                    self.dfa.loc[self.use_this_ID_for_ref, 'Wakeup_Date'] = self.wakeup_time
+        # task
+        if (self.dft is not None) and (state != 'id in db'):
+            state = 'found db'
+            if self.use_this_ID_for_ref in self.dft.index.values:
+                state = 'id in db'
+                # process
+                self.dft.loc[self.use_this_ID_for_ref, 'State'] = 'Dormant'
+                if self.wakeup_time != 'clean':
+                    self.dft.loc[self.use_this_ID_for_ref, 'Wakeup_Date'] = self.wakeup_time
+
+        if state != 'id in db':
+            self.error_details = 'Request to sleep ACTIVITY or TASK {} failed (probably incorrect ID)'\
+                .format(self.use_this_ID_for_ref)
+            logger.debug(self.error_details)
+            return False
+        return True
+
+
+
 
     def stop_something(self):
         # handle activity, and then task and then project
@@ -570,7 +647,7 @@ class Db(object):
                 #self.dft.loc[self.use_this_ID_for_ref, 'End_Time'] = ''
 
         if state != 'id in db':
-            self.error_details = 'Requested to stop ACTIVITY or TASK or PROJECT {} failed (probably incorrect ID)'\
+            self.error_details = 'Request to stop ACTIVITY or TASK or PROJECT {} failed (probably incorrect ID)'\
                 .format(self.use_this_ID_for_ref)
             logger.debug(self.error_details)
             return False
@@ -790,6 +867,32 @@ class Db(object):
                 df = df.loc[l]
                 self.list_resp += self.df_to_list_resp(df, df_name)
         return True
+
+    # print out wakeup tasks and activities
+    def list_wakeup(self):
+        self.list_resp = 'Searching for TASK and ACTIVITY in Dormant state what Wakeup time is this week or past{}:\n'
+        for df_name in ['dft', 'dfa']:
+            #self.list_resp += "\nResults from {}\n".format(defs.db_names[df_name])
+            title = "Results from {}".format(defs.db_names[df_name])
+            df = self.db_table[df_name]
+            df1 = df[df['State'] == 'Dormant']
+            # calculate end of this week for comparison
+            d = date.today()
+            ws = d-timedelta(days=d.weekday())
+            we = ws + timedelta(days=6)
+            we = we + test_defs.debug_delta
+            df2 = df1[df1['Wakeup_Date'].apply(date_conv_max_date) <= we].copy()
+            if len(df2) == 0: # nothing found
+                self.list_resp += 'well ... nothing found here\n'
+            else:
+                # in order to sort, need to convert the Wakeup_Date to numbers
+                # and then sort by these numbers
+                df2['Wakeup_Date2'] = df2['Wakeup_Date'].apply(date_conv)
+                df2.sort_values(by=['Wakeup_Date2'], axis=0, inplace=True)
+                self.list_resp += self.df_to_list_resp(df2, df_name,title)
+                self.list_resp += '\n\n'
+        return True
+
 
     def delete_id(self):
         for df_name in ['dft', 'dfa']:
