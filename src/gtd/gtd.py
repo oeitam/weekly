@@ -148,11 +148,13 @@ class Gtd(object):
 
         ##############################################
         # check if context need to be kept, and if not - clean it up
-        if self.current_data.replace(' ', '') != 'list':
+        if self.current_data[0:9] == 'move list':
+            gdb.clean_context(sec1=True, sec2=False)
+        elif self.current_data.replace(' ', '') != 'list':
             gdb.clean_context()
 
         ##############################################
-        # since teh tokenizer is not dealing well with the '|'
+        # since the tokenizer is not dealing well with the '|'
         # use this piece of code to handle that part
         # but first we check that there are no more than one '|'
         if self.current_data.count('|') > 1:
@@ -361,6 +363,11 @@ prefix("online", 20)
 prefix("plus", 20)
 prefix("ww", 20)
 prefix("sleep",20)
+prefix("move", 120)
+prefix("from", 120)
+prefix("to", 120)
+prefix("set", 20)
+prefix("value", 20)
 symbol(".", 120)
 
 
@@ -392,6 +399,11 @@ def nud(self):
         gdb.set_megaproject_name(self.first.value)
         advance() # need to advance to start the description
         self.second = expression()
+    if token.id == "list":
+        gdb.transaction_is("create list")
+        self.id = "create list"
+        advance() # to get to the list of items - jump over 'list'
+        self.first = expression()
     return self
 
 @method(symbol("@"))
@@ -434,6 +446,14 @@ def nud(self):
         gdb.use_this_ID_for_ref = int(token.value)  # get the id relate to to the action
     elif gdb.transaction_type == "delete id":
         gdb.use_this_ID_for_ref = int(token.value)  # get the id relate to to the action
+    elif gdb.transaction_type == "create list":
+        gdb.items_list.append(int(token.value))
+        if gdb.items_list[0] == 'clean':
+            gdb.items_list.pop(0) # this removed the 'clean' item
+        advance() # jump over to the next token
+    elif gdb.transaction_type == "move item":
+        gdb.use_this_ID_for_ref = int(token.value)  # get the id relate to to the action
+        advance()
 
     self.first = expression()
     return self
@@ -511,6 +531,12 @@ def nud(self):
     elif token.value == 'wakeup':
         gdb.transaction_is('list wakeup')
         # wrap it up
+        return self
+    elif token.value == 'parameter':
+        gdb.transaction_is('list parameter')
+        return self
+    elif token.value == 'shortcut':
+        gdb.transaction_is('list shortcut')
         return self
     elif token.id == '(end)':
         gdb.keep_context = True
@@ -654,8 +680,8 @@ def nud(self):
     if gdb.list_for_what == 'task':
         advance()
     gdb.list_for_val = token.value
-    #advance()
-    #self.second = expression()
+    advance()
+    self.second = expression()
     return self
 
 @method(symbol("columns"))
@@ -676,6 +702,8 @@ def nud(self):
 def nud(self):
     logger.debug('help nud')
     gdb.transaction_is('help')
+    if token.id != '(end)':
+        gdb.help_search = token.id
     return self
 
 @method(symbol("delete"))
@@ -725,3 +753,51 @@ def nud(self):
     gdb.transaction_is('sleep something')
     self.second = expression()
     return self
+
+@method(symbol("move"))
+def nud(self):
+    logger.debug('move nud')
+    if token.id == 'list':
+        gdb.transaction_is('move list')
+        advance()  # get over list/task/activity word
+    elif token.id == 'task':
+        gdb.transaction_is('move task')
+        advance()  # get over list/task/activity word
+    elif token.id == 'activity':
+        gdb.transaction_is('move activity')
+        advance()  # get over list/task/activity word
+    else:
+        gdb.transaction_is('move item')
+
+    self.first = expression()
+    return self
+
+@method(symbol("from"))
+def nud(self):
+    logger.debug('from nud')
+    gdb.move_from = token.value
+    advance()
+    self.first = expression()
+
+@method(symbol("to"))
+def nud(self):
+    logger.debug('to nud')
+    gdb.move_to = token.value
+    advance()
+    self.first = expression()
+
+@method(symbol("set"))
+def nud(self):
+    logger.debug('set nud')
+    gdb.transaction_is('set param')
+    gdb.param_to_set = token.value
+    advance()
+    self.first = expression()
+
+@method(symbol("value"))
+def nud(self):
+    logger.debug('value nud')
+    gdb.value_to_set = token.value
+    advance()
+    self.first = expression()
+

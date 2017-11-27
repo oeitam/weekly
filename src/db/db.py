@@ -111,6 +111,14 @@ class Db(object):
                                   'help'               : self.help_message,
                                   'delete id'          : self.delete_id,
                                   'online'             : self.online_check,
+                                  'create list'        : self.create_list,
+                                  'move list'          : self.move_items,
+                                  'move task'          : self.move_items,
+                                  'move activity'      : self.move_items,
+                                  'move item'          : self.move_items,
+                                  'set param'          : self.set_param,
+                                  'list parameter'     : self.list_parameter,
+                                  'list shortcut'      : self.list_shortcut,
                                   #'list project'       : self.list_project,
                                   #'list task'          : self.list_task,
                                   #'list activity'      : self.list_activity,
@@ -256,12 +264,18 @@ class Db(object):
             self.list_ww                = 'clean'
             self.state_to_list          = 'clean'
             self.wakeup_time            = 'clean'
-        if sec2:
+            self.help_search            = 'clean'
+            self.move_from              = 'clean'
+            self.move_to                = 'clean'
+            self.param_to_set           = 'clean'
+            self.value_to_set           = 'clean'
             if hasattr(defs,'list_resp_row_limit'):
                 self.list_resp_row_limit = defs.list_resp_row_limit
             else:
                 self.list_resp_row_limit    = 15
             self.list_resp_rows         = -1
+        if sec2:
+            self.items_list             = ['clean']
 
     def store_context(self):
         if hasattr(defs, 'list_resp_row_limit'):
@@ -383,13 +397,22 @@ class Db(object):
                 m = "Transaction: {} FAILED with ERROR: {}".format(self.transaction_type, self.error_details)
         elif ( 'stop some' in self.transaction_type
             or 'cont some' in self.transaction_type
+            or 'sleep some' in self.transaction_type
             or 'halt some' in self.transaction_type) :
             if success:
                 m = "Transaction: {} COMPLETED. Referenced ID is: {}".format(self.transaction_type, self.use_this_ID_for_ref)
             else:
                 m = "Transaction: {} FAILED with ERROR: {}".format(self.transaction_type, self.error_details)
         elif (self.transaction_type == 'help'):
-            m = defs.help_message
+            if self.help_search != 'clean':
+                l1 = defs.help_message.split('\n')
+                l2 = [k for k in l1 if self.help_search in k]
+                if len(l2) == 0 :
+                    m = "no help message with specified string"
+                else:
+                    m = "\n".join(l2)
+            else:
+                m = defs.help_message
         else:
             if success:
                 m = "Transaction: {} COMPLETED. New ID is: {}".format(self.transaction_type, self.pID)
@@ -810,6 +833,11 @@ class Db(object):
                 l.append(sl)
             table_instance = AsciiTable(l,title)
             table_instance.justify_columns[2] = 'right'
+
+            #print("=====================================")
+            #self.myprint(df,which_db,title)
+            #print("=====================================")
+
             return table_instance.table
         else:
             return False
@@ -865,7 +893,7 @@ class Db(object):
                 self.list_resp += 'well ... nothing found here\n'
             else:
                 df = df.loc[l]
-                self.list_resp += self.df_to_list_resp(df, df_name)
+                self.list_resp += self.df_to_list_resp(df, df_name,'list search results')
         return True
 
     # print out wakeup tasks and activities
@@ -933,6 +961,104 @@ class Db(object):
         self.return_message_ext1     += lstr
         return True
 
+    def move_items(self):
+        if self.transaction_type == 'move list':
+            if len(self.items_list) > 0:
+                for item in self.items_list:
+                    if item in self.dfa.index:
+                        self.dfa.loc[item, 'PROJECT'] = self.move_to
+                    elif item in self.dft.index:
+                        self.dft.loc[item, 'PROJECT'] = self.move_to
+        elif self.transaction_type == 'move item':
+            item = self.use_this_ID_for_ref
+            if item in self.dfa.index:
+                self.dfa.loc[item, 'PROJECT'] = self.move_to
+            elif item in self.dft.index:
+                self.dft.loc[item, 'PROJECT'] = self.move_to
+        elif self.transaction_type == 'move task':
+            if self.state_to_list == 'clean':
+                self.dft.loc[self.dft['PROJECT'] == self.move_from,'PROJECT']\
+                    = self.move_to
+            else: # there is a specific state to move
+                self.dft.loc[(self.dft['PROJECT'] == self.move_from) \
+                             & (self.dft['State'] == self.state_to_list) \
+                    , 'PROJECT'] = self.move_to
+        elif self.transaction_type == 'move activity':
+            self.dfa.loc[self.dfa['PROJECT'] == self.move_from,'PROJECT'] = self.move_to
+            if self.state_to_list == 'clean':
+                self.dfa.loc[self.dft['PROJECT'] == self.move_from, 'PROJECT'] \
+                    = self.move_to
+            else:  # there is a specific state to move
+                self.dfa.loc[(self.dfa['PROJECT'] == self.move_from) \
+                             & (self.dfa['State'] == self.state_to_list) \
+                    , 'PROJECT'] = self.move_to
+        return True
 
+    def myprint(self, df,which_db,title):
+        str1 = df.to_json()
+        df1 = pd.read_json(str1)
 
+        csv_str = df1.to_csv(sep='|',
+                            columns=defs.columns_to_print_table[which_db],
+                            na_rep='N/A')
+                            # , float_format=conv, index_names=True, justify='left')
+        l = []
+        q = defs.columns_to_print_table[which_db][:]
+        q.insert(0, 'ID')
+        l.append(q)
+        c = 0
+        for line in csv_str.splitlines():
+            if c == 0:
+                c = c + 1
+                continue
+            sl = line.split('|')
+            for i in range(0, len(sl)):
+                if len(sl[i]) > defs.max_width:
+                    sl[i] = '\n'.join(wrap(sl[i], defs.max_width))
+            l.append(sl)
+        table_instance = AsciiTable(l, title)
+        table_instance.justify_columns[2] = 'right'
+        print(table_instance.table)
+
+    def create_list(self):
+        # the list is already created during parsing, so
+        # no need to do anything
+        return True
+
+    def set_param(self):
+        if hasattr(defs, self.param_to_set):
+            if (self.value_to_set.isdigit()):
+                self.value_to_set = int(self.value_to_set)
+            setattr(defs,self.param_to_set, self.value_to_set)
+        else:
+            return False
+        return True
+
+    def list_parameter(self):
+        self.list_resp = "Program Parameters that can be set:\n"
+        for par in defs.params_list:
+            self.list_resp += "paramter: {} = {}\n"\
+                .format(par, eval("defs." + par))
+        return True
+
+    def list_shortcut(self):
+        self.list_resp = ''
+        for sect in defs.config.sections():
+            if 'replace_' in sect:
+                (a1,a2,a3) = sect.partition("_")
+                self.list_resp += "replacement shortcut number {}\n".format(a3)
+                self.list_resp += "===================================\n"
+                self.list_resp += "substitution type: {}\n".\
+                    format(defs.config[sect]['replacement_type'])
+                self.list_resp += "substitute this:   {}\n".\
+                    format(defs.config[sect]['replace_what'])
+                self.list_resp += "with this:         {}\n".\
+                    format(defs.config[sect]['replace_with'])
+                self.list_resp += "===================================\n\n"
+        return True
+
+#[replace_2]
+#replacement_type = simple_substitution
+#replace_what = co
+#replace_with = start @10758 | checking out - go home
 
