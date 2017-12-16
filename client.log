@@ -2,160 +2,39 @@ INFO:root:Logging (into clienr.log) Started
 DEBUG:__main__:client script sending 0011:online
 DEBUG:__main__:ServerSaid: Transaction: online COMPLETED. New ID is: -1
 Online Status:
+==============
 Megaproject  db   is   online  
 Project      db   is   online  
 Task         db   is   online  
 Activity     db   is   online  
-The ID in file is: 1981
+The ID in file is: 2058
+==========================
+Working environment is production
+==========================
+Searching for TASK and ACTIVITY in Dormant state what Wakeup time is this week or past{}:
+well ... nothing found here
+well ... nothing found here
+==========================
+
+DEBUG:__main__:client script sending 0011:online
+DEBUG:__main__:ServerSaid: Transaction: online COMPLETED. New ID is: -1
+Online Status:
+==============
+Megaproject  db   is   online  
+Project      db   is   online  
+Task         db   is   online  
+Activity     db   is   online  
+The ID in file is: 2058
+==========================
+Working environment is production
+==========================
+Searching for TASK and ACTIVITY in Dormant state what Wakeup time is this week or past{}:
+well ... nothing found here
+well ... nothing found here
+==========================
 
 DEBUG:__main__:client script sending 0007:ci
-DEBUG:__main__:ServerSaid: Transaction: start activity COMPLETED. New ID is: 1981
-DEBUG:__main__:client script sending 0045:today | working from home in the morning
-DEBUG:__main__:ServerSaid: Transaction: start activity COMPLETED. New ID is: 1982
-DEBUG:__main__:client script sending 0070:today | some work on the new STNGs and some on the Weekly project
-DEBUG:__main__:ServerSaid: Transaction: start activity COMPLETED. New ID is: 1983
-DEBUG:__main__:client script sending 0033:list task for project weekly
-DEBUG:__main__:ServerSaid: +Showing items 1 to 9:----------------------------------------------+------------+---------+----------+-------------+
-| ID   | State |                                        Description | Start_Date | PROJECT | Due_Date | Wakeup_Date |
-+------+-------+----------------------------------------------------+------------+---------+----------+-------------+
-| 1313 | Open  |        consider adding to a task or activity being | 17ww39.Sun | weekly  | N/A      | N/A         |
-|      |       |     closed, (adding a) text related to teh closure |            |         |          |             |
-|      |       |   (like - fixed, what was done, what remains etc). |            |         |          |             |
-| 1878 | Open  |   make it so only one window opens, and the client | 17ww45.Sun | weekly  | N/A      | N/A         |
-|      |       |                    window opens at the right size. |            |         |          |             |
-| 1879 | Open  |   enable a method to insert something with a start | 17ww45.Sun | weekly  | N/A      | N/A         |
-|      |       |     time in the past (or future?). this is for the |            |         |          |             |
-|      |       |   case that someone forgot to put an activity/task |            |         |          |             |
-|      |       |               that started yesterday (for example) |            |         |          |             |
-| 1889 | Open  |   add table print out for more commands (like list | 17ww45.Mon | weekly  | N/A      | N/A         |
-|      |       |                                  @xxx for example) |            |         |          |             |
-| 1906 | Open  |   add/remove/list capability to for shortcuts into | 17ww45.Thu | weekly  | N/A      | N/A         |
-|      |       |  the system from the command line that remains for |            |         |          |             |
-|      |       |  later. for example - this can be useful if I have |            |         |          |             |
-|      |       |     a project I created and i want immediatelly to |            |         |          |             |
-|      |       |       start referring to it and creating tasks and |            |         |          |             |
-|      |       | activities, without the need to edit the init file |            |         |          |             |
-|      |       |                                and exit the system |            |         |          |             |
-| 1953 | Open  |            define a method to work with the system | 17ww47.Mon | weekly  | N/A      | N/A         |
-| 1971 | Open  |    add ability to list longer than the limit, even | 17ww47.Thu | weekly  | N/A      | N/A         |
-|      |       |  if for just one time. can be useful when you want |            |         |          |             |
-|      |       |      to see all the tasks, for example, or all the |            |         |          |             |
-|      |       |   activities for a certain week to create a weekly |            |         |          |             |
-| 1974 | Open  |  check why state all in list command whereked when | 17ww48.Sun | weekly  | N/A      | N/A         |
-|      |       |             in the middle, but not when in the end |            |         |          |             |
-| 1977 | Open  |      why does list search does nto work? like list | 17ww48.Sun | weekly  | N/A      | N/A         |
-|      |       |                                 search [pipe] ww45 |            |         |          |             |
-+------+-------+----------------------------------------------------+------------+---------+----------+-------------+
-DEBUG:__main__:client script sending 0015:stop @1971
-DEBUG:__main__:ServerSaid: Transaction: stop something COMPLETED. Referenced ID is: 1971
-DEBUG:__main__:client script sending 0033:list task for project weekly
-DEBUG:__main__:ServerSaid: +Showing items 1 to 8:----------------------------------------------+------------+---------+----------+-------------+
-| ID   | State |                                        Description | Start_Date | PROJECT | Due_Date | Wakeup_Date |
-+------+-------+----------------------------------------------------+------------+---------+----------+-------------+
-| 1313 | Open  |        consider adding to a task or activity being | 17ww39.Sun | weekly  | N/A      | N/A         |
-|      |       |     closed, (adding a) text related to teh closure |            |         |          |             |
-|      |       |   (like - fixed, what was done, what remains etc). |            |         |          |             |
-| 1878 | Open  |   make it so only one window opens, and the client | 17ww45.Sun | weekly  | N/A      | N/A         |
-|      |       |                    window opens at the right size. |            |         |          |             |
-| 1879 | Open  |   enable a method to insert something with a start | 17ww45.Sun | weekly  | N/A      | N/A         |
-|      |       |     time in the past (or future?). this is for the |            |         |          |             |
-|      |       |   case that someone forgot to put an activity/task |            |         |          |             |
-|      |       |               that started yesterday (for example) |            |         |          |             |
-| 1889 | Open  |   add table print out for more commands (like list | 17ww45.Mon | weekly  | N/A      | N/A         |
-|      |       |                                  @xxx for example) |            |         |          |             |
-| 1906 | Open  |   add/remove/list capability to for shortcuts into | 17ww45.Thu | weekly  | N/A      | N/A         |
-|      |       |  the system from the command line that remains for |            |         |          |             |
-|      |       |  later. for example - this can be useful if I have |            |         |          |             |
-|      |       |     a project I created and i want immediatelly to |            |         |          |             |
-|      |       |       start referring to it and creating tasks and |            |         |          |             |
-|      |       | activities, without the need to edit the init file |            |         |          |             |
-|      |       |                                and exit the system |            |         |          |             |
-| 1953 | Open  |            define a method to work with the system | 17ww47.Mon | weekly  | N/A      | N/A         |
-| 1974 | Open  |  check why state all in list command whereked when | 17ww48.Sun | weekly  | N/A      | N/A         |
-|      |       |             in the middle, but not when in the end |            |         |          |             |
-| 1977 | Open  |      why does list search does nto work? like list | 17ww48.Sun | weekly  | N/A      | N/A         |
-|      |       |                                 search [pipe] ww45 |            |         |          |             |
-+------+-------+----------------------------------------------------+------------+---------+----------+-------------+
-DEBUG:__main__:client script sending 0015:stop @1977
-DEBUG:__main__:ServerSaid: Transaction: stop something COMPLETED. Referenced ID is: 1977
-DEBUG:__main__:client script sending 0033:list task for project weekly
-DEBUG:__main__:ServerSaid: +Showing items 1 to 7:----------------------------------------------+------------+---------+----------+-------------+
-| ID   | State |                                        Description | Start_Date | PROJECT | Due_Date | Wakeup_Date |
-+------+-------+----------------------------------------------------+------------+---------+----------+-------------+
-| 1313 | Open  |        consider adding to a task or activity being | 17ww39.Sun | weekly  | N/A      | N/A         |
-|      |       |     closed, (adding a) text related to teh closure |            |         |          |             |
-|      |       |   (like - fixed, what was done, what remains etc). |            |         |          |             |
-| 1878 | Open  |   make it so only one window opens, and the client | 17ww45.Sun | weekly  | N/A      | N/A         |
-|      |       |                    window opens at the right size. |            |         |          |             |
-| 1879 | Open  |   enable a method to insert something with a start | 17ww45.Sun | weekly  | N/A      | N/A         |
-|      |       |     time in the past (or future?). this is for the |            |         |          |             |
-|      |       |   case that someone forgot to put an activity/task |            |         |          |             |
-|      |       |               that started yesterday (for example) |            |         |          |             |
-| 1889 | Open  |   add table print out for more commands (like list | 17ww45.Mon | weekly  | N/A      | N/A         |
-|      |       |                                  @xxx for example) |            |         |          |             |
-| 1906 | Open  |   add/remove/list capability to for shortcuts into | 17ww45.Thu | weekly  | N/A      | N/A         |
-|      |       |  the system from the command line that remains for |            |         |          |             |
-|      |       |  later. for example - this can be useful if I have |            |         |          |             |
-|      |       |     a project I created and i want immediatelly to |            |         |          |             |
-|      |       |       start referring to it and creating tasks and |            |         |          |             |
-|      |       | activities, without the need to edit the init file |            |         |          |             |
-|      |       |                                and exit the system |            |         |          |             |
-| 1953 | Open  |            define a method to work with the system | 17ww47.Mon | weekly  | N/A      | N/A         |
-| 1974 | Open  |  check why state all in list command whereked when | 17ww48.Sun | weekly  | N/A      | N/A         |
-|      |       |             in the middle, but not when in the end |            |         |          |             |
-+------+-------+----------------------------------------------------+------------+---------+----------+-------------+
-DEBUG:__main__:client script sending 0015:stop @1974
-DEBUG:__main__:ServerSaid: Transaction: stop something COMPLETED. Referenced ID is: 1974
-DEBUG:__main__:client script sending 0033:list task for project weekly
-DEBUG:__main__:ServerSaid: +Showing items 1 to 6:----------------------------------------------+------------+---------+----------+-------------+
-| ID   | State |                                        Description | Start_Date | PROJECT | Due_Date | Wakeup_Date |
-+------+-------+----------------------------------------------------+------------+---------+----------+-------------+
-| 1313 | Open  |        consider adding to a task or activity being | 17ww39.Sun | weekly  | N/A      | N/A         |
-|      |       |     closed, (adding a) text related to teh closure |            |         |          |             |
-|      |       |   (like - fixed, what was done, what remains etc). |            |         |          |             |
-| 1878 | Open  |   make it so only one window opens, and the client | 17ww45.Sun | weekly  | N/A      | N/A         |
-|      |       |                    window opens at the right size. |            |         |          |             |
-| 1879 | Open  |   enable a method to insert something with a start | 17ww45.Sun | weekly  | N/A      | N/A         |
-|      |       |     time in the past (or future?). this is for the |            |         |          |             |
-|      |       |   case that someone forgot to put an activity/task |            |         |          |             |
-|      |       |               that started yesterday (for example) |            |         |          |             |
-| 1889 | Open  |   add table print out for more commands (like list | 17ww45.Mon | weekly  | N/A      | N/A         |
-|      |       |                                  @xxx for example) |            |         |          |             |
-| 1906 | Open  |   add/remove/list capability to for shortcuts into | 17ww45.Thu | weekly  | N/A      | N/A         |
-|      |       |  the system from the command line that remains for |            |         |          |             |
-|      |       |  later. for example - this can be useful if I have |            |         |          |             |
-|      |       |     a project I created and i want immediatelly to |            |         |          |             |
-|      |       |       start referring to it and creating tasks and |            |         |          |             |
-|      |       | activities, without the need to edit the init file |            |         |          |             |
-|      |       |                                and exit the system |            |         |          |             |
-| 1953 | Open  |            define a method to work with the system | 17ww47.Mon | weekly  | N/A      | N/A         |
-+------+-------+----------------------------------------------------+------------+---------+----------+-------------+
-DEBUG:__main__:client script sending 0083:task @weekly | add print out of what was the issue when coming back with error
-DEBUG:__main__:ServerSaid: Transaction: create task COMPLETED. New ID is: 1984
-DEBUG:__main__:client script sending 0033:list task for project weekly
-DEBUG:__main__:ServerSaid: +Showing items 1 to 7:----------------------------------------------+------------+---------+----------+-------------+
-| ID   | State |                                        Description | Start_Date | PROJECT | Due_Date | Wakeup_Date |
-+------+-------+----------------------------------------------------+------------+---------+----------+-------------+
-| 1313 | Open  |        consider adding to a task or activity being | 17ww39.Sun | weekly  | N/A      | N/A         |
-|      |       |     closed, (adding a) text related to teh closure |            |         |          |             |
-|      |       |   (like - fixed, what was done, what remains etc). |            |         |          |             |
-| 1878 | Open  |   make it so only one window opens, and the client | 17ww45.Sun | weekly  | N/A      | N/A         |
-|      |       |                    window opens at the right size. |            |         |          |             |
-| 1879 | Open  |   enable a method to insert something with a start | 17ww45.Sun | weekly  | N/A      | N/A         |
-|      |       |     time in the past (or future?). this is for the |            |         |          |             |
-|      |       |   case that someone forgot to put an activity/task |            |         |          |             |
-|      |       |               that started yesterday (for example) |            |         |          |             |
-| 1889 | Open  |   add table print out for more commands (like list | 17ww45.Mon | weekly  | N/A      | N/A         |
-|      |       |                                  @xxx for example) |            |         |          |             |
-| 1906 | Open  |   add/remove/list capability to for shortcuts into | 17ww45.Thu | weekly  | N/A      | N/A         |
-|      |       |  the system from the command line that remains for |            |         |          |             |
-|      |       |  later. for example - this can be useful if I have |            |         |          |             |
-|      |       |     a project I created and i want immediatelly to |            |         |          |             |
-|      |       |       start referring to it and creating tasks and |            |         |          |             |
-|      |       | activities, without the need to edit the init file |            |         |          |             |
-|      |       |                                and exit the system |            |         |          |             |
-| 1953 | Open  |            define a method to work with the system | 17ww47.Mon | weekly  | N/A      | N/A         |
-| 1984 | Open  |    add print out of what was the issue when coming | 17ww48.Mon | weekly  |          |             |
-|      |       |                                    back with error |            |         |          |             |
-+------+-------+----------------------------------------------------+------------+---------+----------+-------------+
+DEBUG:__main__:ServerSaid: Transaction: start activity COMPLETED. New ID is: 2058
+DEBUG:__main__:client script sending 0046:today | start 1PM after moving Idan stuff
+DEBUG:__main__:ServerSaid: Transaction: start activity COMPLETED. New ID is: 2059
 DEBUG:__main__:Client closing socket

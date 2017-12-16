@@ -78,12 +78,14 @@ dfp_columns = ['Name',
                'State',
                'MEGAPROJECT',
                'Description',
+               'Tag',
                ]
 # tasks
 dft_columns = ['State',
                'Description',
                'Start_Date',
                'PROJECT',
+               'Tag',
                # optional from here
                'Due_Date',
                'Expiration_Date',
@@ -99,6 +101,7 @@ dft_columns = ['State',
 dfa_columns = ['State',
                'Start_Date',
                'Description',
+               'Tag',
                'End_Date',
                'Wakeup_Date',
                'TASK',
@@ -122,15 +125,17 @@ dfp_columns_to_print = ['Name',
                         'State',
                         'MEGAPROJECT',
                         'Description',
+                        'Tag',
                         ]
 # tasks
 dft_columns_to_print = ['State',
                         'Description',
                         'Start_Date',
                         'PROJECT',
-                        # optional from here
-                        'Due_Date',
+                        'Tag',
                         'Wakeup_Date'
+                        # optional from here
+                        #'Due_Date',
                         #'Location',
                         #'Context',
                         #'Reminders',
@@ -142,8 +147,9 @@ dft_columns_to_print = ['State',
 dfa_columns_to_print = ['State',
                         'Start_Date',
                         'Description',
-                        'End_Date',
-                        'Wakeup_Date'
+                        'Tag',
+                        #'End_Date',
+                        'Wakeup_Date',
                         #'TASK',
                         #'PROJECT'
                         ]
@@ -289,6 +295,14 @@ help_message = '''
 57   move @10661 to test2
 58   set max_width value 13
 59   list parameter
+60   list shortcut
+61   create shortcut | ["simple_substitution", "co", "start @10758 | checking out - go home"]
+62   delete shortcut 5
+63   tag @10673 tag_two
+64   tag project UNIQUE tag_for_proj_one
+65   list tag tag_for_proj_one
+66   list tag
+ 
 ==================================
 '''
 

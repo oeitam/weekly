@@ -8,7 +8,7 @@ import re
 
 from src import defs
 from test import test_defs
-#import shutil
+from shutil import move,copyfile
 from terminaltables import AsciiTable
 from textwrap import wrap
 
@@ -67,6 +67,19 @@ def search_in_df(x,list_to_fill,pat):
             return True
     return False
 
+def if_list_find_item(item, tag):
+    if type(item) == list:
+        if tag in item:
+            return True
+    return False
+
+def if_list_and_not_empty(item):
+    if type(item) == list:
+        if len(item) > 0:
+            return True
+    return False
+
+
 logger = logging.getLogger(__name__)
 
 conv = lambda x: str(int(x)) if not math.isnan(x) else 'N/A'
@@ -119,6 +132,13 @@ class Db(object):
                                   'set param'          : self.set_param,
                                   'list parameter'     : self.list_parameter,
                                   'list shortcut'      : self.list_shortcut,
+                                  'create shortcut'    : self.create_shortcut,
+                                  'delete shortcut'    : self.delete_shortcut,
+                                  'tag something'      : self.tagging,
+                                  'untag something'    : self.tagging,
+                                  'tag project'        : self.tagging_project,
+                                  'untag project'      : self.tagging_project,
+                                  'list tag'           : self.list_tag,
                                   #'list project'       : self.list_project,
                                   #'list task'          : self.list_task,
                                   #'list activity'      : self.list_activity,
@@ -208,28 +228,32 @@ class Db(object):
         # otherwise - set to None
         #metaproj
         if os.path.isfile(defs.data_loc + '/dfm.csv'):
-            self.dfm = pd.read_csv(defs.data_loc + '/dfm.csv',converters={'PROJECTs_List': literal_eval})
+            self.dfm = pd.read_csv(defs.data_loc + '/dfm.csv',\
+                           converters={'PROJECTs_List': literal_eval})
             self.dfm.set_index('ID', inplace=True)
             self.db_table['dfm'] = self.dfm
         else:
             self.dfm = None
         # proj
         if os.path.isfile(defs.data_loc + '/dfp.csv'):
-            self.dfp = pd.read_csv(defs.data_loc + '/dfp.csv')
+            self.dfp = pd.read_csv(defs.data_loc + '/dfp.csv',\
+                           converters={'Tag': literal_eval})
             self.dfp.set_index('ID', inplace=True)
             self.db_table['dfp'] = self.dfp
         else:
             self.dfp = None
         # task
         if os.path.isfile(defs.data_loc + '/dft.csv'):
-            self.dft = pd.read_csv(defs.data_loc + '/dft.csv',converters={'ACTIVITYs': literal_eval,'Sub_TASKs': literal_eval})
+            self.dft = pd.read_csv(defs.data_loc + '/dft.csv',\
+                           converters={'ACTIVITYs': literal_eval,'Sub_TASKs': literal_eval,'Tag': literal_eval})
             self.dft.set_index('ID', inplace=True)
             self.db_table['dft'] = self.dft
         else:
             self.dft = None
         # activity
         if os.path.isfile(defs.data_loc + '/dfa.csv'):
-            self.dfa = pd.read_csv(defs.data_loc + '/dfa.csv',converters={'TASK': myconv,'PROJECT': myconv})
+            self.dfa = pd.read_csv(defs.data_loc + '/dfa.csv',\
+                           converters={'TASK': myconv,'PROJECT': myconv, 'Tag': literal_eval})
             self.dfa.set_index('ID', inplace=True)
             self.db_table['dfa'] = self.dfa
         else:
@@ -269,6 +293,9 @@ class Db(object):
             self.move_to                = 'clean'
             self.param_to_set           = 'clean'
             self.value_to_set           = 'clean'
+            self.shortcut_to_delete     = 'clean'
+            self.tag                    = 'clean'
+            self.item_to_tag_or_untag   = 'clean'
             if hasattr(defs,'list_resp_row_limit'):
                 self.list_resp_row_limit = defs.list_resp_row_limit
             else:
@@ -344,16 +371,15 @@ class Db(object):
 
     # set the project name for the next transaction
     def set_project_name(self, project_name):
-        had_error = 0
         if project_name.isdigit():
             # look for the project 'verbal' name
             if self.dfp is not None:
                 if int(project_name) in self.dfp.index:
                     self.project_name = self.dfp.loc[int(project_name)].Name
                 else:
-                    had_error = 1
+                    self.had_error('Cannot find project {}\n'.format(project_name))
             else:
-                had_error = 1
+                self.had_error('Project database does not exist.\n')
         else:
             self.project_name = project_name
 
@@ -378,15 +404,18 @@ class Db(object):
             if res2:
                 self.create_return_message(True)
             else:
-                self.had_error()
+                if self.error_details == 'clean':
+                    self.had_error()
                 self.create_return_message(False)
         else:
-            self.had_error()
+            if self.error_details == 'clean':
+                self.had_error()
             self.create_return_message(False)
         return True
 
-    def had_error(self):
+    def had_error(self,err_text=''):
         logger.debug("in had_error. Huston - we have a problem!")
+        self.error_details = err_text
         return False
 
     def create_return_message(self, success):
@@ -394,7 +423,7 @@ class Db(object):
             if success:
                 m = self.list_resp
             else:
-                m = "Transaction: {} FAILED with ERROR: {}".format(self.transaction_type, self.error_details)
+                m = "Transaction: {} FAILED with ERROR:\n {}".format(self.transaction_type, self.error_details)
         elif ( 'stop some' in self.transaction_type
             or 'cont some' in self.transaction_type
             or 'sleep some' in self.transaction_type
@@ -402,7 +431,7 @@ class Db(object):
             if success:
                 m = "Transaction: {} COMPLETED. Referenced ID is: {}".format(self.transaction_type, self.use_this_ID_for_ref)
             else:
-                m = "Transaction: {} FAILED with ERROR: {}".format(self.transaction_type, self.error_details)
+                m = "Transaction: {} FAILED with ERROR:\n {}".format(self.transaction_type, self.error_details)
         elif (self.transaction_type == 'help'):
             if self.help_search != 'clean':
                 l1 = defs.help_message.split('\n')
@@ -419,7 +448,7 @@ class Db(object):
                 if self.return_message_ext1 != 'clean':
                     m += self.return_message_ext1
             else:
-                m = "Transaction: {} FAILED with ERROR: {}".format(self.transaction_type, self.error_details)
+                m = "Transaction: {} FAILED with ERROR:\n {}".format(self.transaction_type, self.error_details)
 
         self.return_message = m
 
@@ -439,7 +468,7 @@ class Db(object):
                 return False
 
         pID = self.get_new_ID()
-        l = [self.project_name, 'Started', self.megaproject_name, self.trans_description]
+        l = [self.project_name, 'Started', self.megaproject_name, self.trans_description,[]]
         ldf = pd.DataFrame(data=[l], index=[pID], columns=defs.dfp_columns)
         ldf.index.name = 'ID'
         logger.debug(ldf.to_string())
@@ -470,18 +499,14 @@ class Db(object):
         ldf.index.name = 'ID'
         logger.debug(ldf.to_string())
         self.add_to_db(which_db='dfm',df_to_add=ldf)
-        return "True"
+        return True
 
     # create a task
     # for now - no support for optional
     def create_task(self):
         pID = self.get_new_ID()
-        # for optional fields, put in ''
-        #'State','Description','Creation_Date','PROJECT',
-        # optional from here
-        #'Due_Date','Expiration_Date''Location','Context','Reminders','ACTIVITYs',
-        #'Sub_TASKs','Parent_TASK',
-        l = ['Open', self.trans_description, self.get_time_str(date.today()), self.project_name,
+        # find the project name in case it was given as number
+        l = ['Open', self.trans_description, self.get_time_str(date.today()), self.project_name,[],
              '','','','','',
              [],[],'']
         ldf = pd.DataFrame(data=[l], index=[pID], columns=defs.dft_columns)
@@ -493,22 +518,31 @@ class Db(object):
     # craete an ACTIVITY
     def start_activity(self):
         pID = self.get_new_ID()
+        found_in = 'did not look yet ...'
         # search for the related task or project
-        found_in = 'no where'
-        if self.dfp is not None and self.use_this_ID_for_ref in self.dfp.index.values:
-            found_in = 'projects'
+        # if the use_this_ID_for_ref was actually given as a project name
+        if not self.use_this_ID_for_ref.isdigit() : # it is not just digits
+            num = int(self.dfp.index[self.dfp['Name'] == self.use_this_ID_for_ref].tolist()[0])
+            if num is not None:
+                self.use_this_ID_for_ref = num
+                couple = ['', str(int(self.use_this_ID_for_ref))]
+                found_in = 'projects'
+            else:
+                return False
+        elif ((self.dfp is not None) and (int(self.use_this_ID_for_ref) in list(self.dfp.index.values))):
             couple = ['', str(int(self.use_this_ID_for_ref))]
-        elif self.dft is not None and self.use_this_ID_for_ref in self.dft.index.values :
-            found_in = 'tasks'
+            found_in = 'projects'
+        elif ((self.dft is not None) and (int(self.use_this_ID_for_ref) in list(self.dft.index.values))) :
             couple = [str(int(self.use_this_ID_for_ref)), ""]
+            found_in = 'tasks'
         elif self.use_this_ID_for_ref == 0: # indicating - ci or co (or non related activity)
-            found_in = 'orphan activity'
             couple = ['','']
+            found_in = 'not found'
         else: #found none
             self.error_details = 'ID {} from {} was not found'.format(self.use_this_ID_for_ref, found_in)
             logger.debug(self.error_details)
             return False
-        l = ['Started', self.get_time_str(date.today()), self.trans_description,
+        l = ['Started', self.get_time_str(date.today()), self.trans_description,[],
              '', ''] + couple
         ldf = pd.DataFrame(data=[l], index=[pID], columns=defs.dfa_columns)
         ldf.index.name = 'ID'
@@ -832,7 +866,8 @@ class Db(object):
                         sl[i] = '\n'.join(wrap(sl[i], defs.max_width))
                 l.append(sl)
             table_instance = AsciiTable(l,title)
-            table_instance.justify_columns[2] = 'right'
+            #table_instance.justify_columns[3] = 'right'
+            #table_instance.justify_columns[2] = 'right'
 
             #print("=====================================")
             #self.myprint(df,which_db,title)
@@ -940,6 +975,7 @@ class Db(object):
         # example
         # '{:15} {:5} {:5} {:10}\n'.format('Megaproject','db', 'is', 'online')
         self.return_message_ext1 = '\nOnline Status:\n'
+        self.return_message_ext1 += '==============\n'
         if self.dfm is not None:
             self.return_message_ext1 += '{:12} {:4} {:4} {:8}\n'.format('Megaproject', 'db', 'is', 'online')
         else:
@@ -959,6 +995,15 @@ class Db(object):
         cid = self.get_current_ID()
         lstr = "The ID in file is: {}\n".format(cid)
         self.return_message_ext1     += lstr
+        self.return_message_ext1 += '==========================\n'
+        # add if developement or production
+        self.return_message_ext1 += 'Working environment is {}\n'\
+                .format(defs.config['MAIN']['dev_or_prod'])
+        # list of wake ups, and add into the return message
+        self.return_message_ext1 += '==========================\n'
+        self.list_wakeup()
+        self.return_message_ext1 += self.list_resp
+        self.return_message_ext1 += '==========================\n'
         return True
 
     def move_items(self):
@@ -1042,6 +1087,7 @@ class Db(object):
         return True
 
     def list_shortcut(self):
+        defs.config.read(r'C:\weekly.local\weekly.local.cfg')
         self.list_resp = ''
         for sect in defs.config.sections():
             if 'replace_' in sect:
@@ -1057,8 +1103,171 @@ class Db(object):
                 self.list_resp += "===================================\n\n"
         return True
 
-#[replace_2]
-#replacement_type = simple_substitution
-#replace_what = co
-#replace_with = start @10758 | checking out - go home
+    def create_shortcut(self):
+        # find the number of the next repalcement
+        max_replacement_num = 0
+        for sect in defs.config.sections():
+            if 'replace_' in sect:
+                (a1,a2,a3) = sect.partition("_")
+                if int(a3) >= max_replacement_num:
+                    max_replacement_num = int(a3) +1
+        # write to config file, assuming replacement is always 3 long !
+        l = eval(self.trans_description)
+        f = open(r'C:\weekly.local\weekly.local.cfg', 'a')
+        f.write('\n')
+        f.write('[replace_{}]\n'.format(max_replacement_num))
+        f.write('replacement_type = {}\n'.format(l[0]))
+        f.write('replace_what = {}\n'.format(l[1]))
+        f.write('replace_with  = {}\n\n'.format(l[2]))
+        f.close()
+        # reread the config
+        defs.config.read(r'C:\weekly.local\weekly.local.cfg')
+        return True
+
+    def delete_shortcut(self):
+        copy_line = True
+        temp_file = r'c:\temp\stamfile.txt'
+        pat = '^\[replace_'+self.shortcut_to_delete+'\]'
+        f = open(temp_file, 'w')
+        with open(r'C:\weekly.local\weekly.local.cfg') as origin_file:
+            for line in origin_file:
+                if copy_line :
+                    m = re.match(pat, line)
+                    if m:
+                        copy_line = False
+                    else:
+                        f.write(line)
+                else:
+                    n = re.match('\[replace_\d+\]$', line) #check if a new section starts
+                    if n:
+                        copy_line = True
+                        #f.write('\n')
+                        f.write(line)
+
+        f.close()
+        move(temp_file,r'C:\weekly.local\weekly.local.cfg')
+        return True
+
+    def tagging(self):
+        if self.transaction_type == 'tag something':
+            # look for the item and set the tag
+            found_in = 'nowhere'
+            ref_id = int(self.use_this_ID_for_ref)
+            if ((self.dfp is not None) and\
+                        (ref_id in list(self.dfp.index.values))):
+                found_in = 'project'
+                self.dfp.loc[ref_id,'Tag'].append(self.tag)
+                item = self.dfp.loc[ref_id,'Name']
+            elif ((self.dft is not None) and (ref_id in list(self.dft.index.values))):
+                found_in = 'task'
+                self.dft.loc[ref_id, 'Tag'].append(self.tag)
+                item = ref_id
+            elif ((self.dfa is not None) and (ref_id in list(self.dfa.index.values))):
+                found_in = 'activity'
+                self.dfa.loc[ref_id, 'Tag'].append(self.tag)
+                item = ref_id
+            self.return_message_ext1 = "\nTag {} was added to {} {}\n". \
+                format(self.tag, found_in, item )
+        ###
+        elif self.transaction_type == 'untag something':
+            # look for the item and set the tag
+            found_in = 'nowhere'
+            ref_id = int(self.use_this_ID_for_ref)
+            if ((self.dfp is not None) and \
+                        (ref_id in list(self.dfp.index.values))):
+                found_in = 'project'
+                if self.tag == 'clean':
+                    self.dfp.loc[ref_id, 'Tag'].clear()
+                else:
+                    if self.tag in self.dfp.loc[ref_id, 'Tag']: \
+                            self.dfp.loc[ref_id, 'Tag'].remove(self.tag)
+                item = self.dfp.loc[ref_id, 'Name']
+            elif ((self.dft is not None) and (ref_id in list(self.dft.index.values))):
+                found_in = 'task'
+                if self.tag == 'clean':
+                    self.dft.loc[ref_id, 'Tag'].clear()
+                else:
+                    if self.tag in self.dft.loc[ref_id, 'Tag']: \
+                            self.dft.loc[ref_id, 'Tag'].remove(self.tag)
+                item = ref_id
+            elif ((self.dfa is not None) and (ref_id in list(self.dfa.index.values))):
+                found_in = 'activity'
+                if self.tag == 'clean':
+                    self.dfa.loc[ref_id, 'Tag'].clear()
+                else:
+                    if self.tag in self.dfa.loc[ref_id, 'Tag']: \
+                            self.dfa.loc[ref_id, 'Tag'].remove(self.tag)
+                item = ref_id
+            if self.tag == 'clean':
+                self.return_message_ext1 = "\nAll tags were removed from {} {}\n". \
+                    format(found_in, item)
+            else:
+                self.return_message_ext1 = "\nTag {} was removed from {} {}\n". \
+                    format(self.tag, found_in, item)
+        ###
+
+        return True
+
+    def tagging_project(self):
+        # find the project
+        if ((self.dfp is not None) and \
+                    (self.item_to_tag_or_untag in list(self.dfp.Name))):
+            if len(self.dfp[self.dfp['Name'] == self.item_to_tag_or_untag]) > 1 :
+                self.had_error('Multiple projects named with the specified name {}\n'.\
+                               format(self.item_to_tag_or_untag))
+                return False
+            ref = int(self.dfp.index[self.dfp['Name'] == self.item_to_tag_or_untag].values)
+        else:
+            self.had_error('Could not find the specified project {}\n'.\
+                           format(self.item_to_tag_or_untag))
+            return False
+
+        if self.transaction_type == 'tag project':
+            self.dfp.loc[ref, 'Tag'].append(self.tag)
+        elif self.transaction_type == 'untag project':
+            if self.tag != 'clean':
+                if self.tag in self.dfp.loc[ref,'Tag']:
+                    self.dfp.loc[ref, 'Tag'].remove(self.tag)
+                else:
+                    self.had_error('Tag {} was not found for the specied project {}.\n'.\
+                                   format(self.tag, self.item_to_tag_or_untag))
+                    return False
+            else: # tag is clean ==> remove all
+                self.dfp.loc[ref,'Tag'].clear()
+
+        return True
+
+    def list_tag(self):
+        if self.tag == 'clean':
+            self.tag = 'any-tag-at-all'
+            # search for the tag in project
+            df_proj = self.dfp[self.dfp['Tag'].apply(if_list_and_not_empty) == True]
+            # search for the tag in project
+            df_task = self.dft[self.dft['Tag'].apply(if_list_and_not_empty) == True]
+            # search for the tag in project
+            df_act  = self.dfa[self.dfa['Tag'].apply(if_list_and_not_empty) == True]
+        else: # listing for a certain tag
+            # search for the tag in project
+            df_proj = self.dfp[self.dfp['Tag'].apply(if_list_find_item, args=(self.tag,)) == True]
+            # search for the tag in project
+            df_task = self.dft[self.dft['Tag'].apply(if_list_find_item, args=(self.tag,)) == True]
+            # search for the tag in project
+            df_act  = self.dfa[self.dfa['Tag'].apply(if_list_find_item, args=(self.tag,)) == True]
+        if len(df_proj) > 0:
+            str1 = self.df_to_list_resp(df_proj, 'dfp', '*Projects with tag {}*'.\
+                                        format(self.tag))
+            self.list_resp = str1 # first, removing the 'clean'
+            self.list_resp += '\n\n'
+        if len(df_task) > 0:
+            str2 = self.df_to_list_resp(df_task, 'dft', '*Tasks with tag {}*'.\
+                                        format(self.tag))
+            self.list_resp += str2
+            self.list_resp += '\n\n'
+        if len(df_act) > 0:
+            str3 = self.df_to_list_resp(df_act, 'dfa', '*Activities with tag {}*'.\
+                                        format(self.tag))
+            self.list_resp += str3
+            self.list_resp += '\n\n'
+
+        return True
 

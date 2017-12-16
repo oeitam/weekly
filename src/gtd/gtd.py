@@ -157,8 +157,10 @@ class Gtd(object):
         # since the tokenizer is not dealing well with the '|'
         # use this piece of code to handle that part
         # but first we check that there are no more than one '|'
-        if self.current_data.count('|') > 1:
-            return False
+        # >>>>> ??????????
+        #if self.current_data.count('|') > 1:
+        #    return False
+        # >>>>> ??????????
         if '|' in self.current_data:
             (t1,t2, t3) = self.current_data.partition('|')
             gdb.set_trans_description(t3)
@@ -368,6 +370,9 @@ prefix("from", 120)
 prefix("to", 120)
 prefix("set", 20)
 prefix("value", 20)
+prefix("tag", 20)
+prefix("untag", 20)
+
 symbol(".", 120)
 
 
@@ -404,6 +409,9 @@ def nud(self):
         self.id = "create list"
         advance() # to get to the list of items - jump over 'list'
         self.first = expression()
+    if token.value == "shortcut":
+        self.id = "create shortcut"
+        gdb.transaction_is(self.id)
     return self
 
 @method(symbol("@"))
@@ -417,7 +425,7 @@ def nud(self):
         advance()  # to check what is beyond ..
     elif gdb.transaction_type == 'start activity':
         # deal with the spacial case where token.value can be 'n'
-        gdb.use_this_ID_for_ref = int(token.value) #get the id to relate to the action
+        gdb.use_this_ID_for_ref = token.value #int(token.value) #get the id to relate to the action
     elif gdb.transaction_type == "stop something":
         gdb.use_this_ID_for_ref = int(token.value) #get the id to relate to the action
     elif gdb.transaction_type == "cont something":
@@ -454,6 +462,19 @@ def nud(self):
     elif gdb.transaction_type == "move item":
         gdb.use_this_ID_for_ref = int(token.value)  # get the id relate to to the action
         advance()
+    elif gdb.transaction_type == "tag something":
+        gdb.use_this_ID_for_ref = int(token.value)  # get the id relate to to the action
+        advance()
+        gdb.tag = token.value
+        if gdb.tag == 'any-tag-at-all':
+            raise  ValueError("Illegal tag value")
+    elif gdb.transaction_type == "untag something":
+        gdb.use_this_ID_for_ref = int(token.value)  # get the id relate to to the action
+        advance()
+        if token.value is not None:
+            gdb.tag = token.value
+            if gdb.tag == 'any-tag-at-all':
+                raise ValueError("Illegal tag value")
 
     self.first = expression()
     return self
@@ -538,6 +559,13 @@ def nud(self):
     elif token.value == 'shortcut':
         gdb.transaction_is('list shortcut')
         return self
+    elif token.id == 'tag':
+        gdb.transaction_is('list tag')
+        advance() # to process the rest
+        if token.id != '(end)':
+            gdb.tag = token.value
+            if gdb.tag == 'any-tag-at-all':
+                raise ValueError("Illegal tag value")
     elif token.id == '(end)':
         gdb.keep_context = True
 
@@ -703,7 +731,10 @@ def nud(self):
     logger.debug('help nud')
     gdb.transaction_is('help')
     if token.id != '(end)':
-        gdb.help_search = token.id
+        if token.value is None:
+            gdb.help_search = token.id
+        else:
+            gdb.help_search = token.value
     return self
 
 @method(symbol("delete"))
@@ -711,6 +742,11 @@ def nud(self):
     logger.debug('deleate nud')
     if token.id == '@':
         gdb.transaction_is('delete id')
+    elif token.value == 'shortcut':
+        gdb.transaction_is('delete shortcut')
+        advance()
+        gdb.shortcut_to_deleate = token.value
+        advance() # get to the next token (over teh replace number
     else:
         raise SyntaxError(
             "Unknown token (%r)." % token.id
@@ -800,4 +836,45 @@ def nud(self):
     gdb.value_to_set = token.value
     advance()
     self.first = expression()
+
+@method(symbol("tag"))
+def nud(self):
+    logger.debug('tag nud')
+    if token.value == 'project':
+        gdb.transaction_is('tag project')
+        advance() # to get over project
+        gdb.item_to_tag_or_untag = token.value
+        advance() # over the name of the project to tag
+        gdb.tag = token.value
+        if gdb.tag == 'any-tag-at-all':
+            raise  ValueError("Illegal tag value")
+    elif token.id == '@':
+        gdb.transaction_is('tag something')
+    elif gdb.transaction_type != 'clean' : # precaution
+        # for the case where the keyword tag defines that the
+        # word following is the tag
+        gdb.tag = token.value
+        if gdb.tag == 'any-tag-at-all':
+            raise  ValueError("Illegal tag value")
+        advance()
+
+    self.first = expression()
+
+@method(symbol("untag"))
+def nud(self):
+    logger.debug('untag nud')
+    if token.value == 'project':
+        gdb.transaction_is('untag project')
+        advance() # to get over project
+        gdb.item_to_tag_or_untag = token.value
+        advance() # over the name of the project to tag
+        if token.value is not None:
+            gdb.tag = token.value
+            if gdb.tag == 'any-tag-at-all':
+                raise ValueError("Illegal tag value")
+    else:
+        gdb.transaction_is('untag something')
+    self.first = expression()
+
+
 
