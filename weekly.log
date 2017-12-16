@@ -1,0 +1,417 @@
+INFO:root:Logging (into weekly.log)Started
+INFO:root:Logging (client direct) Started
+DEBUG:src.db.db:setting up databases
+DEBUG:src.db.db:Starting with ID 13519
+DEBUG:src.db.db:ID is: 13519
+DEBUG:src.db.db:class Db initialized
+DEBUG:src.server.client_direct:client script sending 0023:tag @10673 tag_two
+DEBUG:src.gtd.gtd:stored new data:tag @10673 tag_two
+DEBUG:src.gtd.gtd:data from c: tag @10673 tag_two
+DEBUG:src.gtd.gtd:I am in parse tag @10673 tag_two
+DEBUG:src.gtd.gtd:I am in tokenize tag @10673 tag_two
+DEBUG:src.gtd.gtd:I am in tokenize_weekly tag @10673 tag_two
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (BACKQUOTE), string='utf-8', start=(0, 0), end=(0, 0), line='')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='tag', start=(1, 0), end=(1, 3), line='tag @10673 tag_two')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='@', start=(1, 4), end=(1, 5), line='tag @10673 tag_two')
+DEBUG:src.gtd.gtd:tag nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=2 (NUMBER), string='10673', start=(1, 5), end=(1, 10), line='tag @10673 tag_two')
+DEBUG:src.gtd.gtd:@ nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='tag_two', start=(1, 11), end=(1, 18), line='tag @10673 tag_two')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
+DEBUG:src.gtd.gtd:this is the return_message: Transaction: tag something COMPLETED. New ID is: -1
+Tag tag_two was added to task 10673
+
+DEBUG:src.server.server:return_message: 0093:
+Transaction: tag something COMPLETED. New ID is: -1
+Tag tag_two was added to task 10673
+
+DEBUG:src.server.client_direct:ServerSaid: 0093:
+Transaction: tag something COMPLETED. New ID is: -1
+Tag tag_two was added to task 10673
+
+DEBUG:src.server.client_direct:client script sending 0032:tag @13399 tag_for_proj_one
+DEBUG:src.gtd.gtd:stored new data:tag @13399 tag_for_proj_one
+DEBUG:src.gtd.gtd:data from c: tag @13399 tag_for_proj_one
+DEBUG:src.gtd.gtd:I am in parse tag @13399 tag_for_proj_one
+DEBUG:src.gtd.gtd:I am in tokenize tag @13399 tag_for_proj_one
+DEBUG:src.gtd.gtd:I am in tokenize_weekly tag @13399 tag_for_proj_one
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (BACKQUOTE), string='utf-8', start=(0, 0), end=(0, 0), line='')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='tag', start=(1, 0), end=(1, 3), line='tag @13399 tag_for_proj_one')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='@', start=(1, 4), end=(1, 5), line='tag @13399 tag_for_proj_one')
+DEBUG:src.gtd.gtd:tag nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=2 (NUMBER), string='13399', start=(1, 5), end=(1, 10), line='tag @13399 tag_for_proj_one')
+DEBUG:src.gtd.gtd:@ nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='tag_for_proj_one', start=(1, 11), end=(1, 27), line='tag @13399 tag_for_proj_one')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
+DEBUG:src.gtd.gtd:this is the return_message: Transaction: tag something COMPLETED. New ID is: -1
+Tag tag_for_proj_one was added to activity 13399
+
+DEBUG:src.server.server:return_message: 0106:
+Transaction: tag something COMPLETED. New ID is: -1
+Tag tag_for_proj_one was added to activity 13399
+
+DEBUG:src.server.client_direct:ServerSaid: 0106:
+Transaction: tag something COMPLETED. New ID is: -1
+Tag tag_for_proj_one was added to activity 13399
+
+DEBUG:src.server.client_direct:client script sending 0032:tag @13373 tag_for_proj_one
+DEBUG:src.gtd.gtd:stored new data:tag @13373 tag_for_proj_one
+DEBUG:src.gtd.gtd:data from c: tag @13373 tag_for_proj_one
+DEBUG:src.gtd.gtd:I am in parse tag @13373 tag_for_proj_one
+DEBUG:src.gtd.gtd:I am in tokenize tag @13373 tag_for_proj_one
+DEBUG:src.gtd.gtd:I am in tokenize_weekly tag @13373 tag_for_proj_one
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (BACKQUOTE), string='utf-8', start=(0, 0), end=(0, 0), line='')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='tag', start=(1, 0), end=(1, 3), line='tag @13373 tag_for_proj_one')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='@', start=(1, 4), end=(1, 5), line='tag @13373 tag_for_proj_one')
+DEBUG:src.gtd.gtd:tag nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=2 (NUMBER), string='13373', start=(1, 5), end=(1, 10), line='tag @13373 tag_for_proj_one')
+DEBUG:src.gtd.gtd:@ nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='tag_for_proj_one', start=(1, 11), end=(1, 27), line='tag @13373 tag_for_proj_one')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
+DEBUG:src.gtd.gtd:this is the return_message: Transaction: tag something COMPLETED. New ID is: -1
+Tag tag_for_proj_one was added to task 13373
+
+DEBUG:src.server.server:return_message: 0102:
+Transaction: tag something COMPLETED. New ID is: -1
+Tag tag_for_proj_one was added to task 13373
+
+DEBUG:src.server.client_direct:ServerSaid: 0102:
+Transaction: tag something COMPLETED. New ID is: -1
+Tag tag_for_proj_one was added to task 13373
+
+DEBUG:src.server.client_direct:client script sending 0040:tag project UNIQUE tag_for_proj_one
+DEBUG:src.gtd.gtd:stored new data:tag project UNIQUE tag_for_proj_one
+DEBUG:src.gtd.gtd:data from c: tag project UNIQUE tag_for_proj_one
+DEBUG:src.gtd.gtd:I am in parse tag project UNIQUE tag_for_proj_one
+DEBUG:src.gtd.gtd:I am in tokenize tag project UNIQUE tag_for_proj_one
+DEBUG:src.gtd.gtd:I am in tokenize_weekly tag project UNIQUE tag_for_proj_one
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (BACKQUOTE), string='utf-8', start=(0, 0), end=(0, 0), line='')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='tag', start=(1, 0), end=(1, 3), line='tag project UNIQUE tag_for_proj_one')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='project', start=(1, 4), end=(1, 11), line='tag project UNIQUE tag_for_proj_one')
+DEBUG:src.gtd.gtd:tag nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='UNIQUE', start=(1, 12), end=(1, 18), line='tag project UNIQUE tag_for_proj_one')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='tag_for_proj_one', start=(1, 19), end=(1, 35), line='tag project UNIQUE tag_for_proj_one')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
+DEBUG:src.gtd.gtd:this is the return_message: Transaction: tag project COMPLETED. New ID is: -1
+DEBUG:src.server.server:return_message: 0054:
+Transaction: tag project COMPLETED. New ID is: -1
+DEBUG:src.server.client_direct:ServerSaid: 0054:
+Transaction: tag project COMPLETED. New ID is: -1
+DEBUG:src.server.client_direct:client script sending 0040:tag project UNIQUE tag_for_proj_one
+DEBUG:src.gtd.gtd:stored new data:tag project UNIQUE tag_for_proj_one
+DEBUG:src.gtd.gtd:data from c: tag project UNIQUE tag_for_proj_one
+DEBUG:src.gtd.gtd:I am in parse tag project UNIQUE tag_for_proj_one
+DEBUG:src.gtd.gtd:I am in tokenize tag project UNIQUE tag_for_proj_one
+DEBUG:src.gtd.gtd:I am in tokenize_weekly tag project UNIQUE tag_for_proj_one
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (BACKQUOTE), string='utf-8', start=(0, 0), end=(0, 0), line='')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='tag', start=(1, 0), end=(1, 3), line='tag project UNIQUE tag_for_proj_one')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='project', start=(1, 4), end=(1, 11), line='tag project UNIQUE tag_for_proj_one')
+DEBUG:src.gtd.gtd:tag nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='UNIQUE', start=(1, 12), end=(1, 18), line='tag project UNIQUE tag_for_proj_one')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='tag_for_proj_one', start=(1, 19), end=(1, 35), line='tag project UNIQUE tag_for_proj_one')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
+DEBUG:src.gtd.gtd:this is the return_message: Transaction: tag project COMPLETED. New ID is: -1
+DEBUG:src.server.server:return_message: 0054:
+Transaction: tag project COMPLETED. New ID is: -1
+DEBUG:src.server.client_direct:ServerSaid: 0054:
+Transaction: tag project COMPLETED. New ID is: -1
+DEBUG:src.server.client_direct:client script sending 0040:tag project UNIQUE tag_for_proj_one
+DEBUG:src.gtd.gtd:stored new data:tag project UNIQUE tag_for_proj_one
+DEBUG:src.gtd.gtd:data from c: tag project UNIQUE tag_for_proj_one
+DEBUG:src.gtd.gtd:I am in parse tag project UNIQUE tag_for_proj_one
+DEBUG:src.gtd.gtd:I am in tokenize tag project UNIQUE tag_for_proj_one
+DEBUG:src.gtd.gtd:I am in tokenize_weekly tag project UNIQUE tag_for_proj_one
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (BACKQUOTE), string='utf-8', start=(0, 0), end=(0, 0), line='')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='tag', start=(1, 0), end=(1, 3), line='tag project UNIQUE tag_for_proj_one')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='project', start=(1, 4), end=(1, 11), line='tag project UNIQUE tag_for_proj_one')
+DEBUG:src.gtd.gtd:tag nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='UNIQUE', start=(1, 12), end=(1, 18), line='tag project UNIQUE tag_for_proj_one')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='tag_for_proj_one', start=(1, 19), end=(1, 35), line='tag project UNIQUE tag_for_proj_one')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
+DEBUG:src.gtd.gtd:this is the return_message: Transaction: tag project COMPLETED. New ID is: -1
+DEBUG:src.server.server:return_message: 0054:
+Transaction: tag project COMPLETED. New ID is: -1
+DEBUG:src.server.client_direct:ServerSaid: 0054:
+Transaction: tag project COMPLETED. New ID is: -1
+DEBUG:src.server.client_direct:client script sending 0030:list tag tag_for_proj_one
+DEBUG:src.gtd.gtd:stored new data:list tag tag_for_proj_one
+DEBUG:src.gtd.gtd:data from c: list tag tag_for_proj_one
+DEBUG:src.gtd.gtd:I am in parse list tag tag_for_proj_one
+DEBUG:src.gtd.gtd:I am in tokenize list tag tag_for_proj_one
+DEBUG:src.gtd.gtd:I am in tokenize_weekly list tag tag_for_proj_one
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (BACKQUOTE), string='utf-8', start=(0, 0), end=(0, 0), line='')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='list', start=(1, 0), end=(1, 4), line='list tag tag_for_proj_one')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='tag', start=(1, 5), end=(1, 8), line='list tag tag_for_proj_one')
+DEBUG:src.gtd.gtd:list nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='tag_for_proj_one', start=(1, 9), end=(1, 25), line='list tag tag_for_proj_one')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
+DEBUG:src.gtd.gtd:this is the return_message: +*Projects with tag tag_for_proj_one*----------+--------------------------------------+------------------------------------------+
+| ID    | Name         | State   | MEGAPROJECT | Description                          | Tag                                      |
++-------+--------------+---------+-------------+--------------------------------------+------------------------------------------+
+| 13072 | UNIQUE       | Started | Work11      |  soem                                | ['tag_for_proj_one', 'tag_for_proj_one', |
+|       |              |         |             |                                      | 'tag_for_proj_one']                      |
+| 13367 | project_one1 | Started | Work11      |  this is the first project I created | ['tag_for_proj_one']                     |
++-------+--------------+---------+-------------+--------------------------------------+------------------------------------------+
+
++*Tasks with tag tag_for_proj_one*-----------------------------+------------+-------------+------------------------------------------+-------------+
+| ID    | State | Description                                  | Start_Date | PROJECT     | Tag                                      | Wakeup_Date |
++-------+-------+----------------------------------------------+------------+-------------+------------------------------------------+-------------+
+| 13373 | Open  |  1this is what you need to do on project one | 17ww48.Sat | project_one | ['tag_for_proj_one', 'tag_for_proj_one', | N/A         |
+|       |       |                                              |            |             | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |       |                                              |            |             | 'tag_for_proj_one', 'tag_for_proj_one']  |             |
++-------+-------+----------------------------------------------+------------+-------------+------------------------------------------+-------------+
+
++*Activities with tag tag_for_proj_one*----------------------------------------+------------------------------------------+-------------+
+| ID    | State   | Start_Date | Description                                   | Tag                                      | Wakeup_Date |
++-------+---------+------------+-----------------------------------------------+------------------------------------------+-------------+
+| 13399 | Started | 17ww48.Sat |  two this is some activity related to a taask | ['tag_for_proj_one', 'tag_for_proj_one', | N/A         |
+|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one']  |             |
++-------+---------+------------+-----------------------------------------------+------------------------------------------+-------------+
+
+
+DEBUG:src.server.server:return_message: 3210:
++*Projects with tag tag_for_proj_one*----------+--------------------------------------+------------------------------------------+
+| ID    | Name         | State   | MEGAPROJECT | Description                          | Tag                                      |
++-------+--------------+---------+-------------+--------------------------------------+------------------------------------------+
+| 13072 | UNIQUE       | Started | Work11      |  soem                                | ['tag_for_proj_one', 'tag_for_proj_one', |
+|       |              |         |             |                                      | 'tag_for_proj_one']                      |
+| 13367 | project_one1 | Started | Work11      |  this is the first project I created | ['tag_for_proj_one']                     |
++-------+--------------+---------+-------------+--------------------------------------+------------------------------------------+
+
++*Tasks with tag tag_for_proj_one*-----------------------------+------------+-------------+------------------------------------------+-------------+
+| ID    | State | Description                                  | Start_Date | PROJECT     | Tag                                      | Wakeup_Date |
++-------+-------+----------------------------------------------+------------+-------------+------------------------------------------+-------------+
+| 13373 | Open  |  1this is what you need to do on project one | 17ww48.Sat | project_one | ['tag_for_proj_one', 'tag_for_proj_one', | N/A         |
+|       |       |                                              |            |             | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |       |                                              |            |             | 'tag_for_proj_one', 'tag_for_proj_one']  |             |
++-------+-------+----------------------------------------------+------------+-------------+------------------------------------------+-------------+
+
++*Activities with tag tag_for_proj_one*----------------------------------------+------------------------------------------+-------------+
+| ID    | State   | Start_Date | Description                                   | Tag                                      | Wakeup_Date |
++-------+---------+------------+-----------------------------------------------+------------------------------------------+-------------+
+| 13399 | Started | 17ww48.Sat |  two this is some activity related to a taask | ['tag_for_proj_one', 'tag_for_proj_one', | N/A         |
+|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one']  |             |
++-------+---------+------------+-----------------------------------------------+------------------------------------------+-------------+
+
+
+DEBUG:src.server.client_direct:ServerSaid: 3210:
++*Projects with tag tag_for_proj_one*----------+--------------------------------------+------------------------------------------+
+| ID    | Name         | State   | MEGAPROJECT | Description                          | Tag                                      |
++-------+--------------+---------+-------------+--------------------------------------+------------------------------------------+
+| 13072 | UNIQUE       | Started | Work11      |  soem                                | ['tag_for_proj_one', 'tag_for_proj_one', |
+|       |              |         |             |                                      | 'tag_for_proj_one']                      |
+| 13367 | project_one1 | Started | Work11      |  this is the first project I created | ['tag_for_proj_one']                     |
++-------+--------------+---------+-------------+--------------------------------------+------------------------------------------+
+
++*Tasks with tag tag_for_proj_one*-----------------------------+------------+-------------+------------------------------------------+-------------+
+| ID    | State | Description                                  | Start_Date | PROJECT     | Tag                                      | Wakeup_Date |
++-------+-------+----------------------------------------------+------------+-------------+------------------------------------------+-------------+
+| 13373 | Open  |  1this is what you need to do on project one | 17ww48.Sat | project_one | ['tag_for_proj_one', 'tag_for_proj_one', | N/A         |
+|       |       |                                              |            |             | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |       |                                              |            |             | 'tag_for_proj_one', 'tag_for_proj_one']  |             |
++-------+-------+----------------------------------------------+------------+-------------+------------------------------------------+-------------+
+
++*Activities with tag tag_for_proj_one*----------------------------------------+------------------------------------------+-------------+
+| ID    | State   | Start_Date | Description                                   | Tag                                      | Wakeup_Date |
++-------+---------+------------+-----------------------------------------------+------------------------------------------+-------------+
+| 13399 | Started | 17ww48.Sat |  two this is some activity related to a taask | ['tag_for_proj_one', 'tag_for_proj_one', | N/A         |
+|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one']  |             |
++-------+---------+------------+-----------------------------------------------+------------------------------------------+-------------+
+
+
+DEBUG:src.server.client_direct:client script sending 0013:list tag
+DEBUG:src.gtd.gtd:stored new data:list tag
+DEBUG:src.gtd.gtd:data from c: list tag
+DEBUG:src.gtd.gtd:I am in parse list tag
+DEBUG:src.gtd.gtd:I am in tokenize list tag
+DEBUG:src.gtd.gtd:I am in tokenize_weekly list tag
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (BACKQUOTE), string='utf-8', start=(0, 0), end=(0, 0), line='')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='list', start=(1, 0), end=(1, 4), line='list tag')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='tag', start=(1, 5), end=(1, 8), line='list tag')
+DEBUG:src.gtd.gtd:list nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
+DEBUG:src.gtd.gtd:this is the return_message: +*Projects with tag any-tag-at-all*------------+--------------------------------------+------------------------------------------+
+| ID    | Name         | State   | MEGAPROJECT | Description                          | Tag                                      |
++-------+--------------+---------+-------------+--------------------------------------+------------------------------------------+
+| 13072 | UNIQUE       | Started | Work11      |  soem                                | ['tag_for_proj_one', 'tag_for_proj_one', |
+|       |              |         |             |                                      | 'tag_for_proj_one']                      |
+| 13367 | project_one1 | Started | Work11      |  this is the first project I created | ['tag_for_proj_one']                     |
++-------+--------------+---------+-------------+--------------------------------------+------------------------------------------+
+
++*Tasks with tag any-tag-at-all*-----------------------------------+------------+-------------+----------------------------------------------+-------------+
+| ID    | State | Description                                      | Start_Date | PROJECT     | Tag                                          | Wakeup_Date |
++-------+-------+--------------------------------------------------+------------+-------------+----------------------------------------------+-------------+
+| 10673 | Open  |  1another this is what you need to do on project | 17ww44.Thu | project_one | ['tag_two', 'tag_two', 'tag_two', 'tag_two', | 18ww09.Wed  |
+|       |       | one                                              |            |             | 'tag_two', 'tag_two', 'tag_two', 'tag_two',  |             |
+|       |       |                                                  |            |             | 'tag_two', 'tag_two']                        |             |
+| 13373 | Open  |  1this is what you need to do on project one     | 17ww48.Sat | project_one | ['tag_for_proj_one', 'tag_for_proj_one',     | N/A         |
+|       |       |                                                  |            |             | 'tag_for_proj_one', 'tag_for_proj_one',      |             |
+|       |       |                                                  |            |             | 'tag_for_proj_one', 'tag_for_proj_one']      |             |
++-------+-------+--------------------------------------------------+------------+-------------+----------------------------------------------+-------------+
+
++*Activities with tag any-tag-at-all*------------------------------------------+------------------------------------------+-------------+
+| ID    | State   | Start_Date | Description                                   | Tag                                      | Wakeup_Date |
++-------+---------+------------+-----------------------------------------------+------------------------------------------+-------------+
+| 13399 | Started | 17ww48.Sat |  two this is some activity related to a taask | ['tag_for_proj_one', 'tag_for_proj_one', | N/A         |
+|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one']  |             |
++-------+---------+------------+-----------------------------------------------+------------------------------------------+-------------+
+
+
+DEBUG:src.server.server:return_message: 3737:
++*Projects with tag any-tag-at-all*------------+--------------------------------------+------------------------------------------+
+| ID    | Name         | State   | MEGAPROJECT | Description                          | Tag                                      |
++-------+--------------+---------+-------------+--------------------------------------+------------------------------------------+
+| 13072 | UNIQUE       | Started | Work11      |  soem                                | ['tag_for_proj_one', 'tag_for_proj_one', |
+|       |              |         |             |                                      | 'tag_for_proj_one']                      |
+| 13367 | project_one1 | Started | Work11      |  this is the first project I created | ['tag_for_proj_one']                     |
++-------+--------------+---------+-------------+--------------------------------------+------------------------------------------+
+
++*Tasks with tag any-tag-at-all*-----------------------------------+------------+-------------+----------------------------------------------+-------------+
+| ID    | State | Description                                      | Start_Date | PROJECT     | Tag                                          | Wakeup_Date |
++-------+-------+--------------------------------------------------+------------+-------------+----------------------------------------------+-------------+
+| 10673 | Open  |  1another this is what you need to do on project | 17ww44.Thu | project_one | ['tag_two', 'tag_two', 'tag_two', 'tag_two', | 18ww09.Wed  |
+|       |       | one                                              |            |             | 'tag_two', 'tag_two', 'tag_two', 'tag_two',  |             |
+|       |       |                                                  |            |             | 'tag_two', 'tag_two']                        |             |
+| 13373 | Open  |  1this is what you need to do on project one     | 17ww48.Sat | project_one | ['tag_for_proj_one', 'tag_for_proj_one',     | N/A         |
+|       |       |                                                  |            |             | 'tag_for_proj_one', 'tag_for_proj_one',      |             |
+|       |       |                                                  |            |             | 'tag_for_proj_one', 'tag_for_proj_one']      |             |
++-------+-------+--------------------------------------------------+------------+-------------+----------------------------------------------+-------------+
+
++*Activities with tag any-tag-at-all*------------------------------------------+------------------------------------------+-------------+
+| ID    | State   | Start_Date | Description                                   | Tag                                      | Wakeup_Date |
++-------+---------+------------+-----------------------------------------------+------------------------------------------+-------------+
+| 13399 | Started | 17ww48.Sat |  two this is some activity related to a taask | ['tag_for_proj_one', 'tag_for_proj_one', | N/A         |
+|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one']  |             |
++-------+---------+------------+-----------------------------------------------+------------------------------------------+-------------+
+
+
+DEBUG:src.server.client_direct:ServerSaid: 3737:
++*Projects with tag any-tag-at-all*------------+--------------------------------------+------------------------------------------+
+| ID    | Name         | State   | MEGAPROJECT | Description                          | Tag                                      |
++-------+--------------+---------+-------------+--------------------------------------+------------------------------------------+
+| 13072 | UNIQUE       | Started | Work11      |  soem                                | ['tag_for_proj_one', 'tag_for_proj_one', |
+|       |              |         |             |                                      | 'tag_for_proj_one']                      |
+| 13367 | project_one1 | Started | Work11      |  this is the first project I created | ['tag_for_proj_one']                     |
++-------+--------------+---------+-------------+--------------------------------------+------------------------------------------+
+
++*Tasks with tag any-tag-at-all*-----------------------------------+------------+-------------+----------------------------------------------+-------------+
+| ID    | State | Description                                      | Start_Date | PROJECT     | Tag                                          | Wakeup_Date |
++-------+-------+--------------------------------------------------+------------+-------------+----------------------------------------------+-------------+
+| 10673 | Open  |  1another this is what you need to do on project | 17ww44.Thu | project_one | ['tag_two', 'tag_two', 'tag_two', 'tag_two', | 18ww09.Wed  |
+|       |       | one                                              |            |             | 'tag_two', 'tag_two', 'tag_two', 'tag_two',  |             |
+|       |       |                                                  |            |             | 'tag_two', 'tag_two']                        |             |
+| 13373 | Open  |  1this is what you need to do on project one     | 17ww48.Sat | project_one | ['tag_for_proj_one', 'tag_for_proj_one',     | N/A         |
+|       |       |                                                  |            |             | 'tag_for_proj_one', 'tag_for_proj_one',      |             |
+|       |       |                                                  |            |             | 'tag_for_proj_one', 'tag_for_proj_one']      |             |
++-------+-------+--------------------------------------------------+------------+-------------+----------------------------------------------+-------------+
+
++*Activities with tag any-tag-at-all*------------------------------------------+------------------------------------------+-------------+
+| ID    | State   | Start_Date | Description                                   | Tag                                      | Wakeup_Date |
++-------+---------+------------+-----------------------------------------------+------------------------------------------+-------------+
+| 13399 | Started | 17ww48.Sat |  two this is some activity related to a taask | ['tag_for_proj_one', 'tag_for_proj_one', | N/A         |
+|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one']  |             |
++-------+---------+------------+-----------------------------------------------+------------------------------------------+-------------+
+
+
+DEBUG:src.server.client_direct:client script sending 0018:list activity
+DEBUG:src.gtd.gtd:stored new data:list activity
+DEBUG:src.gtd.gtd:data from c: list activity
+DEBUG:src.gtd.gtd:I am in parse list activity
+DEBUG:src.gtd.gtd:I am in tokenize list activity
+DEBUG:src.gtd.gtd:I am in tokenize_weekly list activity
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (BACKQUOTE), string='utf-8', start=(0, 0), end=(0, 0), line='')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='list', start=(1, 0), end=(1, 4), line='list activity')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='activity', start=(1, 5), end=(1, 13), line='list activity')
+DEBUG:src.gtd.gtd:list nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
+DEBUG:src.gtd.gtd:this is the return_message: +Showing items 748 to 762:-----+--------------------------------------------------+------------------------------------------+-------------+
+| ID    | State   | Start_Date | Description                                      | Tag                                      | Wakeup_Date |
++-------+---------+------------+--------------------------------------------------+------------------------------------------+-------------+
+| 13388 | Started | 17ww48.Sat |  one this is some activity related to a taask    | []                                       | N/A         |
+| 13398 | Started | 17ww48.Sat |  one this is some activity related to a taask    | []                                       | N/A         |
+| 13399 | Started | 17ww48.Sat |  two this is some activity related to a taask    | ['tag_for_proj_one', 'tag_for_proj_one', | N/A         |
+|       |         |            |                                                  | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |         |            |                                                  | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |         |            |                                                  | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |         |            |                                                  | 'tag_for_proj_one', 'tag_for_proj_one']  |             |
+| 13400 | Started | 17ww48.Sat |  three this is some activity related to a taask  | []                                       | N/A         |
+| 13401 | Started | 17ww48.Sat |  four this is some activity related to a taask   | []                                       | N/A         |
+| 13402 | Started | 17ww48.Sat |  five this is some activity related to a taask   | []                                       | N/A         |
+| 13403 | Started | 17ww48.Sat |  six this is some activity related to a taask    | []                                       | N/A         |
+| 13404 | Started | 17ww48.Sat |  seven this is some activity related to a taask  | []                                       | N/A         |
+| 13417 | Started | 17ww48.Sat |  one1 this is some activity related to a taask   | []                                       | N/A         |
+| 13418 | Started | 17ww48.Sat |  two1 this is some activity related to a taask   | []                                       | N/A         |
+| 13419 | Started | 17ww48.Sat |  three1 this is some activity related to a taask | []                                       | N/A         |
+| 13420 | Started | 17ww48.Sat |  four1 this is some activity related to a taask  | []                                       | N/A         |
+| 13421 | Started | 17ww48.Sat |  five1 this is some activity related to a taask  | []                                       | N/A         |
+| 13422 | Started | 17ww48.Sat |  six1 this is some activity related to a taask   | []                                       | N/A         |
+| 13423 | Started | 17ww48.Sat |  seven1 this is some activity related to a taask | []                                       | N/A         |
++-------+---------+------------+--------------------------------------------------+------------------------------------------+-------------+
+DEBUG:src.server.server:return_message: 3247:
++Showing items 748 to 762:-----+--------------------------------------------------+------------------------------------------+-------------+
+| ID    | State   | Start_Date | Description                                      | Tag                                      | Wakeup_Date |
++-------+---------+------------+--------------------------------------------------+------------------------------------------+-------------+
+| 13388 | Started | 17ww48.Sat |  one this is some activity related to a taask    | []                                       | N/A         |
+| 13398 | Started | 17ww48.Sat |  one this is some activity related to a taask    | []                                       | N/A         |
+| 13399 | Started | 17ww48.Sat |  two this is some activity related to a taask    | ['tag_for_proj_one', 'tag_for_proj_one', | N/A         |
+|       |         |            |                                                  | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |         |            |                                                  | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |         |            |                                                  | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |         |            |                                                  | 'tag_for_proj_one', 'tag_for_proj_one']  |             |
+| 13400 | Started | 17ww48.Sat |  three this is some activity related to a taask  | []                                       | N/A         |
+| 13401 | Started | 17ww48.Sat |  four this is some activity related to a taask   | []                                       | N/A         |
+| 13402 | Started | 17ww48.Sat |  five this is some activity related to a taask   | []                                       | N/A         |
+| 13403 | Started | 17ww48.Sat |  six this is some activity related to a taask    | []                                       | N/A         |
+| 13404 | Started | 17ww48.Sat |  seven this is some activity related to a taask  | []                                       | N/A         |
+| 13417 | Started | 17ww48.Sat |  one1 this is some activity related to a taask   | []                                       | N/A         |
+| 13418 | Started | 17ww48.Sat |  two1 this is some activity related to a taask   | []                                       | N/A         |
+| 13419 | Started | 17ww48.Sat |  three1 this is some activity related to a taask | []                                       | N/A         |
+| 13420 | Started | 17ww48.Sat |  four1 this is some activity related to a taask  | []                                       | N/A         |
+| 13421 | Started | 17ww48.Sat |  five1 this is some activity related to a taask  | []                                       | N/A         |
+| 13422 | Started | 17ww48.Sat |  six1 this is some activity related to a taask   | []                                       | N/A         |
+| 13423 | Started | 17ww48.Sat |  seven1 this is some activity related to a taask | []                                       | N/A         |
++-------+---------+------------+--------------------------------------------------+------------------------------------------+-------------+
+DEBUG:src.server.client_direct:ServerSaid: 3247:
++Showing items 748 to 762:-----+--------------------------------------------------+------------------------------------------+-------------+
+| ID    | State   | Start_Date | Description                                      | Tag                                      | Wakeup_Date |
++-------+---------+------------+--------------------------------------------------+------------------------------------------+-------------+
+| 13388 | Started | 17ww48.Sat |  one this is some activity related to a taask    | []                                       | N/A         |
+| 13398 | Started | 17ww48.Sat |  one this is some activity related to a taask    | []                                       | N/A         |
+| 13399 | Started | 17ww48.Sat |  two this is some activity related to a taask    | ['tag_for_proj_one', 'tag_for_proj_one', | N/A         |
+|       |         |            |                                                  | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |         |            |                                                  | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |         |            |                                                  | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |         |            |                                                  | 'tag_for_proj_one', 'tag_for_proj_one']  |             |
+| 13400 | Started | 17ww48.Sat |  three this is some activity related to a taask  | []                                       | N/A         |
+| 13401 | Started | 17ww48.Sat |  four this is some activity related to a taask   | []                                       | N/A         |
+| 13402 | Started | 17ww48.Sat |  five this is some activity related to a taask   | []                                       | N/A         |
+| 13403 | Started | 17ww48.Sat |  six this is some activity related to a taask    | []                                       | N/A         |
+| 13404 | Started | 17ww48.Sat |  seven this is some activity related to a taask  | []                                       | N/A         |
+| 13417 | Started | 17ww48.Sat |  one1 this is some activity related to a taask   | []                                       | N/A         |
+| 13418 | Started | 17ww48.Sat |  two1 this is some activity related to a taask   | []                                       | N/A         |
+| 13419 | Started | 17ww48.Sat |  three1 this is some activity related to a taask | []                                       | N/A         |
+| 13420 | Started | 17ww48.Sat |  four1 this is some activity related to a taask  | []                                       | N/A         |
+| 13421 | Started | 17ww48.Sat |  five1 this is some activity related to a taask  | []                                       | N/A         |
+| 13422 | Started | 17ww48.Sat |  six1 this is some activity related to a taask   | []                                       | N/A         |
+| 13423 | Started | 17ww48.Sat |  seven1 this is some activity related to a taask | []                                       | N/A         |
++-------+---------+------------+--------------------------------------------------+------------------------------------------+-------------+
+DEBUG:src.server.client_direct:Client closing socket
+INFO:root:Logging Finished

@@ -2,9 +2,11 @@
 import logging
 from random import randint
 logger = logging.getLogger(__name__)
+from src import defs
+
+
 
 symbol_table = {}
-
 
 class Gtd(object):
     def __init__(self, db = None):
@@ -34,8 +36,12 @@ class Gtd(object):
             logger.debug('command after replacement: {}'.format(data))
         elif r'stop @' in data:
             #list(g[g.State == 'Closed']['ID'])
-            l1 = list(gdb.dfa[gdb.dfa.State == 'Started'].index)
-            l2 = list(gdb.dfa[gdb.dfa.State == 'OnHold'].index)
+            l1 =  list(gdb.dfa[gdb.dfa.State == 'Started'].index)
+            l1 += list(gdb.dft[gdb.dft.State == 'Open'].index)
+            l1 += list(gdb.dfp[gdb.dfp.State == 'Started'].index)
+            l2 =  list(gdb.dfa[gdb.dfa.State == 'OnHold'].index)
+            l2 += list(gdb.dft[gdb.dft.State == 'OnHold'].index)
+            l2 += list(gdb.dfp[gdb.dfp.State == 'OnHold'].index)
             l3 = l1 + l2
             if len(l3) == 0:
                 raise ValueError('for some reason, got an empty list in @0000 replacement')
@@ -44,8 +50,12 @@ class Gtd(object):
             logger.debug('command after replacement: {}'.format(data))
         elif r'cont @' in data:
             #list(g[g.State == 'Closed']['ID'])
-            l1 = list(gdb.dfa[gdb.dfa.State == 'Ended'].index)
-            l2 = list(gdb.dfa[gdb.dfa.State == 'OnHold'].index)
+            l1 =  list(gdb.dfa[gdb.dfa.State == 'Ended'].index)
+            l1 += list(gdb.dft[gdb.dft.State == 'Closed'].index)
+            l1 += list(gdb.dfp[gdb.dfp.State == 'Ended'].index)
+            l2 =  list(gdb.dfa[gdb.dfa.State == 'OnHold'].index)
+            l2 += list(gdb.dft[gdb.dft.State == 'OnHold'].index)
+            l2 += list(gdb.dfp[gdb.dfp.State == 'OnHold'].index)
             l3 = l1 + l2
             if len(l3) == 0:
                 raise ValueError('for some reason, got an empty list in @0000 replacement')
@@ -54,13 +64,27 @@ class Gtd(object):
             logger.debug('command after replacement: {}'.format(data))
         elif r'halt @' in data:
             #list(g[g.State == 'Closed']['ID'])
-            l1 = list(gdb.dfa[gdb.dfa.State == 'Started'].index)
+            l1 =  list(gdb.dfa[gdb.dfa.State == 'Started'].index)
+            l1 += list(gdb.dft[gdb.dft.State == 'Open'].index)
+            l1 += list(gdb.dfp[gdb.dfp.State == 'Started'].index)
             l2 = []
             l3 = l1 + l2
             if len(l3) == 0:
                 raise ValueError('for some reason, got an empty list in @0000 replacement')
             r = randint(0,len(l3)-1)
             data = data.replace('00000000', str(l3[r]))#.zfill(8))
+            logger.debug('command after replacement: {}'.format(data))
+        elif r'sleep @' in data:
+            # list(g[g.State == 'Closed']['ID'])
+            l1 = list(gdb.dfa[gdb.dfa.State == 'Started'].index)
+            l1 += list(gdb.dft[gdb.dft.State == 'Open'].index)
+            #l1 += list(gdb.dfp[gdb.dfp.State == 'Started'].index)
+            l2 = []
+            l3 = l1 + l2
+            if len(l3) == 0:
+                raise ValueError('for some reason, got an empty list in @0000 replacement')
+            r = randint(0, len(l3) - 1)
+            data = data.replace('00000000', str(l3[r]))  # .zfill(8))
             logger.debug('command after replacement: {}'.format(data))
         elif r'list @' in data:
             #list(g[g.State == 'Closed']['ID'])
@@ -85,16 +109,17 @@ class Gtd(object):
     def process(self):
         print('processing data from the client')
         logger.debug('data from c: %s',self.current_data)
-        if not self.sanitize_input():
-            raise UserWarning
+        if not self.sanitize_input:
+            #raise UserWarning
+            return False
         try:
             res = parse(self.current_data)
         except SyntaxError:
             logger.debug("parse exception: {}".format(res.__repr__()))
+            print("parse exception: {}".format(res.__repr__()))
         # at this point, the
         res1 = gdb.do_transaction()
-        #self.return_message = res.__repr__()
-        #print(k)
+        return True
 
     # get_message_back_to_client - method used by
     def get_message_back_to_client(self):
@@ -104,6 +129,7 @@ class Gtd(object):
 
     # this function cleans the input to parsing from things that may be operatoprs
     # like = -,=,!,@ etc
+    @property
     def sanitize_input(self):
         # some syntax checks and expantions
         ################################
@@ -111,25 +137,44 @@ class Gtd(object):
         if ((self.current_data.replace(' ', '') == 'list') and ('list' not in gdb.transaction_type)):
             return False
 
+        ###############################################
+        # simple substitutions
+        for sect in defs.config.sections():
+            if 'replace_' in sect:
+                if defs.config[sect]['replacement_type'] == 'simple_substitution':
+                    if self.current_data == defs.config[sect]['replace_what']:
+                        self.current_data = defs.config[sect]['replace_with']
 
-        #############################################
-        # ci and co messages
-        if self.current_data == 'ci':
-            self.current_data = 'start @0 | checking in - start work'
-        if self.current_data == 'co':
-            self.current_data = 'start @0 | checking out - home'
 
         ##############################################
         # check if context need to be kept, and if not - clean it up
-        if self.current_data.replace(' ', '') != 'list':
+        if self.current_data[0:9] == 'move list':
+            gdb.clean_context(sec1=True, sec2=False)
+        elif self.current_data.replace(' ', '') != 'list':
             gdb.clean_context()
-        # since teh tokenizer is not dealing well with the '|'
+
+        ##############################################
+        # since the tokenizer is not dealing well with the '|'
         # use this piece of code to handle that part
+        # but first we check that there are no more than one '|'
+        # >>>>> ??????????
+        #if self.current_data.count('|') > 1:
+        #    return False
+        # >>>>> ??????????
         if '|' in self.current_data:
             (t1,t2, t3) = self.current_data.partition('|')
             gdb.set_trans_description(t3)
-        return True
 
+        ########################################################
+        # pipe substitutions
+        temp1 = self.current_data.partition('|')
+        for sect in defs.config.sections():
+            if 'replace_' in sect:
+                if defs.config[sect]['replacement_type'] == 'pipe_substitution':
+                    if temp1[0].replace(' ', '') == defs.config[sect]['replace_what']:
+                        self.current_data = defs.config[sect]['replace_with']
+
+        return True
 
 
 ##########################################################
@@ -137,6 +182,8 @@ class Gtd(object):
 
 def expression(rbp=0):
     global token
+    if token.id == "(end)":
+        return None
     t = token
     token = next(mnext)
     left = t.nud()
@@ -226,7 +273,10 @@ def advance(id=None):
     global token
     if id and token.id != id:
         raise SyntaxError("Expected %r" % id)
-    token = next(mnext)
+    try:
+        token = next(mnext)
+    except StopIteration:
+        return
 
 
 
@@ -304,11 +354,24 @@ prefix("inc", 20)
 prefix("ninc", 20)
 prefix("not", 20)
 prefix("columns", 20)
-prefix("states", 20)
+prefix("state", 20)
 prefix("head", 20)
 prefix("tail", 20)
 prefix("columns", 20)
 prefix("states", 20)
+prefix("help", 20)
+prefix("delete", 20)
+prefix("online", 20)
+prefix("plus", 20)
+prefix("ww", 20)
+prefix("sleep",20)
+prefix("move", 120)
+prefix("from", 120)
+prefix("to", 120)
+prefix("set", 20)
+prefix("value", 20)
+prefix("tag", 20)
+prefix("untag", 20)
 
 symbol(".", 120)
 
@@ -341,6 +404,14 @@ def nud(self):
         gdb.set_megaproject_name(self.first.value)
         advance() # need to advance to start the description
         self.second = expression()
+    if token.id == "list":
+        gdb.transaction_is("create list")
+        self.id = "create list"
+        advance() # to get to the list of items - jump over 'list'
+        self.first = expression()
+    if token.value == "shortcut":
+        self.id = "create shortcut"
+        gdb.transaction_is(self.id)
     return self
 
 @method(symbol("@"))
@@ -354,15 +425,56 @@ def nud(self):
         advance()  # to check what is beyond ..
     elif gdb.transaction_type == 'start activity':
         # deal with the spacial case where token.value can be 'n'
-        gdb.use_this_ID_for_ref = int(token.value) #get the id to relate the task creation to
-    elif gdb.transaction_type == "stop activity":
-        gdb.use_this_ID_for_ref = int(token.value) #get the id to relate the task creation to
-    elif gdb.transaction_type == "cont activity":
-        gdb.use_this_ID_for_ref = int(token.value) #get the id to relate the task creation to
-    elif gdb.transaction_type == "halt activity":
-        gdb.use_this_ID_for_ref = int(token.value)  # get the id to relate the task creation to
+        gdb.use_this_ID_for_ref = token.value #int(token.value) #get the id to relate to the action
+    elif gdb.transaction_type == "stop something":
+        gdb.use_this_ID_for_ref = int(token.value) #get the id to relate to the action
+    elif gdb.transaction_type == "cont something":
+        gdb.use_this_ID_for_ref = int(token.value) #get the id to relate to the action
+    elif gdb.transaction_type == "halt something":
+        gdb.use_this_ID_for_ref = int(token.value)  # get the id relate to to the action
+    elif gdb.transaction_type == "sleep something":
+        gdb.use_this_ID_for_ref = int(token.value)  # get the id relate to to the action
+        # for teh case we have more like
+        # 17ww44.Mon
+        # 20171104
+        # plus
+        advance()
+        if token.id != '(end)':
+            if token.id != 'plus':
+                gdb.wakeup_time = str(token.value)
+                advance()
+                if token.id != '(end)':
+                    gdb.wakeup_time += str(token.value)
+                advance()
+                if token.id != '(end)':
+                    advance(".")
+                    gdb.wakeup_time += "." + str(token.value)
+
     elif gdb.transaction_type == "list id":
-        gdb.use_this_ID_for_ref = int(token.value)  # get the id to relate the task creation to
+        gdb.use_this_ID_for_ref = int(token.value)  # get the id relate to to the action
+    elif gdb.transaction_type == "delete id":
+        gdb.use_this_ID_for_ref = int(token.value)  # get the id relate to to the action
+    elif gdb.transaction_type == "create list":
+        gdb.items_list.append(int(token.value))
+        if gdb.items_list[0] == 'clean':
+            gdb.items_list.pop(0) # this removed the 'clean' item
+        advance() # jump over to the next token
+    elif gdb.transaction_type == "move item":
+        gdb.use_this_ID_for_ref = int(token.value)  # get the id relate to to the action
+        advance()
+    elif gdb.transaction_type == "tag something":
+        gdb.use_this_ID_for_ref = int(token.value)  # get the id relate to to the action
+        advance()
+        gdb.tag = token.value
+        if gdb.tag == 'any-tag-at-all':
+            raise  ValueError("Illegal tag value")
+    elif gdb.transaction_type == "untag something":
+        gdb.use_this_ID_for_ref = int(token.value)  # get the id relate to to the action
+        advance()
+        if token.value is not None:
+            gdb.tag = token.value
+            if gdb.tag == 'any-tag-at-all':
+                raise ValueError("Illegal tag value")
 
     self.first = expression()
     return self
@@ -398,21 +510,21 @@ def nud(self):
 @method(symbol("stop"))
 def nud(self):
     logger.debug('stop nud')
-    gdb.transaction_is('stop activity')
+    gdb.transaction_is('stop something')
     self.second = expression()
     return self
 
 @method(symbol("cont"))
 def nud(self):
     logger.debug('cont nud')
-    gdb.transaction_is('cont activity')
+    gdb.transaction_is('cont something')
     self.second = expression()
     return self
 
 @method(symbol("halt"))
 def nud(self):
     logger.debug('halt nud')
-    gdb.transaction_is('halt activity')
+    gdb.transaction_is('halt something')
     self.second = expression()
     return self
 
@@ -437,15 +549,35 @@ def nud(self):
         gdb.transaction_is('list search')
         # wrap it up
         return self
+    elif token.value == 'wakeup':
+        gdb.transaction_is('list wakeup')
+        # wrap it up
+        return self
+    elif token.value == 'parameter':
+        gdb.transaction_is('list parameter')
+        return self
+    elif token.value == 'shortcut':
+        gdb.transaction_is('list shortcut')
+        return self
+    elif token.id == 'tag':
+        gdb.transaction_is('list tag')
+        advance() # to process the rest
+        if token.id != '(end)':
+            gdb.tag = token.value
+            if gdb.tag == 'any-tag-at-all':
+                raise ValueError("Illegal tag value")
     elif token.id == '(end)':
         gdb.keep_context = True
 
     if token.id != "(end)":
         # if this is listing for ww - need to continue processing
-        if token.value and 'ww' in token.value:
-            gdb.list_ww = token.value
-        else:
-            self.second = expression() # continue process
+        #if token.value and 'ww' in token.value:
+        #    gdb.list_ww = token.value
+        #    advance()
+        #    self.second = expression() # continue process
+        #else:
+        #    #advance()
+        self.second = expression() # continue process
     else:
         pass # do nothing - that is ==> start folding back teh recursion
     return self
@@ -549,6 +681,10 @@ def nud(self):
         else:
             gdb.list_col_top += '.Sun'  # this is the default
             # now handle the top
+        advance()
+    else:
+        advance()
+    self.second = expression()
     return self
 
 @method(symbol("."))
@@ -572,6 +708,8 @@ def nud(self):
     if gdb.list_for_what == 'task':
         advance()
     gdb.list_for_val = token.value
+    advance()
+    self.second = expression()
     return self
 
 @method(symbol("columns"))
@@ -587,3 +725,156 @@ def nud(self):
     gdb.list_attr = 'states'
     # that's it. done
     return self
+
+@method(symbol("help"))
+def nud(self):
+    logger.debug('help nud')
+    gdb.transaction_is('help')
+    if token.id != '(end)':
+        if token.value is None:
+            gdb.help_search = token.id
+        else:
+            gdb.help_search = token.value
+    return self
+
+@method(symbol("delete"))
+def nud(self):
+    logger.debug('deleate nud')
+    if token.id == '@':
+        gdb.transaction_is('delete id')
+    elif token.value == 'shortcut':
+        gdb.transaction_is('delete shortcut')
+        advance()
+        gdb.shortcut_to_deleate = token.value
+        advance() # get to the next token (over teh replace number
+    else:
+        raise SyntaxError(
+            "Unknown token (%r)." % token.id
+        )
+    self.second = expression()
+    return self
+
+@method(symbol("online"))
+def nud(self):
+    logger.debug('online nud')
+    gdb.transaction_is('online')
+    return self
+
+@method(symbol("plus"))
+def nud(self):
+    logger.debug("plus nud")
+    gdb.wakeup_time = "plus "+ str(token.value)
+    # assume no more out there, start folding back
+    return self
+
+@method(symbol("state"))
+def nud(self):
+    logger.debug("state nud")
+    gdb.state_to_list = token.value
+    advance() # over the state
+    self.second = expression()
+    return self
+
+@method(symbol("ww"))
+def nud(self):
+    logger.debug("ww nud")
+    gdb.list_ww = 'ww'+ str(token.value)
+    advance() # over the week
+    self.second = expression()
+    return self
+
+@method(symbol("sleep"))
+def nud(self):
+    logger.debug('sleep nud')
+    gdb.transaction_is('sleep something')
+    self.second = expression()
+    return self
+
+@method(symbol("move"))
+def nud(self):
+    logger.debug('move nud')
+    if token.id == 'list':
+        gdb.transaction_is('move list')
+        advance()  # get over list/task/activity word
+    elif token.id == 'task':
+        gdb.transaction_is('move task')
+        advance()  # get over list/task/activity word
+    elif token.id == 'activity':
+        gdb.transaction_is('move activity')
+        advance()  # get over list/task/activity word
+    else:
+        gdb.transaction_is('move item')
+
+    self.first = expression()
+    return self
+
+@method(symbol("from"))
+def nud(self):
+    logger.debug('from nud')
+    gdb.move_from = token.value
+    advance()
+    self.first = expression()
+
+@method(symbol("to"))
+def nud(self):
+    logger.debug('to nud')
+    gdb.move_to = token.value
+    advance()
+    self.first = expression()
+
+@method(symbol("set"))
+def nud(self):
+    logger.debug('set nud')
+    gdb.transaction_is('set param')
+    gdb.param_to_set = token.value
+    advance()
+    self.first = expression()
+
+@method(symbol("value"))
+def nud(self):
+    logger.debug('value nud')
+    gdb.value_to_set = token.value
+    advance()
+    self.first = expression()
+
+@method(symbol("tag"))
+def nud(self):
+    logger.debug('tag nud')
+    if token.value == 'project':
+        gdb.transaction_is('tag project')
+        advance() # to get over project
+        gdb.item_to_tag_or_untag = token.value
+        advance() # over the name of the project to tag
+        gdb.tag = token.value
+        if gdb.tag == 'any-tag-at-all':
+            raise  ValueError("Illegal tag value")
+    elif token.id == '@':
+        gdb.transaction_is('tag something')
+    elif gdb.transaction_type != 'clean' : # precaution
+        # for the case where the keyword tag defines that the
+        # word following is the tag
+        gdb.tag = token.value
+        if gdb.tag == 'any-tag-at-all':
+            raise  ValueError("Illegal tag value")
+        advance()
+
+    self.first = expression()
+
+@method(symbol("untag"))
+def nud(self):
+    logger.debug('untag nud')
+    if token.value == 'project':
+        gdb.transaction_is('untag project')
+        advance() # to get over project
+        gdb.item_to_tag_or_untag = token.value
+        advance() # over the name of the project to tag
+        if token.value is not None:
+            gdb.tag = token.value
+            if gdb.tag == 'any-tag-at-all':
+                raise ValueError("Illegal tag value")
+    else:
+        gdb.transaction_is('untag something')
+    self.first = expression()
+
+
+

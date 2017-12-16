@@ -1,0 +1,128 @@
+0002:
+0023:tag @10673 tag_two
+0093:
+Transaction: tag something COMPLETED. New ID is: -1
+Tag tag_two was added to task 10673
+
+
+0003:
+0032:tag @13399 tag_for_proj_one
+0106:
+Transaction: tag something COMPLETED. New ID is: -1
+Tag tag_for_proj_one was added to activity 13399
+
+
+0004:
+0032:tag @13373 tag_for_proj_one
+0102:
+Transaction: tag something COMPLETED. New ID is: -1
+Tag tag_for_proj_one was added to task 13373
+
+
+0005:
+0040:tag project UNIQUE tag_for_proj_one
+0054:
+Transaction: tag project COMPLETED. New ID is: -1
+
+0006:
+0040:tag project UNIQUE tag_for_proj_one
+0054:
+Transaction: tag project COMPLETED. New ID is: -1
+
+0007:
+0040:tag project UNIQUE tag_for_proj_one
+0054:
+Transaction: tag project COMPLETED. New ID is: -1
+
+0008:
+0030:list tag tag_for_proj_one
+3210:
++*Projects with tag tag_for_proj_one*----------+--------------------------------------+------------------------------------------+
+| ID    | Name         | State   | MEGAPROJECT | Description                          | Tag                                      |
++-------+--------------+---------+-------------+--------------------------------------+------------------------------------------+
+| 13072 | UNIQUE       | Started | Work11      |  soem                                | ['tag_for_proj_one', 'tag_for_proj_one', |
+|       |              |         |             |                                      | 'tag_for_proj_one']                      |
+| 13367 | project_one1 | Started | Work11      |  this is the first project I created | ['tag_for_proj_one']                     |
++-------+--------------+---------+-------------+--------------------------------------+------------------------------------------+
+
++*Tasks with tag tag_for_proj_one*-----------------------------+------------+-------------+------------------------------------------+-------------+
+| ID    | State | Description                                  | Start_Date | PROJECT     | Tag                                      | Wakeup_Date |
++-------+-------+----------------------------------------------+------------+-------------+------------------------------------------+-------------+
+| 13373 | Open  |  1this is what you need to do on project one | 17ww48.Sat | project_one | ['tag_for_proj_one', 'tag_for_proj_one', | N/A         |
+|       |       |                                              |            |             | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |       |                                              |            |             | 'tag_for_proj_one', 'tag_for_proj_one']  |             |
++-------+-------+----------------------------------------------+------------+-------------+------------------------------------------+-------------+
+
++*Activities with tag tag_for_proj_one*----------------------------------------+------------------------------------------+-------------+
+| ID    | State   | Start_Date | Description                                   | Tag                                      | Wakeup_Date |
++-------+---------+------------+-----------------------------------------------+------------------------------------------+-------------+
+| 13399 | Started | 17ww48.Sat |  two this is some activity related to a taask | ['tag_for_proj_one', 'tag_for_proj_one', | N/A         |
+|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one']  |             |
++-------+---------+------------+-----------------------------------------------+------------------------------------------+-------------+
+
+
+
+0009:
+0013:list tag
+3737:
++*Projects with tag any-tag-at-all*------------+--------------------------------------+------------------------------------------+
+| ID    | Name         | State   | MEGAPROJECT | Description                          | Tag                                      |
++-------+--------------+---------+-------------+--------------------------------------+------------------------------------------+
+| 13072 | UNIQUE       | Started | Work11      |  soem                                | ['tag_for_proj_one', 'tag_for_proj_one', |
+|       |              |         |             |                                      | 'tag_for_proj_one']                      |
+| 13367 | project_one1 | Started | Work11      |  this is the first project I created | ['tag_for_proj_one']                     |
++-------+--------------+---------+-------------+--------------------------------------+------------------------------------------+
+
++*Tasks with tag any-tag-at-all*-----------------------------------+------------+-------------+----------------------------------------------+-------------+
+| ID    | State | Description                                      | Start_Date | PROJECT     | Tag                                          | Wakeup_Date |
++-------+-------+--------------------------------------------------+------------+-------------+----------------------------------------------+-------------+
+| 10673 | Open  |  1another this is what you need to do on project | 17ww44.Thu | project_one | ['tag_two', 'tag_two', 'tag_two', 'tag_two', | 18ww09.Wed  |
+|       |       | one                                              |            |             | 'tag_two', 'tag_two', 'tag_two', 'tag_two',  |             |
+|       |       |                                                  |            |             | 'tag_two', 'tag_two']                        |             |
+| 13373 | Open  |  1this is what you need to do on project one     | 17ww48.Sat | project_one | ['tag_for_proj_one', 'tag_for_proj_one',     | N/A         |
+|       |       |                                                  |            |             | 'tag_for_proj_one', 'tag_for_proj_one',      |             |
+|       |       |                                                  |            |             | 'tag_for_proj_one', 'tag_for_proj_one']      |             |
++-------+-------+--------------------------------------------------+------------+-------------+----------------------------------------------+-------------+
+
++*Activities with tag any-tag-at-all*------------------------------------------+------------------------------------------+-------------+
+| ID    | State   | Start_Date | Description                                   | Tag                                      | Wakeup_Date |
++-------+---------+------------+-----------------------------------------------+------------------------------------------+-------------+
+| 13399 | Started | 17ww48.Sat |  two this is some activity related to a taask | ['tag_for_proj_one', 'tag_for_proj_one', | N/A         |
+|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one']  |             |
++-------+---------+------------+-----------------------------------------------+------------------------------------------+-------------+
+
+
+
+0010:
+0018:list activity
+3247:
++Showing items 748 to 762:-----+--------------------------------------------------+------------------------------------------+-------------+
+| ID    | State   | Start_Date | Description                                      | Tag                                      | Wakeup_Date |
++-------+---------+------------+--------------------------------------------------+------------------------------------------+-------------+
+| 13388 | Started | 17ww48.Sat |  one this is some activity related to a taask    | []                                       | N/A         |
+| 13398 | Started | 17ww48.Sat |  one this is some activity related to a taask    | []                                       | N/A         |
+| 13399 | Started | 17ww48.Sat |  two this is some activity related to a taask    | ['tag_for_proj_one', 'tag_for_proj_one', | N/A         |
+|       |         |            |                                                  | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |         |            |                                                  | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |         |            |                                                  | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
+|       |         |            |                                                  | 'tag_for_proj_one', 'tag_for_proj_one']  |             |
+| 13400 | Started | 17ww48.Sat |  three this is some activity related to a taask  | []                                       | N/A         |
+| 13401 | Started | 17ww48.Sat |  four this is some activity related to a taask   | []                                       | N/A         |
+| 13402 | Started | 17ww48.Sat |  five this is some activity related to a taask   | []                                       | N/A         |
+| 13403 | Started | 17ww48.Sat |  six this is some activity related to a taask    | []                                       | N/A         |
+| 13404 | Started | 17ww48.Sat |  seven this is some activity related to a taask  | []                                       | N/A         |
+| 13417 | Started | 17ww48.Sat |  one1 this is some activity related to a taask   | []                                       | N/A         |
+| 13418 | Started | 17ww48.Sat |  two1 this is some activity related to a taask   | []                                       | N/A         |
+| 13419 | Started | 17ww48.Sat |  three1 this is some activity related to a taask | []                                       | N/A         |
+| 13420 | Started | 17ww48.Sat |  four1 this is some activity related to a taask  | []                                       | N/A         |
+| 13421 | Started | 17ww48.Sat |  five1 this is some activity related to a taask  | []                                       | N/A         |
+| 13422 | Started | 17ww48.Sat |  six1 this is some activity related to a taask   | []                                       | N/A         |
+| 13423 | Started | 17ww48.Sat |  seven1 this is some activity related to a taask | []                                       | N/A         |
++-------+---------+------------+--------------------------------------------------+------------------------------------------+-------------+
+

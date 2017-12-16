@@ -3,19 +3,22 @@
 
 import socket
 import sys
-#sys.path.append(r'C:\Users\Eitam\PycharmProjects\weekly')
+
+if 'C:\\Users\\oeitam\\PycharmProjects\\weekly' not in sys.path:
+    sys.path.append(r'C:\Users\oeitam\PycharmProjects\weekly')
+
+
 import os
-print(os.getcwd())
 import time
 from src import defs
-
-from test import test_defs
+if  defs.mode != 'prod':
+    from test import test_defs
 
 import logging
-logger = logging.getLogger(__name__)
+c_logger = logging.getLogger(__name__)
 
 logging.basicConfig(filename='client.log', filemode='w', level=logging.DEBUG)
-logging.info('Logging Started')
+logging.info('Logging (into clienr.log) Started')
 
 ##############################
 
@@ -29,7 +32,10 @@ sock.connect(server_address)
 wait_for_user = 0
 cnt = 1
 try:
-    lenm = len(test_defs.test_commands)
+    if defs.mode != 'prod':
+        lenm = len(test_defs.test_commands)
+    else:
+        lenm = 0
     mpos = 0
     while True:
     #for m in test_defs.test_commands:
@@ -57,7 +63,7 @@ try:
         if "turn on" in m[0:9]:
             wait_for_user = 1
         message =  slm
-        logger.debug('client script sending {}'.format(message))
+        c_logger.debug('client script sending {}'.format(message))
         sock.sendall(message.encode())
         amount_received = 0
         amount_expected = 4096 # arbitrary
@@ -85,19 +91,19 @@ try:
                 recieved_data += data
 
         except AssertionError:
-            logger.debug("Client recieve loop excceeded 1000 iterations on message {}".format(message))
+            c_logger.debug("Client recieve loop excceeded 1000 iterations on message {}".format(message))
             break
 
         time.sleep(1)
         print("\nServer Said:\n")
         print(recieved_data+"\n")
-        logger.debug("ServerSaid: {}".format(recieved_data))
+        c_logger.debug("ServerSaid: {}".format(recieved_data))
 
 
 finally:
     print('client: closing socket', file=sys.stdout)
-    logger.debug("Client closing socket")
-    input("OK?")
+    c_logger.debug("Client closing socket")
+    #input("OK?")
     sock.close()
 
 

@@ -1,0 +1,40 @@
+INFO:root:Logging (into clienr.log) Started
+DEBUG:__main__:client script sending 0011:online
+DEBUG:__main__:ServerSaid: Transaction: online COMPLETED. New ID is: -1
+Online Status:
+==============
+Megaproject  db   is   online  
+Project      db   is   online  
+Task         db   is   online  
+Activity     db   is   online  
+The ID in file is: 2058
+==========================
+Working environment is production
+==========================
+Searching for TASK and ACTIVITY in Dormant state what Wakeup time is this week or past{}:
+well ... nothing found here
+well ... nothing found here
+==========================
+
+DEBUG:__main__:client script sending 0011:online
+DEBUG:__main__:ServerSaid: Transaction: online COMPLETED. New ID is: -1
+Online Status:
+==============
+Megaproject  db   is   online  
+Project      db   is   online  
+Task         db   is   online  
+Activity     db   is   online  
+The ID in file is: 2058
+==========================
+Working environment is production
+==========================
+Searching for TASK and ACTIVITY in Dormant state what Wakeup time is this week or past{}:
+well ... nothing found here
+well ... nothing found here
+==========================
+
+DEBUG:__main__:client script sending 0007:ci
+DEBUG:__main__:ServerSaid: Transaction: start activity COMPLETED. New ID is: 2058
+DEBUG:__main__:client script sending 0046:today | start 1PM after moving Idan stuff
+DEBUG:__main__:ServerSaid: Transaction: start activity COMPLETED. New ID is: 2059
+DEBUG:__main__:Client closing socket
