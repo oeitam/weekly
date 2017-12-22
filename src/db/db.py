@@ -96,6 +96,9 @@ class Db(object):
         # start fresh
         self.clean_context()
 
+        # timedelta
+        self.tdelta = timedelta(hours=0)
+
         self.db_table = {'dfm': self.dfm,
                          'dfp': self.dfp,
                          'dft': self.dft,
@@ -139,6 +142,9 @@ class Db(object):
                                   'tag project'        : self.tagging_project,
                                   'untag project'      : self.tagging_project,
                                   'list tag'           : self.list_tag,
+                                  'tag list'           : self.tag_list,
+                                  'list list'          : self.list_list,
+                                  'timedelta'          : self.tdelta_func,
                                   #'list project'       : self.list_project,
                                   #'list task'          : self.list_task,
                                   #'list activity'      : self.list_activity,
@@ -195,9 +201,9 @@ class Db(object):
         #d = date.today()
         if d is None:
             d = date.today()
-        #d = d - test_defs.debug_delta
         if timedel :
             d = d + timedel
+        d = d - self.tdelta # if timedelta exists, use it
         tt = d.timetuple()
         y = str(tt[0])[2:4]
         if tt[6] == 6:  # if a sunday, need to advance ww by one
@@ -296,6 +302,7 @@ class Db(object):
             self.shortcut_to_delete     = 'clean'
             self.tag                    = 'clean'
             self.item_to_tag_or_untag   = 'clean'
+            self.tdelta_param           = 'clean'
             if hasattr(defs,'list_resp_row_limit'):
                 self.list_resp_row_limit = defs.list_resp_row_limit
             else:
@@ -349,6 +356,21 @@ class Db(object):
 
         # this return checks for nothing ... just returnning true
         return True
+
+    def find_in_which_db(self,id):
+        # search the id in all databases, and returns the one that has this id:
+        # 'dfm', 'dfp', 'dft', 'dfa', 'nowhere'
+        if id in list(self.dfm.index.values):
+            return 'dfm'
+        elif id in list(self.dfp.index.values):
+            return 'dfp'
+        elif id in list(self.dft.index.values):
+            return 'dft'
+        elif id in list(self.dfa.index.values):
+            return 'dfa'
+        else:
+            return 'nowhere'
+
 
     # save the databases
     def save_databases(self):
@@ -468,7 +490,13 @@ class Db(object):
                 return False
 
         pID = self.get_new_ID()
-        l = [self.project_name, 'Started', self.megaproject_name, self.trans_description,[]]
+
+        if self.tag != 'clean': # we have a tag
+            tag = [self.tag]
+        else:
+            tag = []
+
+        l = [self.project_name, 'Started', self.megaproject_name, self.trans_description,tag]
         ldf = pd.DataFrame(data=[l], index=[pID], columns=defs.dfp_columns)
         ldf.index.name = 'ID'
         logger.debug(ldf.to_string())
@@ -505,8 +533,14 @@ class Db(object):
     # for now - no support for optional
     def create_task(self):
         pID = self.get_new_ID()
-        # find the project name in case it was given as number
-        l = ['Open', self.trans_description, self.get_time_str(date.today()), self.project_name,[],
+
+        if self.tag != 'clean': # we have a tag
+            tag = [self.tag]
+        else:
+            tag = []
+
+        l = ['Open', self.trans_description, self.get_time_str(date.today()),
+             self.project_name,tag,
              '','','','','',
              [],[],'']
         ldf = pd.DataFrame(data=[l], index=[pID], columns=defs.dft_columns)
@@ -542,7 +576,13 @@ class Db(object):
             self.error_details = 'ID {} from {} was not found'.format(self.use_this_ID_for_ref, found_in)
             logger.debug(self.error_details)
             return False
-        l = ['Started', self.get_time_str(date.today()), self.trans_description,[],
+
+        if self.tag != 'clean': # we have a tag
+            tag = [self.tag]
+        else:
+            tag = []
+
+        l = ['Started', self.get_time_str(date.today()), self.trans_description,tag,
              '', ''] + couple
         ldf = pd.DataFrame(data=[l], index=[pID], columns=defs.dfa_columns)
         ldf.index.name = 'ID'
@@ -763,6 +803,9 @@ class Db(object):
         # apply the state, if exists, we are listing for
         df = self.apply_state_to_df(df, which_db)
 
+        # apply the tag, if exists, we are listing for
+        df = self.apply_tag_to_df(df)
+
         if df is not None:
             if self.list_col_name != 'clean':
                 if self.list_col_rel == 'is':
@@ -805,10 +848,14 @@ class Db(object):
                 df = self.list_for()
                 if df is not None:
                     df = self.apply_state_to_df(df, which_db)
+                    # apply the tag, if exists, we are listing for
+                    df = self.apply_tag_to_df(df)
             elif self.list_ww != 'clean':
                 df = df[df['Start_Date'].str.contains(self.list_ww)]
                 if df is not None:
                     df = self.apply_state_to_df(df, which_db)
+                    # apply the tag, if exists, we are listing for
+                    df = self.apply_tag_to_df(df)
 
             if self.list_resp_rows == -1 : # means this is the first time we handle the specific lsit
                 self.list_resp_rows = len(df)
@@ -838,6 +885,17 @@ class Db(object):
                 self.state_to_list = defs.state_open[which_db]
             df = df[df['State'] == self.state_to_list]
         return df
+
+    def apply_tag_to_df(self, df):
+        if self.tag == 'clean':
+            return df
+        if self.tag == 'any-tag-at-all':
+            return df
+        df = df[df['Tag'].\
+                apply(if_list_find_item, args=(self.tag,)) == True]
+        return df
+
+
 
 
     def df_to_list_resp(self, df, which_db, title):
@@ -943,7 +1001,7 @@ class Db(object):
             d = date.today()
             ws = d-timedelta(days=d.weekday())
             we = ws + timedelta(days=6)
-            we = we + test_defs.debug_delta
+            we = we + defs.debug_delta
             df2 = df1[df1['Wakeup_Date'].apply(date_conv_max_date) <= we].copy()
             if len(df2) == 0: # nothing found
                 self.list_resp += 'well ... nothing found here\n'
@@ -1253,10 +1311,13 @@ class Db(object):
             df_task = self.dft[self.dft['Tag'].apply(if_list_find_item, args=(self.tag,)) == True]
             # search for the tag in project
             df_act  = self.dfa[self.dfa['Tag'].apply(if_list_find_item, args=(self.tag,)) == True]
+
+        # remove clean from the list response
+        self.list_resp = ""
         if len(df_proj) > 0:
             str1 = self.df_to_list_resp(df_proj, 'dfp', '*Projects with tag {}*'.\
                                         format(self.tag))
-            self.list_resp = str1 # first, removing the 'clean'
+            self.list_resp += str1 # first, removing the 'clean'
             self.list_resp += '\n\n'
         if len(df_task) > 0:
             str2 = self.df_to_list_resp(df_task, 'dft', '*Tasks with tag {}*'.\
@@ -1269,5 +1330,63 @@ class Db(object):
             self.list_resp += str3
             self.list_resp += '\n\n'
 
+        if len(self.list_resp) == 0 :
+            self.error_details = 'Nothing to list. No such tag found.'
+            logger.debug(self.error_details)
+            return False
+
+        return True
+
+    def tag_list(self):
+        if len(self.items_list) <= 0: #smaller then zero ??
+            return False
+        else:
+            for item in self.items_list:
+                if item in self.dfa.index: # activity
+                    self.dfa.loc[item, 'Tag'].append(self.tag)
+                elif item in self.dft.index: # task
+                    self.dft.loc[item, 'Tag'].append(self.tag)
+                elif item in self.dfp.index:  # project
+                    self.dfp.loc[item, 'Tag'].append(self.tag)
+            return True
+
+    def list_list(self):
+        if ((self.items_list[0] == 'clean') or (len(self.items_list) == 0))  :
+            self.had_error('list of items is empty. Cannot list it.')
+            return False
+        else:
+            self.list_resp = ""
+            for item in self.items_list:
+                which_db = self.find_in_which_db(item)
+                if which_db == 'nowhere':
+                    self.had_error('List is bogus for item {} [1]'.format(item))
+                    return False
+                df = self.db_table[which_db]
+                df = df.loc[item]
+                if len(df) > 0:
+                    self.list_resp += self.df_to_list_resp\
+                        (pd.DataFrame(df).T, which_db, ' From '+defs.db_names[which_db])
+                    self.list_resp += '\n\n'
+                else:
+                    self.had_error('List is bogus for item {} [2]'.format(item))
+                    return False
+
+        return True
+
+    def tdelta_func(self):
+        self.return_message_ext1 = '\n'
+        if self.tdelta_param == 'clean':
+            self.had_error('No timedelta param.')
+            return False
+        elif self.tdelta_param == 'off':
+            self.tdelta = timedelta(hours=0)
+            self.return_message_ext1 += 'Timedelta set to zero\n'
+        elif self.tdelta_param == 'printout':
+            self.return_message_ext1 += 'Timedelta is {} hours (backwards)'.\
+                format(self.tdelta)
+        else: #creating timedelta
+            self.tdelta = timedelta(hours=float(self.tdelta_param))
+            self.return_message_ext1 += 'Timedelta set to {}.\n'.\
+                format(self.tdelta_param)
         return True
 

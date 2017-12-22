@@ -1,417 +1,686 @@
 INFO:root:Logging (into weekly.log)Started
 INFO:root:Logging (client direct) Started
 DEBUG:src.db.db:setting up databases
-DEBUG:src.db.db:Starting with ID 13519
-DEBUG:src.db.db:ID is: 13519
+DEBUG:src.db.db:Starting with ID 2093
+DEBUG:src.db.db:ID is: 2093
 DEBUG:src.db.db:class Db initialized
-DEBUG:src.server.client_direct:client script sending 0023:tag @10673 tag_two
-DEBUG:src.gtd.gtd:stored new data:tag @10673 tag_two
-DEBUG:src.gtd.gtd:data from c: tag @10673 tag_two
-DEBUG:src.gtd.gtd:I am in parse tag @10673 tag_two
-DEBUG:src.gtd.gtd:I am in tokenize tag @10673 tag_two
-DEBUG:src.gtd.gtd:I am in tokenize_weekly tag @10673 tag_two
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (BACKQUOTE), string='utf-8', start=(0, 0), end=(0, 0), line='')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='tag', start=(1, 0), end=(1, 3), line='tag @10673 tag_two')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='@', start=(1, 4), end=(1, 5), line='tag @10673 tag_two')
-DEBUG:src.gtd.gtd:tag nud
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=2 (NUMBER), string='10673', start=(1, 5), end=(1, 10), line='tag @10673 tag_two')
-DEBUG:src.gtd.gtd:@ nud
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='tag_two', start=(1, 11), end=(1, 18), line='tag @10673 tag_two')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
-DEBUG:src.gtd.gtd:this is the return_message: Transaction: tag something COMPLETED. New ID is: -1
-Tag tag_two was added to task 10673
-
-DEBUG:src.server.server:return_message: 0093:
-Transaction: tag something COMPLETED. New ID is: -1
-Tag tag_two was added to task 10673
-
-DEBUG:src.server.client_direct:ServerSaid: 0093:
-Transaction: tag something COMPLETED. New ID is: -1
-Tag tag_two was added to task 10673
-
-DEBUG:src.server.client_direct:client script sending 0032:tag @13399 tag_for_proj_one
-DEBUG:src.gtd.gtd:stored new data:tag @13399 tag_for_proj_one
-DEBUG:src.gtd.gtd:data from c: tag @13399 tag_for_proj_one
-DEBUG:src.gtd.gtd:I am in parse tag @13399 tag_for_proj_one
-DEBUG:src.gtd.gtd:I am in tokenize tag @13399 tag_for_proj_one
-DEBUG:src.gtd.gtd:I am in tokenize_weekly tag @13399 tag_for_proj_one
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (BACKQUOTE), string='utf-8', start=(0, 0), end=(0, 0), line='')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='tag', start=(1, 0), end=(1, 3), line='tag @13399 tag_for_proj_one')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='@', start=(1, 4), end=(1, 5), line='tag @13399 tag_for_proj_one')
-DEBUG:src.gtd.gtd:tag nud
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=2 (NUMBER), string='13399', start=(1, 5), end=(1, 10), line='tag @13399 tag_for_proj_one')
-DEBUG:src.gtd.gtd:@ nud
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='tag_for_proj_one', start=(1, 11), end=(1, 27), line='tag @13399 tag_for_proj_one')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
-DEBUG:src.gtd.gtd:this is the return_message: Transaction: tag something COMPLETED. New ID is: -1
-Tag tag_for_proj_one was added to activity 13399
-
-DEBUG:src.server.server:return_message: 0106:
-Transaction: tag something COMPLETED. New ID is: -1
-Tag tag_for_proj_one was added to activity 13399
-
-DEBUG:src.server.client_direct:ServerSaid: 0106:
-Transaction: tag something COMPLETED. New ID is: -1
-Tag tag_for_proj_one was added to activity 13399
-
-DEBUG:src.server.client_direct:client script sending 0032:tag @13373 tag_for_proj_one
-DEBUG:src.gtd.gtd:stored new data:tag @13373 tag_for_proj_one
-DEBUG:src.gtd.gtd:data from c: tag @13373 tag_for_proj_one
-DEBUG:src.gtd.gtd:I am in parse tag @13373 tag_for_proj_one
-DEBUG:src.gtd.gtd:I am in tokenize tag @13373 tag_for_proj_one
-DEBUG:src.gtd.gtd:I am in tokenize_weekly tag @13373 tag_for_proj_one
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (BACKQUOTE), string='utf-8', start=(0, 0), end=(0, 0), line='')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='tag', start=(1, 0), end=(1, 3), line='tag @13373 tag_for_proj_one')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='@', start=(1, 4), end=(1, 5), line='tag @13373 tag_for_proj_one')
-DEBUG:src.gtd.gtd:tag nud
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=2 (NUMBER), string='13373', start=(1, 5), end=(1, 10), line='tag @13373 tag_for_proj_one')
-DEBUG:src.gtd.gtd:@ nud
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='tag_for_proj_one', start=(1, 11), end=(1, 27), line='tag @13373 tag_for_proj_one')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
-DEBUG:src.gtd.gtd:this is the return_message: Transaction: tag something COMPLETED. New ID is: -1
-Tag tag_for_proj_one was added to task 13373
-
-DEBUG:src.server.server:return_message: 0102:
-Transaction: tag something COMPLETED. New ID is: -1
-Tag tag_for_proj_one was added to task 13373
-
-DEBUG:src.server.client_direct:ServerSaid: 0102:
-Transaction: tag something COMPLETED. New ID is: -1
-Tag tag_for_proj_one was added to task 13373
-
-DEBUG:src.server.client_direct:client script sending 0040:tag project UNIQUE tag_for_proj_one
-DEBUG:src.gtd.gtd:stored new data:tag project UNIQUE tag_for_proj_one
-DEBUG:src.gtd.gtd:data from c: tag project UNIQUE tag_for_proj_one
-DEBUG:src.gtd.gtd:I am in parse tag project UNIQUE tag_for_proj_one
-DEBUG:src.gtd.gtd:I am in tokenize tag project UNIQUE tag_for_proj_one
-DEBUG:src.gtd.gtd:I am in tokenize_weekly tag project UNIQUE tag_for_proj_one
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (BACKQUOTE), string='utf-8', start=(0, 0), end=(0, 0), line='')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='tag', start=(1, 0), end=(1, 3), line='tag project UNIQUE tag_for_proj_one')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='project', start=(1, 4), end=(1, 11), line='tag project UNIQUE tag_for_proj_one')
-DEBUG:src.gtd.gtd:tag nud
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='UNIQUE', start=(1, 12), end=(1, 18), line='tag project UNIQUE tag_for_proj_one')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='tag_for_proj_one', start=(1, 19), end=(1, 35), line='tag project UNIQUE tag_for_proj_one')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
-DEBUG:src.gtd.gtd:this is the return_message: Transaction: tag project COMPLETED. New ID is: -1
-DEBUG:src.server.server:return_message: 0054:
-Transaction: tag project COMPLETED. New ID is: -1
-DEBUG:src.server.client_direct:ServerSaid: 0054:
-Transaction: tag project COMPLETED. New ID is: -1
-DEBUG:src.server.client_direct:client script sending 0040:tag project UNIQUE tag_for_proj_one
-DEBUG:src.gtd.gtd:stored new data:tag project UNIQUE tag_for_proj_one
-DEBUG:src.gtd.gtd:data from c: tag project UNIQUE tag_for_proj_one
-DEBUG:src.gtd.gtd:I am in parse tag project UNIQUE tag_for_proj_one
-DEBUG:src.gtd.gtd:I am in tokenize tag project UNIQUE tag_for_proj_one
-DEBUG:src.gtd.gtd:I am in tokenize_weekly tag project UNIQUE tag_for_proj_one
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (BACKQUOTE), string='utf-8', start=(0, 0), end=(0, 0), line='')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='tag', start=(1, 0), end=(1, 3), line='tag project UNIQUE tag_for_proj_one')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='project', start=(1, 4), end=(1, 11), line='tag project UNIQUE tag_for_proj_one')
-DEBUG:src.gtd.gtd:tag nud
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='UNIQUE', start=(1, 12), end=(1, 18), line='tag project UNIQUE tag_for_proj_one')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='tag_for_proj_one', start=(1, 19), end=(1, 35), line='tag project UNIQUE tag_for_proj_one')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
-DEBUG:src.gtd.gtd:this is the return_message: Transaction: tag project COMPLETED. New ID is: -1
-DEBUG:src.server.server:return_message: 0054:
-Transaction: tag project COMPLETED. New ID is: -1
-DEBUG:src.server.client_direct:ServerSaid: 0054:
-Transaction: tag project COMPLETED. New ID is: -1
-DEBUG:src.server.client_direct:client script sending 0040:tag project UNIQUE tag_for_proj_one
-DEBUG:src.gtd.gtd:stored new data:tag project UNIQUE tag_for_proj_one
-DEBUG:src.gtd.gtd:data from c: tag project UNIQUE tag_for_proj_one
-DEBUG:src.gtd.gtd:I am in parse tag project UNIQUE tag_for_proj_one
-DEBUG:src.gtd.gtd:I am in tokenize tag project UNIQUE tag_for_proj_one
-DEBUG:src.gtd.gtd:I am in tokenize_weekly tag project UNIQUE tag_for_proj_one
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (BACKQUOTE), string='utf-8', start=(0, 0), end=(0, 0), line='')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='tag', start=(1, 0), end=(1, 3), line='tag project UNIQUE tag_for_proj_one')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='project', start=(1, 4), end=(1, 11), line='tag project UNIQUE tag_for_proj_one')
-DEBUG:src.gtd.gtd:tag nud
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='UNIQUE', start=(1, 12), end=(1, 18), line='tag project UNIQUE tag_for_proj_one')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='tag_for_proj_one', start=(1, 19), end=(1, 35), line='tag project UNIQUE tag_for_proj_one')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
-DEBUG:src.gtd.gtd:this is the return_message: Transaction: tag project COMPLETED. New ID is: -1
-DEBUG:src.server.server:return_message: 0054:
-Transaction: tag project COMPLETED. New ID is: -1
-DEBUG:src.server.client_direct:ServerSaid: 0054:
-Transaction: tag project COMPLETED. New ID is: -1
-DEBUG:src.server.client_direct:client script sending 0030:list tag tag_for_proj_one
-DEBUG:src.gtd.gtd:stored new data:list tag tag_for_proj_one
-DEBUG:src.gtd.gtd:data from c: list tag tag_for_proj_one
-DEBUG:src.gtd.gtd:I am in parse list tag tag_for_proj_one
-DEBUG:src.gtd.gtd:I am in tokenize list tag tag_for_proj_one
-DEBUG:src.gtd.gtd:I am in tokenize_weekly list tag tag_for_proj_one
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (BACKQUOTE), string='utf-8', start=(0, 0), end=(0, 0), line='')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='list', start=(1, 0), end=(1, 4), line='list tag tag_for_proj_one')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='tag', start=(1, 5), end=(1, 8), line='list tag tag_for_proj_one')
+DEBUG:src.gtd.gtd:stored new data:list task for project weekly
+DEBUG:src.gtd.gtd:data from c: list task for project weekly
+DEBUG:src.gtd.gtd:I am in parse list task for project weekly
+DEBUG:src.gtd.gtd:I am in tokenize list task for project weekly
+DEBUG:src.gtd.gtd:I am in tokenize_weekly list task for project weekly
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='list', start=(1, 0), end=(1, 4), line='list task for project weekly')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='task', start=(1, 5), end=(1, 9), line='list task for project weekly')
 DEBUG:src.gtd.gtd:list nud
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='tag_for_proj_one', start=(1, 9), end=(1, 25), line='list tag tag_for_proj_one')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='for', start=(1, 10), end=(1, 13), line='list task for project weekly')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='project', start=(1, 14), end=(1, 21), line='list task for project weekly')
+DEBUG:src.gtd.gtd:nud for
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='weekly', start=(1, 22), end=(1, 28), line='list task for project weekly')
 DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
-DEBUG:src.gtd.gtd:this is the return_message: +*Projects with tag tag_for_proj_one*----------+--------------------------------------+------------------------------------------+
-| ID    | Name         | State   | MEGAPROJECT | Description                          | Tag                                      |
-+-------+--------------+---------+-------------+--------------------------------------+------------------------------------------+
-| 13072 | UNIQUE       | Started | Work11      |  soem                                | ['tag_for_proj_one', 'tag_for_proj_one', |
-|       |              |         |             |                                      | 'tag_for_proj_one']                      |
-| 13367 | project_one1 | Started | Work11      |  this is the first project I created | ['tag_for_proj_one']                     |
-+-------+--------------+---------+-------------+--------------------------------------+------------------------------------------+
-
-+*Tasks with tag tag_for_proj_one*-----------------------------+------------+-------------+------------------------------------------+-------------+
-| ID    | State | Description                                  | Start_Date | PROJECT     | Tag                                      | Wakeup_Date |
-+-------+-------+----------------------------------------------+------------+-------------+------------------------------------------+-------------+
-| 13373 | Open  |  1this is what you need to do on project one | 17ww48.Sat | project_one | ['tag_for_proj_one', 'tag_for_proj_one', | N/A         |
-|       |       |                                              |            |             | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
-|       |       |                                              |            |             | 'tag_for_proj_one', 'tag_for_proj_one']  |             |
-+-------+-------+----------------------------------------------+------------+-------------+------------------------------------------+-------------+
-
-+*Activities with tag tag_for_proj_one*----------------------------------------+------------------------------------------+-------------+
-| ID    | State   | Start_Date | Description                                   | Tag                                      | Wakeup_Date |
-+-------+---------+------------+-----------------------------------------------+------------------------------------------+-------------+
-| 13399 | Started | 17ww48.Sat |  two this is some activity related to a taask | ['tag_for_proj_one', 'tag_for_proj_one', | N/A         |
-|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
-|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
-|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
-|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one']  |             |
-+-------+---------+------------+-----------------------------------------------+------------------------------------------+-------------+
-
-
-DEBUG:src.server.server:return_message: 3210:
-+*Projects with tag tag_for_proj_one*----------+--------------------------------------+------------------------------------------+
-| ID    | Name         | State   | MEGAPROJECT | Description                          | Tag                                      |
-+-------+--------------+---------+-------------+--------------------------------------+------------------------------------------+
-| 13072 | UNIQUE       | Started | Work11      |  soem                                | ['tag_for_proj_one', 'tag_for_proj_one', |
-|       |              |         |             |                                      | 'tag_for_proj_one']                      |
-| 13367 | project_one1 | Started | Work11      |  this is the first project I created | ['tag_for_proj_one']                     |
-+-------+--------------+---------+-------------+--------------------------------------+------------------------------------------+
-
-+*Tasks with tag tag_for_proj_one*-----------------------------+------------+-------------+------------------------------------------+-------------+
-| ID    | State | Description                                  | Start_Date | PROJECT     | Tag                                      | Wakeup_Date |
-+-------+-------+----------------------------------------------+------------+-------------+------------------------------------------+-------------+
-| 13373 | Open  |  1this is what you need to do on project one | 17ww48.Sat | project_one | ['tag_for_proj_one', 'tag_for_proj_one', | N/A         |
-|       |       |                                              |            |             | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
-|       |       |                                              |            |             | 'tag_for_proj_one', 'tag_for_proj_one']  |             |
-+-------+-------+----------------------------------------------+------------+-------------+------------------------------------------+-------------+
-
-+*Activities with tag tag_for_proj_one*----------------------------------------+------------------------------------------+-------------+
-| ID    | State   | Start_Date | Description                                   | Tag                                      | Wakeup_Date |
-+-------+---------+------------+-----------------------------------------------+------------------------------------------+-------------+
-| 13399 | Started | 17ww48.Sat |  two this is some activity related to a taask | ['tag_for_proj_one', 'tag_for_proj_one', | N/A         |
-|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
-|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
-|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
-|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one']  |             |
-+-------+---------+------------+-----------------------------------------------+------------------------------------------+-------------+
-
-
-DEBUG:src.server.client_direct:ServerSaid: 3210:
-+*Projects with tag tag_for_proj_one*----------+--------------------------------------+------------------------------------------+
-| ID    | Name         | State   | MEGAPROJECT | Description                          | Tag                                      |
-+-------+--------------+---------+-------------+--------------------------------------+------------------------------------------+
-| 13072 | UNIQUE       | Started | Work11      |  soem                                | ['tag_for_proj_one', 'tag_for_proj_one', |
-|       |              |         |             |                                      | 'tag_for_proj_one']                      |
-| 13367 | project_one1 | Started | Work11      |  this is the first project I created | ['tag_for_proj_one']                     |
-+-------+--------------+---------+-------------+--------------------------------------+------------------------------------------+
-
-+*Tasks with tag tag_for_proj_one*-----------------------------+------------+-------------+------------------------------------------+-------------+
-| ID    | State | Description                                  | Start_Date | PROJECT     | Tag                                      | Wakeup_Date |
-+-------+-------+----------------------------------------------+------------+-------------+------------------------------------------+-------------+
-| 13373 | Open  |  1this is what you need to do on project one | 17ww48.Sat | project_one | ['tag_for_proj_one', 'tag_for_proj_one', | N/A         |
-|       |       |                                              |            |             | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
-|       |       |                                              |            |             | 'tag_for_proj_one', 'tag_for_proj_one']  |             |
-+-------+-------+----------------------------------------------+------------+-------------+------------------------------------------+-------------+
-
-+*Activities with tag tag_for_proj_one*----------------------------------------+------------------------------------------+-------------+
-| ID    | State   | Start_Date | Description                                   | Tag                                      | Wakeup_Date |
-+-------+---------+------------+-----------------------------------------------+------------------------------------------+-------------+
-| 13399 | Started | 17ww48.Sat |  two this is some activity related to a taask | ['tag_for_proj_one', 'tag_for_proj_one', | N/A         |
-|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
-|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
-|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
-|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one']  |             |
-+-------+---------+------------+-----------------------------------------------+------------------------------------------+-------------+
-
-
-DEBUG:src.server.client_direct:client script sending 0013:list tag
-DEBUG:src.gtd.gtd:stored new data:list tag
-DEBUG:src.gtd.gtd:data from c: list tag
-DEBUG:src.gtd.gtd:I am in parse list tag
-DEBUG:src.gtd.gtd:I am in tokenize list tag
-DEBUG:src.gtd.gtd:I am in tokenize_weekly list tag
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (BACKQUOTE), string='utf-8', start=(0, 0), end=(0, 0), line='')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='list', start=(1, 0), end=(1, 4), line='list tag')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='tag', start=(1, 5), end=(1, 8), line='list tag')
+DEBUG:src.gtd.gtd:this is the return_message: +Showing items 1 to 12:---------------------------------------------+------------+---------+-----+-------------+
+| ID   | State | Description                                        | Start_Date | PROJECT | Tag | Wakeup_Date |
++------+-------+----------------------------------------------------+------------+---------+-----+-------------+
+| 1313 | Open  |  consider adding to a task or activity being       | 17ww39.Sun | weekly  | []  | N/A         |
+|      |       | closed, (adding a) text related to teh closure     |            |         |     |             |
+|      |       | (like - fixed, what was done, what remains etc).   |            |         |     |             |
+| 1879 | Open  |  enable a method to insert something with a start  | 17ww45.Sun | weekly  | []  | N/A         |
+|      |       | time in the past (or future?). this is for the     |            |         |     |             |
+|      |       | case that someone forgot to put an activity/task   |            |         |     |             |
+|      |       | that started yesterday (for example). commands can |            |         |     |             |
+|      |       | be -timedelta [given in hours, direction           |            |         |     |             |
+|      |       | backward]- and -timedelta off- [to go back to      |            |         |     |             |
+|      |       | normal]                                            |            |         |     |             |
+| 1889 | Open  |  add table print out for more commands (like list  | 17ww45.Mon | weekly  | []  | N/A         |
+|      |       | @xxx for example)                                  |            |         |     |             |
+| 1984 | Open  |  add print out of what was the issue when coming   | 17ww48.Mon | weekly  | []  | N/A         |
+|      |       | back with error                                    |            |         |     |             |
+| 2034 | Open  |  enable scripts - so someone can write a set of    | 17ww49.Tue | weekly  | []  | N/A         |
+|      |       | commands and run them from that script. also       |            |         |     |             |
+|      |       | create a mode where it is possible to run the      |            |         |     |             |
+|      |       | script w/o its effecting the actual database. for  |            |         |     |             |
+|      |       | example - a mode that does not do save of teh      |            |         |     |             |
+|      |       | databases.                                         |            |         |     |             |
+| 2035 | Open  |  add ability to edit the desciption field (or      | 17ww49.Tue | weekly  | []  | N/A         |
+|      |       | other fields) in an item                           |            |         |     |             |
+| 2037 | Open  |  enable to write (or echo) commands also into a    | 17ww49.Tue | weekly  | []  | N/A         |
+|      |       | file. something like 'echo filename' and 'echo     |            |         |     |             |
+|      |       | stop'                                              |            |         |     |             |
+| 2038 | Open  |  add to the create list feature also something     | 17ww49.Tue | weekly  | []  | N/A         |
+|      |       | like 'list list' which shows what is the list but  |            |         |     |             |
+|      |       | also maintains the context of the list             |            |         |     |             |
+| 2065 | Open  |  add ability to list in recursion - like - all the | 17ww51.Sun | weekly  | []  | N/A         |
+|      |       | items under a project - tasks and activities -     |            |         |     |             |
+|      |       | directly under the project and also activities     |            |         |     |             |
+|      |       | under the task.                                    |            |         |     |             |
+| 2066 | Open  |  keep contect (like with a flag maybe) so multiple | 17ww51.Sun | weekly  | []  | N/A         |
+|      |       | create task actions open under the same project,   |            |         |     |             |
+|      |       | for example.                                       |            |         |     |             |
+| 2067 | Open  |  add the project/task column to printing out of    | 17ww51.Sun | weekly  | []  | N/A         |
+|      |       | activities                                         |            |         |     |             |
+| 2069 | Open  |  add ability also to test what is coming back from | 17ww51.Sun | weekly  | []  | N/A         |
+|      |       | testing in developement env (test_defs), for       |            |         |     |             |
+|      |       | example - using some regular expression comparing  |            |         |     |             |
++------+-------+----------------------------------------------------+------------+---------+-----+-------------+
+DEBUG:src.server.server:return_message: 4976:+Showing items 1 to 12:---------------------------------------------+------------+---------+-----+-------------+
+| ID   | State | Description                                        | Start_Date | PROJECT | Tag | Wakeup_Date |
++------+-------+----------------------------------------------------+------------+---------+-----+-------------+
+| 1313 | Open  |  consider adding to a task or activity being       | 17ww39.Sun | weekly  | []  | N/A         |
+|      |       | closed, (adding a) text related to teh closure     |            |         |     |             |
+|      |       | (like - fixed, what was done, what remains etc).   |            |         |     |             |
+| 1879 | Open  |  enable a method to insert something with a start  | 17ww45.Sun | weekly  | []  | N/A         |
+|      |       | time in the past (or future?). this is for the     |            |         |     |             |
+|      |       | case that someone forgot to put an activity/task   |            |         |     |             |
+|      |       | that started yesterday (for example). commands can |            |         |     |             |
+|      |       | be -timedelta [given in hours, direction           |            |         |     |             |
+|      |       | backward]- and -timedelta off- [to go back to      |            |         |     |             |
+|      |       | normal]                                            |            |         |     |             |
+| 1889 | Open  |  add table print out for more commands (like list  | 17ww45.Mon | weekly  | []  | N/A         |
+|      |       | @xxx for example)                                  |            |         |     |             |
+| 1984 | Open  |  add print out of what was the issue when coming   | 17ww48.Mon | weekly  | []  | N/A         |
+|      |       | back with error                                    |            |         |     |             |
+| 2034 | Open  |  enable scripts - so someone can write a set of    | 17ww49.Tue | weekly  | []  | N/A         |
+|      |       | commands and run them from that script. also       |            |         |     |             |
+|      |       | create a mode where it is possible to run the      |            |         |     |             |
+|      |       | script w/o its effecting the actual database. for  |            |         |     |             |
+|      |       | example - a mode that does not do save of teh      |            |         |     |             |
+|      |       | databases.                                         |            |         |     |             |
+| 2035 | Open  |  add ability to edit the desciption field (or      | 17ww49.Tue | weekly  | []  | N/A         |
+|      |       | other fields) in an item                           |            |         |     |             |
+| 2037 | Open  |  enable to write (or echo) commands also into a    | 17ww49.Tue | weekly  | []  | N/A         |
+|      |       | file. something like 'echo filename' and 'echo     |            |         |     |             |
+|      |       | stop'                                              |            |         |     |             |
+| 2038 | Open  |  add to the create list feature also something     | 17ww49.Tue | weekly  | []  | N/A         |
+|      |       | like 'list list' which shows what is the list but  |            |         |     |             |
+|      |       | also maintains the context of the list             |            |         |     |             |
+| 2065 | Open  |  add ability to list in recursion - like - all the | 17ww51.Sun | weekly  | []  | N/A         |
+|      |       | items under a project - tasks and activities -     |            |         |     |             |
+|      |       | directly under the project and also activities     |            |         |     |             |
+|      |       | under the task.                                    |            |         |     |             |
+| 2066 | Open  |  keep contect (like with a flag maybe) so multiple | 17ww51.Sun | weekly  | []  | N/A         |
+|      |       | create task actions open under the same project,   |            |         |     |             |
+|      |       | for example.                                       |            |         |     |             |
+| 2067 | Open  |  add the project/task column to printing out of    | 17ww51.Sun | weekly  | []  | N/A         |
+|      |       | activities                                         |            |         |     |             |
+| 2069 | Open  |  add ability also to test what is coming back from | 17ww51.Sun | weekly  | []  | N/A         |
+|      |       | testing in developement env (test_defs), for       |            |         |     |             |
+|      |       | example - using some regular expression comparing  |            |         |     |             |
++------+-------+----------------------------------------------------+------------+---------+-----+-------------+
+DEBUG:src.gtd.gtd:command after replacement: stop @1879
+DEBUG:src.gtd.gtd:stored new data:stop @1879
+DEBUG:src.gtd.gtd:data from c: stop @1879
+DEBUG:src.gtd.gtd:I am in parse stop @1879
+DEBUG:src.gtd.gtd:I am in tokenize stop @1879
+DEBUG:src.gtd.gtd:I am in tokenize_weekly stop @1879
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='stop', start=(1, 0), end=(1, 4), line='stop @1879')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='@', start=(1, 5), end=(1, 6), line='stop @1879')
+DEBUG:src.gtd.gtd:stop nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=2 (NUMBER), string='1879', start=(1, 6), end=(1, 10), line='stop @1879')
+DEBUG:src.gtd.gtd:@ nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
+DEBUG:src.gtd.gtd:this is the return_message: Transaction: stop something COMPLETED. Referenced ID is: 1879
+DEBUG:src.server.server:return_message: 0066:Transaction: stop something COMPLETED. Referenced ID is: 1879
+DEBUG:src.gtd.gtd:stored new data:list task for project weekly
+DEBUG:src.gtd.gtd:data from c: list task for project weekly
+DEBUG:src.gtd.gtd:I am in parse list task for project weekly
+DEBUG:src.gtd.gtd:I am in tokenize list task for project weekly
+DEBUG:src.gtd.gtd:I am in tokenize_weekly list task for project weekly
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='list', start=(1, 0), end=(1, 4), line='list task for project weekly')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='task', start=(1, 5), end=(1, 9), line='list task for project weekly')
 DEBUG:src.gtd.gtd:list nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='for', start=(1, 10), end=(1, 13), line='list task for project weekly')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='project', start=(1, 14), end=(1, 21), line='list task for project weekly')
+DEBUG:src.gtd.gtd:nud for
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='weekly', start=(1, 22), end=(1, 28), line='list task for project weekly')
 DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
-DEBUG:src.gtd.gtd:this is the return_message: +*Projects with tag any-tag-at-all*------------+--------------------------------------+------------------------------------------+
-| ID    | Name         | State   | MEGAPROJECT | Description                          | Tag                                      |
-+-------+--------------+---------+-------------+--------------------------------------+------------------------------------------+
-| 13072 | UNIQUE       | Started | Work11      |  soem                                | ['tag_for_proj_one', 'tag_for_proj_one', |
-|       |              |         |             |                                      | 'tag_for_proj_one']                      |
-| 13367 | project_one1 | Started | Work11      |  this is the first project I created | ['tag_for_proj_one']                     |
-+-------+--------------+---------+-------------+--------------------------------------+------------------------------------------+
-
-+*Tasks with tag any-tag-at-all*-----------------------------------+------------+-------------+----------------------------------------------+-------------+
-| ID    | State | Description                                      | Start_Date | PROJECT     | Tag                                          | Wakeup_Date |
-+-------+-------+--------------------------------------------------+------------+-------------+----------------------------------------------+-------------+
-| 10673 | Open  |  1another this is what you need to do on project | 17ww44.Thu | project_one | ['tag_two', 'tag_two', 'tag_two', 'tag_two', | 18ww09.Wed  |
-|       |       | one                                              |            |             | 'tag_two', 'tag_two', 'tag_two', 'tag_two',  |             |
-|       |       |                                                  |            |             | 'tag_two', 'tag_two']                        |             |
-| 13373 | Open  |  1this is what you need to do on project one     | 17ww48.Sat | project_one | ['tag_for_proj_one', 'tag_for_proj_one',     | N/A         |
-|       |       |                                                  |            |             | 'tag_for_proj_one', 'tag_for_proj_one',      |             |
-|       |       |                                                  |            |             | 'tag_for_proj_one', 'tag_for_proj_one']      |             |
-+-------+-------+--------------------------------------------------+------------+-------------+----------------------------------------------+-------------+
-
-+*Activities with tag any-tag-at-all*------------------------------------------+------------------------------------------+-------------+
-| ID    | State   | Start_Date | Description                                   | Tag                                      | Wakeup_Date |
-+-------+---------+------------+-----------------------------------------------+------------------------------------------+-------------+
-| 13399 | Started | 17ww48.Sat |  two this is some activity related to a taask | ['tag_for_proj_one', 'tag_for_proj_one', | N/A         |
-|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
-|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
-|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
-|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one']  |             |
-+-------+---------+------------+-----------------------------------------------+------------------------------------------+-------------+
-
-
-DEBUG:src.server.server:return_message: 3737:
-+*Projects with tag any-tag-at-all*------------+--------------------------------------+------------------------------------------+
-| ID    | Name         | State   | MEGAPROJECT | Description                          | Tag                                      |
-+-------+--------------+---------+-------------+--------------------------------------+------------------------------------------+
-| 13072 | UNIQUE       | Started | Work11      |  soem                                | ['tag_for_proj_one', 'tag_for_proj_one', |
-|       |              |         |             |                                      | 'tag_for_proj_one']                      |
-| 13367 | project_one1 | Started | Work11      |  this is the first project I created | ['tag_for_proj_one']                     |
-+-------+--------------+---------+-------------+--------------------------------------+------------------------------------------+
-
-+*Tasks with tag any-tag-at-all*-----------------------------------+------------+-------------+----------------------------------------------+-------------+
-| ID    | State | Description                                      | Start_Date | PROJECT     | Tag                                          | Wakeup_Date |
-+-------+-------+--------------------------------------------------+------------+-------------+----------------------------------------------+-------------+
-| 10673 | Open  |  1another this is what you need to do on project | 17ww44.Thu | project_one | ['tag_two', 'tag_two', 'tag_two', 'tag_two', | 18ww09.Wed  |
-|       |       | one                                              |            |             | 'tag_two', 'tag_two', 'tag_two', 'tag_two',  |             |
-|       |       |                                                  |            |             | 'tag_two', 'tag_two']                        |             |
-| 13373 | Open  |  1this is what you need to do on project one     | 17ww48.Sat | project_one | ['tag_for_proj_one', 'tag_for_proj_one',     | N/A         |
-|       |       |                                                  |            |             | 'tag_for_proj_one', 'tag_for_proj_one',      |             |
-|       |       |                                                  |            |             | 'tag_for_proj_one', 'tag_for_proj_one']      |             |
-+-------+-------+--------------------------------------------------+------------+-------------+----------------------------------------------+-------------+
-
-+*Activities with tag any-tag-at-all*------------------------------------------+------------------------------------------+-------------+
-| ID    | State   | Start_Date | Description                                   | Tag                                      | Wakeup_Date |
-+-------+---------+------------+-----------------------------------------------+------------------------------------------+-------------+
-| 13399 | Started | 17ww48.Sat |  two this is some activity related to a taask | ['tag_for_proj_one', 'tag_for_proj_one', | N/A         |
-|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
-|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
-|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
-|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one']  |             |
-+-------+---------+------------+-----------------------------------------------+------------------------------------------+-------------+
-
-
-DEBUG:src.server.client_direct:ServerSaid: 3737:
-+*Projects with tag any-tag-at-all*------------+--------------------------------------+------------------------------------------+
-| ID    | Name         | State   | MEGAPROJECT | Description                          | Tag                                      |
-+-------+--------------+---------+-------------+--------------------------------------+------------------------------------------+
-| 13072 | UNIQUE       | Started | Work11      |  soem                                | ['tag_for_proj_one', 'tag_for_proj_one', |
-|       |              |         |             |                                      | 'tag_for_proj_one']                      |
-| 13367 | project_one1 | Started | Work11      |  this is the first project I created | ['tag_for_proj_one']                     |
-+-------+--------------+---------+-------------+--------------------------------------+------------------------------------------+
-
-+*Tasks with tag any-tag-at-all*-----------------------------------+------------+-------------+----------------------------------------------+-------------+
-| ID    | State | Description                                      | Start_Date | PROJECT     | Tag                                          | Wakeup_Date |
-+-------+-------+--------------------------------------------------+------------+-------------+----------------------------------------------+-------------+
-| 10673 | Open  |  1another this is what you need to do on project | 17ww44.Thu | project_one | ['tag_two', 'tag_two', 'tag_two', 'tag_two', | 18ww09.Wed  |
-|       |       | one                                              |            |             | 'tag_two', 'tag_two', 'tag_two', 'tag_two',  |             |
-|       |       |                                                  |            |             | 'tag_two', 'tag_two']                        |             |
-| 13373 | Open  |  1this is what you need to do on project one     | 17ww48.Sat | project_one | ['tag_for_proj_one', 'tag_for_proj_one',     | N/A         |
-|       |       |                                                  |            |             | 'tag_for_proj_one', 'tag_for_proj_one',      |             |
-|       |       |                                                  |            |             | 'tag_for_proj_one', 'tag_for_proj_one']      |             |
-+-------+-------+--------------------------------------------------+------------+-------------+----------------------------------------------+-------------+
-
-+*Activities with tag any-tag-at-all*------------------------------------------+------------------------------------------+-------------+
-| ID    | State   | Start_Date | Description                                   | Tag                                      | Wakeup_Date |
-+-------+---------+------------+-----------------------------------------------+------------------------------------------+-------------+
-| 13399 | Started | 17ww48.Sat |  two this is some activity related to a taask | ['tag_for_proj_one', 'tag_for_proj_one', | N/A         |
-|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
-|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
-|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
-|       |         |            |                                               | 'tag_for_proj_one', 'tag_for_proj_one']  |             |
-+-------+---------+------------+-----------------------------------------------+------------------------------------------+-------------+
-
-
-DEBUG:src.server.client_direct:client script sending 0018:list activity
-DEBUG:src.gtd.gtd:stored new data:list activity
-DEBUG:src.gtd.gtd:data from c: list activity
-DEBUG:src.gtd.gtd:I am in parse list activity
-DEBUG:src.gtd.gtd:I am in tokenize list activity
-DEBUG:src.gtd.gtd:I am in tokenize_weekly list activity
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (BACKQUOTE), string='utf-8', start=(0, 0), end=(0, 0), line='')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='list', start=(1, 0), end=(1, 4), line='list activity')
-DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='activity', start=(1, 5), end=(1, 13), line='list activity')
+DEBUG:src.gtd.gtd:this is the return_message: +Showing items 1 to 11:---------------------------------------------+------------+---------+-----+-------------+
+| ID   | State | Description                                        | Start_Date | PROJECT | Tag | Wakeup_Date |
++------+-------+----------------------------------------------------+------------+---------+-----+-------------+
+| 1313 | Open  |  consider adding to a task or activity being       | 17ww39.Sun | weekly  | []  | N/A         |
+|      |       | closed, (adding a) text related to teh closure     |            |         |     |             |
+|      |       | (like - fixed, what was done, what remains etc).   |            |         |     |             |
+| 1889 | Open  |  add table print out for more commands (like list  | 17ww45.Mon | weekly  | []  | N/A         |
+|      |       | @xxx for example)                                  |            |         |     |             |
+| 1984 | Open  |  add print out of what was the issue when coming   | 17ww48.Mon | weekly  | []  | N/A         |
+|      |       | back with error                                    |            |         |     |             |
+| 2034 | Open  |  enable scripts - so someone can write a set of    | 17ww49.Tue | weekly  | []  | N/A         |
+|      |       | commands and run them from that script. also       |            |         |     |             |
+|      |       | create a mode where it is possible to run the      |            |         |     |             |
+|      |       | script w/o its effecting the actual database. for  |            |         |     |             |
+|      |       | example - a mode that does not do save of teh      |            |         |     |             |
+|      |       | databases.                                         |            |         |     |             |
+| 2035 | Open  |  add ability to edit the desciption field (or      | 17ww49.Tue | weekly  | []  | N/A         |
+|      |       | other fields) in an item                           |            |         |     |             |
+| 2037 | Open  |  enable to write (or echo) commands also into a    | 17ww49.Tue | weekly  | []  | N/A         |
+|      |       | file. something like 'echo filename' and 'echo     |            |         |     |             |
+|      |       | stop'                                              |            |         |     |             |
+| 2038 | Open  |  add to the create list feature also something     | 17ww49.Tue | weekly  | []  | N/A         |
+|      |       | like 'list list' which shows what is the list but  |            |         |     |             |
+|      |       | also maintains the context of the list             |            |         |     |             |
+| 2065 | Open  |  add ability to list in recursion - like - all the | 17ww51.Sun | weekly  | []  | N/A         |
+|      |       | items under a project - tasks and activities -     |            |         |     |             |
+|      |       | directly under the project and also activities     |            |         |     |             |
+|      |       | under the task.                                    |            |         |     |             |
+| 2066 | Open  |  keep contect (like with a flag maybe) so multiple | 17ww51.Sun | weekly  | []  | N/A         |
+|      |       | create task actions open under the same project,   |            |         |     |             |
+|      |       | for example.                                       |            |         |     |             |
+| 2067 | Open  |  add the project/task column to printing out of    | 17ww51.Sun | weekly  | []  | N/A         |
+|      |       | activities                                         |            |         |     |             |
+| 2069 | Open  |  add ability also to test what is coming back from | 17ww51.Sun | weekly  | []  | N/A         |
+|      |       | testing in developement env (test_defs), for       |            |         |     |             |
+|      |       | example - using some regular expression comparing  |            |         |     |             |
++------+-------+----------------------------------------------------+------------+---------+-----+-------------+
+DEBUG:src.server.server:return_message: 4185:+Showing items 1 to 11:---------------------------------------------+------------+---------+-----+-------------+
+| ID   | State | Description                                        | Start_Date | PROJECT | Tag | Wakeup_Date |
++------+-------+----------------------------------------------------+------------+---------+-----+-------------+
+| 1313 | Open  |  consider adding to a task or activity being       | 17ww39.Sun | weekly  | []  | N/A         |
+|      |       | closed, (adding a) text related to teh closure     |            |         |     |             |
+|      |       | (like - fixed, what was done, what remains etc).   |            |         |     |             |
+| 1889 | Open  |  add table print out for more commands (like list  | 17ww45.Mon | weekly  | []  | N/A         |
+|      |       | @xxx for example)                                  |            |         |     |             |
+| 1984 | Open  |  add print out of what was the issue when coming   | 17ww48.Mon | weekly  | []  | N/A         |
+|      |       | back with error                                    |            |         |     |             |
+| 2034 | Open  |  enable scripts - so someone can write a set of    | 17ww49.Tue | weekly  | []  | N/A         |
+|      |       | commands and run them from that script. also       |            |         |     |             |
+|      |       | create a mode where it is possible to run the      |            |         |     |             |
+|      |       | script w/o its effecting the actual database. for  |            |         |     |             |
+|      |       | example - a mode that does not do save of teh      |            |         |     |             |
+|      |       | databases.                                         |            |         |     |             |
+| 2035 | Open  |  add ability to edit the desciption field (or      | 17ww49.Tue | weekly  | []  | N/A         |
+|      |       | other fields) in an item                           |            |         |     |             |
+| 2037 | Open  |  enable to write (or echo) commands also into a    | 17ww49.Tue | weekly  | []  | N/A         |
+|      |       | file. something like 'echo filename' and 'echo     |            |         |     |             |
+|      |       | stop'                                              |            |         |     |             |
+| 2038 | Open  |  add to the create list feature also something     | 17ww49.Tue | weekly  | []  | N/A         |
+|      |       | like 'list list' which shows what is the list but  |            |         |     |             |
+|      |       | also maintains the context of the list             |            |         |     |             |
+| 2065 | Open  |  add ability to list in recursion - like - all the | 17ww51.Sun | weekly  | []  | N/A         |
+|      |       | items under a project - tasks and activities -     |            |         |     |             |
+|      |       | directly under the project and also activities     |            |         |     |             |
+|      |       | under the task.                                    |            |         |     |             |
+| 2066 | Open  |  keep contect (like with a flag maybe) so multiple | 17ww51.Sun | weekly  | []  | N/A         |
+|      |       | create task actions open under the same project,   |            |         |     |             |
+|      |       | for example.                                       |            |         |     |             |
+| 2067 | Open  |  add the project/task column to printing out of    | 17ww51.Sun | weekly  | []  | N/A         |
+|      |       | activities                                         |            |         |     |             |
+| 2069 | Open  |  add ability also to test what is coming back from | 17ww51.Sun | weekly  | []  | N/A         |
+|      |       | testing in developement env (test_defs), for       |            |         |     |             |
+|      |       | example - using some regular expression comparing  |            |         |     |             |
++------+-------+----------------------------------------------------+------------+---------+-----+-------------+
+DEBUG:src.gtd.gtd:command after replacement: stop @2038
+DEBUG:src.gtd.gtd:stored new data:stop @2038
+DEBUG:src.gtd.gtd:data from c: stop @2038
+DEBUG:src.gtd.gtd:I am in parse stop @2038
+DEBUG:src.gtd.gtd:I am in tokenize stop @2038
+DEBUG:src.gtd.gtd:I am in tokenize_weekly stop @2038
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='stop', start=(1, 0), end=(1, 4), line='stop @2038')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='@', start=(1, 5), end=(1, 6), line='stop @2038')
+DEBUG:src.gtd.gtd:stop nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=2 (NUMBER), string='2038', start=(1, 6), end=(1, 10), line='stop @2038')
+DEBUG:src.gtd.gtd:@ nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
+DEBUG:src.gtd.gtd:this is the return_message: Transaction: stop something COMPLETED. Referenced ID is: 2038
+DEBUG:src.server.server:return_message: 0066:Transaction: stop something COMPLETED. Referenced ID is: 2038
+DEBUG:src.gtd.gtd:stored new data:list task for project weekly
+DEBUG:src.gtd.gtd:data from c: list task for project weekly
+DEBUG:src.gtd.gtd:I am in parse list task for project weekly
+DEBUG:src.gtd.gtd:I am in tokenize list task for project weekly
+DEBUG:src.gtd.gtd:I am in tokenize_weekly list task for project weekly
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='list', start=(1, 0), end=(1, 4), line='list task for project weekly')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='task', start=(1, 5), end=(1, 9), line='list task for project weekly')
 DEBUG:src.gtd.gtd:list nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='for', start=(1, 10), end=(1, 13), line='list task for project weekly')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='project', start=(1, 14), end=(1, 21), line='list task for project weekly')
+DEBUG:src.gtd.gtd:nud for
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='weekly', start=(1, 22), end=(1, 28), line='list task for project weekly')
 DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
-DEBUG:src.gtd.gtd:this is the return_message: +Showing items 748 to 762:-----+--------------------------------------------------+------------------------------------------+-------------+
-| ID    | State   | Start_Date | Description                                      | Tag                                      | Wakeup_Date |
-+-------+---------+------------+--------------------------------------------------+------------------------------------------+-------------+
-| 13388 | Started | 17ww48.Sat |  one this is some activity related to a taask    | []                                       | N/A         |
-| 13398 | Started | 17ww48.Sat |  one this is some activity related to a taask    | []                                       | N/A         |
-| 13399 | Started | 17ww48.Sat |  two this is some activity related to a taask    | ['tag_for_proj_one', 'tag_for_proj_one', | N/A         |
-|       |         |            |                                                  | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
-|       |         |            |                                                  | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
-|       |         |            |                                                  | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
-|       |         |            |                                                  | 'tag_for_proj_one', 'tag_for_proj_one']  |             |
-| 13400 | Started | 17ww48.Sat |  three this is some activity related to a taask  | []                                       | N/A         |
-| 13401 | Started | 17ww48.Sat |  four this is some activity related to a taask   | []                                       | N/A         |
-| 13402 | Started | 17ww48.Sat |  five this is some activity related to a taask   | []                                       | N/A         |
-| 13403 | Started | 17ww48.Sat |  six this is some activity related to a taask    | []                                       | N/A         |
-| 13404 | Started | 17ww48.Sat |  seven this is some activity related to a taask  | []                                       | N/A         |
-| 13417 | Started | 17ww48.Sat |  one1 this is some activity related to a taask   | []                                       | N/A         |
-| 13418 | Started | 17ww48.Sat |  two1 this is some activity related to a taask   | []                                       | N/A         |
-| 13419 | Started | 17ww48.Sat |  three1 this is some activity related to a taask | []                                       | N/A         |
-| 13420 | Started | 17ww48.Sat |  four1 this is some activity related to a taask  | []                                       | N/A         |
-| 13421 | Started | 17ww48.Sat |  five1 this is some activity related to a taask  | []                                       | N/A         |
-| 13422 | Started | 17ww48.Sat |  six1 this is some activity related to a taask   | []                                       | N/A         |
-| 13423 | Started | 17ww48.Sat |  seven1 this is some activity related to a taask | []                                       | N/A         |
-+-------+---------+------------+--------------------------------------------------+------------------------------------------+-------------+
-DEBUG:src.server.server:return_message: 3247:
-+Showing items 748 to 762:-----+--------------------------------------------------+------------------------------------------+-------------+
-| ID    | State   | Start_Date | Description                                      | Tag                                      | Wakeup_Date |
-+-------+---------+------------+--------------------------------------------------+------------------------------------------+-------------+
-| 13388 | Started | 17ww48.Sat |  one this is some activity related to a taask    | []                                       | N/A         |
-| 13398 | Started | 17ww48.Sat |  one this is some activity related to a taask    | []                                       | N/A         |
-| 13399 | Started | 17ww48.Sat |  two this is some activity related to a taask    | ['tag_for_proj_one', 'tag_for_proj_one', | N/A         |
-|       |         |            |                                                  | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
-|       |         |            |                                                  | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
-|       |         |            |                                                  | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
-|       |         |            |                                                  | 'tag_for_proj_one', 'tag_for_proj_one']  |             |
-| 13400 | Started | 17ww48.Sat |  three this is some activity related to a taask  | []                                       | N/A         |
-| 13401 | Started | 17ww48.Sat |  four this is some activity related to a taask   | []                                       | N/A         |
-| 13402 | Started | 17ww48.Sat |  five this is some activity related to a taask   | []                                       | N/A         |
-| 13403 | Started | 17ww48.Sat |  six this is some activity related to a taask    | []                                       | N/A         |
-| 13404 | Started | 17ww48.Sat |  seven this is some activity related to a taask  | []                                       | N/A         |
-| 13417 | Started | 17ww48.Sat |  one1 this is some activity related to a taask   | []                                       | N/A         |
-| 13418 | Started | 17ww48.Sat |  two1 this is some activity related to a taask   | []                                       | N/A         |
-| 13419 | Started | 17ww48.Sat |  three1 this is some activity related to a taask | []                                       | N/A         |
-| 13420 | Started | 17ww48.Sat |  four1 this is some activity related to a taask  | []                                       | N/A         |
-| 13421 | Started | 17ww48.Sat |  five1 this is some activity related to a taask  | []                                       | N/A         |
-| 13422 | Started | 17ww48.Sat |  six1 this is some activity related to a taask   | []                                       | N/A         |
-| 13423 | Started | 17ww48.Sat |  seven1 this is some activity related to a taask | []                                       | N/A         |
-+-------+---------+------------+--------------------------------------------------+------------------------------------------+-------------+
-DEBUG:src.server.client_direct:ServerSaid: 3247:
-+Showing items 748 to 762:-----+--------------------------------------------------+------------------------------------------+-------------+
-| ID    | State   | Start_Date | Description                                      | Tag                                      | Wakeup_Date |
-+-------+---------+------------+--------------------------------------------------+------------------------------------------+-------------+
-| 13388 | Started | 17ww48.Sat |  one this is some activity related to a taask    | []                                       | N/A         |
-| 13398 | Started | 17ww48.Sat |  one this is some activity related to a taask    | []                                       | N/A         |
-| 13399 | Started | 17ww48.Sat |  two this is some activity related to a taask    | ['tag_for_proj_one', 'tag_for_proj_one', | N/A         |
-|       |         |            |                                                  | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
-|       |         |            |                                                  | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
-|       |         |            |                                                  | 'tag_for_proj_one', 'tag_for_proj_one',  |             |
-|       |         |            |                                                  | 'tag_for_proj_one', 'tag_for_proj_one']  |             |
-| 13400 | Started | 17ww48.Sat |  three this is some activity related to a taask  | []                                       | N/A         |
-| 13401 | Started | 17ww48.Sat |  four this is some activity related to a taask   | []                                       | N/A         |
-| 13402 | Started | 17ww48.Sat |  five this is some activity related to a taask   | []                                       | N/A         |
-| 13403 | Started | 17ww48.Sat |  six this is some activity related to a taask    | []                                       | N/A         |
-| 13404 | Started | 17ww48.Sat |  seven this is some activity related to a taask  | []                                       | N/A         |
-| 13417 | Started | 17ww48.Sat |  one1 this is some activity related to a taask   | []                                       | N/A         |
-| 13418 | Started | 17ww48.Sat |  two1 this is some activity related to a taask   | []                                       | N/A         |
-| 13419 | Started | 17ww48.Sat |  three1 this is some activity related to a taask | []                                       | N/A         |
-| 13420 | Started | 17ww48.Sat |  four1 this is some activity related to a taask  | []                                       | N/A         |
-| 13421 | Started | 17ww48.Sat |  five1 this is some activity related to a taask  | []                                       | N/A         |
-| 13422 | Started | 17ww48.Sat |  six1 this is some activity related to a taask   | []                                       | N/A         |
-| 13423 | Started | 17ww48.Sat |  seven1 this is some activity related to a taask | []                                       | N/A         |
-+-------+---------+------------+--------------------------------------------------+------------------------------------------+-------------+
-DEBUG:src.server.client_direct:Client closing socket
+DEBUG:src.gtd.gtd:this is the return_message: +Showing items 1 to 10:---------------------------------------------+------------+---------+-----+-------------+
+| ID   | State | Description                                        | Start_Date | PROJECT | Tag | Wakeup_Date |
++------+-------+----------------------------------------------------+------------+---------+-----+-------------+
+| 1313 | Open  |  consider adding to a task or activity being       | 17ww39.Sun | weekly  | []  | N/A         |
+|      |       | closed, (adding a) text related to teh closure     |            |         |     |             |
+|      |       | (like - fixed, what was done, what remains etc).   |            |         |     |             |
+| 1889 | Open  |  add table print out for more commands (like list  | 17ww45.Mon | weekly  | []  | N/A         |
+|      |       | @xxx for example)                                  |            |         |     |             |
+| 1984 | Open  |  add print out of what was the issue when coming   | 17ww48.Mon | weekly  | []  | N/A         |
+|      |       | back with error                                    |            |         |     |             |
+| 2034 | Open  |  enable scripts - so someone can write a set of    | 17ww49.Tue | weekly  | []  | N/A         |
+|      |       | commands and run them from that script. also       |            |         |     |             |
+|      |       | create a mode where it is possible to run the      |            |         |     |             |
+|      |       | script w/o its effecting the actual database. for  |            |         |     |             |
+|      |       | example - a mode that does not do save of teh      |            |         |     |             |
+|      |       | databases.                                         |            |         |     |             |
+| 2035 | Open  |  add ability to edit the desciption field (or      | 17ww49.Tue | weekly  | []  | N/A         |
+|      |       | other fields) in an item                           |            |         |     |             |
+| 2037 | Open  |  enable to write (or echo) commands also into a    | 17ww49.Tue | weekly  | []  | N/A         |
+|      |       | file. something like 'echo filename' and 'echo     |            |         |     |             |
+|      |       | stop'                                              |            |         |     |             |
+| 2065 | Open  |  add ability to list in recursion - like - all the | 17ww51.Sun | weekly  | []  | N/A         |
+|      |       | items under a project - tasks and activities -     |            |         |     |             |
+|      |       | directly under the project and also activities     |            |         |     |             |
+|      |       | under the task.                                    |            |         |     |             |
+| 2066 | Open  |  keep contect (like with a flag maybe) so multiple | 17ww51.Sun | weekly  | []  | N/A         |
+|      |       | create task actions open under the same project,   |            |         |     |             |
+|      |       | for example.                                       |            |         |     |             |
+| 2067 | Open  |  add the project/task column to printing out of    | 17ww51.Sun | weekly  | []  | N/A         |
+|      |       | activities                                         |            |         |     |             |
+| 2069 | Open  |  add ability also to test what is coming back from | 17ww51.Sun | weekly  | []  | N/A         |
+|      |       | testing in developement env (test_defs), for       |            |         |     |             |
+|      |       | example - using some regular expression comparing  |            |         |     |             |
++------+-------+----------------------------------------------------+------------+---------+-----+-------------+
+DEBUG:src.server.server:return_message: 3846:+Showing items 1 to 10:---------------------------------------------+------------+---------+-----+-------------+
+| ID   | State | Description                                        | Start_Date | PROJECT | Tag | Wakeup_Date |
++------+-------+----------------------------------------------------+------------+---------+-----+-------------+
+| 1313 | Open  |  consider adding to a task or activity being       | 17ww39.Sun | weekly  | []  | N/A         |
+|      |       | closed, (adding a) text related to teh closure     |            |         |     |             |
+|      |       | (like - fixed, what was done, what remains etc).   |            |         |     |             |
+| 1889 | Open  |  add table print out for more commands (like list  | 17ww45.Mon | weekly  | []  | N/A         |
+|      |       | @xxx for example)                                  |            |         |     |             |
+| 1984 | Open  |  add print out of what was the issue when coming   | 17ww48.Mon | weekly  | []  | N/A         |
+|      |       | back with error                                    |            |         |     |             |
+| 2034 | Open  |  enable scripts - so someone can write a set of    | 17ww49.Tue | weekly  | []  | N/A         |
+|      |       | commands and run them from that script. also       |            |         |     |             |
+|      |       | create a mode where it is possible to run the      |            |         |     |             |
+|      |       | script w/o its effecting the actual database. for  |            |         |     |             |
+|      |       | example - a mode that does not do save of teh      |            |         |     |             |
+|      |       | databases.                                         |            |         |     |             |
+| 2035 | Open  |  add ability to edit the desciption field (or      | 17ww49.Tue | weekly  | []  | N/A         |
+|      |       | other fields) in an item                           |            |         |     |             |
+| 2037 | Open  |  enable to write (or echo) commands also into a    | 17ww49.Tue | weekly  | []  | N/A         |
+|      |       | file. something like 'echo filename' and 'echo     |            |         |     |             |
+|      |       | stop'                                              |            |         |     |             |
+| 2065 | Open  |  add ability to list in recursion - like - all the | 17ww51.Sun | weekly  | []  | N/A         |
+|      |       | items under a project - tasks and activities -     |            |         |     |             |
+|      |       | directly under the project and also activities     |            |         |     |             |
+|      |       | under the task.                                    |            |         |     |             |
+| 2066 | Open  |  keep contect (like with a flag maybe) so multiple | 17ww51.Sun | weekly  | []  | N/A         |
+|      |       | create task actions open under the same project,   |            |         |     |             |
+|      |       | for example.                                       |            |         |     |             |
+| 2067 | Open  |  add the project/task column to printing out of    | 17ww51.Sun | weekly  | []  | N/A         |
+|      |       | activities                                         |            |         |     |             |
+| 2069 | Open  |  add ability also to test what is coming back from | 17ww51.Sun | weekly  | []  | N/A         |
+|      |       | testing in developement env (test_defs), for       |            |         |     |             |
+|      |       | example - using some regular expression comparing  |            |         |     |             |
++------+-------+----------------------------------------------------+------------+---------+-----+-------------+
+DEBUG:src.gtd.gtd:command after replacement: halt @1313
+DEBUG:src.gtd.gtd:stored new data:halt @1313
+DEBUG:src.gtd.gtd:data from c: halt @1313
+DEBUG:src.gtd.gtd:I am in parse halt @1313
+DEBUG:src.gtd.gtd:I am in tokenize halt @1313
+DEBUG:src.gtd.gtd:I am in tokenize_weekly halt @1313
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='halt', start=(1, 0), end=(1, 4), line='halt @1313')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='@', start=(1, 5), end=(1, 6), line='halt @1313')
+DEBUG:src.gtd.gtd:halt nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=2 (NUMBER), string='1313', start=(1, 6), end=(1, 10), line='halt @1313')
+DEBUG:src.gtd.gtd:@ nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
+DEBUG:src.gtd.gtd:this is the return_message: Transaction: halt something COMPLETED. Referenced ID is: 1313
+DEBUG:src.server.server:return_message: 0066:Transaction: halt something COMPLETED. Referenced ID is: 1313
+DEBUG:src.gtd.gtd:command after replacement: halt @
+DEBUG:src.gtd.gtd:stored new data:halt @
+DEBUG:src.gtd.gtd:data from c: halt @
+DEBUG:src.gtd.gtd:I am in parse halt @
+DEBUG:src.gtd.gtd:I am in tokenize halt @
+DEBUG:src.gtd.gtd:I am in tokenize_weekly halt @
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='halt', start=(1, 0), end=(1, 4), line='halt @')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='@', start=(1, 5), end=(1, 6), line='halt @')
+DEBUG:src.gtd.gtd:halt nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
+DEBUG:src.gtd.gtd:@ nud
+DEBUG:src.gtd.gtd:this is the return_message: clean
+DEBUG:src.server.server:return_message: 0010:clean
+DEBUG:src.gtd.gtd:command after replacement: halt @2069
+DEBUG:src.gtd.gtd:stored new data:halt @2069
+DEBUG:src.gtd.gtd:data from c: halt @2069
+DEBUG:src.gtd.gtd:I am in parse halt @2069
+DEBUG:src.gtd.gtd:I am in tokenize halt @2069
+DEBUG:src.gtd.gtd:I am in tokenize_weekly halt @2069
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='halt', start=(1, 0), end=(1, 4), line='halt @2069')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='@', start=(1, 5), end=(1, 6), line='halt @2069')
+DEBUG:src.gtd.gtd:halt nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=2 (NUMBER), string='2069', start=(1, 6), end=(1, 10), line='halt @2069')
+DEBUG:src.gtd.gtd:@ nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
+DEBUG:src.gtd.gtd:this is the return_message: Transaction: halt something COMPLETED. Referenced ID is: 2069
+DEBUG:src.server.server:return_message: 0066:Transaction: halt something COMPLETED. Referenced ID is: 2069
+DEBUG:src.gtd.gtd:command after replacement: halt @2067
+DEBUG:src.gtd.gtd:stored new data:halt @2067
+DEBUG:src.gtd.gtd:data from c: halt @2067
+DEBUG:src.gtd.gtd:I am in parse halt @2067
+DEBUG:src.gtd.gtd:I am in tokenize halt @2067
+DEBUG:src.gtd.gtd:I am in tokenize_weekly halt @2067
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='halt', start=(1, 0), end=(1, 4), line='halt @2067')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='@', start=(1, 5), end=(1, 6), line='halt @2067')
+DEBUG:src.gtd.gtd:halt nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=2 (NUMBER), string='2067', start=(1, 6), end=(1, 10), line='halt @2067')
+DEBUG:src.gtd.gtd:@ nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
+DEBUG:src.gtd.gtd:this is the return_message: Transaction: halt something COMPLETED. Referenced ID is: 2067
+DEBUG:src.server.server:return_message: 0066:Transaction: halt something COMPLETED. Referenced ID is: 2067
+DEBUG:src.gtd.gtd:command after replacement: halt @
+DEBUG:src.gtd.gtd:stored new data:halt @
+DEBUG:src.gtd.gtd:data from c: halt @
+DEBUG:src.gtd.gtd:I am in parse halt @
+DEBUG:src.gtd.gtd:I am in tokenize halt @
+DEBUG:src.gtd.gtd:I am in tokenize_weekly halt @
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='halt', start=(1, 0), end=(1, 4), line='halt @')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='@', start=(1, 5), end=(1, 6), line='halt @')
+DEBUG:src.gtd.gtd:halt nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
+DEBUG:src.gtd.gtd:@ nud
+DEBUG:src.gtd.gtd:this is the return_message: clean
+DEBUG:src.server.server:return_message: 0010:clean
+DEBUG:src.gtd.gtd:command after replacement: halt @2066
+DEBUG:src.gtd.gtd:stored new data:halt @2066
+DEBUG:src.gtd.gtd:data from c: halt @2066
+DEBUG:src.gtd.gtd:I am in parse halt @2066
+DEBUG:src.gtd.gtd:I am in tokenize halt @2066
+DEBUG:src.gtd.gtd:I am in tokenize_weekly halt @2066
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='halt', start=(1, 0), end=(1, 4), line='halt @2066')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='@', start=(1, 5), end=(1, 6), line='halt @2066')
+DEBUG:src.gtd.gtd:halt nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=2 (NUMBER), string='2066', start=(1, 6), end=(1, 10), line='halt @2066')
+DEBUG:src.gtd.gtd:@ nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
+DEBUG:src.gtd.gtd:this is the return_message: Transaction: halt something COMPLETED. Referenced ID is: 2066
+DEBUG:src.server.server:return_message: 0066:Transaction: halt something COMPLETED. Referenced ID is: 2066
+DEBUG:src.gtd.gtd:stored new data:list task for project weekly
+DEBUG:src.gtd.gtd:data from c: list task for project weekly
+DEBUG:src.gtd.gtd:I am in parse list task for project weekly
+DEBUG:src.gtd.gtd:I am in tokenize list task for project weekly
+DEBUG:src.gtd.gtd:I am in tokenize_weekly list task for project weekly
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='list', start=(1, 0), end=(1, 4), line='list task for project weekly')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='task', start=(1, 5), end=(1, 9), line='list task for project weekly')
+DEBUG:src.gtd.gtd:list nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='for', start=(1, 10), end=(1, 13), line='list task for project weekly')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='project', start=(1, 14), end=(1, 21), line='list task for project weekly')
+DEBUG:src.gtd.gtd:nud for
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='weekly', start=(1, 22), end=(1, 28), line='list task for project weekly')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
+DEBUG:src.gtd.gtd:this is the return_message: +Showing items 1 to 6:----------------------------------------------+------------+---------+-----+-------------+
+| ID   | State | Description                                        | Start_Date | PROJECT | Tag | Wakeup_Date |
++------+-------+----------------------------------------------------+------------+---------+-----+-------------+
+| 1889 | Open  |  add table print out for more commands (like list  | 17ww45.Mon | weekly  | []  | N/A         |
+|      |       | @xxx for example)                                  |            |         |     |             |
+| 1984 | Open  |  add print out of what was the issue when coming   | 17ww48.Mon | weekly  | []  | N/A         |
+|      |       | back with error                                    |            |         |     |             |
+| 2034 | Open  |  enable scripts - so someone can write a set of    | 17ww49.Tue | weekly  | []  | N/A         |
+|      |       | commands and run them from that script. also       |            |         |     |             |
+|      |       | create a mode where it is possible to run the      |            |         |     |             |
+|      |       | script w/o its effecting the actual database. for  |            |         |     |             |
+|      |       | example - a mode that does not do save of teh      |            |         |     |             |
+|      |       | databases.                                         |            |         |     |             |
+| 2035 | Open  |  add ability to edit the desciption field (or      | 17ww49.Tue | weekly  | []  | N/A         |
+|      |       | other fields) in an item                           |            |         |     |             |
+| 2037 | Open  |  enable to write (or echo) commands also into a    | 17ww49.Tue | weekly  | []  | N/A         |
+|      |       | file. something like 'echo filename' and 'echo     |            |         |     |             |
+|      |       | stop'                                              |            |         |     |             |
+| 2065 | Open  |  add ability to list in recursion - like - all the | 17ww51.Sun | weekly  | []  | N/A         |
+|      |       | items under a project - tasks and activities -     |            |         |     |             |
+|      |       | directly under the project and also activities     |            |         |     |             |
+|      |       | under the task.                                    |            |         |     |             |
++------+-------+----------------------------------------------------+------------+---------+-----+-------------+
+DEBUG:src.server.server:return_message: 2603:+Showing items 1 to 6:----------------------------------------------+------------+---------+-----+-------------+
+| ID   | State | Description                                        | Start_Date | PROJECT | Tag | Wakeup_Date |
++------+-------+----------------------------------------------------+------------+---------+-----+-------------+
+| 1889 | Open  |  add table print out for more commands (like list  | 17ww45.Mon | weekly  | []  | N/A         |
+|      |       | @xxx for example)                                  |            |         |     |             |
+| 1984 | Open  |  add print out of what was the issue when coming   | 17ww48.Mon | weekly  | []  | N/A         |
+|      |       | back with error                                    |            |         |     |             |
+| 2034 | Open  |  enable scripts - so someone can write a set of    | 17ww49.Tue | weekly  | []  | N/A         |
+|      |       | commands and run them from that script. also       |            |         |     |             |
+|      |       | create a mode where it is possible to run the      |            |         |     |             |
+|      |       | script w/o its effecting the actual database. for  |            |         |     |             |
+|      |       | example - a mode that does not do save of teh      |            |         |     |             |
+|      |       | databases.                                         |            |         |     |             |
+| 2035 | Open  |  add ability to edit the desciption field (or      | 17ww49.Tue | weekly  | []  | N/A         |
+|      |       | other fields) in an item                           |            |         |     |             |
+| 2037 | Open  |  enable to write (or echo) commands also into a    | 17ww49.Tue | weekly  | []  | N/A         |
+|      |       | file. something like 'echo filename' and 'echo     |            |         |     |             |
+|      |       | stop'                                              |            |         |     |             |
+| 2065 | Open  |  add ability to list in recursion - like - all the | 17ww51.Sun | weekly  | []  | N/A         |
+|      |       | items under a project - tasks and activities -     |            |         |     |             |
+|      |       | directly under the project and also activities     |            |         |     |             |
+|      |       | under the task.                                    |            |         |     |             |
++------+-------+----------------------------------------------------+------------+---------+-----+-------------+
+DEBUG:src.gtd.gtd:command after replacement: halt @1889
+DEBUG:src.gtd.gtd:stored new data:halt @1889
+DEBUG:src.gtd.gtd:data from c: halt @1889
+DEBUG:src.gtd.gtd:I am in parse halt @1889
+DEBUG:src.gtd.gtd:I am in tokenize halt @1889
+DEBUG:src.gtd.gtd:I am in tokenize_weekly halt @1889
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='halt', start=(1, 0), end=(1, 4), line='halt @1889')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='@', start=(1, 5), end=(1, 6), line='halt @1889')
+DEBUG:src.gtd.gtd:halt nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=2 (NUMBER), string='1889', start=(1, 6), end=(1, 10), line='halt @1889')
+DEBUG:src.gtd.gtd:@ nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
+DEBUG:src.gtd.gtd:this is the return_message: Transaction: halt something COMPLETED. Referenced ID is: 1889
+DEBUG:src.server.server:return_message: 0066:Transaction: halt something COMPLETED. Referenced ID is: 1889
+DEBUG:src.gtd.gtd:command after replacement: halt @1984
+DEBUG:src.gtd.gtd:stored new data:halt @1984
+DEBUG:src.gtd.gtd:data from c: halt @1984
+DEBUG:src.gtd.gtd:I am in parse halt @1984
+DEBUG:src.gtd.gtd:I am in tokenize halt @1984
+DEBUG:src.gtd.gtd:I am in tokenize_weekly halt @1984
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='halt', start=(1, 0), end=(1, 4), line='halt @1984')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='@', start=(1, 5), end=(1, 6), line='halt @1984')
+DEBUG:src.gtd.gtd:halt nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=2 (NUMBER), string='1984', start=(1, 6), end=(1, 10), line='halt @1984')
+DEBUG:src.gtd.gtd:@ nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
+DEBUG:src.gtd.gtd:this is the return_message: Transaction: halt something COMPLETED. Referenced ID is: 1984
+DEBUG:src.server.server:return_message: 0066:Transaction: halt something COMPLETED. Referenced ID is: 1984
+DEBUG:src.gtd.gtd:command after replacement: halt @2034
+DEBUG:src.gtd.gtd:stored new data:halt @2034
+DEBUG:src.gtd.gtd:data from c: halt @2034
+DEBUG:src.gtd.gtd:I am in parse halt @2034
+DEBUG:src.gtd.gtd:I am in tokenize halt @2034
+DEBUG:src.gtd.gtd:I am in tokenize_weekly halt @2034
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='halt', start=(1, 0), end=(1, 4), line='halt @2034')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='@', start=(1, 5), end=(1, 6), line='halt @2034')
+DEBUG:src.gtd.gtd:halt nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=2 (NUMBER), string='2034', start=(1, 6), end=(1, 10), line='halt @2034')
+DEBUG:src.gtd.gtd:@ nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
+DEBUG:src.gtd.gtd:this is the return_message: Transaction: halt something COMPLETED. Referenced ID is: 2034
+DEBUG:src.server.server:return_message: 0066:Transaction: halt something COMPLETED. Referenced ID is: 2034
+DEBUG:src.gtd.gtd:command after replacement: halt @2035
+DEBUG:src.gtd.gtd:stored new data:halt @2035
+DEBUG:src.gtd.gtd:data from c: halt @2035
+DEBUG:src.gtd.gtd:I am in parse halt @2035
+DEBUG:src.gtd.gtd:I am in tokenize halt @2035
+DEBUG:src.gtd.gtd:I am in tokenize_weekly halt @2035
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='halt', start=(1, 0), end=(1, 4), line='halt @2035')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='@', start=(1, 5), end=(1, 6), line='halt @2035')
+DEBUG:src.gtd.gtd:halt nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=2 (NUMBER), string='2035', start=(1, 6), end=(1, 10), line='halt @2035')
+DEBUG:src.gtd.gtd:@ nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
+DEBUG:src.gtd.gtd:this is the return_message: Transaction: halt something COMPLETED. Referenced ID is: 2035
+DEBUG:src.server.server:return_message: 0066:Transaction: halt something COMPLETED. Referenced ID is: 2035
+DEBUG:src.gtd.gtd:command after replacement: halt @2037
+DEBUG:src.gtd.gtd:stored new data:halt @2037
+DEBUG:src.gtd.gtd:data from c: halt @2037
+DEBUG:src.gtd.gtd:I am in parse halt @2037
+DEBUG:src.gtd.gtd:I am in tokenize halt @2037
+DEBUG:src.gtd.gtd:I am in tokenize_weekly halt @2037
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='halt', start=(1, 0), end=(1, 4), line='halt @2037')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='@', start=(1, 5), end=(1, 6), line='halt @2037')
+DEBUG:src.gtd.gtd:halt nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=2 (NUMBER), string='2037', start=(1, 6), end=(1, 10), line='halt @2037')
+DEBUG:src.gtd.gtd:@ nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
+DEBUG:src.gtd.gtd:this is the return_message: Transaction: halt something COMPLETED. Referenced ID is: 2037
+DEBUG:src.server.server:return_message: 0066:Transaction: halt something COMPLETED. Referenced ID is: 2037
+DEBUG:src.gtd.gtd:command after replacement: halt @2065
+DEBUG:src.gtd.gtd:stored new data:halt @2065
+DEBUG:src.gtd.gtd:data from c: halt @2065
+DEBUG:src.gtd.gtd:I am in parse halt @2065
+DEBUG:src.gtd.gtd:I am in tokenize halt @2065
+DEBUG:src.gtd.gtd:I am in tokenize_weekly halt @2065
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='halt', start=(1, 0), end=(1, 4), line='halt @2065')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='@', start=(1, 5), end=(1, 6), line='halt @2065')
+DEBUG:src.gtd.gtd:halt nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=2 (NUMBER), string='2065', start=(1, 6), end=(1, 10), line='halt @2065')
+DEBUG:src.gtd.gtd:@ nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
+DEBUG:src.gtd.gtd:this is the return_message: Transaction: halt something COMPLETED. Referenced ID is: 2065
+DEBUG:src.server.server:return_message: 0066:Transaction: halt something COMPLETED. Referenced ID is: 2065
+DEBUG:src.gtd.gtd:stored new data:list task for project weekly
+DEBUG:src.gtd.gtd:data from c: list task for project weekly
+DEBUG:src.gtd.gtd:I am in parse list task for project weekly
+DEBUG:src.gtd.gtd:I am in tokenize list task for project weekly
+DEBUG:src.gtd.gtd:I am in tokenize_weekly list task for project weekly
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='list', start=(1, 0), end=(1, 4), line='list task for project weekly')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='task', start=(1, 5), end=(1, 9), line='list task for project weekly')
+DEBUG:src.gtd.gtd:list nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='for', start=(1, 10), end=(1, 13), line='list task for project weekly')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='project', start=(1, 14), end=(1, 21), line='list task for project weekly')
+DEBUG:src.gtd.gtd:nud for
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='weekly', start=(1, 22), end=(1, 28), line='list task for project weekly')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
+DEBUG:src.gtd.gtd:this is the return_message: No more data to show
+DEBUG:src.server.server:return_message: 0025:No more data to show
+DEBUG:src.gtd.gtd:stored new data:list task for project weekly state all
+DEBUG:src.gtd.gtd:data from c: list task for project weekly state all
+DEBUG:src.gtd.gtd:I am in parse list task for project weekly state all
+DEBUG:src.gtd.gtd:I am in tokenize list task for project weekly state all
+DEBUG:src.gtd.gtd:I am in tokenize_weekly list task for project weekly state all
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='list', start=(1, 0), end=(1, 4), line='list task for project weekly state all')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='task', start=(1, 5), end=(1, 9), line='list task for project weekly state all')
+DEBUG:src.gtd.gtd:list nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='for', start=(1, 10), end=(1, 13), line='list task for project weekly state all')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='project', start=(1, 14), end=(1, 21), line='list task for project weekly state all')
+DEBUG:src.gtd.gtd:nud for
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='weekly', start=(1, 22), end=(1, 28), line='list task for project weekly state all')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='state', start=(1, 29), end=(1, 34), line='list task for project weekly state all')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='all', start=(1, 35), end=(1, 38), line='list task for project weekly state all')
+DEBUG:src.gtd.gtd:state nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
+DEBUG:src.gtd.gtd:this is the return_message: +Showing items 49 to 63:---------------------------------------------+------------+---------+-----+-------------+
+| ID   | State  | Description                                        | Start_Date | PROJECT | Tag | Wakeup_Date |
++------+--------+----------------------------------------------------+------------+---------+-----+-------------+
+| 1984 | OnHold |  add print out of what was the issue when coming   | 17ww48.Mon | weekly  | []  | N/A         |
+|      |        | back with error                                    |            |         |     |             |
+| 1991 | Closed |  add the list wakeup functionality to the online   | 17ww48.Mon | weekly  | []  | N/A         |
+|      |        | command                                            |            |         |     |             |
+| 1992 | Closed |  add to online command to print if this is in      | 17ww48.Mon | weekly  | []  | N/A         |
+|      |        | developement or production mode                    |            |         |     |             |
+| 2001 | Closed |  fix teh help search. the problem is that if you   | 17ww48.Tue | weekly  | []  | N/A         |
+|      |        | search for a word that is a symbol, like list,     |            |         |     |             |
+|      |        | need to use token.id, otherwise, need to use       |            |         |     |             |
+|      |        | token.value.                                       |            |         |     |             |
+| 2006 | Closed |  add Tag for project, Activity and for Task.tag    | 17ww48.Tue | weekly  | []  | N/A         |
+|      |        | the tasks/activities for this week by tag          |            |         |     |             |
+|      |        | ThisWeek. see the tagged items by list tag xxxx.   |            |         |     |             |
+|      |        | add function - move tag (or at least add/remove).  |            |         |     |             |
+|      |        | Question - does Tagging a project tags all things  |            |         |     |             |
+|      |        | below? probably not                                |            |         |     |             |
+| 2033 | OnHold |  deal with older stuff. for example - remove all   | 17ww49.Tue | weekly  | []  | N/A         |
+|      |        | things from a date and backward from teh database. |            |         |     |             |
+|      |        | create teh old database. provide interface to      |            |         |     |             |
+|      |        | create these archives and also to load and unload  |            |         |     |             |
+|      |        | them into a running system, in case we want to     |            |         |     |             |
+|      |        | search in them also.                               |            |         |     |             |
+| 2034 | OnHold |  enable scripts - so someone can write a set of    | 17ww49.Tue | weekly  | []  | N/A         |
+|      |        | commands and run them from that script. also       |            |         |     |             |
+|      |        | create a mode where it is possible to run the      |            |         |     |             |
+|      |        | script w/o its effecting the actual database. for  |            |         |     |             |
+|      |        | example - a mode that does not do save of teh      |            |         |     |             |
+|      |        | databases.                                         |            |         |     |             |
+| 2035 | OnHold |  add ability to edit the desciption field (or      | 17ww49.Tue | weekly  | []  | N/A         |
+|      |        | other fields) in an item                           |            |         |     |             |
+| 2037 | OnHold |  enable to write (or echo) commands also into a    | 17ww49.Tue | weekly  | []  | N/A         |
+|      |        | file. something like 'echo filename' and 'echo     |            |         |     |             |
+|      |        | stop'                                              |            |         |     |             |
+| 2038 | Closed |  add to the create list feature also something     | 17ww49.Tue | weekly  | []  | N/A         |
+|      |        | like 'list list' which shows what is the list but  |            |         |     |             |
+|      |        | also maintains the context of the list             |            |         |     |             |
+| 2065 | OnHold |  add ability to list in recursion - like - all the | 17ww51.Sun | weekly  | []  | N/A         |
+|      |        | items under a project - tasks and activities -     |            |         |     |             |
+|      |        | directly under the project and also activities     |            |         |     |             |
+|      |        | under the task.                                    |            |         |     |             |
+| 2066 | OnHold |  keep contect (like with a flag maybe) so multiple | 17ww51.Sun | weekly  | []  | N/A         |
+|      |        | create task actions open under the same project,   |            |         |     |             |
+|      |        | for example.                                       |            |         |     |             |
+| 2067 | OnHold |  add the project/task column to printing out of    | 17ww51.Sun | weekly  | []  | N/A         |
+|      |        | activities                                         |            |         |     |             |
+| 2068 | Closed |  check why list search checking is not working     | 17ww51.Sun | weekly  | []  | N/A         |
+| 2069 | OnHold |  add ability also to test what is coming back from | 17ww51.Sun | weekly  | []  | N/A         |
+|      |        | testing in developement env (test_defs), for       |            |         |     |             |
+|      |        | example - using some regular expression comparing  |            |         |     |             |
++------+--------+----------------------------------------------------+------------+---------+-----+-------------+
+DEBUG:src.server.server:return_message: 6046:+Showing items 49 to 63:---------------------------------------------+------------+---------+-----+-------------+
+| ID   | State  | Description                                        | Start_Date | PROJECT | Tag | Wakeup_Date |
++------+--------+----------------------------------------------------+------------+---------+-----+-------------+
+| 1984 | OnHold |  add print out of what was the issue when coming   | 17ww48.Mon | weekly  | []  | N/A         |
+|      |        | back with error                                    |            |         |     |             |
+| 1991 | Closed |  add the list wakeup functionality to the online   | 17ww48.Mon | weekly  | []  | N/A         |
+|      |        | command                                            |            |         |     |             |
+| 1992 | Closed |  add to online command to print if this is in      | 17ww48.Mon | weekly  | []  | N/A         |
+|      |        | developement or production mode                    |            |         |     |             |
+| 2001 | Closed |  fix teh help search. the problem is that if you   | 17ww48.Tue | weekly  | []  | N/A         |
+|      |        | search for a word that is a symbol, like list,     |            |         |     |             |
+|      |        | need to use token.id, otherwise, need to use       |            |         |     |             |
+|      |        | token.value.                                       |            |         |     |             |
+| 2006 | Closed |  add Tag for project, Activity and for Task.tag    | 17ww48.Tue | weekly  | []  | N/A         |
+|      |        | the tasks/activities for this week by tag          |            |         |     |             |
+|      |        | ThisWeek. see the tagged items by list tag xxxx.   |            |         |     |             |
+|      |        | add function - move tag (or at least add/remove).  |            |         |     |             |
+|      |        | Question - does Tagging a project tags all things  |            |         |     |             |
+|      |        | below? probably not                                |            |         |     |             |
+| 2033 | OnHold |  deal with older stuff. for example - remove all   | 17ww49.Tue | weekly  | []  | N/A         |
+|      |        | things from a date and backward from teh database. |            |         |     |             |
+|      |        | create teh old database. provide interface to      |            |         |     |             |
+|      |        | create these archives and also to load and unload  |            |         |     |             |
+|      |        | them into a running system, in case we want to     |            |         |     |             |
+|      |        | search in them also.                               |            |         |     |             |
+| 2034 | OnHold |  enable scripts - so someone can write a set of    | 17ww49.Tue | weekly  | []  | N/A         |
+|      |        | commands and run them from that script. also       |            |         |     |             |
+|      |        | create a mode where it is possible to run the      |            |         |     |             |
+|      |        | script w/o its effecting the actual database. for  |            |         |     |             |
+|      |        | example - a mode that does not do save of teh      |            |         |     |             |
+|      |        | databases.                                         |            |         |     |             |
+| 2035 | OnHold |  add ability to edit the desciption field (or      | 17ww49.Tue | weekly  | []  | N/A         |
+|      |        | other fields) in an item                           |            |         |     |             |
+| 2037 | OnHold |  enable to write (or echo) commands also into a    | 17ww49.Tue | weekly  | []  | N/A         |
+|      |        | file. something like 'echo filename' and 'echo     |            |         |     |             |
+|      |        | stop'                                              |            |         |     |             |
+| 2038 | Closed |  add to the create list feature also something     | 17ww49.Tue | weekly  | []  | N/A         |
+|      |        | like 'list list' which shows what is the list but  |            |         |     |             |
+|      |        | also maintains the context of the list             |            |         |     |             |
+| 2065 | OnHold |  add ability to list in recursion - like - all the | 17ww51.Sun | weekly  | []  | N/A         |
+|      |        | items under a project - tasks and activities -     |            |         |     |             |
+|      |        | directly under the project and also activities     |            |         |     |             |
+|      |        | under the task.                                    |            |         |     |             |
+| 2066 | OnHold |  keep contect (like with a flag maybe) so multiple | 17ww51.Sun | weekly  | []  | N/A         |
+|      |        | create task actions open under the same project,   |            |         |     |             |
+|      |        | for example.                                       |            |         |     |             |
+| 2067 | OnHold |  add the project/task column to printing out of    | 17ww51.Sun | weekly  | []  | N/A         |
+|      |        | activities                                         |            |         |     |             |
+| 2068 | Closed |  check why list search checking is not working     | 17ww51.Sun | weekly  | []  | N/A         |
+| 2069 | OnHold |  add ability also to test what is coming back from | 17ww51.Sun | weekly  | []  | N/A         |
+|      |        | testing in developement env (test_defs), for       |            |         |     |             |
+|      |        | example - using some regular expression comparing  |            |         |     |             |
++------+--------+----------------------------------------------------+------------+---------+-----+-------------+
 INFO:root:Logging Finished

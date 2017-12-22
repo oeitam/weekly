@@ -2,9 +2,9 @@
 
 #print('test_defs.py !!')
 
-from datetime import timedelta
 
-debug_delta = timedelta(days=0)
+
+
 
 test_commands = [
     #"ci",
@@ -41,7 +41,44 @@ test_commands = [
     #'list project',
     #'list activity',
     #'online',
-    #'die',
+    #'create list @10677 @10678 @10679',
+    #'list list',
+    #'list list',
+    #'timedelta',
+    #'timedelta off',
+    #'timedelta 10',
+    #'timedelta',
+    'set list_resp_row_limit value 3',
+    'task @project_one | some time, yes',
+    'list task',
+    'timedelta',
+    'timedelta 48',
+    'timedelta',
+    'task @project_one | some time, yes',
+    'list task',
+    'timedelta off',
+    'timedelta',
+    'task @project_one | some time, yes',
+    'list task',
+    'die',
+
+    'task @project_one tag QQQ1| some task',
+    'start @13849 tag QQQ1 | some activity',
+    'create project MYPROJ @Work1 tag QQQ1 | some proj desc',
+    'list tag QQQ1',
+    'die',
+    'create list @10677 @10678 @10679',
+    'tag list TAG_FOR_LIST',
+    'list tag TAG_FOR_LIST',
+    'list tag XXX',
+    'die',
+    'list task tag tag_for_proj_one',
+    'list activity tag tag_for_proj_one',
+    'list project tag tag_for_proj_one',
+    "list activity tag tag_for_proj_one col Start_Date drange bot 17ww20",
+    "list activity col Start_Date drange bot 17ww20 tag tag_for_proj_one",
+    'die',
+
     'tag @10673 tag_two',
     'tag @13399 tag_for_proj_one',
     'tag @13373 tag_for_proj_one',
@@ -53,10 +90,10 @@ test_commands = [
     'list tag tag_for_proj_one',
     'list tag',
     'list activity',
-    'die',
+    #'die',
     'untag project UNIQUE tag_for_proj_one',
     'untag project UNIQUE',
-    'die',
+    #'die',
     'tag @10673 tag_one',
     'tag @10673 tag_one',
     'tag @10673 tag_one',
@@ -84,7 +121,7 @@ test_commands = [
     'untag @13399',
     'list @13399',
 
-    'die',
+    #'die',
     'help 10673',
     'help list',
     #'die',

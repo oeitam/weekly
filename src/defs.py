@@ -4,7 +4,9 @@ from ast import literal_eval
 
 import configparser
 import os
-from datetime import datetime #, date, time, timedelta
+from datetime import datetime, timedelta #, date, time, timedelta
+
+debug_delta = timedelta(days=0)
 
 # check if the config file exists, and if not - craete one
 def check_for_and_create_cfg():
@@ -231,6 +233,11 @@ db_names = {'dfm': 'Megaprojects DataFrame',
             'dfa' : 'Activities DataFrame',
             }
 
+
+
+
+
+
 help_message = '''
 ==================================
 1    ci
@@ -302,6 +309,18 @@ help_message = '''
 64   tag project UNIQUE tag_for_proj_one
 65   list tag tag_for_proj_one
 66   list tag
+67   tag list TAG_FOR_LIST
+68   list task tag tag_for_proj_one
+69   list activity tag tag_for_proj_one
+70   list project tag tag_for_proj_one
+71   list activity tag tag_for_proj_one col Start_Date drange bot 17ww20
+72   list activity col Start_Date drange bot 17ww20 tag tag_for_proj_one
+73   task @project_one tag QQQ1| some task
+74   start @13849 tag QQQ1 | some activity
+75   create project MYPROJ @Work1 tag QQQ1 | some proj desc
+76   timedelta
+77   timedelta 10
+78   timedelta off
  
 ==================================
 '''
