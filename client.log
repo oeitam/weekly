@@ -1,228 +1,47 @@
 INFO:root:Logging (into clienr.log) Started
-DEBUG:__main__:client script sending 0033:list task for project weekly
-DEBUG:__main__:ServerSaid: +Showing items 1 to 12:---------------------------------------------+------------+---------+-----+-------------+
-| ID   | State | Description                                        | Start_Date | PROJECT | Tag | Wakeup_Date |
-+------+-------+----------------------------------------------------+------------+---------+-----+-------------+
-| 1313 | Open  |  consider adding to a task or activity being       | 17ww39.Sun | weekly  | []  | N/A         |
-|      |       | closed, (adding a) text related to teh closure     |            |         |     |             |
-|      |       | (like - fixed, what was done, what remains etc).   |            |         |     |             |
-| 1879 | Open  |  enable a method to insert something with a start  | 17ww45.Sun | weekly  | []  | N/A         |
-|      |       | time in the past (or future?). this is for the     |            |         |     |             |
-|      |       | case that someone forgot to put an activity/task   |            |         |     |             |
-|      |       | that started yesterday (for example). commands can |            |         |     |             |
-|      |       | be -timedelta [given in hours, direction           |            |         |     |             |
-|      |       | backward]- and -timedelta off- [to go back to      |            |         |     |             |
-|      |       | normal]                                            |            |         |     |             |
-| 1889 | Open  |  add table print out for more commands (like list  | 17ww45.Mon | weekly  | []  | N/A         |
-|      |       | @xxx for example)                                  |            |         |     |             |
-| 1984 | Open  |  add print out of what was the issue when coming   | 17ww48.Mon | weekly  | []  | N/A         |
-|      |       | back with error                                    |            |         |     |             |
-| 2034 | Open  |  enable scripts - so someone can write a set of    | 17ww49.Tue | weekly  | []  | N/A         |
-|      |       | commands and run them from that script. also       |            |         |     |             |
-|      |       | create a mode where it is possible to run the      |            |         |     |             |
-|      |       | script w/o its effecting the actual database. for  |            |         |     |             |
-|      |       | example - a mode that does not do save of teh      |            |         |     |             |
-|      |       | databases.                                         |            |         |     |             |
-| 2035 | Open  |  add ability to edit the desciption field (or      | 17ww49.Tue | weekly  | []  | N/A         |
-|      |       | other fields) in an item                           |            |         |     |             |
-| 2037 | Open  |  enable to write (or echo) commands also into a    | 17ww49.Tue | weekly  | []  | N/A         |
-|      |       | file. something like 'echo filename' and 'echo     |            |         |     |             |
-|      |       | stop'                                              |            |         |     |             |
-| 2038 | Open  |  add to the create list feature also something     | 17ww49.Tue | weekly  | []  | N/A         |
-|      |       | like 'list list' which shows what is the list but  |            |         |     |             |
-|      |       | also maintains the context of the list             |            |         |     |             |
-| 2065 | Open  |  add ability to list in recursion - like - all the | 17ww51.Sun | weekly  | []  | N/A         |
-|      |       | items under a project - tasks and activities -     |            |         |     |             |
-|      |       | directly under the project and also activities     |            |         |     |             |
-|      |       | under the task.                                    |            |         |     |             |
-| 2066 | Open  |  keep contect (like with a flag maybe) so multiple | 17ww51.Sun | weekly  | []  | N/A         |
-|      |       | create task actions open under the same project,   |            |         |     |             |
-|      |       | for example.                                       |            |         |     |             |
-| 2067 | Open  |  add the project/task column to printing out of    | 17ww51.Sun | weekly  | []  | N/A         |
-|      |       | activities                                         |            |         |     |             |
-| 2069 | Open  |  add ability also to test what is coming back from | 17ww51.Sun | weekly  | []  | N/A         |
-|      |       | testing in developement env (test_defs), for       |            |         |     |             |
-|      |       | example - using some regular expression comparing  |            |         |     |             |
-+------+-------+----------------------------------------------------+------------+---------+-----+-------------+
-DEBUG:__main__:client script sending 0015:stop @1879
-DEBUG:__main__:ServerSaid: Transaction: stop something COMPLETED. Referenced ID is: 1879
-DEBUG:__main__:client script sending 0033:list task for project weekly
-DEBUG:__main__:ServerSaid: +Showing items 1 to 11:---------------------------------------------+------------+---------+-----+-------------+
-| ID   | State | Description                                        | Start_Date | PROJECT | Tag | Wakeup_Date |
-+------+-------+----------------------------------------------------+------------+---------+-----+-------------+
-| 1313 | Open  |  consider adding to a task or activity being       | 17ww39.Sun | weekly  | []  | N/A         |
-|      |       | closed, (adding a) text related to teh closure     |            |         |     |             |
-|      |       | (like - fixed, what was done, what remains etc).   |            |         |     |             |
-| 1889 | Open  |  add table print out for more commands (like list  | 17ww45.Mon | weekly  | []  | N/A         |
-|      |       | @xxx for example)                                  |            |         |     |             |
-| 1984 | Open  |  add print out of what was the issue when coming   | 17ww48.Mon | weekly  | []  | N/A         |
-|      |       | back with error                                    |            |         |     |             |
-| 2034 | Open  |  enable scripts - so someone can write a set of    | 17ww49.Tue | weekly  | []  | N/A         |
-|      |       | commands and run them from that script. also       |            |         |     |             |
-|      |       | create a mode where it is possible to run the      |            |         |     |             |
-|      |       | script w/o its effecting the actual database. for  |            |         |     |             |
-|      |       | example - a mode that does not do save of teh      |            |         |     |             |
-|      |       | databases.                                         |            |         |     |             |
-| 2035 | Open  |  add ability to edit the desciption field (or      | 17ww49.Tue | weekly  | []  | N/A         |
-|      |       | other fields) in an item                           |            |         |     |             |
-| 2037 | Open  |  enable to write (or echo) commands also into a    | 17ww49.Tue | weekly  | []  | N/A         |
-|      |       | file. something like 'echo filename' and 'echo     |            |         |     |             |
-|      |       | stop'                                              |            |         |     |             |
-| 2038 | Open  |  add to the create list feature also something     | 17ww49.Tue | weekly  | []  | N/A         |
-|      |       | like 'list list' which shows what is the list but  |            |         |     |             |
-|      |       | also maintains the context of the list             |            |         |     |             |
-| 2065 | Open  |  add ability to list in recursion - like - all the | 17ww51.Sun | weekly  | []  | N/A         |
-|      |       | items under a project - tasks and activities -     |            |         |     |             |
-|      |       | directly under the project and also activities     |            |         |     |             |
-|      |       | under the task.                                    |            |         |     |             |
-| 2066 | Open  |  keep contect (like with a flag maybe) so multiple | 17ww51.Sun | weekly  | []  | N/A         |
-|      |       | create task actions open under the same project,   |            |         |     |             |
-|      |       | for example.                                       |            |         |     |             |
-| 2067 | Open  |  add the project/task column to printing out of    | 17ww51.Sun | weekly  | []  | N/A         |
-|      |       | activities                                         |            |         |     |             |
-| 2069 | Open  |  add ability also to test what is coming back from | 17ww51.Sun | weekly  | []  | N/A         |
-|      |       | testing in developement env (test_defs), for       |            |         |     |             |
-|      |       | example - using some regular expression comparing  |            |         |     |             |
-+------+-------+----------------------------------------------------+------------+---------+-----+-------------+
-DEBUG:__main__:client script sending 0015:stop @2038
-DEBUG:__main__:ServerSaid: Transaction: stop something COMPLETED. Referenced ID is: 2038
-DEBUG:__main__:client script sending 0033:list task for project weekly
-DEBUG:__main__:ServerSaid: +Showing items 1 to 10:---------------------------------------------+------------+---------+-----+-------------+
-| ID   | State | Description                                        | Start_Date | PROJECT | Tag | Wakeup_Date |
-+------+-------+----------------------------------------------------+------------+---------+-----+-------------+
-| 1313 | Open  |  consider adding to a task or activity being       | 17ww39.Sun | weekly  | []  | N/A         |
-|      |       | closed, (adding a) text related to teh closure     |            |         |     |             |
-|      |       | (like - fixed, what was done, what remains etc).   |            |         |     |             |
-| 1889 | Open  |  add table print out for more commands (like list  | 17ww45.Mon | weekly  | []  | N/A         |
-|      |       | @xxx for example)                                  |            |         |     |             |
-| 1984 | Open  |  add print out of what was the issue when coming   | 17ww48.Mon | weekly  | []  | N/A         |
-|      |       | back with error                                    |            |         |     |             |
-| 2034 | Open  |  enable scripts - so someone can write a set of    | 17ww49.Tue | weekly  | []  | N/A         |
-|      |       | commands and run them from that script. also       |            |         |     |             |
-|      |       | create a mode where it is possible to run the      |            |         |     |             |
-|      |       | script w/o its effecting the actual database. for  |            |         |     |             |
-|      |       | example - a mode that does not do save of teh      |            |         |     |             |
-|      |       | databases.                                         |            |         |     |             |
-| 2035 | Open  |  add ability to edit the desciption field (or      | 17ww49.Tue | weekly  | []  | N/A         |
-|      |       | other fields) in an item                           |            |         |     |             |
-| 2037 | Open  |  enable to write (or echo) commands also into a    | 17ww49.Tue | weekly  | []  | N/A         |
-|      |       | file. something like 'echo filename' and 'echo     |            |         |     |             |
-|      |       | stop'                                              |            |         |     |             |
-| 2065 | Open  |  add ability to list in recursion - like - all the | 17ww51.Sun | weekly  | []  | N/A         |
-|      |       | items under a project - tasks and activities -     |            |         |     |             |
-|      |       | directly under the project and also activities     |            |         |     |             |
-|      |       | under the task.                                    |            |         |     |             |
-| 2066 | Open  |  keep contect (like with a flag maybe) so multiple | 17ww51.Sun | weekly  | []  | N/A         |
-|      |       | create task actions open under the same project,   |            |         |     |             |
-|      |       | for example.                                       |            |         |     |             |
-| 2067 | Open  |  add the project/task column to printing out of    | 17ww51.Sun | weekly  | []  | N/A         |
-|      |       | activities                                         |            |         |     |             |
-| 2069 | Open  |  add ability also to test what is coming back from | 17ww51.Sun | weekly  | []  | N/A         |
-|      |       | testing in developement env (test_defs), for       |            |         |     |             |
-|      |       | example - using some regular expression comparing  |            |         |     |             |
-+------+-------+----------------------------------------------------+------------+---------+-----+-------------+
-DEBUG:__main__:client script sending 0015:halt @1313
-DEBUG:__main__:ServerSaid: Transaction: halt something COMPLETED. Referenced ID is: 1313
-DEBUG:__main__:client script sending 0011:halt @
-DEBUG:__main__:ServerSaid: clean
-DEBUG:__main__:client script sending 0015:halt @2069
-DEBUG:__main__:ServerSaid: Transaction: halt something COMPLETED. Referenced ID is: 2069
-DEBUG:__main__:client script sending 0015:halt @2067
-DEBUG:__main__:ServerSaid: Transaction: halt something COMPLETED. Referenced ID is: 2067
-DEBUG:__main__:client script sending 0011:halt @
-DEBUG:__main__:ServerSaid: clean
-DEBUG:__main__:client script sending 0015:halt @2066
-DEBUG:__main__:ServerSaid: Transaction: halt something COMPLETED. Referenced ID is: 2066
-DEBUG:__main__:client script sending 0033:list task for project weekly
-DEBUG:__main__:ServerSaid: +Showing items 1 to 6:----------------------------------------------+------------+---------+-----+-------------+
-| ID   | State | Description                                        | Start_Date | PROJECT | Tag | Wakeup_Date |
-+------+-------+----------------------------------------------------+------------+---------+-----+-------------+
-| 1889 | Open  |  add table print out for more commands (like list  | 17ww45.Mon | weekly  | []  | N/A         |
-|      |       | @xxx for example)                                  |            |         |     |             |
-| 1984 | Open  |  add print out of what was the issue when coming   | 17ww48.Mon | weekly  | []  | N/A         |
-|      |       | back with error                                    |            |         |     |             |
-| 2034 | Open  |  enable scripts - so someone can write a set of    | 17ww49.Tue | weekly  | []  | N/A         |
-|      |       | commands and run them from that script. also       |            |         |     |             |
-|      |       | create a mode where it is possible to run the      |            |         |     |             |
-|      |       | script w/o its effecting the actual database. for  |            |         |     |             |
-|      |       | example - a mode that does not do save of teh      |            |         |     |             |
-|      |       | databases.                                         |            |         |     |             |
-| 2035 | Open  |  add ability to edit the desciption field (or      | 17ww49.Tue | weekly  | []  | N/A         |
-|      |       | other fields) in an item                           |            |         |     |             |
-| 2037 | Open  |  enable to write (or echo) commands also into a    | 17ww49.Tue | weekly  | []  | N/A         |
-|      |       | file. something like 'echo filename' and 'echo     |            |         |     |             |
-|      |       | stop'                                              |            |         |     |             |
-| 2065 | Open  |  add ability to list in recursion - like - all the | 17ww51.Sun | weekly  | []  | N/A         |
-|      |       | items under a project - tasks and activities -     |            |         |     |             |
-|      |       | directly under the project and also activities     |            |         |     |             |
-|      |       | under the task.                                    |            |         |     |             |
-+------+-------+----------------------------------------------------+------------+---------+-----+-------------+
-DEBUG:__main__:client script sending 0015:halt @1889
-DEBUG:__main__:ServerSaid: Transaction: halt something COMPLETED. Referenced ID is: 1889
-DEBUG:__main__:client script sending 0015:halt @1984
-DEBUG:__main__:ServerSaid: Transaction: halt something COMPLETED. Referenced ID is: 1984
-DEBUG:__main__:client script sending 0015:halt @2034
-DEBUG:__main__:ServerSaid: Transaction: halt something COMPLETED. Referenced ID is: 2034
-DEBUG:__main__:client script sending 0015:halt @2035
-DEBUG:__main__:ServerSaid: Transaction: halt something COMPLETED. Referenced ID is: 2035
-DEBUG:__main__:client script sending 0015:halt @2037
-DEBUG:__main__:ServerSaid: Transaction: halt something COMPLETED. Referenced ID is: 2037
-DEBUG:__main__:client script sending 0015:halt @2065
-DEBUG:__main__:ServerSaid: Transaction: halt something COMPLETED. Referenced ID is: 2065
-DEBUG:__main__:client script sending 0033:list task for project weekly
-DEBUG:__main__:ServerSaid: No more data to show
-DEBUG:__main__:client script sending 0043:list task for project weekly state all
-DEBUG:__main__:ServerSaid: +Showing items 49 to 63:---------------------------------------------+------------+---------+-----+-------------+
-| ID   | State  | Description                                        | Start_Date | PROJECT | Tag | Wakeup_Date |
-+------+--------+----------------------------------------------------+------------+---------+-----+-------------+
-| 1984 | OnHold |  add print out of what was the issue when coming   | 17ww48.Mon | weekly  | []  | N/A         |
-|      |        | back with error                                    |            |         |     |             |
-| 1991 | Closed |  add the list wakeup functionality to the online   | 17ww48.Mon | weekly  | []  | N/A         |
-|      |        | command                                            |            |         |     |             |
-| 1992 | Closed |  add to online command to print if this is in      | 17ww48.Mon | weekly  | []  | N/A         |
-|      |        | developement or production mode                    |            |         |     |             |
-| 2001 | Closed |  fix teh help search. the problem is that if you   | 17ww48.Tue | weekly  | []  | N/A         |
-|      |        | search for a word that is a symbol, like list,     |            |         |     |             |
-|      |        | need to use token.id, otherwise, need to use       |            |         |     |             |
-|      |        | token.value.                                       |            |         |     |             |
-| 2006 | Closed |  add Tag for project, Activity and for Task.tag    | 17ww48.Tue | weekly  | []  | N/A         |
-|      |        | the tasks/activities for this week by tag          |            |         |     |             |
-|      |        | ThisWeek. see the tagged items by list tag xxxx.   |            |         |     |             |
-|      |        | add function - move tag (or at least add/remove).  |            |         |     |             |
-|      |        | Question - does Tagging a project tags all things  |            |         |     |             |
-|      |        | below? probably not                                |            |         |     |             |
-| 2033 | OnHold |  deal with older stuff. for example - remove all   | 17ww49.Tue | weekly  | []  | N/A         |
-|      |        | things from a date and backward from teh database. |            |         |     |             |
-|      |        | create teh old database. provide interface to      |            |         |     |             |
-|      |        | create these archives and also to load and unload  |            |         |     |             |
-|      |        | them into a running system, in case we want to     |            |         |     |             |
-|      |        | search in them also.                               |            |         |     |             |
-| 2034 | OnHold |  enable scripts - so someone can write a set of    | 17ww49.Tue | weekly  | []  | N/A         |
-|      |        | commands and run them from that script. also       |            |         |     |             |
-|      |        | create a mode where it is possible to run the      |            |         |     |             |
-|      |        | script w/o its effecting the actual database. for  |            |         |     |             |
-|      |        | example - a mode that does not do save of teh      |            |         |     |             |
-|      |        | databases.                                         |            |         |     |             |
-| 2035 | OnHold |  add ability to edit the desciption field (or      | 17ww49.Tue | weekly  | []  | N/A         |
-|      |        | other fields) in an item                           |            |         |     |             |
-| 2037 | OnHold |  enable to write (or echo) commands also into a    | 17ww49.Tue | weekly  | []  | N/A         |
-|      |        | file. something like 'echo filename' and 'echo     |            |         |     |             |
-|      |        | stop'                                              |            |         |     |             |
-| 2038 | Closed |  add to the create list feature also something     | 17ww49.Tue | weekly  | []  | N/A         |
-|      |        | like 'list list' which shows what is the list but  |            |         |     |             |
-|      |        | also maintains the context of the list             |            |         |     |             |
-| 2065 | OnHold |  add ability to list in recursion - like - all the | 17ww51.Sun | weekly  | []  | N/A         |
-|      |        | items under a project - tasks and activities -     |            |         |     |             |
-|      |        | directly under the project and also activities     |            |         |     |             |
-|      |        | under the task.                                    |            |         |     |             |
-| 2066 | OnHold |  keep contect (like with a flag maybe) so multiple | 17ww51.Sun | weekly  | []  | N/A         |
-|      |        | create task actions open under the same project,   |            |         |     |             |
-|      |        | for example.                                       |            |         |     |             |
-| 2067 | OnHold |  add the project/task column to printing out of    | 17ww51.Sun | weekly  | []  | N/A         |
-|      |        | activities                                         |            |         |     |             |
-| 2068 | Closed |  check why list search checking is not working     | 17ww51.Sun | weekly  | []  | N/A         |
-| 2069 | OnHold |  add ability also to test what is coming back from | 17ww51.Sun | weekly  | []  | N/A         |
-|      |        | testing in developement env (test_defs), for       |            |         |     |             |
-|      |        | example - using some regular expression comparing  |            |         |     |             |
-+------+--------+----------------------------------------------------+------------+---------+-----+-------------+
+DEBUG:__main__:client script sending 0011:нокпоч
+DEBUG:__main__:ServerSaid: Transaction: clean FAILED with ERROR:
+ 
+DEBUG:__main__:client script sending 0012:online 
+DEBUG:__main__:ServerSaid: Transaction: online COMPLETED. New ID is: -1
+Online Status:
+==============
+Megaproject  db   is   online  
+Project      db   is   online  
+Task         db   is   online  
+Activity     db   is   online  
+The ID in file is: 2224
+==========================
+Working environment is production
+==========================
+Searching for TASK and ACTIVITY in Dormant state what Wakeup time is this week or past{}:
+well ... nothing found here at Tasks DataFrame.
+well ... nothing found here at Activities DataFrame.
+==========================
+Timedelta set to 0:00:00.
+==========================
+
+DEBUG:__main__:client script sending 0007:la
+DEBUG:__main__:ServerSaid: +Showing items 355 to 369:----+----------------------------------------------------+-----+-------------+
+| ID   | State   | Start_Date | Description                                        | Tag | Wakeup_Date |
++------+---------+------------+----------------------------------------------------+-----+-------------+
+| 2203 | Started | 18ww03.Wed |  checking in - start work                          | []  | N/A         |
+| 2204 | Started | 18ww03.Wed |  class on Reset                                    | []  | N/A         |
+| 2205 | Started | 18ww03.Wed |  out with Hagit at RAMBAM                          | []  | N/A         |
+| 2206 | Started | 18ww03.Thu |  checking in - start work                          | []  | N/A         |
+| 2207 | Started | 18ww03.Thu |  TCSS dungeon                                      | []  | N/A         |
+| 2210 | Started | 18ww03.Thu |  this and that in the lab                          | []  | N/A         |
+| 2211 | Started | 18ww03.Thu |  talk to ASHA about enabling in IFWI               | []  | N/A         |
+| 2212 | Started | 18ww03.Thu |  in the lab working with Gal to try and enable the | []  | N/A         |
+|      |         |            | psf test                                           |     |             |
+| 2213 | Started | 18ww03.Thu |  with Hatim and others - trying to get a tCSS      | []  | N/A         |
+|      |         |            | system to pkgc8 or 9                               |     |             |
+| 2215 | Started | 18ww03.Thu |  sit with Hatim on closing TCSS issues             | []  | N/A         |
+| 2216 | Started | 18ww03.Thu |  DCINOW and meeting with Yin Moc                   | []  | N/A         |
+| 2219 | Started | 18ww04.Sun |  checking in - start work                          | []  | N/A         |
+| 2220 | Started | 18ww04.Sun |  TnT in the lab, emails                            | []  | N/A         |
+| 2221 | Started | 18ww04.Sun |  tcss dungeon                                      | []  | N/A         |
+| 2222 | Started | 18ww04.Sun |  work on enabling Pkgc9 on TCSS enabled system,    | []  | N/A         |
+|      |         |            | and see if can replicate demotiuon                 |     |             |
++------+---------+------------+----------------------------------------------------+-----+-------------+
 DEBUG:__main__:Client closing socket

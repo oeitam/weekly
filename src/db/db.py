@@ -97,7 +97,7 @@ class Db(object):
         self.clean_context()
 
         # timedelta
-        self.tdelta = timedelta(hours=0)
+        self.tdelta = timedelta(days=0)
 
         self.db_table = {'dfm': self.dfm,
                          'dfp': self.dfp,
@@ -205,11 +205,16 @@ class Db(object):
             d = d + timedel
         d = d - self.tdelta # if timedelta exists, use it
         tt = d.timetuple()
-        y = str(tt[0])[2:4]
+        #y = str(tt[0])[2:4]
         if tt[6] == 6:  # if a sunday, need to advance ww by one
-            ww = str(d.isocalendar()[1] + 1).zfill(2)
+        #    ww = str(d.isocalendar()[1] + 1).zfill(2)
+            ww = (d + timedelta(days=1)).strftime("%V")
+            y  = (d + timedelta(days=1)).strftime("%y")
         else:
-            ww = str(d.isocalendar()[1]).zfill(2)
+        #    ww = str(d.isocalendar()[1]).zfill(2)
+            ww = d.strftime("%V")
+            y  = d.strftime("%y")
+
         wd = d.strftime('%a')
         a = y + "ww" + ww + "." + wd
         return a
@@ -1004,7 +1009,8 @@ class Db(object):
             we = we + defs.debug_delta
             df2 = df1[df1['Wakeup_Date'].apply(date_conv_max_date) <= we].copy()
             if len(df2) == 0: # nothing found
-                self.list_resp += 'well ... nothing found here\n'
+                self.list_resp += 'well ... nothing found here at {}.\n'.\
+                    format(defs.db_names[df_name])
             else:
                 # in order to sort, need to convert the Wakeup_Date to numbers
                 # and then sort by these numbers
@@ -1061,6 +1067,10 @@ class Db(object):
         self.return_message_ext1 += '==========================\n'
         self.list_wakeup()
         self.return_message_ext1 += self.list_resp
+        self.return_message_ext1 += '==========================\n'
+        # timedelta status
+        self.return_message_ext1 += 'Timedelta set to {} days.\n'. \
+            format(self.tdelta)
         self.return_message_ext1 += '==========================\n'
         return True
 
@@ -1183,27 +1193,43 @@ class Db(object):
         return True
 
     def delete_shortcut(self):
-        copy_line = True
-        temp_file = r'c:\temp\stamfile.txt'
-        pat = '^\[replace_'+self.shortcut_to_delete+'\]'
-        f = open(temp_file, 'w')
-        with open(r'C:\weekly.local\weekly.local.cfg') as origin_file:
-            for line in origin_file:
-                if copy_line :
-                    m = re.match(pat, line)
-                    if m:
-                        copy_line = False
-                    else:
-                        f.write(line)
-                else:
-                    n = re.match('\[replace_\d+\]$', line) #check if a new section starts
-                    if n:
-                        copy_line = True
-                        #f.write('\n')
-                        f.write(line)
-
-        f.close()
-        move(temp_file,r'C:\weekly.local\weekly.local.cfg')
+        section = 'replace_'+self.shortcut_to_delete
+        res = defs.config.remove_section(section)
+        if not res:
+            self.had_error('Could not find the requested shortcut - number {}\n'\
+                           .format(self.shortcut_to_delete))
+            return False
+        else:
+            f = open(r'C:\weekly.local\weekly.local.cfg', 'w')
+            defs.config.write(f)
+            f.close()
+        # copy_line = True
+        # did_delete = False
+        # temp_file = r'c:\temp\stamfile.txt'
+        # pat = '^\[replace_'+self.shortcut_to_delete+'\]'
+        # f = open(temp_file, 'w')
+        # with open(r'C:\weekly.local\weekly.local.cfg') as origin_file:
+        #     for line in origin_file:
+        #         if copy_line :
+        #             m = re.match(pat, line)
+        #             if m:
+        #                 copy_line = False
+        #                 did_delete = True
+        #             else:
+        #                 f.write(line)
+        #         else:
+        #             n = re.match('\[replace_\d+\]$', line) #check if a new section starts
+        #             if n:
+        #                 copy_line = True
+        #                 #f.write('\n')
+        #                 f.write(line)
+        #
+        # f.close()
+        # move(temp_file,r'C:\weekly.local\weekly.local.cfg')
+        # if not did_delete: # meaning - did not find the requested shortcut
+        #     self.had_error('Could not find the requested shortcut - number {}\n'\
+        #                    .format(self.shortcut_to_delete))
+        #     return False
         return True
 
     def tagging(self):
@@ -1379,14 +1405,14 @@ class Db(object):
             self.had_error('No timedelta param.')
             return False
         elif self.tdelta_param == 'off':
-            self.tdelta = timedelta(hours=0)
+            self.tdelta = timedelta(days=0)
             self.return_message_ext1 += 'Timedelta set to zero\n'
         elif self.tdelta_param == 'printout':
-            self.return_message_ext1 += 'Timedelta is {} hours (backwards)'.\
+            self.return_message_ext1 += 'Timedelta is {} (backwards)'.\
                 format(self.tdelta)
         else: #creating timedelta
-            self.tdelta = timedelta(hours=float(self.tdelta_param))
-            self.return_message_ext1 += 'Timedelta set to {}.\n'.\
+            self.tdelta = timedelta(days=float(self.tdelta_param))
+            self.return_message_ext1 += 'Timedelta set to {} days.\n'.\
                 format(self.tdelta_param)
         return True
 

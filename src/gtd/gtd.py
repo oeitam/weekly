@@ -764,6 +764,7 @@ def nud(self):
             gdb.help_search = token.id
         else:
             gdb.help_search = token.value
+    advance() # since already used the current token
     self.second = expression()
     return self
 
@@ -775,7 +776,7 @@ def nud(self):
     elif token.value == 'shortcut':
         gdb.transaction_is('delete shortcut')
         advance()
-        gdb.shortcut_to_deleate = token.value
+        gdb.shortcut_to_delete = token.value
         advance() # get to the next token (over teh replace number
     else:
         raise SyntaxError(
