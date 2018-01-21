@@ -150,6 +150,10 @@ class Gtd(object):
         # check if context need to be kept, and if not - clean it up
         if self.current_data[0:9] == 'move list':
             gdb.clean_context(sec1=True, sec2=False)
+        elif self.current_data[0:8] == 'tag list':
+            gdb.clean_context(sec1=True, sec2=False)
+        elif self.current_data[0:9] == 'list list':
+            gdb.clean_context(sec1=True, sec2=False)
         elif self.current_data.replace(' ', '') != 'list':
             gdb.clean_context()
 
@@ -185,9 +189,13 @@ def expression(rbp=0):
     if token.id == "(end)":
         return None
     t = token
-    token = next(mnext)
+    try:
+        token = next(mnext)
+    except:
+        return left
     left = t.nud()
     while rbp < token.lbp:
+        #raise RuntimeError('Was not expecting to be here, since I never used right association')
         t = token
         token = next(mnext)
         left = t.led(left)
@@ -372,6 +380,7 @@ prefix("set", 20)
 prefix("value", 20)
 prefix("tag", 20)
 prefix("untag", 20)
+prefix("timedelta", 20)
 
 symbol(".", 120)
 
@@ -412,6 +421,7 @@ def nud(self):
     if token.value == "shortcut":
         self.id = "create shortcut"
         gdb.transaction_is(self.id)
+        self.second = expression()
     return self
 
 @method(symbol("@"))
@@ -426,6 +436,7 @@ def nud(self):
     elif gdb.transaction_type == 'start activity':
         # deal with the spacial case where token.value can be 'n'
         gdb.use_this_ID_for_ref = token.value #int(token.value) #get the id to relate to the action
+        advance()
     elif gdb.transaction_type == "stop something":
         gdb.use_this_ID_for_ref = int(token.value) #get the id to relate to the action
     elif gdb.transaction_type == "cont something":
@@ -485,7 +496,7 @@ def nud(self):
     global token
     logger.debug("| nud")
     # this actually means there is nothing to do more
-    # so ending the recursion here
+    #self.second = expression()
     return self
 
 
@@ -548,24 +559,35 @@ def nud(self):
     elif token.value == 'search':
         gdb.transaction_is('list search')
         # wrap it up
+        self.second = expression()
         return self
     elif token.value == 'wakeup':
         gdb.transaction_is('list wakeup')
         # wrap it up
+        self.second = expression()
         return self
     elif token.value == 'parameter':
         gdb.transaction_is('list parameter')
+        self.second = expression()
         return self
     elif token.value == 'shortcut':
         gdb.transaction_is('list shortcut')
+        self.second = expression()
         return self
     elif token.id == 'tag':
         gdb.transaction_is('list tag')
         advance() # to process the rest
         if token.id != '(end)':
             gdb.tag = token.value
+            # since using this tag 'any-tag-at-all' internally
+            # to this program, protecting against user
+            # providing this tag (also protecting against setting
+            # it in other places)
             if gdb.tag == 'any-tag-at-all':
                 raise ValueError("Illegal tag value")
+    elif token.id == 'list':
+        gdb.transaction_is('list list')
+        gdb.keep_context = True
     elif token.id == '(end)':
         gdb.keep_context = True
 
@@ -580,6 +602,9 @@ def nud(self):
         self.second = expression() # continue process
     else:
         pass # do nothing - that is ==> start folding back teh recursion
+
+    self.second = expression()
+
     return self
 
 @method(symbol("limit"))
@@ -646,6 +671,7 @@ def nud(self):
     advance()
     gdb.list_col_top = token.value
     # this is the end of processing for this type of command
+    self.second = expression()
     return self
 
 @method(symbol("drange"))
@@ -681,7 +707,7 @@ def nud(self):
         else:
             gdb.list_col_top += '.Sun'  # this is the default
             # now handle the top
-        advance()
+        #advance()
     else:
         advance()
     self.second = expression()
@@ -690,6 +716,7 @@ def nud(self):
 @method(symbol("."))
 def led(self, left):
     logger.debug('led .')
+    self.second = expression()
     return self
 
 
@@ -717,6 +744,7 @@ def nud(self):
     logger.debug("nud columns")
     gdb.list_attr = 'columns'
     # that's it. done
+    self.second = expression()
     return self
 
 @method(symbol("states"))
@@ -724,6 +752,7 @@ def nud(self):
     logger.debug("nud states")
     gdb.list_attr = 'states'
     # that's it. done
+    self.second = expression()
     return self
 
 @method(symbol("help"))
@@ -735,6 +764,8 @@ def nud(self):
             gdb.help_search = token.id
         else:
             gdb.help_search = token.value
+    advance() # since already used the current token
+    self.second = expression()
     return self
 
 @method(symbol("delete"))
@@ -745,7 +776,7 @@ def nud(self):
     elif token.value == 'shortcut':
         gdb.transaction_is('delete shortcut')
         advance()
-        gdb.shortcut_to_deleate = token.value
+        gdb.shortcut_to_delete = token.value
         advance() # get to the next token (over teh replace number
     else:
         raise SyntaxError(
@@ -758,6 +789,7 @@ def nud(self):
 def nud(self):
     logger.debug('online nud')
     gdb.transaction_is('online')
+    self.second = expression()
     return self
 
 @method(symbol("plus"))
@@ -765,6 +797,7 @@ def nud(self):
     logger.debug("plus nud")
     gdb.wakeup_time = "plus "+ str(token.value)
     # assume no more out there, start folding back
+    self.second = expression()
     return self
 
 @method(symbol("state"))
@@ -814,6 +847,7 @@ def nud(self):
     gdb.move_from = token.value
     advance()
     self.first = expression()
+    return self
 
 @method(symbol("to"))
 def nud(self):
@@ -821,6 +855,7 @@ def nud(self):
     gdb.move_to = token.value
     advance()
     self.first = expression()
+    return self
 
 @method(symbol("set"))
 def nud(self):
@@ -829,6 +864,7 @@ def nud(self):
     gdb.param_to_set = token.value
     advance()
     self.first = expression()
+    return self
 
 @method(symbol("value"))
 def nud(self):
@@ -836,6 +872,7 @@ def nud(self):
     gdb.value_to_set = token.value
     advance()
     self.first = expression()
+    return self
 
 @method(symbol("tag"))
 def nud(self):
@@ -850,6 +887,12 @@ def nud(self):
             raise  ValueError("Illegal tag value")
     elif token.id == '@':
         gdb.transaction_is('tag something')
+    elif token.id == 'list':
+        gdb.transaction_is('tag list')
+        advance()
+        gdb.tag = token.value
+        if gdb.tag == 'any-tag-at-all':
+            raise  ValueError("Illegal tag value")
     elif gdb.transaction_type != 'clean' : # precaution
         # for the case where the keyword tag defines that the
         # word following is the tag
@@ -859,6 +902,8 @@ def nud(self):
         advance()
 
     self.first = expression()
+
+    return self
 
 @method(symbol("untag"))
 def nud(self):
@@ -875,6 +920,23 @@ def nud(self):
     else:
         gdb.transaction_is('untag something')
     self.first = expression()
+
+    return self
+
+@method(symbol("timedelta"))
+def nud(self):
+    logger.debug('timedelta nud')
+    gdb.transaction_is('timedelta')
+    if token.id == '(end)': # just timedelta comamnge
+        gdb.tdelta_param = 'printout'
+    elif token.value == 'off':
+        gdb.tdelta_param = 'off'
+    elif str(token.value).isdigit() == True :
+        gdb.tdelta_param = int(token.value)
+
+    self.first = expression()
+    return self
+
 
 
 

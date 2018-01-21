@@ -1,5 +1,8 @@
 INFO:root:Logging (into clienr.log) Started
-DEBUG:__main__:client script sending 0011:online
+DEBUG:__main__:client script sending 0011:нокпоч
+DEBUG:__main__:ServerSaid: Transaction: clean FAILED with ERROR:
+ 
+DEBUG:__main__:client script sending 0012:online 
 DEBUG:__main__:ServerSaid: Transaction: online COMPLETED. New ID is: -1
 Online Status:
 ==============
@@ -7,34 +10,38 @@ Megaproject  db   is   online
 Project      db   is   online  
 Task         db   is   online  
 Activity     db   is   online  
-The ID in file is: 2058
+The ID in file is: 2224
 ==========================
 Working environment is production
 ==========================
 Searching for TASK and ACTIVITY in Dormant state what Wakeup time is this week or past{}:
-well ... nothing found here
-well ... nothing found here
+well ... nothing found here at Tasks DataFrame.
+well ... nothing found here at Activities DataFrame.
+==========================
+Timedelta set to 0:00:00.
 ==========================
 
-DEBUG:__main__:client script sending 0011:online
-DEBUG:__main__:ServerSaid: Transaction: online COMPLETED. New ID is: -1
-Online Status:
-==============
-Megaproject  db   is   online  
-Project      db   is   online  
-Task         db   is   online  
-Activity     db   is   online  
-The ID in file is: 2058
-==========================
-Working environment is production
-==========================
-Searching for TASK and ACTIVITY in Dormant state what Wakeup time is this week or past{}:
-well ... nothing found here
-well ... nothing found here
-==========================
-
-DEBUG:__main__:client script sending 0007:ci
-DEBUG:__main__:ServerSaid: Transaction: start activity COMPLETED. New ID is: 2058
-DEBUG:__main__:client script sending 0046:today | start 1PM after moving Idan stuff
-DEBUG:__main__:ServerSaid: Transaction: start activity COMPLETED. New ID is: 2059
+DEBUG:__main__:client script sending 0007:la
+DEBUG:__main__:ServerSaid: +Showing items 355 to 369:----+----------------------------------------------------+-----+-------------+
+| ID   | State   | Start_Date | Description                                        | Tag | Wakeup_Date |
++------+---------+------------+----------------------------------------------------+-----+-------------+
+| 2203 | Started | 18ww03.Wed |  checking in - start work                          | []  | N/A         |
+| 2204 | Started | 18ww03.Wed |  class on Reset                                    | []  | N/A         |
+| 2205 | Started | 18ww03.Wed |  out with Hagit at RAMBAM                          | []  | N/A         |
+| 2206 | Started | 18ww03.Thu |  checking in - start work                          | []  | N/A         |
+| 2207 | Started | 18ww03.Thu |  TCSS dungeon                                      | []  | N/A         |
+| 2210 | Started | 18ww03.Thu |  this and that in the lab                          | []  | N/A         |
+| 2211 | Started | 18ww03.Thu |  talk to ASHA about enabling in IFWI               | []  | N/A         |
+| 2212 | Started | 18ww03.Thu |  in the lab working with Gal to try and enable the | []  | N/A         |
+|      |         |            | psf test                                           |     |             |
+| 2213 | Started | 18ww03.Thu |  with Hatim and others - trying to get a tCSS      | []  | N/A         |
+|      |         |            | system to pkgc8 or 9                               |     |             |
+| 2215 | Started | 18ww03.Thu |  sit with Hatim on closing TCSS issues             | []  | N/A         |
+| 2216 | Started | 18ww03.Thu |  DCINOW and meeting with Yin Moc                   | []  | N/A         |
+| 2219 | Started | 18ww04.Sun |  checking in - start work                          | []  | N/A         |
+| 2220 | Started | 18ww04.Sun |  TnT in the lab, emails                            | []  | N/A         |
+| 2221 | Started | 18ww04.Sun |  tcss dungeon                                      | []  | N/A         |
+| 2222 | Started | 18ww04.Sun |  work on enabling Pkgc9 on TCSS enabled system,    | []  | N/A         |
+|      |         |            | and see if can replicate demotiuon                 |     |             |
++------+---------+------------+----------------------------------------------------+-----+-------------+
 DEBUG:__main__:Client closing socket
