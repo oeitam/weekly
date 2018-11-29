@@ -5,7 +5,6 @@ logger = logging.getLogger(__name__)
 from src import defs
 
 
-
 symbol_table = {}
 
 class Gtd(object):
@@ -20,6 +19,7 @@ class Gtd(object):
 
     # take_data - used by the server to push the data it got from teh client
     # to the proc/gtd for processing
+    # (if I am not mistaken, this is to support mostly testing. not used recently 2018-11-15)
     def take_data(self,data):
         print("the proc got this data: {}".format(data))
         ############## just for the sake of testing
@@ -30,7 +30,7 @@ class Gtd(object):
             l3 = l1+l2
             if len(l3) == 0:
                 raise ValueError('for some reason, got an empty list in @0000 replacement')
-            r = randint(0,len(l3))
+            r = randint(0,len(l3)-1)
             #gdb.use_this_ID_for_ref = l3[r]
             data = data.replace('00000000',str(l3[r]))#.zfill(8))
             logger.debug('command after replacement: {}'.format(data))
@@ -167,6 +167,8 @@ class Gtd(object):
         # >>>>> ??????????
         if '|' in self.current_data:
             (t1,t2, t3) = self.current_data.partition('|')
+            if t3.strip() == "" :
+                t3 = "(empty)"
             gdb.set_trans_description(t3)
 
         ########################################################
@@ -371,7 +373,7 @@ prefix("help", 20)
 prefix("delete", 20)
 prefix("online", 20)
 prefix("plus", 20)
-prefix("ww", 20)
+prefix("week", 20)
 prefix("sleep",20)
 prefix("move", 120)
 prefix("from", 120)
@@ -381,6 +383,14 @@ prefix("value", 20)
 prefix("tag", 20)
 prefix("untag", 20)
 prefix("timedelta", 20)
+prefix("push", 20)
+prefix("listall", 20)
+prefix("lastdays", 20)
+prefix("fromcb", 20)
+prefix("edit", 20) 
+prefix('sort', 20)
+prefix('hier',20)
+
 
 symbol(".", 120)
 
@@ -463,6 +473,7 @@ def nud(self):
 
     elif gdb.transaction_type == "list id":
         gdb.use_this_ID_for_ref = int(token.value)  # get the id relate to to the action
+        advance()
     elif gdb.transaction_type == "delete id":
         gdb.use_this_ID_for_ref = int(token.value)  # get the id relate to to the action
     elif gdb.transaction_type == "create list":
@@ -486,6 +497,14 @@ def nud(self):
             gdb.tag = token.value
             if gdb.tag == 'any-tag-at-all':
                 raise ValueError("Illegal tag value")
+    elif gdb.transaction_type == "edit something":
+        gdb.use_this_ID_for_ref = int(token.value) #get the id to relate to the action
+    elif gdb.transaction_type == "push":
+        if gdb.push_item_one == 'clean':
+            gdb.push_item_one = int(token.value) #get the id to relate to the action
+            advance()
+        else:
+            gdb.push_item_two = int(token.value) #get the id to relate to the action
 
     self.first = expression()
     return self
@@ -723,7 +742,9 @@ def led(self, left):
 @method(symbol("for"))
 def nud(self):
     logger.debug('nud for')
-    # replace transaction
+    # check if a list transaction and if - then replace transaction
+    if 'list' not in gdb.transaction_type:
+        raise ValueError('Incorrect command structure: -for- used in a non -list- command')
     st1,st2,st3 = gdb.transaction_type.partition(' ') #st3 holds the what to list (megaproject, project, etc)
     gdb.transaction_is('list for')
     gdb.list_what_for = st3
@@ -803,16 +824,18 @@ def nud(self):
 @method(symbol("state"))
 def nud(self):
     logger.debug("state nud")
-    gdb.state_to_list = token.value
+    gdb.state_to_act = token.value
     advance() # over the state
     self.second = expression()
     return self
 
-@method(symbol("ww"))
+@method(symbol("week"))
 def nud(self):
-    logger.debug("ww nud")
-    gdb.list_ww = 'ww'+ str(token.value)
-    advance() # over the week
+    logger.debug("week nud")
+    # assume XXwwYY
+    gdb.list_ww = token.value
+    advance()
+    gdb.list_ww += token.value
     self.second = expression()
     return self
 
@@ -863,6 +886,7 @@ def nud(self):
     gdb.transaction_is('set param')
     gdb.param_to_set = token.value
     advance()
+    gdb.value_to_set = token.value
     self.first = expression()
     return self
 
@@ -927,7 +951,7 @@ def nud(self):
 def nud(self):
     logger.debug('timedelta nud')
     gdb.transaction_is('timedelta')
-    if token.id == '(end)': # just timedelta comamnge
+    if token.id == '(end)': # just timedelta command
         gdb.tdelta_param = 'printout'
     elif token.value == 'off':
         gdb.tdelta_param = 'off'
@@ -937,6 +961,52 @@ def nud(self):
     self.first = expression()
     return self
 
+@method(symbol("push"))
+def nud(self):
+    logger.debug('push')
+    gdb.transaction_is('push')
+    self.first = expression()
+    return self
 
+@method(symbol("listall"))
+def nud(self):
+    logger.debug('listall')
+    gdb.list_all = 'Yes'
+    self.first = expression()
+    return self
 
+@method(symbol("lastdays"))
+def nud(self):
+    logger.debug('lastdays')
+    gdb.lastdays = int(token.value)
+    self.first = expression()
+    return self
 
+@method(symbol("fromcb"))
+def nud(self):
+    logger.debug('fromcb')
+    gdb.fromcb = 'Yes'
+    self.first = expression()
+    return self
+
+@method(symbol("edit"))
+def nud(self):
+    logger.debug('edit nud')
+    gdb.transaction_is('edit something')
+    self.second = expression()
+    return self
+
+@method(symbol("sort"))
+def nud(self):
+    logger.debug('sort')
+    gdb.sort_code = token.value
+    self.first = expression()
+    return self
+
+@method(symbol("hier"))
+def nud(self):
+    logger.debug('hier nud')
+    if gdb.transaction_type == 'list id':
+        gdb.transaction_is('list id with hier')
+    self.second = expression() # continue
+    return self

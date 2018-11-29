@@ -87,7 +87,7 @@ class Server(object):
                 while True:
                     data = connection.recv(1024)
                     print('recieved "%s"' % data.decode(), file=sys.stderr)
-                    if ('die' in data.decode()):
+                    if (defs.die_word in data.decode()):
                         print('server: Dieing!!!')
                         #raise
                         break

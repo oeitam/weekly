@@ -1,47 +1,27 @@
 INFO:root:Logging (into clienr.log) Started
-DEBUG:__main__:client script sending 0011:нокпоч
-DEBUG:__main__:ServerSaid: Transaction: clean FAILED with ERROR:
- 
-DEBUG:__main__:client script sending 0012:online 
-DEBUG:__main__:ServerSaid: Transaction: online COMPLETED. New ID is: -1
-Online Status:
-==============
-Megaproject  db   is   online  
-Project      db   is   online  
-Task         db   is   online  
-Activity     db   is   online  
-The ID in file is: 2224
-==========================
-Working environment is production
-==========================
-Searching for TASK and ACTIVITY in Dormant state what Wakeup time is this week or past{}:
-well ... nothing found here at Tasks DataFrame.
-well ... nothing found here at Activities DataFrame.
-==========================
-Timedelta set to 0:00:00.
-==========================
-
-DEBUG:__main__:client script sending 0007:la
-DEBUG:__main__:ServerSaid: +Showing items 355 to 369:----+----------------------------------------------------+-----+-------------+
-| ID   | State   | Start_Date | Description                                        | Tag | Wakeup_Date |
-+------+---------+------------+----------------------------------------------------+-----+-------------+
-| 2203 | Started | 18ww03.Wed |  checking in - start work                          | []  | N/A         |
-| 2204 | Started | 18ww03.Wed |  class on Reset                                    | []  | N/A         |
-| 2205 | Started | 18ww03.Wed |  out with Hagit at RAMBAM                          | []  | N/A         |
-| 2206 | Started | 18ww03.Thu |  checking in - start work                          | []  | N/A         |
-| 2207 | Started | 18ww03.Thu |  TCSS dungeon                                      | []  | N/A         |
-| 2210 | Started | 18ww03.Thu |  this and that in the lab                          | []  | N/A         |
-| 2211 | Started | 18ww03.Thu |  talk to ASHA about enabling in IFWI               | []  | N/A         |
-| 2212 | Started | 18ww03.Thu |  in the lab working with Gal to try and enable the | []  | N/A         |
-|      |         |            | psf test                                           |     |             |
-| 2213 | Started | 18ww03.Thu |  with Hatim and others - trying to get a tCSS      | []  | N/A         |
-|      |         |            | system to pkgc8 or 9                               |     |             |
-| 2215 | Started | 18ww03.Thu |  sit with Hatim on closing TCSS issues             | []  | N/A         |
-| 2216 | Started | 18ww03.Thu |  DCINOW and meeting with Yin Moc                   | []  | N/A         |
-| 2219 | Started | 18ww04.Sun |  checking in - start work                          | []  | N/A         |
-| 2220 | Started | 18ww04.Sun |  TnT in the lab, emails                            | []  | N/A         |
-| 2221 | Started | 18ww04.Sun |  tcss dungeon                                      | []  | N/A         |
-| 2222 | Started | 18ww04.Sun |  work on enabling Pkgc9 on TCSS enabled system,    | []  | N/A         |
-|      |         |            | and see if can replicate demotiuon                 |     |             |
-+------+---------+------------+----------------------------------------------------+-----+-------------+
+DEBUG:__main__:client script sending 0033:list task for project weekly
+DEBUG:__main__:ServerSaid: +Showing items 1 to 5:----------------------------------------------+------------+---------+-----+-------------+
+| ID   | State | Description                                        | Start_Date | PROJECT | Tag | Wakeup_Date |
++------+-------+----------------------------------------------------+------------+---------+-----+-------------+
+| 2589 | Open  |  make it work across the net ...                   | 18ww15.Sun | weekly  | []  | N/A         |
+| 3130 | Open  |  change the activity 'Start_Time' column to        | 18ww41.Tue | weekly  | []  | N/A         |
+|      |       | Creation_Time, which is actually more accurate.    |            |         |     |             |
+| 3141 | Open  |  suport a wayt to make a list of tasks or          | 18ww41.Wed | weekly  | []  | N/A         |
+|      |       | activities in a project or a task. the goal is to  |            |         |     |             |
+|      |       | insert a set of actions (as tasks in project or    |            |         |     |             |
+|      |       | activities in task or project) that are ordered    |            |         |     |             |
+|      |       | (or not) and are yet to be started. A simple       |            |         |     |             |
+|      |       | solution coule be to create the task/activity in   |            |         |     |             |
+|      |       | onhold state. or another way. also enable some     |            |         |     |             |
+|      |       | listing per task or project for open and non open  |            |         |     |             |
+|      |       | tasks/activities                                   |            |         |     |             |
+| 3142 | Open  |  currently I am putting all my actions in the 'day | 18ww41.Wed | weekly  | []  | N/A         |
+|      |       | to day' project or what ever. if I start working   |            |         |     |             |
+|      |       | with projects, I will be putting them in projects. |            |         |     |             |
+|      |       | Still, I would have non project activities (in day |            |         |     |             |
+|      |       | 2 day). also - I would like a way to look at all   |            |         |     |             |
+|      |       | what I was doing a day/week etc like today. See    |            |         |     |             |
+|      |       | how to enable this.                                |            |         |     |             |
+| 3429 | Open  |  upload to GIT                                     | 18ww48.Thu | weekly  | []  | N/A         |
++------+-------+----------------------------------------------------+------------+---------+-----+-------------+
 DEBUG:__main__:Client closing socket

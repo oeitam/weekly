@@ -5,14 +5,16 @@ import os
 import pandas as pd
 import logging
 import re
+import win32clipboard
+
 
 from src import defs
-from test import test_defs
-from shutil import move,copyfile
+#from test import test_defs
+#from shutil import move,copyfile
 from terminaltables import AsciiTable
 from textwrap import wrap
 
-from datetime import datetime, date, time, timedelta
+from datetime import datetime, date, timedelta , time
 from ast import literal_eval
 import math
 
@@ -27,6 +29,14 @@ pd.options.display.max_colwidth = 100 # 50 by defaul
 def myconv(x):
     if x is not '':
         return str(int(float(x)))
+    else:
+        return ''
+
+def myconv_one(x):
+    if x is not '':
+        return x
+    else:
+        return ''
 
 def date_conv(ds):
     ds1,ds2,ds3 = ds.partition('.')
@@ -145,6 +155,9 @@ class Db(object):
                                   'tag list'           : self.tag_list,
                                   'list list'          : self.list_list,
                                   'timedelta'          : self.tdelta_func,
+                                  'push'               : self.push,
+                                  'edit something'     : self.edit_something,
+                                  'list id with hier'  : self.list_id_with_hier
                                   #'list project'       : self.list_project,
                                   #'list task'          : self.list_task,
                                   #'list activity'      : self.list_activity,
@@ -162,7 +175,7 @@ class Db(object):
         path_to_ID_file = defs.data_loc + '\\ID'
         if not os.path.isfile(path_to_ID_file):
             fb = open(path_to_ID_file,'w')
-            fb.write('100')
+            fb.write('100') # start from 100
             fb.close()
         #print(path_to_ID_file)
         fh = open(path_to_ID_file, 'r+')
@@ -227,10 +240,10 @@ class Db(object):
 
     ####################################
     # setting up 4 databases
-    # metaprojects: dbm
-    # projects    : dbp
-    # tasks       : dbt
-    # activities  : dba
+    # metaprojects: dfm
+    # projects    : dfp
+    # tasks       : dft
+    # activities  : dfa
     ####################################
     def load_dbs(self):
         logger.debug('setting up databases')
@@ -248,7 +261,10 @@ class Db(object):
         # proj
         if os.path.isfile(defs.data_loc + '/dfp.csv'):
             self.dfp = pd.read_csv(defs.data_loc + '/dfp.csv',\
-                           converters={'Tag': literal_eval})
+                           converters={'Tag'        : literal_eval,\
+                                       'State_Time' : literal_eval,\
+                                       'State_Text' : literal_eval,\
+                                       })
             self.dfp.set_index('ID', inplace=True)
             self.db_table['dfp'] = self.dfp
         else:
@@ -256,7 +272,12 @@ class Db(object):
         # task
         if os.path.isfile(defs.data_loc + '/dft.csv'):
             self.dft = pd.read_csv(defs.data_loc + '/dft.csv',\
-                           converters={'ACTIVITYs': literal_eval,'Sub_TASKs': literal_eval,'Tag': literal_eval})
+                           converters={'ACTIVITYs'  : literal_eval,\
+                                       'Sub_TASKs'  : literal_eval,\
+                                       'Tag'        : literal_eval,\
+                                       'State_Time' : literal_eval,\
+                                       'State_Text' : literal_eval,\
+                                       })
             self.dft.set_index('ID', inplace=True)
             self.db_table['dft'] = self.dft
         else:
@@ -264,7 +285,14 @@ class Db(object):
         # activity
         if os.path.isfile(defs.data_loc + '/dfa.csv'):
             self.dfa = pd.read_csv(defs.data_loc + '/dfa.csv',\
-                           converters={'TASK': myconv,'PROJECT': myconv, 'Tag': literal_eval})
+                           converters={'TASK'         : myconv,\
+                                       'PROJECT'      : myconv,\
+                                       'Task_Name'    : myconv_one,\
+                                       'Project_Name' : myconv_one,\
+                                       'Tag'          : literal_eval,\
+                                       'State_Time'   : literal_eval,\
+                                       'State_Text'   : literal_eval,\
+                                       })
             self.dfa.set_index('ID', inplace=True)
             self.db_table['dfa'] = self.dfa
         else:
@@ -277,6 +305,7 @@ class Db(object):
         if sec1:
             self.pID                    = -1
             self.use_this_ID_for_ref    = -1
+            self.second_ref_ID          = -1
             self.project_name           = 'clean'
             self.megaproject_name       = 'clean'
             self.megaproject_name       = 'clean'
@@ -297,7 +326,7 @@ class Db(object):
             self.list_for_val           = 'clean'
             self.list_attr              = 'clean'
             self.list_ww                = 'clean'
-            self.state_to_list          = 'clean'
+            self.state_to_act          = 'clean'
             self.wakeup_time            = 'clean'
             self.help_search            = 'clean'
             self.move_from              = 'clean'
@@ -308,6 +337,13 @@ class Db(object):
             self.tag                    = 'clean'
             self.item_to_tag_or_untag   = 'clean'
             self.tdelta_param           = 'clean'
+            self.list_all               = 'clean'
+            self.lastdays               = 'clean'
+            self.fromcb                 = 'clean'
+            self.push_item_one          = 'clean'
+            self.push_item_two          = 'clean'
+            self.sort_code              = 'clean'
+            #self.trans_description      = 'clean'
             if hasattr(defs,'list_resp_row_limit'):
                 self.list_resp_row_limit = defs.list_resp_row_limit
             else:
@@ -347,16 +383,16 @@ class Db(object):
                 self.db_table[which_db] = self.dfa
         else: # here we assume that the databaser alrad has an index 'ID'
             if which_db == 'dfm':
-                self.dfm = self.dfm.append(df_to_add)
+                self.dfm = self.dfm.append(df_to_add,sort=True)
                 self.db_table[which_db] = self.dfm
             if which_db == 'dfp':
-                self.dfp = self.dfp.append(df_to_add)
+                self.dfp = self.dfp.append(df_to_add,sort=True)
                 self.db_table[which_db] = self.dfp
             if which_db == 'dft':
-                self.dft = self.dft.append(df_to_add)
+                self.dft = self.dft.append(df_to_add,sort=True)
                 self.db_table[which_db] = self.dft
             if which_db == 'dfa':
-                self.dfa = self.dfa.append(df_to_add)
+                self.dfa = self.dfa.append(df_to_add,sort=True)
                 self.db_table[which_db] = self.dfa
 
         # this return checks for nothing ... just returnning true
@@ -379,22 +415,23 @@ class Db(object):
 
     # save the databases
     def save_databases(self):
-        if self.dfm is not None:
-            self.dfm.to_csv(defs.data_loc + '\dfm.csv')
-        if self.dfp is not None:
-            self.dfp.to_csv(defs.data_loc + '\dfp.csv')
-        if self.dft is not None:
-            self.dft.to_csv(defs.data_loc + '\dft.csv')
-        if self.dfa is not None:
-            self.dfa.to_csv(defs.data_loc + '\dfa.csv')
+        try:
+            if self.dfm is not None:
+                self.dfm.to_csv(defs.data_loc + '\dfm.csv')
+            if self.dfp is not None:
+                self.dfp.to_csv(defs.data_loc + '\dfp.csv')
+            if self.dft is not None:
+                self.dft.to_csv(defs.data_loc + '\dft.csv')
+            if self.dfa is not None:
+                self.dfa.to_csv(defs.data_loc + '\dfa.csv')
+        except:
+            #print("Could not save one of the dfx files.\n"+\
+            #      "Suggest to make sure no file is open in another app.\n"+\
+            #      "Exit now please (die)")
+            self.had_error('Could not save databases properly. Please exit (die) and check data integrity!')
+            return False
 
-        # copy the files over to dropbox area
-        #if os.path.isfile(defs.data_loc + '/dfm.csv'):
-        #    if os.path.isfile(defs.data_loc_dropbox + '/dfm.csv'):
-        #        os.remove(defs.data_loc_dropbox + '/dfm.csv')
-        #    shutil.copy2(defs.data_loc + '/dfm.csv', defs.data_loc_dropbox)
-
-        return True # blindly for now
+        return True
 
     # set the project name for the next transaction
     def set_project_name(self, project_name):
@@ -479,6 +516,17 @@ class Db(object):
 
         self.return_message = m
 
+    def process_for_sort_code_AI(self, tag_list):
+        if len(tag_list) == 0:
+            return None
+        else:
+            l = [x for x in tag_list if 'AI' in x]
+            if len(l) == 1 : # found one as AI
+                return l[0]
+        return None
+
+
+
     # transactions functions
     ########################
     def create_project(self):
@@ -500,8 +548,18 @@ class Db(object):
             tag = [self.tag]
         else:
             tag = []
-
-        l = [self.project_name, 'Started', self.megaproject_name, self.trans_description,tag]
+        # if fromcb was used, then need to copy clipbard into transaction description
+        if self.fromcb == 'Yes':
+            try:
+                win32clipboard.OpenClipboard()
+                self.trans_description = win32clipboard.GetClipboardData()
+                win32clipboard.CloseClipboard()
+                self.trans_description = self.trans_description.replace('\n', '(n)').replace('\r', '(r)')
+            except TypeError as e:
+                print(e)
+        today_str = datetime.now().strftime("%I:%M%p on %B %d, %Y")
+        today_adjusted_str = (datetime.now()-self.tdelta).strftime("%I:%M%p on %B %d, %Y")
+        l = [self.project_name, 'Started', self.megaproject_name, self.trans_description,tag,today_adjusted_str,[],[]]
         ldf = pd.DataFrame(data=[l], index=[pID], columns=defs.dfp_columns)
         ldf.index.name = 'ID'
         logger.debug(ldf.to_string())
@@ -527,6 +585,16 @@ class Db(object):
                 #temp return False
         # regardless if the this is the first megaproject or not ...
         pID = self.get_new_ID()
+        # if fromcb was used, then need to compy clipbard into transaction description
+        if self.fromcb == 'Yes':
+            try:
+                win32clipboard.OpenClipboard()
+                self.trans_description = win32clipboard.GetClipboardData()
+                self.trans_description = self.trans_description.replace('\n', '(n)').replace('\r', '(r)')
+                win32clipboard.CloseClipboard()
+            except TypeError as e:
+                print(e)
+
         l = [self.megaproject_name, 'On', [], self.trans_description]
         ldf = pd.DataFrame(data=[l], index=[pID], columns=defs.dfm_columns)
         ldf.index.name = 'ID'
@@ -538,16 +606,31 @@ class Db(object):
     # for now - no support for optional
     def create_task(self):
         pID = self.get_new_ID()
-
+        project_name = '(empty)'
+        if self.state_to_act != 'clean':
+            create_state = self.state_to_act
+        else:
+            create_state = 'Open'
         if self.tag != 'clean': # we have a tag
             tag = [self.tag]
         else:
             tag = []
-
-        l = ['Open', self.trans_description, self.get_time_str(date.today()),
+        # if fromcb was used, then need to compy clipbard into transaction description
+        if self.fromcb == 'Yes':
+            try:
+                win32clipboard.OpenClipboard()
+                self.trans_description = win32clipboard.GetClipboardData()
+                self.trans_description = self.trans_description.replace('\n', '(n)').replace('\r', '(r)')                
+                win32clipboard.CloseClipboard()
+            except TypeError as e:
+                print(e)
+        
+        today_str = datetime.now().strftime("%I:%M%p on %B %d, %Y")
+        today_adjusted_str = (datetime.now()-self.tdelta).strftime("(a) %I:%M%p on %B %d, %Y")
+        l = [create_state, self.trans_description, self.get_time_str(date.today()),
              self.project_name,tag,
              '','','','','',
-             [],[],'']
+             [],[],'',today_adjusted_str,[],[]]
         ldf = pd.DataFrame(data=[l], index=[pID], columns=defs.dft_columns)
         ldf.index.name = 'ID'
         logger.debug(ldf.to_string())
@@ -558,24 +641,36 @@ class Db(object):
     def start_activity(self):
         pID = self.get_new_ID()
         found_in = 'did not look yet ...'
+        project_name = '(empty)'
+        task_name =    '(empty)'
+        if self.state_to_act != 'clean':
+            create_state = self.state_to_act
+        else:
+            create_state = 'Started'
+        # if there is no transaction description, change it to '(empty)'
+        if self.trans_description == 'clean':
+            self.trans_description = '(empty)'
         # search for the related task or project
         # if the use_this_ID_for_ref was actually given as a project name
         if not self.use_this_ID_for_ref.isdigit() : # it is not just digits
+            project_name = self.use_this_ID_for_ref # holds the projoject name
             num = int(self.dfp.index[self.dfp['Name'] == self.use_this_ID_for_ref].tolist()[0])
             if num is not None:
                 self.use_this_ID_for_ref = num
-                couple = ['', str(int(self.use_this_ID_for_ref))]
+                quadraple = ['', '', str(int(self.use_this_ID_for_ref)), project_name]
                 found_in = 'projects'
             else:
                 return False
         elif ((self.dfp is not None) and (int(self.use_this_ID_for_ref) in list(self.dfp.index.values))):
-            couple = ['', str(int(self.use_this_ID_for_ref))]
+            project_name = self.dfp.loc[int(self.use_this_ID_for_ref), 'Name']
+            quadraple = ['', '', str(int(self.use_this_ID_for_ref)), project_name]
             found_in = 'projects'
         elif ((self.dft is not None) and (int(self.use_this_ID_for_ref) in list(self.dft.index.values))) :
-            couple = [str(int(self.use_this_ID_for_ref)), ""]
+            task_name = self.dft.loc[int(self.use_this_ID_for_ref), 'Description']
+            quadraple = [str(int(self.use_this_ID_for_ref)), task_name,'','']
             found_in = 'tasks'
         elif self.use_this_ID_for_ref == 0: # indicating - ci or co (or non related activity)
-            couple = ['','']
+            quadraple = ['','', '', '']
             found_in = 'not found'
         else: #found none
             self.error_details = 'ID {} from {} was not found'.format(self.use_this_ID_for_ref, found_in)
@@ -586,9 +681,19 @@ class Db(object):
             tag = [self.tag]
         else:
             tag = []
-
-        l = ['Started', self.get_time_str(date.today()), self.trans_description,tag,
-             '', ''] + couple
+        # if fromcb was used, then need to compy clipbard into transaction description
+        if self.fromcb == 'Yes':
+            try:
+                win32clipboard.OpenClipboard()
+                self.trans_description = win32clipboard.GetClipboardData()
+                self.trans_description = self.trans_description.replace('\n', '(n)').replace('\r', '(r)')                
+                win32clipboard.CloseClipboard()
+            except TypeError as e:
+                print(e)
+        today_str = datetime.now().strftime("%I:%M%p on %B %d, %Y")
+        today_adjusted_str = (datetime.now()-self.tdelta).strftime("%I:%M%p on %B %d, %Y")
+        l = [create_state, self.get_time_str(date.today()), self.trans_description,tag,
+             '', ''] + quadraple + [today_adjusted_str,[],[]]
         ldf = pd.DataFrame(data=[l], index=[pID], columns=defs.dfa_columns)
         ldf.index.name = 'ID'
         logger.debug(ldf.to_string())
@@ -601,6 +706,7 @@ class Db(object):
     def cont_something(self):
         # handle activity, and then task and then project
         state = 'idle' # helps understand status
+        today_str = datetime.now().strftime("%I:%M%p on %B %d, %Y")
         # activity
         if self.dfa is not None:
             state = 'found db'
@@ -609,6 +715,13 @@ class Db(object):
                 # process
                 self.dfa.loc[self.use_this_ID_for_ref, 'State'] = 'Started'
                 self.dfa.loc[self.use_this_ID_for_ref, 'End_Time'] = ''
+                self.dfa.loc[self.use_this_ID_for_ref, 'Wakeup_Date'] = ''
+                self.dfa.loc[self.use_this_ID_for_ref, 'State_Time'].append(today_str)
+                if self.trans_description == 'clean':
+                    self.dfa.loc[self.use_this_ID_for_ref, 'State_Text'].append('NA')
+                else:
+                    self.dfa.loc[self.use_this_ID_for_ref, 'State_Text'].append(self.trans_description)
+
         # task
         if (self.dft is not None) and (state != 'id in db'):
             state = 'found db'
@@ -616,7 +729,12 @@ class Db(object):
                 state = 'id in db'
                 # process
                 self.dft.loc[self.use_this_ID_for_ref, 'State'] = 'Open'
-                #self.dft.loc[self.use_this_ID_for_ref, 'End_Time'] = ''
+                self.dft.loc[self.use_this_ID_for_ref, 'Wakeup_Date'] = ''
+                self.dft.loc[self.use_this_ID_for_ref, 'State_Time'].append(today_str)
+                if self.trans_description == 'clean':
+                    self.dft.loc[self.use_this_ID_for_ref, 'State_Text'].append('NA')
+                else:
+                    self.dft.loc[self.use_this_ID_for_ref, 'State_Text'].append(self.trans_description)
         # project
         if (self.dfp is not None) and (state != 'id in db'):
             state = 'found db'
@@ -624,7 +742,11 @@ class Db(object):
                 state = 'id in db'
                 # process
                 self.dfp.loc[self.use_this_ID_for_ref, 'State'] = 'Started'
-                #self.dft.loc[self.use_this_ID_for_ref, 'End_Time'] = ''
+                self.dfp.loc[self.use_this_ID_for_ref, 'State_Time'].append(today_str)
+                if self.trans_description == 'clean':
+                    self.dfp.loc[self.use_this_ID_for_ref, 'State_Text'].append('NA')
+                else:
+                    self.dfp.loc[self.use_this_ID_for_ref, 'State_Text'].append(self.trans_description)
 
         if state != 'id in db':
             self.error_details = 'Requested to continue ACTIVITY or TASK or PROJECT {} failed (probably incorrect ID)'\
@@ -636,6 +758,7 @@ class Db(object):
     def halt_something(self):
         # handle activity, and then task and then project
         state = 'idle' # helps understand status
+        today_str = datetime.now().strftime("%I:%M%p on %B %d, %Y")
         # activity
         if self.dfa is not None:
             state = 'found db'
@@ -643,7 +766,12 @@ class Db(object):
                 state = 'id in db'
                 # process
                 self.dfa.loc[self.use_this_ID_for_ref, 'State'] = 'OnHold'
-                #self.dfa.loc[self.use_this_ID_for_ref, 'End_Time'] = ''
+                self.dfa.loc[self.use_this_ID_for_ref, 'Wakeup_Date'] = ''
+                self.dfa.loc[self.use_this_ID_for_ref, 'State_Time'].append(today_str)
+                if self.trans_description == 'clean':
+                    self.dfa.loc[self.use_this_ID_for_ref, 'State_Text'].append('NA')
+                else:
+                    self.dfa.loc[self.use_this_ID_for_ref, 'State_Text'].append(self.trans_description)
         # task
         if (self.dft is not None) and (state != 'id in db'):
             state = 'found db'
@@ -651,7 +779,12 @@ class Db(object):
                 state = 'id in db'
                 # process
                 self.dft.loc[self.use_this_ID_for_ref, 'State'] = 'OnHold'
-                #self.dft.loc[self.use_this_ID_for_ref, 'End_Time'] = ''
+                self.dft.loc[self.use_this_ID_for_ref, 'Wakeup_Date'] = ''
+                self.dft.loc[self.use_this_ID_for_ref, 'State_Time'].append(today_str)
+                if self.trans_description == 'clean':
+                    self.dft.loc[self.use_this_ID_for_ref, 'State_Text'].append('NA')
+                else:
+                    self.dft.loc[self.use_this_ID_for_ref, 'State_Text'].append(self.trans_description)
         # project
         if (self.dfp is not None) and (state != 'id in db'):
             state = 'found db'
@@ -659,7 +792,11 @@ class Db(object):
                 state = 'id in db'
                 # process
                 self.dfp.loc[self.use_this_ID_for_ref, 'State'] = 'OnHold'
-                #self.dft.loc[self.use_this_ID_for_ref, 'End_Time'] = ''
+                elf.dfp.loc[self.use_this_ID_for_ref, 'State_Time'].append(today_str)
+                if self.trans_description == 'clean':
+                    self.dfp.loc[self.use_this_ID_for_ref, 'State_Text'].append('NA')
+                else:
+                    self.dfp.loc[self.use_this_ID_for_ref, 'State_Text'].append(self.trans_description)
 
         if state != 'id in db':
             self.error_details = 'Request to halt ACTIVITY or TASK or PROJECT {} failed (probably incorrect ID)'\
@@ -688,9 +825,16 @@ class Db(object):
                     if m3 :
                         timedel = timedelta(days=int(m3.groups(1)[0]))
                         self.wakeup_time = self.get_time_str(timedel=timedel)
+        else: # no wake up time set - error
+            self.error_details = 'Request to sleep ACTIVITY or TASK {} failed because no wakeup time provided'\
+                .format(self.use_this_ID_for_ref)
+            logger.debug(self.error_details)
+            return False
 
         # handle activity, and then task
         state = 'idle' # helps understand status
+        today_str = datetime.now().strftime("%I:%M%p on %B %d, %Y")
+
         # activity
         if self.dfa is not None:
             state = 'found db'
@@ -700,6 +844,12 @@ class Db(object):
                 self.dfa.loc[self.use_this_ID_for_ref, 'State'] = 'Dormant'
                 if self.wakeup_time != 'clean':
                     self.dfa.loc[self.use_this_ID_for_ref, 'Wakeup_Date'] = self.wakeup_time
+                self.dfa.loc[self.use_this_ID_for_ref, 'State_Time'].append(today_str)
+                if self.trans_description == 'clean':
+                    self.dfa.loc[self.use_this_ID_for_ref, 'State_Text'].append('NA')
+                else:
+                    self.dfa.loc[self.use_this_ID_for_ref, 'State_Text'].append(self.trans_description)
+
         # task
         if (self.dft is not None) and (state != 'id in db'):
             state = 'found db'
@@ -709,6 +859,11 @@ class Db(object):
                 self.dft.loc[self.use_this_ID_for_ref, 'State'] = 'Dormant'
                 if self.wakeup_time != 'clean':
                     self.dft.loc[self.use_this_ID_for_ref, 'Wakeup_Date'] = self.wakeup_time
+                self.dft.loc[self.use_this_ID_for_ref, 'State_Time'].append(today_str)
+                if self.trans_description == 'clean':
+                    self.dft.loc[self.use_this_ID_for_ref, 'State_Text'].append('NA')
+                else:
+                    self.dft.loc[self.use_this_ID_for_ref, 'State_Text'].append(self.trans_description)
 
         if state != 'id in db':
             self.error_details = 'Request to sleep ACTIVITY or TASK {} failed (probably incorrect ID)'\
@@ -723,6 +878,7 @@ class Db(object):
     def stop_something(self):
         # handle activity, and then task and then project
         state = 'idle' # helps understand status
+        today_str = datetime.now().strftime("%I:%M%p on %B %d, %Y")
         # activity
         if self.dfa is not None:
             state = 'found db'
@@ -730,7 +886,13 @@ class Db(object):
                 state = 'id in db'
                 # process
                 self.dfa.loc[self.use_this_ID_for_ref, 'State'] = 'Ended'
-                #self.dfa.loc[self.use_this_ID_for_ref, 'End_Time'] = ''
+                self.dfa.loc[self.use_this_ID_for_ref, 'Wakeup_Date'] = ''
+                self.dfa.loc[self.use_this_ID_for_ref, 'State_Time'].append(today_str)
+                if self.trans_description == 'clean':
+                    self.dfa.loc[self.use_this_ID_for_ref, 'State_Text'].append('NA')
+                else:
+                    self.dfa.loc[self.use_this_ID_for_ref, 'State_Text'].append(self.trans_description)
+
         # task
         if (self.dft is not None) and (state != 'id in db'):
             state = 'found db'
@@ -738,7 +900,12 @@ class Db(object):
                 state = 'id in db'
                 # process
                 self.dft.loc[self.use_this_ID_for_ref, 'State'] = 'Closed'
-                #self.dft.loc[self.use_this_ID_for_ref, 'End_Time'] = ''
+                self.dft.loc[self.use_this_ID_for_ref, 'Wakeup_Date'] = ''
+                self.dft.loc[self.use_this_ID_for_ref, 'State_Time'].append(today_str)
+                if self.trans_description == 'clean':
+                    self.dft.loc[self.use_this_ID_for_ref, 'State_Text'].append('NA')
+                else:
+                    self.dft.loc[self.use_this_ID_for_ref, 'State_Text'].append(self.trans_description)
         # project
         if (self.dfp is not None) and (state != 'id in db'):
             state = 'found db'
@@ -746,7 +913,11 @@ class Db(object):
                 state = 'id in db'
                 # process
                 self.dfp.loc[self.use_this_ID_for_ref, 'State'] = 'Ended'
-                #self.dft.loc[self.use_this_ID_for_ref, 'End_Time'] = ''
+                self.dfp.loc[self.use_this_ID_for_ref, 'State_Time'].append(today_str)
+                if self.trans_description == 'clean':
+                    self.dfp.loc[self.use_this_ID_for_ref, 'State_Text'].append('NA')
+                else:
+                    self.dfp.loc[self.use_this_ID_for_ref, 'State_Text'].append(self.trans_description)
 
         if state != 'id in db':
             self.error_details = 'Request to stop ACTIVITY or TASK or PROJECT {} failed (probably incorrect ID)'\
@@ -757,24 +928,155 @@ class Db(object):
 
 
     def list_id(self):
+
         # find the ID
         if self.use_this_ID_for_ref in self.dfm.index.values:
             temp = pd.DataFrame([self.dfm.loc[self.use_this_ID_for_ref]])
-            self.list_resp = temp.to_string(na_rep='N/A', float_format=conv, index_names=True, justify='left')
+            #self.list_resp = temp.to_string(na_rep='N/A', float_format=conv, index_names=True, justify='left')
+            self.list_resp = self.df_to_list_resp(temp, 'dfm', 'MEGAPROJECT')
         elif self.use_this_ID_for_ref in self.dfp.index.values:
             temp = pd.DataFrame([self.dfp.loc[self.use_this_ID_for_ref]])
-            self.list_resp = temp.to_string(na_rep='N/A', float_format=conv, index_names=True, justify='left')
+            #self.list_resp = temp.to_string(na_rep='N/A', float_format=conv, index_names=True, justify='left')
+            self.list_resp = self.df_to_list_resp(temp, 'dfp', 'PROJECT')
         elif self.use_this_ID_for_ref in self.dft.index.values:
             temp = pd.DataFrame([self.dft.loc[self.use_this_ID_for_ref]])
-            self.list_resp = temp.to_string(na_rep='N/A', float_format=conv, index_names=True, justify='left')
+            #self.list_resp = temp.to_string(na_rep='N/A', float_format=conv, index_names=True, justify='left')
+            self.list_resp = self.df_to_list_resp(temp, 'dft', 'TASK')
         elif self.use_this_ID_for_ref in self.dfa.index.values:
             temp = pd.DataFrame([self.dfa.loc[self.use_this_ID_for_ref]])
-            self.list_resp = temp.to_string(na_rep='N/A', float_format=conv, index_names=True, justify='left')
+            #self.list_resp = temp.to_string(na_rep='N/A', float_format=conv, index_names=True, justify='left')
+            self.list_resp = self.df_to_list_resp(temp, 'dfa', 'ACTIVITY')
         else: # did not find it
             self.error_details = 'Requested ID {} to list was not found'.format(self.use_this_ID_for_ref)
             logger.debug(self.error_details)
             return False
         return True
+    
+    def list_id_with_hier(self):
+        id_hier        = 'empty'
+        hier_direction = 'empty'
+        original_id    = self.use_this_ID_for_ref
+        accumulated_list_resp = ''
+        field_name = 'PROJECT'
+
+        # do not list hier for a megaproject
+        if self.use_this_ID_for_ref in self.dfm.index.values:
+            temp = pd.DataFrame([self.dfm.loc[self.use_this_ID_for_ref]])
+            self.list_resp = self.df_to_list_resp(temp, 'dfm', 'MEGAPROJECT (hier not supported)')
+            return True
+        # 
+        if self.use_this_ID_for_ref in self.dfa.index.values: # found in Act
+            id_hier = 'ACTIVITY'
+            hier_direction = 'up'
+        elif self.use_this_ID_for_ref in self.dft.index.values: # found in task
+            id_hier = 'TASK'
+            hier_direction = 'up'
+        elif self.use_this_ID_for_ref in self.dfp.index.values: # found in proj
+            id_hier = 'PROJECT'
+            hier_direction = 'down'
+        
+        # up flow
+        if id_hier == 'ACTIVITY':
+            res = self.list_id()
+            temp = self.dfa.loc[self.use_this_ID_for_ref]
+            accumulated_list_resp += id_hier + ":\n"
+            accumulated_list_resp += self.list_resp
+            accumulated_list_resp += "\n================================================================\n\n"
+            self.list_resp = 'clean'
+            if temp['PROJECT'] == '' : # the next level is a task
+                self.use_this_ID_for_ref = int(temp['TASK'])
+                id_hier = 'TASK'
+            else:
+                self.use_this_ID_for_ref = int(temp['PROJECT'])
+                id_hier = 'PROJECT'
+                field_name = 'Project_Name'
+        if id_hier == 'TASK':
+            res =self.list_id()
+            temp = self.dft.loc[self.use_this_ID_for_ref] # task 
+            accumulated_list_resp += id_hier + ":\n"
+            accumulated_list_resp += self.list_resp
+            accumulated_list_resp += "\n================================================================\n\n"
+            self.list_resp = 'clean'
+            id_hier = 'PROJECT'
+        if id_hier == 'PROJECT' and hier_direction == 'up':
+            self.use_this_ID_for_ref = int(self.dfp[self.dfp['Name'] == temp[field_name]].index[0])
+            res = self.list_id()
+            temp = self.dfp.loc[self.use_this_ID_for_ref]
+            accumulated_list_resp += id_hier + ":\n"
+            accumulated_list_resp += self.list_resp
+            accumulated_list_resp += "\n================================================================\n\n"
+            self.list_resp = 'clean'
+            id_hier = 'MEGAPROJECT'
+        if id_hier == 'MEGAPROJECT':
+            self.use_this_ID_for_ref = int(self.dfm[self.dfm['Name'] == temp['MEGAPROJECT']].index[0])
+            res = self.list_id()
+            accumulated_list_resp += id_hier + ":\n"
+            accumulated_list_resp += self.list_resp
+            accumulated_list_resp += "\n================================================================\n\n"
+            self.list_resp = accumulated_list_resp
+        if hier_direction == 'up':
+            return True
+
+        # down flow - can only be a project
+        if id_hier != 'PROJECT':
+            return False
+        # find and list the mega project
+        temp = self.dfp.loc[self.use_this_ID_for_ref]
+        self.use_this_ID_for_ref = int(self.dfm[self.dfm['Name'] == temp['MEGAPROJECT']].index[0])
+        res = self.list_id()
+        accumulated_list_resp += 'MEGAPROJECT' + ":\n"
+        accumulated_list_resp += self.list_resp
+        accumulated_list_resp += "\n================================================================\n\n"
+        # list the project
+        self.use_this_ID_for_ref = original_id
+        res = self.list_id()
+        accumulated_list_resp += id_hier + ":\n"
+        accumulated_list_resp += self.list_resp
+        accumulated_list_resp += "\n================================================================\n\n"
+
+        # list all tasks for the project
+        self.transaction_type = 'list for'
+        self.list_what_for    = 'task'
+        self.list_for_what    = 'project'
+        self.list_for_val     = self.dfp.loc[original_id,'Name']
+        self.list_all         = 'Yes'
+        res = self.list_glob()
+        accumulated_list_resp += 'TASK FOR PROJECT' + ":\n"
+        accumulated_list_resp += self.list_resp
+        accumulated_list_resp += "\n================================================================\n\n"
+        
+        # list all the activities for the project
+        self.transaction_type = 'list for'
+        self.list_what_for    = 'activity'
+        self.list_for_what    = 'project'
+        self.list_for_val     = self.dfp.loc[original_id,'Name']
+        self.list_all         = 'Yes'
+        self.list_resp_rows   = -1 # needed for listing properly
+        res = self.list_glob()
+        accumulated_list_resp += 'ACTIVITY FOR PROJECT' + ":\n"
+        accumulated_list_resp += self.list_resp
+        accumulated_list_resp += "\n================================================================\n\n"
+
+        # list the activities for each task of the project
+        ## get list of tasks
+        tl = list(self.dft[self.dft['PROJECT'] == self.dfp.loc[original_id,'Name']].index)
+        tl = [str(x) for x in tl]
+        self.transaction_type = 'list for'
+        self.list_what_for    = 'activity'
+        self.list_for_what    = 'task'
+        self.list_all         = 'Yes'
+        for t in tl:
+            self.list_for_val     = t # self.dfp.loc[original_id,'Name']
+            self.list_resp_rows   = -1 # needed for listing properly
+            res = self.list_glob()
+            if self.list_resp != 'No more data to show':
+                accumulated_list_resp += 'ACTIVITY FOR TASK ' + str(t) + ":\n"
+                accumulated_list_resp += self.list_resp
+                accumulated_list_resp += "\n================================================================\n\n"
+
+        self.list_resp = accumulated_list_resp
+        return True
+    
 
     def list_glob(self):
         # check if listing attributes
@@ -810,6 +1112,16 @@ class Db(object):
 
         # apply the tag, if exists, we are listing for
         df = self.apply_tag_to_df(df)
+
+        # if lastdays is set - manipulating the needed parameters to generate that listing
+        if self.lastdays != 'clean':
+            # list task col Start_Date drange 18ww13 top
+            self.list_col_name = 'Start_Date'
+            self.list_col_rel = 'drange'
+            self.list_col_bot = self.get_time_str(timedel=timedelta(days=-self.lastdays))
+            self.list_col_top = 'top' # meaning - up to today
+
+
 
         if df is not None:
             if self.list_col_name != 'clean':
@@ -862,13 +1174,24 @@ class Db(object):
                     # apply the tag, if exists, we are listing for
                     df = self.apply_tag_to_df(df)
 
-            if self.list_resp_rows == -1 : # means this is the first time we handle the specific lsit
+            # handle sort of results
+            if self.sort_code == 'AI': # sorting by tag if includes AI
+                # create a temporary column to sord by
+                df = df.copy()
+                df['sort_by_me'] = df['Tag'].map(self.process_for_sort_code_AI)
+                df.sort_values(by=['sort_by_me'], inplace=True)
+
+            if self.list_resp_rows == -1 : # means this is the first time we handle the specific list
                 self.list_resp_rows = len(df)
             if self.list_resp_rows == 0 : # meaning-  we finished showing all
                 self.list_resp = "No more data to show"
                 return True
             t1 = self.list_resp_rows
-            t2 = max(self.list_resp_rows - self.list_resp_row_limit ,0)
+            # handle the case of list all
+            if self.list_all == 'Yes':
+                t2 = 0
+            else:
+                t2 = max(self.list_resp_rows - self.list_resp_row_limit ,0)
             resp_title  = "Showing items {} to {}:".format(t2+1,max(t1,0))
             resp_cont_1 = self.df_to_list_resp(df[t2:t1], which_db, resp_title)
             if defs.use_tables == 'no':
@@ -885,19 +1208,22 @@ class Db(object):
 
     def apply_state_to_df(self, df, which_db):
         # apply the state, if exists, we are listing for
-        if self.state_to_list != 'all':
-            if self.state_to_list == 'clean':
-                self.state_to_list = defs.state_open[which_db]
-            df = df[df['State'] == self.state_to_list]
+        if df is not None:
+            if self.state_to_act != 'all':
+                if self.state_to_act == 'clean':
+                    self.state_to_act = defs.state_open[which_db]
+                df = df[df['State'] == self.state_to_act]
+                self.state_to_act = 'clean' # clean it for next cycles ..
         return df
 
     def apply_tag_to_df(self, df):
-        if self.tag == 'clean':
-            return df
-        if self.tag == 'any-tag-at-all':
-            return df
-        df = df[df['Tag'].\
-                apply(if_list_find_item, args=(self.tag,)) == True]
+        if df is not None:
+            if self.tag == 'clean':
+                return df
+            if self.tag == 'any-tag-at-all':
+                return df
+            df = df[df['Tag'].\
+                    apply(if_list_find_item, args=(self.tag,)) == True]
         return df
 
 
@@ -1007,7 +1333,8 @@ class Db(object):
             ws = d-timedelta(days=d.weekday())
             we = ws + timedelta(days=6)
             we = we + defs.debug_delta
-            df2 = df1[df1['Wakeup_Date'].apply(date_conv_max_date) <= we].copy()
+            we_tag = datetime.combine(we,time.min)
+            df2 = df1[df1['Wakeup_Date'].apply(date_conv_max_date) <= we_tag].copy()
             if len(df2) == 0: # nothing found
                 self.list_resp += 'well ... nothing found here at {}.\n'.\
                     format(defs.db_names[df_name])
@@ -1069,7 +1396,7 @@ class Db(object):
         self.return_message_ext1 += self.list_resp
         self.return_message_ext1 += '==========================\n'
         # timedelta status
-        self.return_message_ext1 += 'Timedelta set to {} days.\n'. \
+        self.return_message_ext1 += 'Timedelta set to {} day(s) (back).\n'. \
             format(self.tdelta)
         self.return_message_ext1 += '==========================\n'
         return True
@@ -1089,21 +1416,21 @@ class Db(object):
             elif item in self.dft.index:
                 self.dft.loc[item, 'PROJECT'] = self.move_to
         elif self.transaction_type == 'move task':
-            if self.state_to_list == 'clean':
+            if self.state_to_act == 'clean':
                 self.dft.loc[self.dft['PROJECT'] == self.move_from,'PROJECT']\
                     = self.move_to
             else: # there is a specific state to move
                 self.dft.loc[(self.dft['PROJECT'] == self.move_from) \
-                             & (self.dft['State'] == self.state_to_list) \
+                             & (self.dft['State'] == self.state_to_act) \
                     , 'PROJECT'] = self.move_to
         elif self.transaction_type == 'move activity':
             self.dfa.loc[self.dfa['PROJECT'] == self.move_from,'PROJECT'] = self.move_to
-            if self.state_to_list == 'clean':
+            if self.state_to_act == 'clean':
                 self.dfa.loc[self.dft['PROJECT'] == self.move_from, 'PROJECT'] \
                     = self.move_to
             else:  # there is a specific state to move
                 self.dfa.loc[(self.dfa['PROJECT'] == self.move_from) \
-                             & (self.dfa['State'] == self.state_to_list) \
+                             & (self.dfa['State'] == self.state_to_act) \
                     , 'PROJECT'] = self.move_to
         return True
 
@@ -1143,6 +1470,9 @@ class Db(object):
             if (self.value_to_set.isdigit()):
                 self.value_to_set = int(self.value_to_set)
             setattr(defs,self.param_to_set, self.value_to_set)
+            # check if the param to set is the columns to print, and change teh defs
+            if self.param_to_set == 'columns_print_style':
+                defs.columns_to_print_table = defs.which_columns_to_print[self.value_to_set]
         else:
             return False
         return True
@@ -1357,7 +1687,8 @@ class Db(object):
             self.list_resp += '\n\n'
 
         if len(self.list_resp) == 0 :
-            self.error_details = 'Nothing to list. No such tag found.'
+            self.error_details = 'Nothing to list since no items with tag {} found'.\
+                format(self.tag)
             logger.debug(self.error_details)
             return False
 
@@ -1416,3 +1747,111 @@ class Db(object):
                 format(self.tdelta_param)
         return True
 
+    def push(self):
+        #this function push one item on top of another item and pushes the rest down
+
+        # activity
+        # find that both items are in the same database, and which one is 'lower' and 'higher
+        found_in_db = False   
+        if ((self.push_item_one in self.dfa.index.values) and 
+            (self.push_item_two in self.dfa.index.values)) :
+            found_in_db = True
+            loc_big   = self.dfa.index.get_loc(self.push_item_one)
+            loc_small = self.dfa.index.get_loc(self.push_item_two) 
+            if (loc_big <= loc_small): # need to swap them to keep order
+                temp = self.push_item_two
+                self.push_item_two = self.push_item_one
+                self.push_item_one = temp
+                temp      = loc_big
+                loc_big   = loc_small
+                loc_small = temp
+            temp = self.dfa.loc[self.push_item_one].copy()
+            locptr = loc_big
+            while locptr > loc_small :
+                self.dfa.loc[self.dfa.index[locptr]] = self.dfa.loc[self.dfa.index[locptr-1]].copy()    
+                locptr -= 1
+            self.dfa.loc[self.push_item_two] = temp
+        if found_in_db :
+            return True
+
+        # Task
+        # find that both items are in the same database, and which one is 'lower' and 'higher
+        found_in_db = False   
+        if ((self.push_item_one in self.dft.index.values) and 
+            (self.push_item_two in self.dft.index.values)) :
+            found_in_db = True
+            loc_big   = self.dft.index.get_loc(self.push_item_one)
+            loc_small = self.dft.index.get_loc(self.push_item_two) 
+            if (loc_big <= loc_small): # need to swap them to keep order
+                temp = self.push_item_two
+                self.push_item_two = self.push_item_one
+                self.push_item_one = temp
+                temp      = loc_big
+                loc_big   = loc_small
+                loc_small = temp
+            temp = self.dft.loc[self.push_item_one].copy()
+            locptr = loc_big
+            while locptr > loc_small :
+                self.dft.loc[self.dft.index[locptr]] = self.dft.loc[self.dft.index[locptr-1]].copy()    
+                locptr -= 1
+            self.dft.loc[self.push_item_two] = temp
+        if found_in_db :
+            return True
+
+        self.had_error("push: could not find items or are not in same DB")
+        return False
+    
+    def edit_something(self):
+        # handle activity, and then task and then project and then megaproject
+        # replaces the Description field of the item
+        state = 'idle' # helps understand status
+        # activity
+        if self.dfa is not None:
+            state = 'found db'
+            if self.use_this_ID_for_ref in self.dfa.index.values:
+                state = 'id in db'
+                # process
+                if self.trans_description == 'clean':
+                    self.dfa.loc[self.use_this_ID_for_ref, 'Description'] = "(empty)"
+                else:
+                    self.dfa.loc[self.use_this_ID_for_ref, 'Description'] = self.trans_description
+
+        # task
+        if (self.dft is not None) and (state != 'id in db'):
+            state = 'found db'
+            if self.use_this_ID_for_ref in self.dft.index.values:
+                state = 'id in db'
+                # process
+                if self.trans_description == 'clean':
+                    self.dft.loc[self.use_this_ID_for_ref, 'Description'] = "(empty)"
+                else:
+                    self.dft.loc[self.use_this_ID_for_ref, 'Description'] = self.trans_description
+        # project
+        if (self.dfp is not None) and (state != 'id in db'):
+            state = 'found db'
+            if self.use_this_ID_for_ref in self.dfp.index.values:
+                state = 'id in db'
+                # process
+                if self.trans_description == 'clean':
+                    self.dfp.loc[self.use_this_ID_for_ref, 'Description'] = "(empty)"
+                else:
+                    self.dfp.loc[self.use_this_ID_for_ref, 'Description'] = self.trans_description
+
+        if (self.dfm is not None) and (state != 'id in db'):
+            state = 'found db'
+            if self.use_this_ID_for_ref in self.dfm.index.values:
+                state = 'id in db'
+                # process
+                if self.trans_description == 'clean':
+                    self.dfm.loc[self.use_this_ID_for_ref, 'Description'] = "(empty)"
+                else:
+                    self.dfm.loc[self.use_this_ID_for_ref, 'Description'] = self.trans_description
+
+        if state != 'id in db':
+            self.error_details = 'Requested to continue ACTIVITY or TASK or PROJECT {} failed (probably incorrect ID)'\
+                .format(self.use_this_ID_for_ref)
+            logger.debug(self.error_details)
+            return False
+        return True
+
+    

@@ -1,10 +1,11 @@
 
 
 
-import socket
+
 import sys
 import time
 from test import test_defs
+from src import defs
 import logging
 #cd_logger = logging.getLogger(__name__)
 
@@ -24,7 +25,7 @@ class client(object):
         for m in test_defs.test_commands:
             print(str(cnt).zfill(4) + ":" + m)
             cnt += 1
-            if ("die" in m[0:5]):
+            if (defs.die_word in m[0:5]):
                 print('client: got a die command', file=sys.stdout)
                 break
             if "turn on" in m[0:9]:

@@ -4,8 +4,8 @@
 import socket
 import sys
 
-if 'C:\\Users\\oeitam\\PycharmProjects\\weekly' not in sys.path:
-    sys.path.append(r'C:\Users\oeitam\PycharmProjects\weekly')
+if 'C:\\Users\\oeitam\\VScode\\weekly' not in sys.path:
+    sys.path.append(r'C:\Users\oeitam\VScode\weekly')
 
 
 import os
@@ -47,6 +47,10 @@ try:
         #else:
         if defs.mode == 'prod':
             m = input("Client say:\n")
+        # if m is just an empty line
+        if not m.strip():
+            #print("this is an empty line\n")
+            continue
         # adding length
         l = str(len(m)+5)
         sl = "{:0>4}:".format(l)
@@ -55,7 +59,7 @@ try:
             input('hit any key to send this message')
         print(str(cnt).zfill(8) + ":" + m)
         cnt += 1
-        if ("die" in m[0:5]) or (mpos-1) == lenm:
+        if (defs.die_word in m[0:5]) or (mpos-1) == lenm:
             print('client: got a die command', file=sys.stdout)
             sock.sendall(m.encode())
             time.sleep(1)

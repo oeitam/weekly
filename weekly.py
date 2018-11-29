@@ -2,6 +2,7 @@
 
 import sys
 import logging
+import os
 
 logger = logging.getLogger()
 logging.basicConfig(filename='weekly.log', filemode='w', level=logging.DEBUG)

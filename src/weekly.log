@@ -1,0 +1,173 @@
+INFO:root:Logging (into weekly.log)Started
+DEBUG:matplotlib:$HOME=C:\Users\oeitam
+DEBUG:matplotlib:matplotlib data path C:\Users\oeitam\AppData\Local\Continuum\anaconda3\lib\site-packages\matplotlib\mpl-data
+DEBUG:matplotlib:loaded rc file C:\Users\oeitam\AppData\Local\Continuum\anaconda3\lib\site-packages\matplotlib\mpl-data\matplotlibrc
+DEBUG:matplotlib:matplotlib version 2.2.2
+DEBUG:matplotlib:interactive is False
+DEBUG:matplotlib:platform is win32
+DEBUG:matplotlib:loaded modules: ['builtins', 'sys', '_frozen_importlib', '_imp', '_warnings', '_thread', '_weakref', '_frozen_importlib_external', '_io', 'marshal', 'nt', 'winreg', 'zipimport', 'encodings', 'codecs', '_codecs', 'encodings.aliases', 'encodings.utf_8', '_signal', '__main__', 'encodings.latin_1', 'io', 'abc', '_weakrefset', 'site', 'os', 'errno', 'stat', '_stat', 'ntpath', 'genericpath', 'os.path', '_collections_abc', '_sitebuiltins', 'sysconfig', '_bootlocale', '_locale', 'encodings.cp1252', 'types', 'functools', '_functools', 'collections', 'operator', '_operator', 'keyword', 'heapq', '_heapq', 'itertools', 'reprlib', '_collections', 'weakref', 'collections.abc', 'importlib', 'importlib._bootstrap', 'importlib._bootstrap_external', 'warnings', 'importlib.util', 'importlib.abc', 'importlib.machinery', 'contextlib', 'mpl_toolkits', 'sphinxcontrib', 'logging', 'time', 'traceback', 'linecache', 'tokenize', 're', 'enum', 'sre_compile', '_sre', 'sre_parse', 'sre_constants', 'copyreg', 'token', 'string', '_string', 'threading', 'atexit', 'src', 'src.db', 'src.db.db', 'pandas', 'numpy', '__future__', 'numpy._globals', 'numpy.__config__', 'numpy.version', 'numpy._import_tools', 'numpy.add_newdocs', 'numpy.lib', 'math', 'numpy.lib.info', 'numpy.lib.type_check', 'numpy.core', 'numpy.core.info', 'datetime', '_datetime', 'numpy.core.multiarray', 'numpy.core.umath', 'numpy.core._internal', 'numpy.compat', 'numpy.compat._inspect', 'numpy.compat.py3k', 'pathlib', 'fnmatch', 'posixpath', 'urllib', 'urllib.parse', 'ctypes', '_ctypes', 'struct', '_struct', 'ctypes._endian', 'numpy.core.numerictypes', 'numbers', 'numpy.core.numeric', 'pickle', '_compat_pickle', '_pickle', 'numpy.core.fromnumeric', 'numpy.core._methods', 'numpy.core.arrayprint', 'numpy.core.defchararray', 'numpy.core.records', 'numpy.core.memmap', 'numpy.core.function_base', 'numpy.core.machar', 'numpy.core.getlimits', 'numpy.core.shape_base', 'numpy.core.einsumfunc', 'numpy.testing', 'unittest', 'unittest.result', 'unittest.util', 'unittest.case', 'difflib', 'pprint', 'unittest.suite', 'unittest.loader', 'unittest.main', 'argparse', 'copy', 'textwrap', 'gettext', 'locale', 'unittest.runner', 'unittest.signals', 'signal', 'numpy.testing.decorators', 'numpy.testing.nose_tools', 'numpy.testing.nose_tools.decorators', 'numpy.testing.nose_tools.utils', 'shutil', 'zlib', 'bz2', '_compression', '_bz2', 'lzma', '_lzma', 'tempfile', 'random', 'hashlib', '_hashlib', '_blake2', '_sha3', 'bisect', '_bisect', '_random', 'numpy.lib.utils', 'numpy.testing.nosetester', 'numpy.testing.nose_tools.nosetester', 'numpy.testing.utils', 'numpy.lib.ufunclike', 'numpy.lib.index_tricks', 'numpy.lib.function_base', 'numpy.lib.twodim_base', 'numpy.matrixlib', 'numpy.matrixlib.defmatrix', 'ast', '_ast', 'numpy.lib.stride_tricks', 'numpy.lib.mixins', 'numpy.lib.nanfunctions', 'numpy.lib.shape_base', 'numpy.lib.scimath', 'numpy.lib.polynomial', 'numpy.linalg', 'numpy.linalg.info', 'numpy.linalg.linalg', 'numpy.linalg.lapack_lite', 'numpy.linalg._umath_linalg', 'numpy.lib.arraysetops', 'numpy.lib.npyio', 'numpy.lib.format', 'numpy.lib._datasource', 'numpy.lib._iotools', 'numpy.lib.financial', 'decimal', '_decimal', 'numpy.lib.arrayterator', 'numpy.lib.arraypad', 'numpy.lib._version', 'numpy._distributor_init', 'numpy._mklinit', 'numpy.fft', 'numpy.fft.info', 'numpy.fft.fftpack', 'numpy.fft.fftpack_lite', 'numpy.fft.helper', 'mkl_fft', '_cython_0_27_3', 'cython_runtime', 'mkl_fft._pydfti', 'numpy.core.multiarray_tests', 'mkl_fft._numpy_fft', 'numpy.polynomial', 'numpy.polynomial.polynomial', 'numpy.polynomial.polyutils', 'numpy.polynomial._polybase', 'numpy.polynomial.chebyshev', 'numpy.polynomial.legendre', 'numpy.polynomial.hermite', 'numpy.polynomial.hermite_e', 'numpy.polynomial.laguerre', 'numpy.random', 'numpy.random.info', 'mtrand', 'numpy.random.mtrand', 'numpy.ctypeslib', 'numpy.ma', 'numpy.ma.core', 'numpy.ma.extras', 'pytz', 'pytz.exceptions', 'pytz.lazy', 'pytz.tzinfo', 'pytz.tzfile', 'dateutil', 'dateutil._version', 'pandas.compat', 'distutils', 'distutils.version', 'platform', 'subprocess', 'msvcrt', '_winapi', 'unicodedata', 'inspect', 'dis', 'opcode', '_opcode', 'http', 'http.client', 'email', 'email.parser', 'email.feedparser', 'email.errors', 'email._policybase', 'email.header', 'binascii', 'email.quoprimime', 'email.base64mime', 'base64', 'email.charset', 'email.encoders', 'quopri', 'email.utils', 'socket', '_socket', 'selectors', 'select', 'email._parseaddr', 'calendar', 'email.message', 'uu', 'email._encoded_words', 'email.iterators', 'ssl', 'ipaddress', '_ssl', 'pandas.compat.chainmap', 'dateutil.parser', 'dateutil.parser._parser', 'six', 'dateutil.relativedelta', 'dateutil._common', 'dateutil.tz', 'dateutil.tz.tz', 'six.moves', 'dateutil.tz._common', 'dateutil.tz._factories', 'dateutil.tz.win', 'ctypes.wintypes', 'dateutil.parser.isoparser', 'typing', 'typing.io', 'typing.re', 'pandas.compat.numpy', 'pandas._libs', 'pandas._libs.tslib', 'pandas._libs.tslibs', 'pandas._libs.tslibs.conversion', 'pandas._libs.tslibs.np_datetime', '_cython_0_28_2', 'pandas._libs.tslibs.nattype', 'pandas._libs.tslibs.timedeltas', 'pandas._libs.tslibs.timezones', 'pandas._libs.tslibs.parsing', 'pandas._libs.tslibs.ccalendar', 'pandas._libs.tslibs.strptime', 'pandas._libs.tslibs.timestamps', 'pandas._libs.tslibs.fields', 'pandas._libs.hashtable', 'pandas._libs.missing', 'pandas._libs.lib', 'pandas.core', 'pandas.core.config_init', 'pandas.core.config', 'pandas.io', 'pandas.io.formats', 'pandas.io.formats.printing', 'pandas.core.dtypes', 'pandas.core.dtypes.inference', 'pandas.io.formats.console', 'pandas.io.formats.terminal', 'pandas.core.api', 'pandas.core.algorithms', 'pandas.core.dtypes.cast', 'pandas.core.dtypes.common', 'pandas._libs.algos', 'pandas.core.dtypes.dtypes', 'pandas.core.dtypes.generic', 'pandas.core.dtypes.base', 'pandas.errors', 'pandas.core.dtypes.missing', 'pandas.core.common', 'pandas.util', 'pandas.util._decorators', 'pandas._libs.properties', 'pandas.core.util', 'pandas.core.util.hashing', 'pandas._libs.hashing', 'pandas.core.arrays', 'pandas.core.arrays.base', 'pandas.compat.numpy.function', 'pandas.util._validators', 'pandas.core.arrays.categorical', 'pandas.core.accessor', 'pandas.core.base', 'pandas.core.nanops', 'bottleneck', 'bottleneck.reduce', 'bottleneck.nonreduce', 'bottleneck.nonreduce_axis', 'bottleneck.move', 'bottleneck.slow', 'bottleneck.slow.reduce', 'bottleneck.slow.nonreduce', 'bottleneck.slow.nonreduce_axis', 'bottleneck.slow.move', 'bottleneck.version', 'bottleneck.benchmark', 'bottleneck.benchmark.bench', 'bottleneck.benchmark.autotimeit', 'timeit', 'gc', 'bottleneck.benchmark.bench_detailed', 'bottleneck.tests', 'bottleneck.tests.util', 'pandas.core.missing', 'pandas.core.groupby', 'pandas.core.groupby.groupby', 'pandas.core.index', 'pandas.core.indexes', 'pandas.core.indexes.api', 'pandas.core.indexes.base', 'pandas._libs.index', 'pandas._libs.tslibs.period', 'pandas._libs.tslibs.frequencies', 'pandas._libs.tslibs.resolution', 'pandas.tseries', 'pandas.tseries.offsets', 'pandas.core.tools', 'pandas.core.tools.datetimes', 'dateutil.easter', 'pandas._libs.tslibs.offsets', 'pandas.tseries.frequencies', 'pandas._libs.join', 'pandas.core.ops', 'pandas._libs.ops', 'pandas.core.indexes.frozen', 'pandas.core.dtypes.concat', 'pandas.core.sorting', 'pandas.core.strings', 'pandas.core.indexes.category', 'pandas.core.indexes.multi', 'pandas.core.indexes.interval', 'pandas._libs.interval', 'pandas.core.indexes.datetimes', 'pandas.core.indexes.numeric', 'pandas.core.indexes.datetimelike', 'pandas.core.tools.timedeltas', 'pandas.core.indexes.timedeltas', 'pandas.core.indexes.range', 'pandas.core.indexes.period', 'pandas.core.frame', 'pandas.core.generic', 'json', 'json.decoder', 'json.scanner', '_json', 'json.encoder', 'pandas.core.indexing', 'pandas._libs.indexing', 'pandas.core.internals', 'pandas._libs.internals', 'pandas.core.sparse', 'pandas.core.sparse.array', 'pandas._libs.sparse', 'pandas.io.formats.format', 'pandas.io.common', 'csv', '_csv', 'mmap', 'zipfile', 'urllib.request', 'urllib.error', 'urllib.response', 'nturl2path', 'pandas.core.series', 'pandas.core.indexes.accessors', 'pandas.plotting', 'pandas.plotting._misc', 'pandas.plotting._style', 'pandas.plotting._compat', 'pandas.plotting._tools', 'pandas.plotting._core', 'pandas.plotting._converter', 'matplotlib', 'distutils.sysconfig', 'distutils.errors', 'matplotlib.cbook', 'glob', 'gzip', 'matplotlib.cbook.deprecation', 'matplotlib.cbook._backports', 'matplotlib.compat', 'matplotlib.compat.subprocess', 'matplotlib.rcsetup', 'matplotlib.testing', 'matplotlib.fontconfig_pattern', 'pyparsing', 'matplotlib.colors', 'matplotlib._color_data', 'cycler', 'six.moves.urllib', 'six.moves.urllib.request', 'matplotlib._version']
+INFO:root:Logging (client direct) Started
+DEBUG:src.db.db:setting up databases
+DEBUG:src.db.db:Starting with ID 14548
+DEBUG:src.db.db:ID is: 14548
+DEBUG:src.db.db:class Db initialized
+DEBUG:src.server.client_direct:client script sending 0030:set columns_print_style 1
+DEBUG:src.gtd.gtd:stored new data:set columns_print_style 1
+DEBUG:src.gtd.gtd:data from c: set columns_print_style 1
+DEBUG:src.gtd.gtd:I am in parse set columns_print_style 1
+DEBUG:src.gtd.gtd:I am in tokenize set columns_print_style 1
+DEBUG:src.gtd.gtd:I am in tokenize_weekly set columns_print_style 1
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='set', start=(1, 0), end=(1, 3), line='set columns_print_style 1')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='columns_print_style', start=(1, 4), end=(1, 23), line='set columns_print_style 1')
+DEBUG:src.gtd.gtd:set nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=2 (NUMBER), string='1', start=(1, 24), end=(1, 25), line='set columns_print_style 1')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
+DEBUG:src.gtd.gtd:this is the return_message: Transaction: set param COMPLETED. New ID is: -1
+DEBUG:src.server.server:return_message: 0052:
+Transaction: set param COMPLETED. New ID is: -1
+DEBUG:src.server.client_direct:ServerSaid: 0052:
+Transaction: set param COMPLETED. New ID is: -1
+DEBUG:src.server.client_direct:client script sending 0030:set list_resp_row_limit 3
+DEBUG:src.gtd.gtd:stored new data:set list_resp_row_limit 3
+DEBUG:src.gtd.gtd:data from c: set list_resp_row_limit 3
+DEBUG:src.gtd.gtd:I am in parse set list_resp_row_limit 3
+DEBUG:src.gtd.gtd:I am in tokenize set list_resp_row_limit 3
+DEBUG:src.gtd.gtd:I am in tokenize_weekly set list_resp_row_limit 3
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='set', start=(1, 0), end=(1, 3), line='set list_resp_row_limit 3')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='list_resp_row_limit', start=(1, 4), end=(1, 23), line='set list_resp_row_limit 3')
+DEBUG:src.gtd.gtd:set nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=2 (NUMBER), string='3', start=(1, 24), end=(1, 25), line='set list_resp_row_limit 3')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
+DEBUG:src.gtd.gtd:this is the return_message: Transaction: set param COMPLETED. New ID is: -1
+DEBUG:src.server.server:return_message: 0052:
+Transaction: set param COMPLETED. New ID is: -1
+DEBUG:src.server.client_direct:ServerSaid: 0052:
+Transaction: set param COMPLETED. New ID is: -1
+DEBUG:src.server.client_direct:client script sending 0016:timedelta 1
+DEBUG:src.gtd.gtd:stored new data:timedelta 1
+DEBUG:src.gtd.gtd:data from c: timedelta 1
+DEBUG:src.gtd.gtd:I am in parse timedelta 1
+DEBUG:src.gtd.gtd:I am in tokenize timedelta 1
+DEBUG:src.gtd.gtd:I am in tokenize_weekly timedelta 1
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='timedelta', start=(1, 0), end=(1, 9), line='timedelta 1')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=2 (NUMBER), string='1', start=(1, 10), end=(1, 11), line='timedelta 1')
+DEBUG:src.gtd.gtd:timedelta nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
+DEBUG:src.gtd.gtd:this is the return_message: Transaction: timedelta COMPLETED. New ID is: -1
+Timedelta set to 1 days.
+
+DEBUG:src.server.server:return_message: 0078:
+Transaction: timedelta COMPLETED. New ID is: -1
+Timedelta set to 1 days.
+
+DEBUG:src.server.client_direct:ServerSaid: 0078:
+Transaction: timedelta COMPLETED. New ID is: -1
+Timedelta set to 1 days.
+
+DEBUG:src.server.client_direct:client script sending 0023:start @P1  |blabla
+DEBUG:src.gtd.gtd:command after replacement: start @P1  |blabla
+DEBUG:src.gtd.gtd:stored new data:start @P1  |blabla
+DEBUG:src.gtd.gtd:data from c: start @P1  |blabla
+DEBUG:src.gtd.gtd:I am in parse start @P1  |blabla
+DEBUG:src.gtd.gtd:I am in tokenize start @P1  |blabla
+DEBUG:src.gtd.gtd:I am in tokenize_weekly start @P1  |blabla
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='start', start=(1, 0), end=(1, 5), line='start @P1  |blabla')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='@', start=(1, 6), end=(1, 7), line='start @P1  |blabla')
+DEBUG:src.gtd.gtd:start nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='P1', start=(1, 7), end=(1, 9), line='start @P1  |blabla')
+DEBUG:src.gtd.gtd:@ nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='|', start=(1, 11), end=(1, 12), line='start @P1  |blabla')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='blabla', start=(1, 12), end=(1, 18), line='start @P1  |blabla')
+DEBUG:src.gtd.gtd:| nud
+DEBUG:src.db.db:ID is: 14549
+DEBUG:src.db.db:         State  Start_Date Description Tag End_Date Wakeup_Date TASK PROJECT                  Start_Time State_Time State_Text
+ID                                                                                                                            
+14549  Started  18ww34.Sat      blabla  []                             14434  07:17PM on August 25, 2018         []         []
+DEBUG:src.gtd.gtd:this is the return_message: Transaction: start activity COMPLETED. New ID is: 14549
+DEBUG:src.server.server:return_message: 0060:
+Transaction: start activity COMPLETED. New ID is: 14549
+DEBUG:src.server.client_direct:ServerSaid: 0060:
+Transaction: start activity COMPLETED. New ID is: 14549
+DEBUG:src.server.client_direct:client script sending 0016:halt @14538
+DEBUG:src.gtd.gtd:command after replacement: halt @14538
+DEBUG:src.gtd.gtd:stored new data:halt @14538
+DEBUG:src.gtd.gtd:data from c: halt @14538
+DEBUG:src.gtd.gtd:I am in parse halt @14538
+DEBUG:src.gtd.gtd:I am in tokenize halt @14538
+DEBUG:src.gtd.gtd:I am in tokenize_weekly halt @14538
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='halt', start=(1, 0), end=(1, 4), line='halt @14538')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='@', start=(1, 5), end=(1, 6), line='halt @14538')
+DEBUG:src.gtd.gtd:halt nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=2 (NUMBER), string='14538', start=(1, 6), end=(1, 11), line='halt @14538')
+DEBUG:src.gtd.gtd:@ nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
+DEBUG:src.gtd.gtd:this is the return_message: Transaction: halt something COMPLETED. Referenced ID is: 14538
+DEBUG:src.server.server:return_message: 0067:
+Transaction: halt something COMPLETED. Referenced ID is: 14538
+DEBUG:src.server.client_direct:ServerSaid: 0067:
+Transaction: halt something COMPLETED. Referenced ID is: 14538
+DEBUG:src.server.client_direct:client script sending 0051:cont @14538 | blalkshnnnweiojhfahha  hasdofih 
+DEBUG:src.gtd.gtd:command after replacement: cont @14538 | blalkshnnnweiojhfahha  hasdofih 
+DEBUG:src.gtd.gtd:stored new data:cont @14538 | blalkshnnnweiojhfahha  hasdofih 
+DEBUG:src.gtd.gtd:data from c: cont @14538 | blalkshnnnweiojhfahha  hasdofih 
+DEBUG:src.gtd.gtd:I am in parse cont @14538 | blalkshnnnweiojhfahha  hasdofih 
+DEBUG:src.gtd.gtd:I am in tokenize cont @14538 | blalkshnnnweiojhfahha  hasdofih 
+DEBUG:src.gtd.gtd:I am in tokenize_weekly cont @14538 | blalkshnnnweiojhfahha  hasdofih 
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='cont', start=(1, 0), end=(1, 4), line='cont @14538 | blalkshnnnweiojhfahha  hasdofih ')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='@', start=(1, 5), end=(1, 6), line='cont @14538 | blalkshnnnweiojhfahha  hasdofih ')
+DEBUG:src.gtd.gtd:cont nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=2 (NUMBER), string='14538', start=(1, 6), end=(1, 11), line='cont @14538 | blalkshnnnweiojhfahha  hasdofih ')
+DEBUG:src.gtd.gtd:@ nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=53 (OP), string='|', start=(1, 12), end=(1, 13), line='cont @14538 | blalkshnnnweiojhfahha  hasdofih ')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='blalkshnnnweiojhfahha', start=(1, 14), end=(1, 35), line='cont @14538 | blalkshnnnweiojhfahha  hasdofih ')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='hasdofih', start=(1, 37), end=(1, 45), line='cont @14538 | blalkshnnnweiojhfahha  hasdofih ')
+DEBUG:src.gtd.gtd:this is the return_message: Transaction: cont something COMPLETED. Referenced ID is: 14538
+DEBUG:src.server.server:return_message: 0067:
+Transaction: cont something COMPLETED. Referenced ID is: 14538
+DEBUG:src.server.client_direct:ServerSaid: 0067:
+Transaction: cont something COMPLETED. Referenced ID is: 14538
+DEBUG:src.server.client_direct:client script sending 0028:list activity state all
+DEBUG:src.gtd.gtd:stored new data:list activity state all
+DEBUG:src.gtd.gtd:data from c: list activity state all
+DEBUG:src.gtd.gtd:I am in parse list activity state all
+DEBUG:src.gtd.gtd:I am in tokenize list activity state all
+DEBUG:src.gtd.gtd:I am in tokenize_weekly list activity state all
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=59 (ENCODING), string='utf-8', start=(0, 0), end=(0, 0), line='')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='list', start=(1, 0), end=(1, 4), line='list activity state all')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='activity', start=(1, 5), end=(1, 13), line='list activity state all')
+DEBUG:src.gtd.gtd:list nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='state', start=(1, 14), end=(1, 19), line='list activity state all')
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=1 (NAME), string='all', start=(1, 20), end=(1, 23), line='list activity state all')
+DEBUG:src.gtd.gtd:state nud
+DEBUG:src.gtd.gtd:tokenize_weekly, TokenInfo(type=0 (ENDMARKER), string='', start=(2, 0), end=(2, 0), line='')
+DEBUG:src.gtd.gtd:this is the return_message: +Showing items 1228 to 1230:---+-------------+-----+----------+-------------+------+---------+----------------------------+------------+------------+
+| ID    | State   | Start_Date | Description | Tag | End_Date | Wakeup_Date | TASK | PROJECT | Start_Time                 | State_Time | State_Text |
++-------+---------+------------+-------------+-----+----------+-------------+------+---------+----------------------------+------------+------------+
+| 14544 | Started | 18ww34.Fri | blabla      | []  | N/A      | N/A         | N/A  | 14434   | 09:29PM on August 24, 2018 | []         | []         |
+| 14547 | Started | 18ww34.Sat | blabla      | []  | N/A      | N/A         | N/A  | 14434   | 07:14PM on August 25, 2018 | []         | []         |
+| 14549 | Started | 18ww34.Sat | blabla      | []  |          |             |      | 14434   | 07:17PM on August 25, 2018 | []         | []         |
++-------+---------+------------+-------------+-----+----------+-------------+------+---------+----------------------------+------------+------------+
+DEBUG:src.server.server:return_message: 1054:
++Showing items 1228 to 1230:---+-------------+-----+----------+-------------+------+---------+----------------------------+------------+------------+
+| ID    | State   | Start_Date | Description | Tag | End_Date | Wakeup_Date | TASK | PROJECT | Start_Time                 | State_Time | State_Text |
++-------+---------+------------+-------------+-----+----------+-------------+------+---------+----------------------------+------------+------------+
+| 14544 | Started | 18ww34.Fri | blabla      | []  | N/A      | N/A         | N/A  | 14434   | 09:29PM on August 24, 2018 | []         | []         |
+| 14547 | Started | 18ww34.Sat | blabla      | []  | N/A      | N/A         | N/A  | 14434   | 07:14PM on August 25, 2018 | []         | []         |
+| 14549 | Started | 18ww34.Sat | blabla      | []  |          |             |      | 14434   | 07:17PM on August 25, 2018 | []         | []         |
++-------+---------+------------+-------------+-----+----------+-------------+------+---------+----------------------------+------------+------------+
+DEBUG:src.server.client_direct:ServerSaid: 1054:
++Showing items 1228 to 1230:---+-------------+-----+----------+-------------+------+---------+----------------------------+------------+------------+
+| ID    | State   | Start_Date | Description | Tag | End_Date | Wakeup_Date | TASK | PROJECT | Start_Time                 | State_Time | State_Text |
++-------+---------+------------+-------------+-----+----------+-------------+------+---------+----------------------------+------------+------------+
+| 14544 | Started | 18ww34.Fri | blabla      | []  | N/A      | N/A         | N/A  | 14434   | 09:29PM on August 24, 2018 | []         | []         |
+| 14547 | Started | 18ww34.Sat | blabla      | []  | N/A      | N/A         | N/A  | 14434   | 07:14PM on August 25, 2018 | []         | []         |
+| 14549 | Started | 18ww34.Sat | blabla      | []  |          |             |      | 14434   | 07:17PM on August 25, 2018 | []         | []         |
++-------+---------+------------+-------------+-----+----------+-------------+------+---------+----------------------------+------------+------------+
+DEBUG:src.server.client_direct:Client closing socket
+INFO:root:Logging Finished

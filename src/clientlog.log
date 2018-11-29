@@ -1,0 +1,43 @@
+0002:
+0030:set columns_print_style 1
+0052:
+Transaction: set param COMPLETED. New ID is: -1
+
+0003:
+0030:set list_resp_row_limit 3
+0052:
+Transaction: set param COMPLETED. New ID is: -1
+
+0004:
+0016:timedelta 1
+0078:
+Transaction: timedelta COMPLETED. New ID is: -1
+Timedelta set to 1 days.
+
+
+0005:
+0023:start @P1  |blabla
+0060:
+Transaction: start activity COMPLETED. New ID is: 14549
+
+0006:
+0016:halt @14538
+0067:
+Transaction: halt something COMPLETED. Referenced ID is: 14538
+
+0007:
+0051:cont @14538 | blalkshnnnweiojhfahha  hasdofih 
+0067:
+Transaction: cont something COMPLETED. Referenced ID is: 14538
+
+0008:
+0028:list activity state all
+1054:
++Showing items 1228 to 1230:---+-------------+-----+----------+-------------+------+---------+----------------------------+------------+------------+
+| ID    | State   | Start_Date | Description | Tag | End_Date | Wakeup_Date | TASK | PROJECT | Start_Time                 | State_Time | State_Text |
++-------+---------+------------+-------------+-----+----------+-------------+------+---------+----------------------------+------------+------------+
+| 14544 | Started | 18ww34.Fri | blabla      | []  | N/A      | N/A         | N/A  | 14434   | 09:29PM on August 24, 2018 | []         | []         |
+| 14547 | Started | 18ww34.Sat | blabla      | []  | N/A      | N/A         | N/A  | 14434   | 07:14PM on August 25, 2018 | []         | []         |
+| 14549 | Started | 18ww34.Sat | blabla      | []  |          |             |      | 14434   | 07:17PM on August 25, 2018 | []         | []         |
++-------+---------+------------+-------------+-----+----------+-------------+------+---------+----------------------------+------------+------------+
+
